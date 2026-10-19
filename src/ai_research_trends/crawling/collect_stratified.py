@@ -579,6 +579,11 @@ def collect_stratified_sample(
     if resume_manifest:
         manifest_path = _safe_resume_manifest(resume_manifest, raw_root_path)
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if manifest.get("complete") is True or manifest.get("status") == "complete":
+            raise ValueError(
+                "Completed collection runs are immutable and cannot be resumed; "
+                "use openalex-verify-collection for read-only validation"
+            )
         if manifest.get("plan_sha256") != plan_digest:
             raise ValueError("Resume plan checksum does not match the original run")
         if manifest.get("config_sha256") != config_digest:
@@ -767,6 +772,7 @@ def collect_stratified_sample(
                 "raw_jsonl": str(raw_jsonl),
                 "raw_jsonl_sha256": _sha256(raw_jsonl.read_bytes()),
                 "interim_jsonl": str(interim_jsonl),
+                "interim_jsonl_sha256": _sha256(interim_jsonl.read_bytes()),
             }
         )
         diagnostics = _ensure_diagnostics(manifest)

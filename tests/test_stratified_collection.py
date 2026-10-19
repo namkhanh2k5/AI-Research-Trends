@@ -13,6 +13,10 @@ from ai_research_trends.crawling.collect_stratified import (
 )
 from ai_research_trends.crawling.openalex_client import OpenAlexError
 from ai_research_trends.crawling.plan_stratified_sample import APPROVED_PRIMARY_FILTER
+from ai_research_trends.crawling.verify_collection import (
+    CollectionVerificationError,
+    verify_completed_collection,
+)
 
 
 def _plan() -> dict:
@@ -100,6 +104,7 @@ def test_checkpointed_collection_preserves_pages_and_completes(tmp_path: Path) -
     )
     assert result["complete"] is True
     assert result["unique_work_ids"] == 6
+    assert result["raw_jsonl_sha256"] == result["interim_jsonl_sha256"]
     assert len(client.calls) == 6
     assert Path(result["raw_jsonl"]).read_text().count("\n") == 6
     assert all(len(stratum["pages"]) == 1 for stratum in result["strata"])
@@ -383,6 +388,70 @@ def test_resume_checkpoint_selection_modes_and_required_orphans() -> None:
     assert keys("minimal") == [(2020, 1), (2020, 2), (2021, 1)]
     with pytest.raises(ValueError, match="verification mode"):
         _select_resume_checkpoints(manifest, "unknown")
+
+
+def test_completed_run_is_immutable_and_manifest_is_unchanged(tmp_path: Path) -> None:
+    raw_root = tmp_path / "raw"
+    interim_root = tmp_path / "interim"
+    completed = collect_stratified_sample(
+        plan=_plan(),
+        config=load_config("config/topics.yaml"),
+        client=FakeClient(list(range(2020, 2026))),
+        raw_root=raw_root,
+        interim_root=interim_root,
+        base_seed=100,
+    )
+    manifest_path = Path(completed["raw_jsonl"]).parent / "manifest.json"
+    before = manifest_path.read_bytes()
+
+    with pytest.raises(ValueError, match="immutable"):
+        collect_stratified_sample(
+            plan=_plan(),
+            config=load_config("config/topics.yaml"),
+            client=FakeClient([]),
+            raw_root=raw_root,
+            interim_root=interim_root,
+            base_seed=100,
+            resume_manifest=manifest_path,
+        )
+
+    assert manifest_path.read_bytes() == before
+
+
+def test_completed_collection_read_only_verification(tmp_path: Path) -> None:
+    completed = collect_stratified_sample(
+        plan=_plan(),
+        config=load_config("config/topics.yaml"),
+        client=FakeClient(list(range(2020, 2026))),
+        raw_root=tmp_path / "raw",
+        interim_root=tmp_path / "interim",
+        base_seed=100,
+    )
+    manifest_path = Path(completed["raw_jsonl"]).parent / "manifest.json"
+    manifest_before = manifest_path.read_bytes()
+    result = verify_completed_collection(manifest_path)
+
+    assert result["valid"] is True
+    assert result["verified_pages"] == 6
+    assert result["verified_unique_work_ids"] == 6
+    assert result["read_only"] is True
+    assert manifest_path.read_bytes() == manifest_before
+
+
+def test_completed_collection_verifier_rejects_changed_interim_jsonl(tmp_path: Path) -> None:
+    completed = collect_stratified_sample(
+        plan=_plan(),
+        config=load_config("config/topics.yaml"),
+        client=FakeClient(list(range(2020, 2026))),
+        raw_root=tmp_path / "raw",
+        interim_root=tmp_path / "interim",
+        base_seed=100,
+    )
+    interim_path = Path(completed["interim_jsonl"])
+    interim_path.write_bytes(interim_path.read_bytes() + b"\n")
+
+    with pytest.raises(CollectionVerificationError, match="SHA-256 mismatch for interim"):
+        verify_completed_collection(Path(completed["raw_jsonl"]).parent / "manifest.json")
 
 
 def test_resume_path_must_stay_inside_raw_root(tmp_path: Path) -> None:
