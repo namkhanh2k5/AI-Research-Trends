@@ -164,6 +164,20 @@ validated page, resumes only when plan/config/seed/page settings match, rejects
 unsafe resume paths, and preserves a failed manifest. API keys are never written
 to manifests.
 
+Before mixing checkpointed and newly retrieved pages, resume re-fetches the first
+checkpointed page from every started year stratum and requires an exact ordered
+Work-ID match. Probe bodies are stored separately. Failure leaves the run incomplete
+and preserves both snapshots. This detects drift on probed pages only; it cannot
+guarantee unprobed page membership, unchanged metadata fields, or database-wide
+snapshot isolation.
+
+The current 12,000-work implementation holds validated records and the canonical
+ID set in memory before atomically writing final JSONL. This bounded design is
+reasonable for the approved intermediate target, subject to runtime monitoring.
+For materially larger collections, stream records to append-only staging storage
+and use DuckDB or SQLite for disk-backed uniqueness/checkpoint state. Do not remove
+the immutable page responses or completeness gate when adopting streaming.
+
 ## 8. Counting safeguards
 
 Canonicalize IDs to `https://openalex.org/W...`. Deduplicate topic, institution,

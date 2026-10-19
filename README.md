@@ -121,10 +121,21 @@ openalex-collect-stratified \
   --execute
 ```
 
+Before a resume downloads new pages, it re-fetches the first checkpointed page of
+each started year stratum and compares ordered Work IDs. A mismatch fails the run
+without deleting either response. This is a drift alarm, not proof that unprobed
+pages or record fields are unchanged.
+
 OpenAlex documents random `sample` and reproducible `seed` behavior. The plan's
 `n/N` inclusion probabilities and `N/n` weights are nevertheless labeled nominal:
 the public API documentation does not establish uniform inclusion or stability
 across database updates.
+
+The 12,000-work collector retains validated records and its ID set in memory until
+final JSONL creation. For substantially larger targets, stream page records to an
+append-only staging file and maintain uniqueness in DuckDB/SQLite instead of
+accumulating Python dictionaries; continue to keep immutable page responses and an
+atomic completion manifest.
 
 Each pilot run creates:
 
