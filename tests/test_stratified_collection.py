@@ -10,11 +10,22 @@ from ai_research_trends.crawling.collect_stratified import (
     validate_collection_plan,
 )
 from ai_research_trends.crawling.openalex_client import OpenAlexError
+from ai_research_trends.crawling.plan_stratified_sample import APPROVED_PRIMARY_FILTER
 
 
 def _plan() -> dict:
     return {
+        "schema_version": 1,
         "design": "proportional_publication_year_stratified_largest_remainder",
+        "population_query_name": "study_population_primary_non_retracted",
+        "population_query_parameters": {
+            "filter": APPROVED_PRIMARY_FILTER,
+            "group_by": "publication_year",
+        },
+        "population_counts_source": "data/metadata/test_population.json",
+        "population_counts_sha256": "0" * 64,
+        "population_total": 60,
+        "target_sample_size": 6,
         "allocated_sample_size": 6,
         "strata": [
             {

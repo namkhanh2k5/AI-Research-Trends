@@ -22,6 +22,7 @@ from ai_research_trends.crawling.openalex_client import (
     utc_now,
     validate_sample_page,
 )
+from ai_research_trends.crawling.plan_stratified_sample import validate_sampling_plan
 from ai_research_trends.env import load_project_env
 
 
@@ -73,24 +74,8 @@ def _write_jsonl_atomic(path: Path, rows: list[dict[str, Any]]) -> None:
 
 
 def validate_collection_plan(plan: dict[str, Any]) -> list[dict[str, Any]]:
-    """Reject a plan that does not represent exactly the six fixed year strata."""
-    if plan.get("design") != "proportional_publication_year_stratified_largest_remainder":
-        raise ValueError("Unsupported or missing sampling design")
-    strata = plan.get("strata")
-    if not isinstance(strata, list) or len(strata) != 6:
-        raise ValueError("Sampling plan must contain six publication-year strata")
-    years = [row.get("publication_year") for row in strata if isinstance(row, dict)]
-    if years != list(range(2020, 2026)):
-        raise ValueError("Sampling strata must be unique and ordered from 2020 through 2025")
-    sample_sizes = [row.get("sample_size") for row in strata]
-    if any(
-        not isinstance(size, int) or isinstance(size, bool) or not 1 <= size <= 10_000
-        for size in sample_sizes
-    ):
-        raise ValueError("Every stratum sample size must be between 1 and 10,000")
-    if sum(sample_sizes) != plan.get("allocated_sample_size"):
-        raise ValueError("Stratum sample sizes do not match allocated_sample_size")
-    return strata
+    """Backward-compatible name for the full sampling-plan integrity check."""
+    return validate_sampling_plan(plan)
 
 
 def _safe_resume_manifest(value: str | Path, raw_root: Path) -> Path:
@@ -318,7 +303,10 @@ def main(argv: list[str] | None = None) -> int:
     plan_path = Path(args.plan)
     plan_bytes = plan_path.read_bytes()
     plan = json.loads(plan_bytes)
-    validate_collection_plan(plan)
+    source = Path(plan.get("population_counts_source", ""))
+    if not source.is_file():
+        raise ValueError(f"Declared population-count source does not exist: {source}")
+    validate_sampling_plan(plan, population_source_bytes=source.read_bytes())
     if not args.execute:
         print(
             json.dumps(
