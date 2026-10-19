@@ -55,7 +55,7 @@ Exact regular expressions and case settings are versioned in
   also present. There is **no dedicated selected OpenAlex RAG topic**. T10028
   mentions RAG in its keywords but is too broad to use as a RAG proxy.
 
-## Reproducible pilot audit
+## Reproducible pilot audits
 
 Source: 1,000 unique works from `pilot_20261019T024131Z`. The audit sorted each
 custom category's matches by canonical ID and used
@@ -81,14 +81,35 @@ substantive use as `relevant`, a meaningful but non-central mention as
 The other reviewed matches described direct model evaluation/application,
 multimodal learning/VLM methods, or RAG systems/attacks and were labeled relevant.
 This is a small diagnostic audit, not a precision estimate: there is one reviewer,
-no confidence interval, and no negative sample with which to assess recall.
+no confidence interval, and the initial audit contained no negative sample.
+
+The follow-up tool now samples both matches and non-matches with a fixed seed. On
+the same 1,000-work pilot, the revised rules matched 55 LLM, 22 Multimodal AI, and
+4 RAG records and generated 10 random negatives per category (plus 10 positives,
+or all four positives for RAG). There were zero malformed-abstract quarantines.
+
+Reviewing the 30 negative candidates found one clear rule miss:
+`W4413958554`, *Cross-Modal Adaptive Fusion and Enhancement Model for Noise-Robust
+Scenarios*, substantively studies multi-modal data fusion. The Multimodal rule was
+therefore extended to require a `cross-modal`/`multi-modality` expression together
+with model/learning/fusion/representation/alignment/neural/data context. The other
+29 sampled negatives showed no clear target-category evidence in the available
+title/abstract text; one non-English title-only LLM candidate remains difficult to
+adjudicate and is treated as ambiguous, not proof of a true negative.
+
+The LLM named-model rule also now recognizes GPT-2 and LLaMA variants. These
+revisions explain why revised match totals differ from the original audit totals.
+The revised positive candidates have not received a second independent review,
+so the original false-positive and ambiguous judgments above remain diagnostic
+evidence rather than a precision estimate.
 
 ## Consequences for Phase 2
 
 Keep a broad text-derived flag for discovery and add a stricter central-relevance
 sensitivity flag (for example, title match or manual/learned relevance review)
-before inferential trend comparisons. Expand the audit with negatives and a second
-reviewer. Persist the config hash with extracted labels. Never convert the 53, 15,
-or 4 pilot matches into population prevalence without the probability-sample
-design and uncertainty, and never treat those counts as comparable to full native
-API aggregates without qualification.
+before inferential trend comparisons. Expand the audit with a larger, enriched
+negative sample and a second reviewer. Persist the config hash with extracted
+labels. Never convert pilot match counts into population prevalence without the
+sampling design and uncertainty, and never treat them as comparable to full native
+API aggregates without qualification. Reliable recall and exhaustive identification
+are not claimed.

@@ -13,10 +13,10 @@ interpretation. It does **not** treat citations as scientific quality.
 
 ## Current status
 
-Phase 1 final review is complete: the research corpus is fixed, six topic records
-were directly revalidated, native taxonomy and custom text labels are separated,
-the 1,000-work pilot has stratified missingness and a small category audit, and
-the offline tests pass. Phase 2 collection has not started.
+The pre-Phase 2 review is complete. The fixed corpus now has separate all-work and
+non-retracted estimands; validated population aggregates, a 12,000-work proportional
+plan, checkpoint/resume collection, strict record validation, and positive/negative
+category-audit tooling are implemented. Phase 2 collection has not started.
 
 ## Study design in one minute
 
@@ -24,9 +24,11 @@ the offline tests pass. Phase 2 collection has not started.
 - Population frame: OpenAlex articles, reviews, and preprints whose **primary**
   topic is in subfield 1702 (Artificial Intelligence) or 1707 (Computer Vision
   and Pattern Recognition).
+- Primary estimands exclude known retractions with `is_retracted:false`; parallel
+  all-work aggregates are retained for sensitivity analysis.
 - Population trends: use complete API `group_by` results where possible.
-- Detailed records: deterministic probability samples from the frame, never an
-  artificially balanced category sample used as if it represented prevalence.
+- Detailed records: fixed-seed server-side samples with explicitly nominal design
+  weights, never an artificially balanced category sample used as prevalence.
 - Classification has two non-equivalent layers: overlapping OpenAlex-native topic
   membership and separately reported custom title/abstract rules for LLM,
   Multimodal AI, and RAG. Primary-topic analyses remain a third, single-label view.
@@ -62,12 +64,16 @@ openalex-discover-topics --help
 openalex-collect-aggregates --help
 openalex-collect-pilot --help
 openalex-profile-pilot --help
+openalex-audit-categories --help
+openalex-plan-sample --help
+openalex-collect-stratified --help
 
 openalex-validate-topics
 openalex-discover-topics
 openalex-collect-aggregates
 openalex-collect-pilot --size 1000 --seed 20251019
 openalex-profile-pilot data/interim/pilot_<UTC>/works.jsonl
+openalex-audit-categories data/interim/pilot_<UTC>/works.jsonl
 jupyter nbconvert --execute --to notebook --inplace \
   notebooks/01_data_quality.ipynb
 pytest
@@ -81,6 +87,44 @@ PYTHONPATH=src python -m ai_research_trends.crawling.discover_topics
 PYTHONPATH=src python -m ai_research_trends.crawling.collect_aggregates
 PYTHONPATH=src python -m ai_research_trends.crawling.collect_pilot --size 1000
 ```
+
+## Controlled Phase 2 handoff
+
+Generate and validate the plan without starting the crawl:
+
+```bash
+openalex-collect-aggregates \
+  --output data/metadata/population_counts_pre_phase2.json
+openalex-plan-sample \
+  --population-counts data/metadata/population_counts_pre_phase2.json \
+  --sample-size 12000 \
+  --output data/metadata/phase2_sampling_plan.json
+openalex-collect-stratified \
+  --plan data/metadata/phase2_sampling_plan.json
+```
+
+The final command is a safe dry run. Only after checking the plan and API key,
+start collection explicitly:
+
+```bash
+openalex-collect-stratified \
+  --plan data/metadata/phase2_sampling_plan.json \
+  --execute
+```
+
+Resume a failed run with the same plan, config, seed, and page size:
+
+```bash
+openalex-collect-stratified \
+  --plan data/metadata/phase2_sampling_plan.json \
+  --resume-manifest data/raw/openalex_stratified/stratified_<UTC>/manifest.json \
+  --execute
+```
+
+OpenAlex documents random `sample` and reproducible `seed` behavior. The plan's
+`n/N` inclusion probabilities and `N/n` weights are nevertheless labeled nominal:
+the public API documentation does not establish uniform inclusion or stability
+across database updates.
 
 Each pilot run creates:
 
@@ -115,8 +159,22 @@ reports/                        reports and figures
 tests/                          unit tests
 ```
 
-All importable modules live under the single `ai_research_trends` package; the
-five installed CLI entry points in `pyproject.toml` target that package.
+All importable modules live under the single `ai_research_trends` package; all
+installed CLI entry points in `pyproject.toml` target that package.
+
+## Tested environment
+
+The final review ran on Python 3.12.3 (the project supports Python 3.11+) with:
+
+| Package | Tested version | Package | Tested version |
+|---|---:|---|---:|
+| requests | 2.34.2 | PyYAML | 6.0.3 |
+| python-dotenv | 1.2.4 | pytest | 8.4.2 |
+| pandas | 2.3.3 | numpy | 2.5.4 |
+| pyarrow | 21.0.0 | DuckDB | 1.5.6 |
+| SciPy | 1.18.1 | scikit-learn | 1.9.1 |
+| matplotlib | 3.11.2 | seaborn | 0.13.2 |
+| JupyterLab | 4.6.4 | nbclient | 0.11.0 |
 
 ## Reproducibility and ethics
 

@@ -1,5 +1,9 @@
 # Phase 1 Final Review
 
+> Historical Phase 1 gate. The follow-up fixes, new live counts, sampling design,
+> and current readiness decision are in
+> [`reports/PRE_PHASE2_REVIEW.md`](../reports/PRE_PHASE2_REVIEW.md).
+
 **Review date:** 2026-10-19 UTC
 
 **Decision:** Ready for Phase 2 with stated controls; Phase 2 collection not started
