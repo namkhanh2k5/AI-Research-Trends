@@ -209,7 +209,13 @@ def _probe_resume_consistency(
 ) -> None:
     """Re-fetch one checkpointed page per started stratum and compare ordered IDs."""
     probes = manifest.setdefault("resume_consistency_probes", [])
-    probe_number = len(probes) + 1
+    disk_probe_numbers = []
+    for path in run_dir.glob("resume_probe_*"):
+        try:
+            disk_probe_numbers.append(int(path.name.rsplit("_", 1)[-1]))
+        except ValueError:
+            continue
+    probe_number = max([len(probes), *disk_probe_numbers], default=0) + 1
     probe_dir = run_dir / f"resume_probe_{probe_number:04d}"
     probe_dir.mkdir(parents=True, exist_ok=False)
     selected = [stratum for stratum in manifest["strata"] if stratum.get("pages")]

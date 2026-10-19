@@ -200,6 +200,45 @@ def test_resume_fails_safely_when_seeded_page_membership_changes(tmp_path: Path)
     assert len(changed.calls) == 1
 
 
+def test_resume_can_retry_after_probe_api_failure(tmp_path: Path) -> None:
+    raw_root = tmp_path / "raw"
+    interim_root = tmp_path / "interim"
+    with pytest.raises(OpenAlexError, match="simulated"):
+        collect_stratified_sample(
+            plan=_plan(),
+            config=load_config("config/topics.yaml"),
+            client=FakeClient(list(range(2020, 2026)), fail_after=1),
+            raw_root=raw_root,
+            interim_root=interim_root,
+            base_seed=100,
+        )
+    manifest_path = next(raw_root.glob("stratified_*/manifest.json"))
+
+    with pytest.raises(OpenAlexError, match="simulated"):
+        collect_stratified_sample(
+            plan=_plan(),
+            config=load_config("config/topics.yaml"),
+            client=FakeClient([2020], fail_after=0),
+            raw_root=raw_root,
+            interim_root=interim_root,
+            base_seed=100,
+            resume_manifest=manifest_path,
+        )
+
+    completed = collect_stratified_sample(
+        plan=_plan(),
+        config=load_config("config/topics.yaml"),
+        client=FakeClient(list(range(2020, 2026))),
+        raw_root=raw_root,
+        interim_root=interim_root,
+        base_seed=100,
+        resume_manifest=manifest_path,
+    )
+    assert completed["complete"] is True
+    assert (manifest_path.parent / "resume_probe_0001").is_dir()
+    assert (manifest_path.parent / "resume_probe_0002").is_dir()
+
+
 def test_duplicate_failure_reports_raw_bytes_and_duplicate_check(tmp_path: Path) -> None:
     class DuplicateClient(FakeClient):
         def request(self, path: str, params: dict) -> FakeResponse:
