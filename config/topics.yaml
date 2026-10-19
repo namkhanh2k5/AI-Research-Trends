@@ -1,0 +1,236 @@
+schema_version: 2
+verified_at_utc: "2026-10-19T03:06:48Z"
+verification_source: "https://api.openalex.org/topics"
+
+study:
+  corpus_name: "Defined AI/CV primary-subfield corpus"
+  corpus_claim_boundary: >-
+    Works in this reproducible OpenAlex frame; not all global AI research and not
+    all cross-disciplinary works that use an AI method.
+  start_date: "2020-01-01"
+  end_date: "2025-12-31"
+  optional_snapshot_year: 2026
+  work_types: [article, review, preprint]
+  primary_subfield_ids: ["1702", "1707"]
+  primary_subfields:
+    - {id: "1702", display_name: "Artificial Intelligence"}
+    - {id: "1707", display_name: "Computer Vision and Pattern Recognition"}
+  sampling_seed: 20251019
+  pilot_size: 1000
+  intermediate_size: 12000
+  target_size: 25000
+  retraction_policy: >-
+    Retain and flag retracted works in the canonical analytical table for
+    transparency. Exclude them from primary impact, trend, OA, and collaboration
+    estimates; report their count and run an include-retracted sensitivity check.
+
+# Layer A: OpenAlex-native, overlapping topic memberships. These are model-inferred
+# taxonomy labels from a work's topics array, never text-rule unions.
+openalex_native_categories:
+  natural_language_processing:
+    label: "Natural Language Processing"
+    mapping_status: "verified_composite"
+    mapping_approach: "openalex_topics_array_any_match"
+    exhaustive: false
+    topic_ids: ["T10181", "T10028"]
+    verified_topics:
+      - id: "T10181"
+        display_name: "Natural Language Processing Techniques"
+        description: >-
+          This cluster of papers focuses on statistical machine translation, neural
+          machine translation, dependency parsing, word sense disambiguation, and
+          part-of-speech tagging. It also covers topics such as corpus linguistics, syntax-based
+          translation models, multilingual neural machine translation, and language modeling.
+        hierarchy:
+          subfield: {id: "1702", display_name: "Artificial Intelligence"}
+          field: {id: "17", display_name: "Computer Science"}
+          domain: {id: "3", display_name: "Physical Sciences"}
+        api_evidence: "https://api.openalex.org/topics/T10181"
+      - id: "T10028"
+        display_name: "Topic Modeling"
+        description: >-
+          This cluster of papers covers a wide range of advancements in natural language
+          processing, including neural network architectures, word representation models,
+          machine translation techniques, text classification algorithms, semantic similarity
+          measures, named entity recognition methods, pretrained language models,
+          sequence-to-sequence learning approaches, topic modeling strategies, and information
+          retrieval systems.
+        hierarchy:
+          subfield: {id: "1702", display_name: "Artificial Intelligence"}
+          field: {id: "17", display_name: "Computer Science"}
+          domain: {id: "3", display_name: "Physical Sciences"}
+        api_evidence: "https://api.openalex.org/topics/T10028"
+    caveat: >-
+      This is a broad, non-exhaustive native NLP lens. It is not an LLM label;
+      T10028 is especially heterogeneous.
+
+  computer_vision:
+    label: "Computer Vision"
+    mapping_status: "verified_partial"
+    mapping_approach: "openalex_topics_array_any_match"
+    exhaustive: false
+    topic_ids: ["T10036"]
+    verified_topics:
+      - id: "T10036"
+        display_name: "Advanced Neural Network Applications"
+        description: >-
+          This cluster of papers focuses on the application of deep learning, particularly
+          convolutional neural networks, in computer vision tasks such as image recognition,
+          object detection, and semantic segmentation. It covers various neural network
+          architectures, model compression techniques, and their applications in fields like
+          autonomous driving.
+        hierarchy:
+          subfield: {id: "1707", display_name: "Computer Vision and Pattern Recognition"}
+          field: {id: "17", display_name: "Computer Science"}
+          domain: {id: "3", display_name: "Physical Sciences"}
+        api_evidence: "https://api.openalex.org/topics/T10036"
+    caveat: >-
+      This topic is narrower than the complete Computer Vision and Pattern
+      Recognition subfield 1707.
+
+  reinforcement_learning:
+    label: "Reinforcement Learning"
+    mapping_status: "verified_partial"
+    mapping_approach: "openalex_topics_array_any_match"
+    exhaustive: false
+    topic_ids: ["T10462"]
+    verified_topics:
+      - id: "T10462"
+        display_name: "Reinforcement Learning in Robotics"
+        description: >-
+          This cluster of papers encompasses a wide range of advancements in reinforcement
+          learning algorithms and their applications, including deep learning, neural networks,
+          robotics, autonomous control, policy gradient methods, multi-agent systems,
+          model-based learning, curiosity-driven exploration, and simulation to real-world
+          transfer.
+        hierarchy:
+          subfield: {id: "1702", display_name: "Artificial Intelligence"}
+          field: {id: "17", display_name: "Computer Science"}
+          domain: {id: "3", display_name: "Physical Sciences"}
+        api_evidence: "https://api.openalex.org/topics/T10462"
+    caveat: "The verified topic is robotics-oriented and not exhaustive of RL."
+
+  explainable_ai:
+    label: "Explainable AI"
+    mapping_status: "verified_close_match"
+    mapping_approach: "openalex_topics_array_any_match"
+    exhaustive: false
+    topic_ids: ["T12026"]
+    verified_topics:
+      - id: "T12026"
+        display_name: "Explainable Artificial Intelligence (XAI)"
+        description: >-
+          This cluster of papers focuses on Explainable Artificial Intelligence (XAI) and the
+          development of interpretable models, visual explanations, and responsible machine
+          learning interpretability. It explores concepts, challenges, and opportunities in
+          XAI, including the use of gradient-based localization, understanding deep neural
+          networks, feature importance, and addressing black box models. The papers also
+          discuss the responsibility and ethical considerations in AI.
+        hierarchy:
+          subfield: {id: "1702", display_name: "Artificial Intelligence"}
+          field: {id: "17", display_name: "Computer Science"}
+          domain: {id: "3", display_name: "Physical Sciences"}
+        api_evidence: "https://api.openalex.org/topics/T12026"
+    caveat: "A close taxonomy match exists, but assignment remains model-inferred."
+
+  multimodal_machine_learning_applications:
+    label: "Multimodal Machine Learning Applications (OpenAlex topic)"
+    mapping_status: "verified_partial"
+    mapping_approach: "openalex_topics_array_any_match"
+    exhaustive: false
+    topic_ids: ["T11714"]
+    verified_topics:
+      - id: "T11714"
+        display_name: "Multimodal Machine Learning Applications"
+        description: >-
+          This cluster of papers focuses on the development and improvement of visual question
+          answering systems, image captioning techniques, and neural networks for understanding
+          and generating descriptions of images and videos. The research involves semantic
+          reasoning, multimodal fusion, scene graph generation, attention mechanisms, and deep
+          learning approaches to bridge the gap between vision and language.
+        hierarchy:
+          subfield: {id: "1707", display_name: "Computer Vision and Pattern Recognition"}
+          field: {id: "17", display_name: "Computer Science"}
+          domain: {id: "3", display_name: "Physical Sciences"}
+        api_evidence: "https://api.openalex.org/topics/T11714"
+    caveat: >-
+      This native topic is vision-language centered. Its count is not equivalent
+      to the broader custom Multimodal AI text category below.
+
+# Layer B: project-defined emerging technologies. A category is OR across rule
+# groups; every regex in one group's all_of list must match. Rules use only title
+# and reconstructed abstract. Counts must always be labeled text-derived.
+custom_emerging_technologies:
+  large_language_models:
+    label: "Large Language Models"
+    mapping_status: "custom_text_rule_audited_pilot"
+    mapping_approach: "documented_title_abstract_regex"
+    exhaustive: false
+    openalex_topic_status: "No dedicated topic selected"
+    rule_groups:
+      - name: "explicit_large_language_model"
+        scope: "title_abstract"
+        all_of: ['\blarge[ -]language model(?:s)?\b']
+      - name: "uppercase_llm_acronym"
+        scope: "title_abstract"
+        case_sensitive: true
+        all_of: ['\bLLMs?\b']
+      - name: "foundation_language_model"
+        scope: "title_abstract"
+        all_of: ['\bfoundation language model(?:s)?\b']
+      - name: "named_gpt_models"
+        scope: "title_abstract"
+        all_of: ['\b(?:ChatGPT|GPT[- ]?[34](?:\.\d+)?)\b']
+    caveat: >-
+      Conservative lexical proxy. It misses unnamed/new model families and can
+      include papers that only mention an LLM as context or a tool.
+
+  multimodal_ai:
+    label: "Multimodal AI"
+    mapping_status: "custom_text_rule_audited_pilot"
+    mapping_approach: "documented_title_abstract_regex"
+    exhaustive: false
+    openalex_topic_status: >-
+      T11714 is a related native topic, but it is reported separately and is not
+      used as an automatic text-category match.
+    rule_groups:
+      - name: "explicit_multimodal_ml"
+        scope: "title_abstract"
+        all_of:
+          - '\bmultimodal (?:AI|artificial intelligence|machine learning|model(?:s)?|learning|representation(?:s)?|fusion|foundation model(?:s)?)\b'
+      - name: "vision_language_model"
+        scope: "title_abstract"
+        all_of: ['\bvision[- ]language model(?:s)?\b']
+      - name: "uppercase_vlm_acronym"
+        scope: "title_abstract"
+        case_sensitive: true
+        all_of: ['\bVLMs?\b']
+      - name: "audio_visual_learning"
+        scope: "title_abstract"
+        all_of:
+          - '\baudio[- ]visual (?:learning|model(?:s)?|recognition|representation(?:s)?|fusion)\b'
+    caveat: >-
+      Broader than T11714 but still lexical and incomplete. Incidental mentions,
+      ambiguous VLM acronyms, and multimodal biomedical sensing require audit.
+
+  retrieval_augmented_generation:
+    label: "Retrieval-Augmented Generation"
+    mapping_status: "custom_text_rule_audited_pilot_no_dedicated_topic"
+    mapping_approach: "documented_title_abstract_regex"
+    exhaustive: false
+    openalex_topic_status: >-
+      No dedicated OpenAlex topic was found or selected. T10028 mentions RAG in
+      its keywords but is far too broad to serve as a RAG category.
+    rule_groups:
+      - name: "explicit_full_name"
+        scope: "title_abstract"
+        all_of: ['\bretrieval[-–— ]augmented generation\b']
+      - name: "uppercase_acronym_with_context"
+        scope: "title_abstract"
+        case_sensitive: true
+        all_of:
+          - '\bRAG\b'
+          - '\b(?:retriev\w*|generat\w*|LLMs?|large[ -]language model(?:s)?)\b'
+    caveat: >-
+      RAG is ambiguous without context. Even the full phrase can be an incidental
+      mention; central-relevance sensitivity rules and manual audits are required.
