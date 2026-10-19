@@ -58,9 +58,12 @@ class FakeResponse:
     status_code = 200
     headers: dict[str, str] = {}
 
-    def __init__(self, year: int) -> None:
+    def __init__(self, year: int, identifier: int | None = None) -> None:
+        work = _work(year)
+        if identifier is not None:
+            work["id"] = f"https://openalex.org/W{identifier}"
         self.content = json.dumps(
-            {"meta": {"count": 1}, "results": [_work(year)], "group_by": []},
+            {"meta": {"count": 1}, "results": [work], "group_by": []},
             separators=(",", ":"),
         ).encode()
 
@@ -118,7 +121,7 @@ def test_failed_collection_can_resume_without_refetching_checkpoint(tmp_path: Pa
     assert failed["status"] == "failed"
     assert failed["strata"][0]["status"] == "complete"
 
-    resumed_client = FakeClient(list(range(2021, 2026)))
+    resumed_client = FakeClient(list(range(2020, 2026)))
     resumed = collect_stratified_sample(
         plan=_plan(),
         config=load_config("config/topics.yaml"),
@@ -129,7 +132,50 @@ def test_failed_collection_can_resume_without_refetching_checkpoint(tmp_path: Pa
         resume_manifest=manifest_path,
     )
     assert resumed["complete"] is True
-    assert len(resumed_client.calls) == 5
+    assert len(resumed_client.calls) == 6
+    assert resumed["resume_consistency_probes"][0]["status"] == "passed"
+
+
+def test_resume_fails_safely_when_seeded_page_membership_changes(tmp_path: Path) -> None:
+    raw_root = tmp_path / "raw"
+    interim_root = tmp_path / "interim"
+    with pytest.raises(OpenAlexError, match="simulated"):
+        collect_stratified_sample(
+            plan=_plan(),
+            config=load_config("config/topics.yaml"),
+            client=FakeClient(list(range(2020, 2026)), fail_after=1),
+            raw_root=raw_root,
+            interim_root=interim_root,
+            base_seed=100,
+        )
+    manifest_path = next(raw_root.glob("stratified_*/manifest.json"))
+
+    class ChangedProbeClient(FakeClient):
+        def request(self, path: str, params: dict) -> FakeResponse:
+            self.calls.append(params)
+            return FakeResponse(2020, identifier=999999)
+
+    changed = ChangedProbeClient([])
+    with pytest.raises(OpenAlexError, match="refusing to mix retrieval snapshots"):
+        collect_stratified_sample(
+            plan=_plan(),
+            config=load_config("config/topics.yaml"),
+            client=changed,
+            raw_root=raw_root,
+            interim_root=interim_root,
+            base_seed=100,
+            resume_manifest=manifest_path,
+        )
+
+    failed = json.loads(manifest_path.read_text())
+    assert failed["status"] == "failed"
+    assert failed["complete"] is False
+    probe = failed["resume_consistency_probes"][0]
+    assert probe["status"] == "failed"
+    assert probe["checkpoint_work_ids"] == ["https://openalex.org/W2020"]
+    assert probe["probe_work_ids"] == ["https://openalex.org/W999999"]
+    assert Path(probe["probe_raw_path"]).exists()
+    assert len(changed.calls) == 1
 
 
 def test_resume_path_must_stay_inside_raw_root(tmp_path: Path) -> None:

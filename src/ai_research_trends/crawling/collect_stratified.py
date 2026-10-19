@@ -112,6 +112,114 @@ def _validate_page_records(
         seen_ids.add(work_id)
 
 
+def _work_ids(records: list[dict[str, Any]]) -> list[str]:
+    """Return ordered canonical Work IDs for a page-membership comparison."""
+    return [canonical_work_id(record.get("id", "")) for record in records]
+
+
+def _probe_resume_consistency(
+    *,
+    manifest: dict[str, Any],
+    manifest_path: Path,
+    run_dir: Path,
+    client: OpenAlexClient,
+    per_page: int,
+) -> None:
+    """Re-fetch one checkpointed page per started stratum and compare ordered IDs."""
+    probes = manifest.setdefault("resume_consistency_probes", [])
+    probe_number = len(probes) + 1
+    probe_dir = run_dir / f"resume_probe_{probe_number:04d}"
+    probe_dir.mkdir(parents=True, exist_ok=False)
+    selected = [stratum for stratum in manifest["strata"] if stratum.get("pages")]
+    if not selected:
+        probes.append(
+            {
+                "probe_number": probe_number,
+                "checked_at_utc": utc_now(),
+                "status": "skipped_no_checkpointed_pages",
+                "limitation": "No prior page existed, so there was no mixed-snapshot risk to test.",
+            }
+        )
+        _write_json_atomic(manifest_path, manifest)
+        return
+
+    for stratum in selected:
+        year = int(stratum["publication_year"])
+        requested = int(stratum["sample_size"])
+        checkpoint = min(stratum["pages"], key=lambda item: int(item["page_number"]))
+        page_number = int(checkpoint["page_number"])
+        checkpoint_path = run_dir / f"year_{year}" / f"page_{page_number:04d}.json"
+        checkpoint_bytes = checkpoint_path.read_bytes()
+        if _sha256(checkpoint_bytes) != checkpoint["sha256"]:
+            raise OpenAlexError(f"Checkpoint checksum mismatch for {checkpoint_path}")
+
+        params = {
+            "filter": stratum["filter"],
+            "sample": requested,
+            "seed": stratum["seed"],
+            "per_page": per_page,
+            "page": page_number,
+        }
+        response = client.request("works", params)
+        probe_path = probe_dir / f"year_{year}_page_{page_number:04d}.json"
+        probe_path.write_bytes(response.content)
+        record: dict[str, Any] = {
+            "probe_number": probe_number,
+            "checked_at_utc": utc_now(),
+            "publication_year": year,
+            "page_number": page_number,
+            "query_parameters": params,
+            "checkpoint_path": str(checkpoint_path),
+            "checkpoint_sha256": checkpoint["sha256"],
+            "probe_raw_path": str(probe_path),
+            "probe_raw_sha256": _sha256(response.content),
+            "probe_raw_bytes": len(response.content),
+        }
+        try:
+            checkpoint_envelope = validate_sample_page(
+                json.loads(checkpoint_bytes),
+                requested_records=requested,
+                page_number=page_number,
+                per_page=per_page,
+            )
+            probe_envelope = validate_sample_page(
+                json.loads(response.content),
+                requested_records=requested,
+                page_number=page_number,
+                per_page=per_page,
+            )
+            checkpoint_ids = _work_ids(checkpoint_envelope.results)
+            probe_ids = _work_ids(probe_envelope.results)
+            record.update(
+                {
+                    "checkpoint_work_ids": checkpoint_ids,
+                    "probe_work_ids": probe_ids,
+                    "ordered_ids_match": checkpoint_ids == probe_ids,
+                    "status": "passed" if checkpoint_ids == probe_ids else "failed",
+                }
+            )
+        except Exception as exc:
+            record.update(
+                {
+                    "ordered_ids_match": False,
+                    "status": "invalid_probe_response",
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
+                }
+            )
+            probes.append(record)
+            _write_json_atomic(manifest_path, manifest)
+            raise
+
+        probes.append(record)
+        _write_json_atomic(manifest_path, manifest)
+        if not record["ordered_ids_match"]:
+            raise OpenAlexError(
+                "OpenAlex seeded sample membership changed since the checkpoint for "
+                f"year {year}, page {page_number}; refusing to mix retrieval snapshots"
+            )
+
+
 def collect_stratified_sample(
     *,
     plan: dict[str, Any],
@@ -199,6 +307,14 @@ def collect_stratified_sample(
     seen_ids: set[str] = set()
     collected_records: list[dict[str, Any]] = []
     try:
+        if resume_manifest:
+            _probe_resume_consistency(
+                manifest=manifest,
+                manifest_path=manifest_path,
+                run_dir=run_dir,
+                client=client,
+                per_page=per_page,
+            )
         for stratum in manifest["strata"]:
             year = int(stratum["publication_year"])
             requested = int(stratum["sample_size"])
