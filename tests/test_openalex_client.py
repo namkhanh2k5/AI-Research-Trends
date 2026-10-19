@@ -65,6 +65,15 @@ def test_retry_after_transient_status() -> None:
     assert sleeps
 
 
+def test_non_retryable_authentication_failure_is_explicit() -> None:
+    response = FakeResponse({"error": "unauthorized"}, status_code=401)
+    client = OpenAlexClient(
+        session=FakeSession([response]), min_interval_seconds=0, max_retries=2
+    )
+    with pytest.raises(OpenAlexError, match="verified API key"):
+        client.get_json("works")
+
+
 def test_api_parameter_handling_for_basic_page() -> None:
     response = FakeResponse(
         {"meta": {"count": 1, "next_cursor": None}, "results": [{"id": "https://openalex.org/W1"}], "group_by": []}
