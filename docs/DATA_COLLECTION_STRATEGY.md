@@ -188,6 +188,19 @@ For materially larger collections, stream records to append-only staging storage
 and use DuckDB or SQLite for disk-backed uniqueness/checkpoint state. Do not remove
 the immutable page responses or completeness gate when adopting streaming.
 
+### Completed Phase 2 acquisition, 2026-10-19 UTC
+
+The refreshed approved non-retracted population was 937,493 works; the parallel
+all-work sensitivity population was 942,825. A six-year proportional sample of
+12,000 unique works was collected under
+`data/raw/openalex_stratified/stratified_20261019T155909Z/`. All 123 pages and
+both JSONL outputs passed `openalex-verify-collection`; the manifest is complete.
+The nominal weights and year allocations come from the refreshed aggregate
+artifact and are documented in
+[`reports/PHASE2_COLLECTION_REPORT.md`](../reports/PHASE2_COLLECTION_REPORT.md).
+These are observations at the recorded retrieval time, not stable OpenAlex totals.
+Raw and derived data remain outside Git and require separate backup.
+
 ## 8. Counting safeguards
 
 Canonicalize IDs to `https://openalex.org/W...`. Deduplicate topic, institution,

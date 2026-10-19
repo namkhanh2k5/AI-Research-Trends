@@ -13,10 +13,13 @@ interpretation. It does **not** treat citations as scientific quality.
 
 ## Current status
 
-The pre-Phase 2 review is complete. The fixed corpus now has separate all-work and
-non-retracted estimands; validated population aggregates, a 12,000-work proportional
-plan, checkpoint/resume collection, strict record validation, and positive/negative
-category-audit tooling are implemented. Phase 2 collection has not started.
+Phase 2 collection completed on 2026-10-19 UTC. The refreshed primary
+non-retracted population contains 937,493 works; a proportional six-year sample
+of 12,000 unique works was collected and passed the read-only page and JSONL
+verifier. The all-work sensitivity population contains 942,825 works. See the
+[Phase 2 collection report](reports/PHASE2_COLLECTION_REPORT.md) for observed
+counts, missingness, checksums, and interpretation limits. Phase 3 preprocessing
+has not started.
 
 ## Study design in one minute
 
@@ -89,9 +92,23 @@ PYTHONPATH=src python -m ai_research_trends.crawling.collect_aggregates
 PYTHONPATH=src python -m ai_research_trends.crawling.collect_pilot --size 1000
 ```
 
-## Controlled Phase 2 handoff
+## Phase 2 collection and reproducibility
 
-Generate and validate the plan without starting the crawl:
+The completed local production run is
+`data/raw/openalex_stratified/stratified_20261019T155909Z/`. Its raw pages,
+JSONL outputs, population counts, and sampling plan are Git-ignored and must be
+backed up separately. Verify the existing run without modifying it:
+
+```bash
+openalex-verify-collection \
+  data/raw/openalex_stratified/stratified_20261019T155909Z/manifest.json
+openalex-profile-pilot \
+  data/raw/openalex_stratified/stratified_20261019T155909Z/works.jsonl \
+  --output data/metadata/phase2_profile.json
+```
+
+To reproduce the acquisition as a **new** run, generate and validate a fresh
+plan from current OpenAlex aggregates:
 
 ```bash
 openalex-collect-aggregates \
@@ -104,8 +121,8 @@ openalex-collect-stratified \
   --plan data/metadata/phase2_sampling_plan.json
 ```
 
-The final command is a safe dry run. Only after checking the plan and API key,
-start collection explicitly:
+The final command is a safe dry run. After checking the plan and API key, a new
+collection can be started explicitly:
 
 ```bash
 openalex-collect-stratified \
