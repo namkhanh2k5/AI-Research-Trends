@@ -13,6 +13,7 @@ def test_profile_handles_null_and_missing_metadata(tmp_path: Path) -> None:
         "title": "Minimal record",
         "abstract_inverted_index": None,
         "publication_year": 2025,
+        "publication_date": "2025-06-15",
         "type": "article",
         "language": None,
         "cited_by_count": None,

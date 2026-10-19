@@ -7,6 +7,7 @@ from ai_research_trends.crawling.openalex_client import (
     OpenAlexClient,
     OpenAlexError,
     canonical_openalex_id,
+    canonical_work_id,
     parse_list_response,
 )
 
@@ -40,6 +41,12 @@ def test_canonical_openalex_id() -> None:
     assert canonical_openalex_id("W456") == "https://openalex.org/W456"
     with pytest.raises(ValueError):
         canonical_openalex_id("not-an-id")
+
+
+def test_canonical_work_id_rejects_non_work_entities() -> None:
+    assert canonical_work_id("w456") == "https://openalex.org/W456"
+    with pytest.raises(ValueError, match="Work ID"):
+        canonical_work_id("https://openalex.org/A123")
 
 
 def test_retry_after_transient_status() -> None:

@@ -10,8 +10,8 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Callable, Iterable
 
-from ai_research_trends.config import is_primary_corpus_work, load_config, primary_subfield_id
-from ai_research_trends.crawling.openalex_client import canonical_openalex_id, utc_now
+from ai_research_trends.config import load_config, primary_subfield_id, validate_corpus_work
+from ai_research_trends.crawling.openalex_client import canonical_work_id, utc_now
 from ai_research_trends.preprocessing.categories import all_category_keys, classify_work
 
 
@@ -116,7 +116,7 @@ def _quantile(values: list[int], probability: float) -> float | None:
 def profile(jsonl_path: Path, config: dict[str, Any]) -> dict[str, Any]:
     raw_bytes = jsonl_path.read_bytes()
     rows = [json.loads(line) for line in raw_bytes.splitlines() if line.strip()]
-    canonical_ids = [canonical_openalex_id(row.get("id", "")) for row in rows]
+    canonical_ids = [canonical_work_id(row.get("id", "")) for row in rows]
 
     fields = (
         "doi",
@@ -156,7 +156,8 @@ def profile(jsonl_path: Path, config: dict[str, Any]) -> dict[str, Any]:
             category_rows[category_key].append(row)
 
     study = config["study"]
-    corpus_membership = [is_primary_corpus_work(row, study) for row in rows]
+    corpus_validation = [validate_corpus_work(row, study) for row in rows]
+    corpus_membership = [result.valid for result in corpus_validation]
     retracted_count = sum(is_retracted(row) for row in rows)
 
     return {
@@ -171,8 +172,19 @@ def profile(jsonl_path: Path, config: dict[str, Any]) -> dict[str, Any]:
             "matching_records": sum(corpus_membership),
             "violating_records": len(rows) - sum(corpus_membership),
             "definition": (
-                "publication years 2020-2025; types article/review/preprint; primary "
-                "subfield 1702/1707"
+                "publication dates 2020-01-01 through 2025-12-31 inclusive; matching "
+                "publication_year; types article/review/preprint; primary subfield 1702/1707"
+            ),
+            "violation_count_by_reason": dict(
+                Counter(
+                    error
+                    for validation in corpus_validation
+                    for error in validation.errors
+                )
+            ),
+            "publication_date_year_inconsistent_count": sum(
+                validation.publication_date_year_inconsistent
+                for validation in corpus_validation
             ),
         },
         "publication_year": dict(

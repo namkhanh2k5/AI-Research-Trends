@@ -6,6 +6,7 @@ from ai_research_trends.config import (
     build_primary_analysis_filter,
     build_study_filter,
     load_config,
+    validate_corpus_work,
 )
 
 
@@ -49,3 +50,39 @@ def test_build_study_filter_rejects_population_drift() -> None:
                 "primary_retraction_scope": "non_retracted",
             }
         )
+
+
+def _work(publication_date: str = "2020-01-01", publication_year: int = 2020) -> dict:
+    return {
+        "publication_date": publication_date,
+        "publication_year": publication_year,
+        "type": "article",
+        "primary_topic": {
+            "subfield": {"id": "https://openalex.org/subfields/1702"}
+        },
+        "is_retracted": False,
+    }
+
+
+def test_corpus_validation_enforces_inclusive_date_boundaries() -> None:
+    study = load_config("config/topics.yaml")["study"]
+    assert validate_corpus_work(_work("2020-01-01", 2020), study).valid
+    assert validate_corpus_work(_work("2025-12-31", 2025), study).valid
+    assert "publication_date_out_of_bounds" in validate_corpus_work(
+        _work("2019-12-31", 2019), study
+    ).errors
+    assert "publication_date_out_of_bounds" in validate_corpus_work(
+        _work("2026-01-01", 2026), study
+    ).errors
+
+
+def test_corpus_validation_flags_date_year_mismatch_and_retraction() -> None:
+    study = load_config("config/topics.yaml")["study"]
+    result = validate_corpus_work(
+        {**_work("2024-12-31", 2025), "is_retracted": True},
+        study,
+        require_non_retracted=True,
+    )
+    assert result.publication_date_year_inconsistent is True
+    assert "publication_date_year_inconsistent" in result.errors
+    assert "not_explicitly_non_retracted" in result.errors

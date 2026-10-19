@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +19,15 @@ FIXED_CORPUS = {
 }
 
 RETRACTION_SCOPES = {"all", "non_retracted"}
+
+
+@dataclass(frozen=True)
+class CorpusValidation:
+    """Result of validating one work against the fixed population frame."""
+
+    valid: bool
+    errors: tuple[str, ...]
+    publication_date_year_inconsistent: bool
 
 
 def load_config(path: str | Path = "config/topics.yaml") -> dict[str, Any]:
@@ -98,13 +109,54 @@ def primary_subfield_id(work: dict[str, Any]) -> str | None:
     return value.rstrip("/").split("/")[-1]
 
 
-def is_primary_corpus_work(work: dict[str, Any], study: dict[str, Any]) -> bool:
-    """Apply the approved year, type, and primary-subfield boundary to one work."""
+def validate_corpus_work(
+    work: dict[str, Any],
+    study: dict[str, Any],
+    *,
+    require_non_retracted: bool = False,
+) -> CorpusValidation:
+    """Validate exact dates and all fixed-corpus membership invariants."""
     validate_fixed_corpus(study)
+    errors: list[str] = []
+
+    publication_date = work.get("publication_date")
+    parsed_date: date | None = None
+    if not isinstance(publication_date, str):
+        errors.append("missing_or_invalid_publication_date")
+    else:
+        try:
+            parsed_date = date.fromisoformat(publication_date)
+        except ValueError:
+            errors.append("missing_or_invalid_publication_date")
+
     year = work.get("publication_year")
-    return (
-        isinstance(year, int)
-        and 2020 <= year <= 2025
-        and work.get("type") in set(study["work_types"])
-        and primary_subfield_id(work) in set(study["primary_subfield_ids"])
+    if not isinstance(year, int) or isinstance(year, bool):
+        errors.append("missing_or_invalid_publication_year")
+
+    inconsistent = bool(parsed_date and isinstance(year, int) and parsed_date.year != year)
+    if inconsistent:
+        errors.append("publication_date_year_inconsistent")
+
+    if parsed_date is not None:
+        start = date.fromisoformat(study["start_date"])
+        end = date.fromisoformat(study["end_date"])
+        if not start <= parsed_date <= end:
+            errors.append("publication_date_out_of_bounds")
+
+    if work.get("type") not in set(study["work_types"]):
+        errors.append("work_type_out_of_scope")
+    if primary_subfield_id(work) not in set(study["primary_subfield_ids"]):
+        errors.append("primary_subfield_out_of_scope")
+    if require_non_retracted and work.get("is_retracted") is not False:
+        errors.append("not_explicitly_non_retracted")
+
+    return CorpusValidation(
+        valid=not errors,
+        errors=tuple(errors),
+        publication_date_year_inconsistent=inconsistent,
     )
+
+
+def is_primary_corpus_work(work: dict[str, Any], study: dict[str, Any]) -> bool:
+    """Return whether a work belongs to the fixed date/type/subfield frame."""
+    return validate_corpus_work(work, study).valid

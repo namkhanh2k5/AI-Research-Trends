@@ -81,6 +81,14 @@ def canonical_openalex_id(value: str) -> str:
     return f"https://openalex.org/{identifier}"
 
 
+def canonical_work_id(value: str) -> str:
+    """Return a canonical Work ID and reject all other OpenAlex entity IDs."""
+    canonical = canonical_openalex_id(value)
+    if not canonical.removeprefix("https://openalex.org/").startswith("W"):
+        raise ValueError(f"Expected an OpenAlex Work ID, got: {value!r}")
+    return canonical
+
+
 def parse_list_response(payload: Any) -> PageEnvelope:
     """Validate and parse list-response containers without assuming non-null metadata."""
     if not isinstance(payload, dict):
@@ -272,7 +280,7 @@ class OpenAlexClient:
         invalid_ids = 0
         for record in records:
             try:
-                work_id = canonical_openalex_id(record.get("id", ""))
+                work_id = canonical_work_id(record.get("id", ""))
             except ValueError:
                 invalid_ids += 1
                 continue

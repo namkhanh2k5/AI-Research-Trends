@@ -13,6 +13,7 @@ def _work(**overrides):
         "title": "A large language model with retrieval-augmented generation",
         "abstract_inverted_index": None,
         "publication_year": 2025,
+        "publication_date": "2025-06-15",
         "type": "article",
         "primary_topic": {
             "subfield": {"id": "https://openalex.org/subfields/1702"}
