@@ -182,7 +182,7 @@ custom_emerging_technologies:
         all_of: ['\bfoundation language model(?:s)?\b']
       - name: "named_gpt_models"
         scope: "title_abstract"
-        all_of: ['\b(?:ChatGPT|GPT[- ]?[34](?:\.\d+)?)\b']
+        all_of: ['\b(?:ChatGPT|GPT[- ]?[234](?:\.\d+|o)?|LLaMA(?:[- ]?[23])?)\b']
     caveat: >-
       Conservative lexical proxy. It misses unnamed/new model families and can
       include papers that only mention an LLM as context or a tool.
@@ -211,6 +211,11 @@ custom_emerging_technologies:
         scope: "title_abstract"
         all_of:
           - '\baudio[- ]visual (?:learning|model(?:s)?|recognition|representation(?:s)?|fusion)\b'
+      - name: "cross_or_multi_modal_with_ml_context"
+        scope: "title_abstract"
+        all_of:
+          - '\b(?:cross[- ]modal|multi[- ]?modal(?:ity|ities))\b'
+          - '\b(?:model\w*|learn\w*|fusion|represent\w*|align\w*|neural|data)\b'
     caveat: >-
       Broader than T11714 but still lexical and incomplete. Incidental mentions,
       ambiguous VLM acronyms, and multimodal biomedical sensing require audit.

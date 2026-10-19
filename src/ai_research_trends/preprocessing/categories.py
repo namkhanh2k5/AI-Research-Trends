@@ -15,6 +15,7 @@ class CategoryMatches:
 
     openalex_native: frozenset[str]
     custom_emerging: frozenset[str]
+    text_quarantine_reason: str | None = None
 
 
 def _short_id(value: Any) -> str | None:
@@ -78,13 +79,20 @@ def match_custom_emerging(
 
 def classify_work(work: dict[str, Any], config: dict[str, Any]) -> CategoryMatches:
     """Return both analytical layers without collapsing or prioritizing overlaps."""
-    return CategoryMatches(
-        openalex_native=match_openalex_native(
-            work, config.get("openalex_native_categories", {})
-        ),
-        custom_emerging=match_custom_emerging(
+    native = match_openalex_native(work, config.get("openalex_native_categories", {}))
+    try:
+        custom = match_custom_emerging(
             work, config.get("custom_emerging_technologies", {})
-        ),
+        )
+    except (TypeError, ValueError) as exc:
+        return CategoryMatches(
+            openalex_native=native,
+            custom_emerging=frozenset(),
+            text_quarantine_reason=f"{type(exc).__name__}: {exc}",
+        )
+    return CategoryMatches(
+        openalex_native=native,
+        custom_emerging=custom,
     )
 
 

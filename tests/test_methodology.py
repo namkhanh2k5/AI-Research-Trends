@@ -65,6 +65,28 @@ def test_overlapping_categories_remain_separate_by_layer() -> None:
     )
 
 
+def test_malformed_abstract_quarantines_custom_labels_but_keeps_native() -> None:
+    matches = classify_work(
+        _work(title="Neutral title", abstract_inverted_index={"broken": "position"}),
+        load_config("config/topics.yaml"),
+    )
+    assert matches.openalex_native
+    assert matches.custom_emerging == frozenset()
+    assert "positions must be lists" in matches.text_quarantine_reason
+
+
+def test_multimodal_rule_covers_cross_modal_fusion_with_context() -> None:
+    matches = classify_work(
+        _work(
+            title="Cross-Modal Adaptive Fusion Model",
+            abstract_inverted_index=None,
+            topics=[],
+        ),
+        load_config("config/topics.yaml"),
+    )
+    assert matches.custom_emerging == frozenset({"multimodal_ai"})
+
+
 def test_primary_topic_corpus_membership_requires_all_boundaries() -> None:
     study = load_config("config/topics.yaml")["study"]
     assert is_primary_corpus_work(_work(), study)

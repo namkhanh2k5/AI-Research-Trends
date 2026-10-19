@@ -140,6 +140,14 @@ def profile(jsonl_path: Path, config: dict[str, Any]) -> dict[str, Any]:
     languages = Counter(row.get("language") for row in rows if row.get("language"))
 
     matches_by_work = [classify_work(row, config) for row in rows]
+    text_quarantine = [
+        {
+            "work_id": canonical_ids[index],
+            "reason": matches.text_quarantine_reason,
+        }
+        for index, matches in enumerate(matches_by_work)
+        if matches.text_quarantine_reason
+    ]
     native_counts: Counter[str] = Counter()
     custom_counts: Counter[str] = Counter()
     membership_counts = {
@@ -231,6 +239,14 @@ def profile(jsonl_path: Path, config: dict[str, Any]) -> dict[str, Any]:
             "openalex_native": dict(native_counts),
             "custom_emerging": dict(custom_counts),
         },
+        "custom_text_classification_quarantine": {
+            "count": len(text_quarantine),
+            "records": text_quarantine,
+            "handling": (
+                "Malformed abstract indexes receive no custom text-derived labels; native "
+                "OpenAlex topic labels remain available. Raw records are unchanged."
+            ),
+        },
         "research_category_memberships_per_work": {
             layer: dict(sorted(counter.items()))
             for layer, counter in membership_counts.items()
@@ -239,6 +255,7 @@ def profile(jsonl_path: Path, config: dict[str, Any]) -> dict[str, Any]:
             "Native-topic and custom-text counts are separate, non-equivalent layers.",
             "Counts overlap within each layer and must not be summed.",
             "Custom text-rule counts are feasibility diagnostics, not classifier truth.",
+            "Quarantined malformed abstracts are excluded from custom-text label denominators.",
             "Missing institution/country means no usable value in nested authorships.",
             "Retractions remain stored and flagged but are excluded from primary estimates.",
         ],
