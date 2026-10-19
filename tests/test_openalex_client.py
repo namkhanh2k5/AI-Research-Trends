@@ -9,6 +9,7 @@ from ai_research_trends.crawling.openalex_client import (
     canonical_openalex_id,
     canonical_work_id,
     parse_list_response,
+    validate_sample_page,
 )
 
 
@@ -95,6 +96,23 @@ def test_parse_pagination_response_with_null_cursor() -> None:
     assert envelope.next_cursor is None
     with pytest.raises(OpenAlexError, match="meta"):
         parse_list_response({"results": []})
+
+
+def test_sample_page_rejects_meta_mismatch_and_short_page() -> None:
+    with pytest.raises(OpenAlexError, match="meta.count"):
+        validate_sample_page(
+            {"meta": {"count": 9}, "results": [{"id": "W1"}], "group_by": []},
+            requested_records=1,
+            page_number=1,
+            per_page=100,
+        )
+    with pytest.raises(OpenAlexError, match="contains 1 records; expected 2"):
+        validate_sample_page(
+            {"meta": {"count": 2}, "results": [{"id": "W1"}], "group_by": []},
+            requested_records=2,
+            page_number=1,
+            per_page=100,
+        )
 
 
 def test_collect_sample_preserves_raw_bytes_and_deduplicates(tmp_path: Path) -> None:

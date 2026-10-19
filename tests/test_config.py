@@ -5,6 +5,7 @@ import pytest
 from ai_research_trends.config import (
     build_primary_analysis_filter,
     build_study_filter,
+    build_year_stratum_filter,
     load_config,
     validate_corpus_work,
 )
@@ -37,6 +38,17 @@ def test_build_study_filter_is_explicit() -> None:
 def test_primary_filter_excludes_retracted_works() -> None:
     study = load_config("config/topics.yaml")["study"]
     assert build_primary_analysis_filter(study).endswith("is_retracted:false")
+
+
+def test_year_stratum_filter_has_exact_boundaries() -> None:
+    study = load_config("config/topics.yaml")["study"]
+    value = build_year_stratum_filter(study, 2023)
+    assert value.startswith(
+        "from_publication_date:2023-01-01,to_publication_date:2023-12-31,"
+    )
+    assert value.endswith("is_retracted:false")
+    with pytest.raises(ValueError, match="outside"):
+        build_year_stratum_filter(study, 2026)
 
 
 def test_build_study_filter_rejects_population_drift() -> None:

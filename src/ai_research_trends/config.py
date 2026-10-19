@@ -101,6 +101,21 @@ def build_primary_analysis_filter(study: dict[str, Any]) -> str:
     return build_study_filter(study, retraction_scope=study["primary_retraction_scope"])
 
 
+def build_year_stratum_filter(study: dict[str, Any], year: int) -> str:
+    """Build the exact non-retracted filter for one complete study year."""
+    validate_fixed_corpus(study)
+    if year not in range(2020, 2026):
+        raise ValueError(f"Year {year!r} is outside the approved study period")
+    work_types = "|".join(str(value) for value in study["work_types"])
+    subfields = "|".join(str(value) for value in study["primary_subfield_ids"])
+    return (
+        f"from_publication_date:{year}-01-01,"
+        f"to_publication_date:{year}-12-31,"
+        f"primary_topic.subfield.id:{subfields},"
+        f"type:{work_types},is_retracted:false"
+    )
+
+
 def primary_subfield_id(work: dict[str, Any]) -> str | None:
     """Return the short subfield ID attached to a work's primary topic."""
     value = (((work.get("primary_topic") or {}).get("subfield") or {}).get("id"))

@@ -105,6 +105,31 @@ def parse_list_response(payload: Any) -> PageEnvelope:
     return PageEnvelope(meta=meta, results=results, group_by=groups)
 
 
+def validate_sample_page(
+    payload: Any,
+    *,
+    requested_records: int,
+    page_number: int,
+    per_page: int,
+) -> PageEnvelope:
+    """Validate sample metadata and reject short, extra, or missing basic pages."""
+    envelope = parse_list_response(payload)
+    count = envelope.meta.get("count")
+    if count != requested_records:
+        raise OpenAlexError(
+            f"Sample meta.count={count!r} does not match requested size {requested_records}"
+        )
+    expected = min(per_page, requested_records - ((page_number - 1) * per_page))
+    if expected <= 0:
+        raise OpenAlexError(f"Unexpected sample page number {page_number}")
+    if len(envelope.results) != expected:
+        raise OpenAlexError(
+            f"Sample page {page_number} contains {len(envelope.results)} records; "
+            f"expected {expected}"
+        )
+    return envelope
+
+
 class OpenAlexClient:
     """HTTP client implementing current OpenAlex API limits conservatively."""
 
@@ -215,10 +240,13 @@ class OpenAlexClient:
             page_params = {**params, "per_page": per_page, "page": page_number}
             response = self.request(path, page_params)
             payload = response.json()
-            envelope = parse_list_response(payload)
+            validate_sample_page(
+                payload,
+                requested_records=expected_records,
+                page_number=page_number,
+                per_page=per_page,
+            )
             yield page_number, response, payload
-            if not envelope.results:
-                break
 
     def collect_sample(
         self,
