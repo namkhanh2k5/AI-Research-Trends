@@ -6,9 +6,10 @@ import argparse
 import hashlib
 import json
 import math
+import os
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from ai_research_trends.config import (
     build_year_stratum_filter,
@@ -71,6 +72,58 @@ def _write_jsonl_atomic(path: Path, rows: list[dict[str, Any]]) -> None:
             handle.write(json.dumps(row, ensure_ascii=False, separators=(",", ":")))
             handle.write("\n")
     temporary.replace(path)
+
+
+def _write_bytes_atomic(
+    path: Path,
+    value: bytes,
+    *,
+    before_replace: Callable[[Path], None] | None = None,
+) -> None:
+    """Durably write raw evidence without exposing a partial final page path."""
+    if path.exists():
+        raise FileExistsError(f"Refusing to overwrite existing raw evidence: {path}")
+    temporary = path.with_suffix(f"{path.suffix}.part")
+    if temporary.exists():
+        raise FileExistsError(f"Interrupted raw-page temporary file already exists: {temporary}")
+    with temporary.open("xb") as handle:
+        handle.write(value)
+        handle.flush()
+        os.fsync(handle.fileno())
+    if before_replace is not None:
+        before_replace(temporary)
+    temporary.replace(path)
+    try:
+        directory_fd = os.open(path.parent, os.O_RDONLY)
+        try:
+            os.fsync(directory_fd)
+        finally:
+            os.close(directory_fd)
+    except OSError:
+        # Some filesystems do not support directory fsync; the file rename is still atomic.
+        pass
+
+
+def _validate_records_for_year(
+    records: list[dict[str, Any]], *, year: int, study: dict[str, Any]
+) -> list[str]:
+    page_ids: list[str] = []
+    for record in records:
+        work_id = canonical_work_id(record.get("id", ""))
+        validation = validate_corpus_work(record, study, require_non_retracted=True)
+        if not validation.valid:
+            raise OpenAlexError(
+                f"Work {work_id} violates corpus invariants: {list(validation.errors)}"
+            )
+        if record.get("publication_year") != year:
+            raise OpenAlexError(
+                f"Work {work_id} returned in year {year} stratum with publication_year "
+                f"{record.get('publication_year')!r}"
+            )
+        if not str(record["publication_date"]).startswith(f"{year}-"):
+            raise OpenAlexError(f"Work {work_id} has a date outside year stratum {year}")
+        page_ids.append(work_id)
+    return page_ids
 
 
 def _ensure_diagnostics(manifest: dict[str, Any]) -> dict[str, Any]:
@@ -169,34 +222,135 @@ def _validate_page_records(
     seen_ids: set[str],
     diagnostics: dict[str, Any],
 ) -> list[str]:
-    page_ids: list[str] = []
-    for record in records:
-        work_id = canonical_work_id(record.get("id", ""))
+    page_ids = _validate_records_for_year(records, year=year, study=study)
+    for work_id in page_ids:
         diagnostics["duplicate_check"]["work_id_validation_operations"] += 1
         if work_id in seen_ids:
             diagnostics["duplicate_check"]["duplicate_work_ids_detected"] += 1
             diagnostics["duplicate_check"]["passed"] = False
             raise OpenAlexError(f"Duplicate Work ID across sample pages: {work_id}")
-        validation = validate_corpus_work(record, study, require_non_retracted=True)
-        if not validation.valid:
-            raise OpenAlexError(
-                f"Work {work_id} violates corpus invariants: {list(validation.errors)}"
-            )
-        if record.get("publication_year") != year:
-            raise OpenAlexError(
-                f"Work {work_id} returned in year {year} stratum with publication_year "
-                f"{record.get('publication_year')!r}"
-            )
-        if not str(record["publication_date"]).startswith(f"{year}-"):
-            raise OpenAlexError(f"Work {work_id} has a date outside year stratum {year}")
         seen_ids.add(work_id)
-        page_ids.append(work_id)
     return page_ids
 
 
 def _work_ids(records: list[dict[str, Any]]) -> list[str]:
     """Return ordered canonical Work IDs for a page-membership comparison."""
     return [canonical_work_id(record.get("id", "")) for record in records]
+
+
+def _quarantine_file(
+    *,
+    path: Path,
+    run_dir: Path,
+    manifest: dict[str, Any],
+    reason: str,
+    error: str | None = None,
+) -> Path:
+    """Atomically move suspect raw evidence aside and record its provenance."""
+    raw_bytes = path.read_bytes()
+    quarantine_dir = run_dir / "quarantine"
+    quarantine_dir.mkdir(parents=True, exist_ok=True)
+    target = quarantine_dir / f"{path.parent.name}__{path.name}__{_sha256(raw_bytes)[:12]}"
+    if target.exists():
+        target = quarantine_dir / (
+            f"{path.parent.name}__{path.name}__{_sha256(raw_bytes)[:12]}__"
+            f"{len(manifest.get('quarantined_files', [])) + 1:04d}"
+        )
+    path.replace(target)
+    manifest.setdefault("quarantined_files", []).append(
+        {
+            "quarantined_at_utc": utc_now(),
+            "original_path": str(path),
+            "quarantine_path": str(target),
+            "sha256": _sha256(raw_bytes),
+            "bytes": len(raw_bytes),
+            "reason": reason,
+            "error": error,
+        }
+    )
+    return target
+
+
+def _reconcile_orphan_pages(
+    *,
+    manifest: dict[str, Any],
+    manifest_path: Path,
+    run_dir: Path,
+    config: dict[str, Any],
+    per_page: int,
+) -> None:
+    """Quarantine partial/malformed orphans and register valid ones for probing."""
+    changed = False
+    for partial_path in sorted(run_dir.glob("resume_probe_*/*.part")):
+        _quarantine_file(
+            path=partial_path,
+            run_dir=run_dir,
+            manifest=manifest,
+            reason="interrupted_atomic_probe_write",
+        )
+        changed = True
+    for stratum in manifest["strata"]:
+        year = int(stratum["publication_year"])
+        requested = int(stratum["sample_size"])
+        known_pages = {int(page["page_number"]) for page in stratum.get("pages", [])}
+        stratum_dir = run_dir / f"year_{year}"
+        stratum_dir.mkdir(parents=True, exist_ok=True)
+        for page_number in range(1, math.ceil(requested / per_page) + 1):
+            raw_path = stratum_dir / f"page_{page_number:04d}.json"
+            partial_path = raw_path.with_suffix(f"{raw_path.suffix}.part")
+            if partial_path.exists():
+                _quarantine_file(
+                    path=partial_path,
+                    run_dir=run_dir,
+                    manifest=manifest,
+                    reason="interrupted_atomic_raw_write",
+                )
+                changed = True
+            if page_number in known_pages or not raw_path.exists():
+                continue
+            raw_bytes = raw_path.read_bytes()
+            try:
+                envelope = validate_sample_page(
+                    json.loads(raw_bytes),
+                    requested_records=requested,
+                    page_number=page_number,
+                    per_page=per_page,
+                )
+                page_ids = _validate_records_for_year(
+                    envelope.results, year=year, study=config["study"]
+                )
+            except Exception as exc:
+                _quarantine_file(
+                    path=raw_path,
+                    run_dir=run_dir,
+                    manifest=manifest,
+                    reason="malformed_or_invalid_orphan_page",
+                    error=f"{type(exc).__name__}: {exc}",
+                )
+                changed = True
+                continue
+            stratum.setdefault("pages", []).append(
+                {
+                    "page_number": page_number,
+                    "path": str(raw_path),
+                    "sha256": _sha256(raw_bytes),
+                    "raw_bytes": len(raw_bytes),
+                    "result_count": len(envelope.results),
+                    "work_ids": page_ids,
+                    "checkpointed_at_utc": utc_now(),
+                    "source": "recovered_orphan",
+                    "resume_verification_required": True,
+                }
+            )
+            stratum["pages"].sort(key=lambda page: int(page["page_number"]))
+            changed = True
+    if changed:
+        diagnostics = _ensure_diagnostics(manifest)
+        diagnostics["pages_checkpointed"] = sum(
+            len(stratum.get("pages", [])) for stratum in manifest["strata"]
+        )
+        _refresh_disk_diagnostics(manifest, run_dir)
+        _write_json_atomic(manifest_path, manifest)
 
 
 def _probe_resume_consistency(
@@ -260,7 +414,7 @@ def _probe_resume_consistency(
             },
         )
         probe_path = probe_dir / f"year_{year}_page_{page_number:04d}.json"
-        probe_path.write_bytes(response.content)
+        _write_bytes_atomic(probe_path, response.content)
         diagnostics = _ensure_diagnostics(manifest)
         diagnostics["resume_probe_pages"] += 1
         diagnostics["resume_probe_bytes"] += len(response.content)
@@ -411,6 +565,13 @@ def collect_stratified_sample(
     collected_records: list[dict[str, Any]] = []
     try:
         if resume_manifest:
+            _reconcile_orphan_pages(
+                manifest=manifest,
+                manifest_path=manifest_path,
+                run_dir=run_dir,
+                config=config,
+                per_page=per_page,
+            )
             _probe_resume_consistency(
                 manifest=manifest,
                 manifest_path=manifest_path,
@@ -435,10 +596,9 @@ def collect_stratified_sample(
                     payload = json.loads(raw_bytes)
                     source = "checkpoint"
                 elif raw_path.exists():
-                    # Recover a complete response written immediately before a crash.
-                    raw_bytes = raw_path.read_bytes()
-                    payload = json.loads(raw_bytes)
-                    source = "recovered_orphan"
+                    raise OpenAlexError(
+                        f"Unregistered raw page remained after orphan reconciliation: {raw_path}"
+                    )
                 else:
                     params = {
                         "filter": stratum["filter"],
@@ -459,7 +619,7 @@ def collect_stratified_sample(
                         },
                     )
                     raw_bytes = response.content
-                    raw_path.write_bytes(raw_bytes)
+                    _write_bytes_atomic(raw_path, raw_bytes)
                     _refresh_disk_diagnostics(manifest, run_dir)
                     payload = json.loads(raw_bytes)
                     source = "api"

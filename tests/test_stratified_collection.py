@@ -3,6 +3,7 @@ from pathlib import Path
 
 import pytest
 
+import ai_research_trends.crawling.collect_stratified as collector_module
 from ai_research_trends.config import load_config
 from ai_research_trends.crawling.collect_stratified import (
     _safe_resume_manifest,
@@ -264,6 +265,90 @@ def test_duplicate_failure_reports_raw_bytes_and_duplicate_check(tmp_path: Path)
     assert diagnostics["raw_page_files_on_disk"] == 2
     assert diagnostics["raw_page_bytes_on_disk"] > 0
     assert diagnostics["run_complete"] is False
+
+
+def test_interrupted_atomic_write_is_quarantined_before_resume(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    raw_root = tmp_path / "raw"
+    interim_root = tmp_path / "interim"
+    original_write = collector_module._write_bytes_atomic
+
+    def interrupt_write(path: Path, value: bytes, **kwargs: object) -> None:
+        partial_path = path.with_suffix(f"{path.suffix}.part")
+        partial_path.write_bytes(value[: max(1, len(value) // 2)])
+        raise OSError("simulated interruption before rename")
+
+    monkeypatch.setattr(collector_module, "_write_bytes_atomic", interrupt_write)
+    with pytest.raises(OSError, match="simulated interruption"):
+        collect_stratified_sample(
+            plan=_plan(),
+            config=load_config("config/topics.yaml"),
+            client=FakeClient(list(range(2020, 2026))),
+            raw_root=raw_root,
+            interim_root=interim_root,
+            base_seed=100,
+        )
+
+    manifest_path = next(raw_root.glob("stratified_*/manifest.json"))
+    run_dir = manifest_path.parent
+    assert not (run_dir / "year_2020/page_0001.json").exists()
+    partial_path = run_dir / "year_2020/page_0001.json.part"
+    partial_bytes = partial_path.read_bytes()
+
+    monkeypatch.setattr(collector_module, "_write_bytes_atomic", original_write)
+    completed = collect_stratified_sample(
+        plan=_plan(),
+        config=load_config("config/topics.yaml"),
+        client=FakeClient(list(range(2020, 2026))),
+        raw_root=raw_root,
+        interim_root=interim_root,
+        base_seed=100,
+        resume_manifest=manifest_path,
+    )
+
+    quarantine = completed["quarantined_files"][0]
+    assert quarantine["reason"] == "interrupted_atomic_raw_write"
+    assert Path(quarantine["quarantine_path"]).read_bytes() == partial_bytes
+    assert not partial_path.exists()
+    assert completed["complete"] is True
+
+
+def test_malformed_orphan_is_preserved_and_replaced_only_after_probe(tmp_path: Path) -> None:
+    raw_root = tmp_path / "raw"
+    interim_root = tmp_path / "interim"
+    with pytest.raises(OpenAlexError, match="simulated"):
+        collect_stratified_sample(
+            plan=_plan(),
+            config=load_config("config/topics.yaml"),
+            client=FakeClient(list(range(2020, 2026)), fail_after=1),
+            raw_root=raw_root,
+            interim_root=interim_root,
+            base_seed=100,
+        )
+    manifest_path = next(raw_root.glob("stratified_*/manifest.json"))
+    orphan_path = manifest_path.parent / "year_2021/page_0001.json"
+    malformed_bytes = b'{"meta":'
+    orphan_path.parent.mkdir(parents=True, exist_ok=True)
+    orphan_path.write_bytes(malformed_bytes)
+
+    resumed_client = FakeClient(list(range(2020, 2026)))
+    completed = collect_stratified_sample(
+        plan=_plan(),
+        config=load_config("config/topics.yaml"),
+        client=resumed_client,
+        raw_root=raw_root,
+        interim_root=interim_root,
+        base_seed=100,
+        resume_manifest=manifest_path,
+    )
+
+    quarantine = completed["quarantined_files"][0]
+    assert quarantine["reason"] == "malformed_or_invalid_orphan_page"
+    assert Path(quarantine["quarantine_path"]).read_bytes() == malformed_bytes
+    assert orphan_path.read_bytes() != malformed_bytes
+    assert resumed_client.calls[0]["page"] == 1  # Probe precedes replacement fetch.
+    assert completed["complete"] is True
 
 
 def test_resume_path_must_stay_inside_raw_root(tmp_path: Path) -> None:
