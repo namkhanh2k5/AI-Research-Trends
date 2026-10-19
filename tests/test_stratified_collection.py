@@ -7,6 +7,7 @@ import ai_research_trends.crawling.collect_stratified as collector_module
 from ai_research_trends.config import load_config
 from ai_research_trends.crawling.collect_stratified import (
     _safe_resume_manifest,
+    _select_resume_checkpoints,
     collect_stratified_sample,
     validate_collection_plan,
 )
@@ -199,6 +200,8 @@ def test_resume_fails_safely_when_seeded_page_membership_changes(tmp_path: Path)
     assert probe["probe_work_ids"] == ["https://openalex.org/W999999"]
     assert Path(probe["probe_raw_path"]).exists()
     assert len(changed.calls) == 1
+    assert failed["resume_verification_attempts"][0]["status"] == "failed"
+    assert failed["resume_verification_attempts"][0]["verification_mode"] == "all"
 
 
 def test_resume_can_retry_after_probe_api_failure(tmp_path: Path) -> None:
@@ -349,6 +352,37 @@ def test_malformed_orphan_is_preserved_and_replaced_only_after_probe(tmp_path: P
     assert orphan_path.read_bytes() != malformed_bytes
     assert resumed_client.calls[0]["page"] == 1  # Probe precedes replacement fetch.
     assert completed["complete"] is True
+
+
+def test_resume_checkpoint_selection_modes_and_required_orphans() -> None:
+    manifest = {
+        "strata": [
+            {
+                "publication_year": 2020,
+                "pages": [
+                    {"page_number": 1},
+                    {"page_number": 2, "resume_verification_required": True},
+                    {"page_number": 3},
+                ],
+            },
+            {
+                "publication_year": 2021,
+                "pages": [{"page_number": 1}, {"page_number": 2}],
+            },
+        ]
+    }
+
+    def keys(mode: str) -> list[tuple[int, int]]:
+        return [
+            (int(stratum["publication_year"]), int(page["page_number"]))
+            for stratum, page in _select_resume_checkpoints(manifest, mode)
+        ]
+
+    assert keys("all") == [(2020, 1), (2020, 2), (2020, 3), (2021, 1), (2021, 2)]
+    assert keys("sampled") == [(2020, 1), (2020, 2), (2020, 3), (2021, 1), (2021, 2)]
+    assert keys("minimal") == [(2020, 1), (2020, 2), (2021, 1)]
+    with pytest.raises(ValueError, match="verification mode"):
+        _select_resume_checkpoints(manifest, "unknown")
 
 
 def test_resume_path_must_stay_inside_raw_root(tmp_path: Path) -> None:

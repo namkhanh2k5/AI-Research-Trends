@@ -26,6 +26,8 @@ from ai_research_trends.crawling.openalex_client import (
 from ai_research_trends.crawling.plan_stratified_sample import validate_sampling_plan
 from ai_research_trends.env import load_project_env
 
+RESUME_VERIFICATION_MODES = ("all", "sampled", "minimal")
+
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
@@ -43,6 +45,15 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--seed", type=int, default=20251019)
     parser.add_argument("--per-page", type=int, default=100)
     parser.add_argument("--resume-manifest", help="Manifest inside --raw-root to resume")
+    parser.add_argument(
+        "--resume-verify",
+        choices=RESUME_VERIFICATION_MODES,
+        default="all",
+        help=(
+            "Checkpoint membership verification on resume: all pages (default), "
+            "first/last pages per stratum, or the first page per stratum"
+        ),
+    )
     parser.add_argument(
         "--execute",
         action="store_true",
@@ -238,6 +249,38 @@ def _work_ids(records: list[dict[str, Any]]) -> list[str]:
     return [canonical_work_id(record.get("id", "")) for record in records]
 
 
+def _select_resume_checkpoints(
+    manifest: dict[str, Any], verification_mode: str
+) -> list[tuple[dict[str, Any], dict[str, Any]]]:
+    """Select deterministic checkpoints; recovered orphans are always verified."""
+    if verification_mode not in RESUME_VERIFICATION_MODES:
+        raise ValueError(
+            f"resume verification mode must be one of {RESUME_VERIFICATION_MODES}"
+        )
+    selected: list[tuple[dict[str, Any], dict[str, Any]]] = []
+    for stratum in sorted(manifest["strata"], key=lambda row: int(row["publication_year"])):
+        pages = sorted(stratum.get("pages", []), key=lambda row: int(row["page_number"]))
+        if not pages:
+            continue
+        if verification_mode == "all":
+            page_numbers = {int(page["page_number"]) for page in pages}
+        elif verification_mode == "sampled":
+            page_numbers = {int(pages[0]["page_number"]), int(pages[-1]["page_number"])}
+        else:
+            page_numbers = {int(pages[0]["page_number"])}
+        page_numbers.update(
+            int(page["page_number"])
+            for page in pages
+            if page.get("resume_verification_required") is True
+        )
+        selected.extend(
+            (stratum, page)
+            for page in pages
+            if int(page["page_number"]) in page_numbers
+        )
+    return selected
+
+
 def _quarantine_file(
     *,
     path: Path,
@@ -360,8 +403,9 @@ def _probe_resume_consistency(
     run_dir: Path,
     client: OpenAlexClient,
     per_page: int,
+    verification_mode: str,
 ) -> None:
-    """Re-fetch one checkpointed page per started stratum and compare ordered IDs."""
+    """Re-fetch selected checkpoint pages and compare ordered Work IDs."""
     probes = manifest.setdefault("resume_consistency_probes", [])
     disk_probe_numbers = []
     for path in run_dir.glob("resume_probe_*"):
@@ -369,26 +413,43 @@ def _probe_resume_consistency(
             disk_probe_numbers.append(int(path.name.rsplit("_", 1)[-1]))
         except ValueError:
             continue
-    probe_number = max([len(probes), *disk_probe_numbers], default=0) + 1
+    prior_attempts = manifest.get("resume_verification_attempts", [])
+    probe_number = max([len(prior_attempts), *disk_probe_numbers], default=0) + 1
     probe_dir = run_dir / f"resume_probe_{probe_number:04d}"
     probe_dir.mkdir(parents=True, exist_ok=False)
-    selected = [stratum for stratum in manifest["strata"] if stratum.get("pages")]
+    selected = _select_resume_checkpoints(manifest, verification_mode)
+    total_checkpoints = sum(len(stratum.get("pages", [])) for stratum in manifest["strata"])
+    attempt = {
+        "probe_number": probe_number,
+        "started_at_utc": utc_now(),
+        "verification_mode": verification_mode,
+        "checkpoint_pages_available": total_checkpoints,
+        "checkpoint_pages_selected": len(selected),
+        "status": "running",
+        "limitation": (
+            "OpenAlex provides no snapshot isolation. Matching IDs establish only that "
+            "the checked seeded pages matched when probed; metadata, unchecked pages, "
+            "and subsequent source changes are not guaranteed stable."
+        ),
+    }
+    manifest.setdefault("resume_verification_attempts", []).append(attempt)
     if not selected:
         probes.append(
             {
                 "probe_number": probe_number,
                 "checked_at_utc": utc_now(),
+                "verification_mode": verification_mode,
                 "status": "skipped_no_checkpointed_pages",
                 "limitation": "No prior page existed, so there was no mixed-snapshot risk to test.",
             }
         )
+        attempt.update({"status": "skipped_no_checkpointed_pages", "finished_at_utc": utc_now()})
         _write_json_atomic(manifest_path, manifest)
         return
 
-    for stratum in selected:
+    for stratum, checkpoint in selected:
         year = int(stratum["publication_year"])
         requested = int(stratum["sample_size"])
-        checkpoint = min(stratum["pages"], key=lambda item: int(item["page_number"]))
         page_number = int(checkpoint["page_number"])
         checkpoint_path = run_dir / f"year_{year}" / f"page_{page_number:04d}.json"
         checkpoint_bytes = checkpoint_path.read_bytes()
@@ -421,6 +482,7 @@ def _probe_resume_consistency(
         record: dict[str, Any] = {
             "probe_number": probe_number,
             "checked_at_utc": utc_now(),
+            "verification_mode": verification_mode,
             "publication_year": year,
             "page_number": page_number,
             "query_parameters": params,
@@ -467,12 +529,19 @@ def _probe_resume_consistency(
             raise
 
         probes.append(record)
+        if record["ordered_ids_match"]:
+            checkpoint["resume_verification_required"] = False
+            checkpoint["resume_verified_at_utc"] = utc_now()
         _write_json_atomic(manifest_path, manifest)
         if not record["ordered_ids_match"]:
+            attempt.update({"status": "failed", "finished_at_utc": utc_now()})
+            _write_json_atomic(manifest_path, manifest)
             raise OpenAlexError(
                 "OpenAlex seeded sample membership changed since the checkpoint for "
                 f"year {year}, page {page_number}; refusing to mix retrieval snapshots"
             )
+    attempt.update({"status": "passed", "finished_at_utc": utc_now()})
+    _write_json_atomic(manifest_path, manifest)
 
 
 def collect_stratified_sample(
@@ -485,12 +554,15 @@ def collect_stratified_sample(
     base_seed: int,
     per_page: int = 100,
     resume_manifest: str | Path | None = None,
+    resume_verify: str = "all",
     plan_sha256: str | None = None,
 ) -> dict[str, Any]:
     """Collect or resume all planned strata, checkpointing after each valid page."""
     strata = validate_collection_plan(plan)
     if not 1 <= per_page <= 100:
         raise ValueError("per_page must be between 1 and 100")
+    if resume_verify not in RESUME_VERIFICATION_MODES:
+        raise ValueError(f"resume_verify must be one of {RESUME_VERIFICATION_MODES}")
     raw_root_path = Path(raw_root).resolve()
     interim_root_path = Path(interim_root).resolve()
     if (
@@ -578,6 +650,7 @@ def collect_stratified_sample(
                 run_dir=run_dir,
                 client=client,
                 per_page=per_page,
+                verification_mode=resume_verify,
             )
         for stratum in manifest["strata"]:
             year = int(stratum["publication_year"])
@@ -735,6 +808,16 @@ def collect_stratified_sample(
         return manifest
     except Exception as exc:
         diagnostics = _ensure_diagnostics(manifest)
+        for attempt in manifest.get("resume_verification_attempts", []):
+            if attempt.get("status") == "running":
+                attempt.update(
+                    {
+                        "status": "failed",
+                        "finished_at_utc": utc_now(),
+                        "error_type": type(exc).__name__,
+                        "error": str(exc),
+                    }
+                )
         _refresh_disk_diagnostics(manifest, run_dir)
         diagnostics["run_complete"] = False
         diagnostics["pages_checkpointed"] = sum(
@@ -792,6 +875,7 @@ def main(argv: list[str] | None = None) -> int:
         base_seed=args.seed,
         per_page=args.per_page,
         resume_manifest=args.resume_manifest,
+        resume_verify=args.resume_verify,
         plan_sha256=_sha256(plan_bytes),
     )
     diagnostics = result["diagnostics"]
