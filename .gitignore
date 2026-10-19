@@ -1,0 +1,24 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Retrieved and derived data are reproducible, but too large for Git.
+data/raw/**
+data/interim/**
+data/processed/**
+data/metadata/**
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!data/metadata/.gitkeep
+
+models/**
+!models/.gitkeep
+reports/figures/**
+!reports/figures/.gitkeep
