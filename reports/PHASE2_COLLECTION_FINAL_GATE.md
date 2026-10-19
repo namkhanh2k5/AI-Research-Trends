@@ -30,7 +30,7 @@
 
 Validation results:
 
-- offline suite: **64 passed, 1 skipped** (live probe skipped by default);
+- offline suite: **65 passed, 1 skipped** (live probe skipped by default);
 - opt-in live OpenAlex probe: **1 passed** on 2026-10-19;
 - plan regeneration and collector dry-run: passed for exactly 12,000 works;
 - full 12,000-work collection: not executed.

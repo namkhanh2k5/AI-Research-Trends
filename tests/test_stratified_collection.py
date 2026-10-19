@@ -8,6 +8,7 @@ from ai_research_trends.config import load_config
 from ai_research_trends.crawling.collect_stratified import (
     _safe_resume_manifest,
     _select_resume_checkpoints,
+    _write_bytes_atomic,
     collect_stratified_sample,
     validate_collection_plan,
 )
@@ -320,6 +321,20 @@ def test_interrupted_atomic_write_is_quarantined_before_resume(
     assert Path(quarantine["quarantine_path"]).read_bytes() == partial_bytes
     assert not partial_path.exists()
     assert completed["complete"] is True
+
+
+def test_atomic_raw_write_never_exposes_partial_final_path(tmp_path: Path) -> None:
+    target = tmp_path / "page_0001.json"
+
+    def interrupt_before_rename(partial: Path) -> None:
+        assert partial.name == "page_0001.json.part"
+        raise OSError("simulated process interruption")
+
+    with pytest.raises(OSError, match="process interruption"):
+        _write_bytes_atomic(target, b'{"complete":true}', before_replace=interrupt_before_rename)
+
+    assert not target.exists()
+    assert target.with_suffix(".json.part").read_bytes() == b'{"complete":true}'
 
 
 def test_malformed_orphan_is_preserved_and_replaced_only_after_probe(tmp_path: Path) -> None:
