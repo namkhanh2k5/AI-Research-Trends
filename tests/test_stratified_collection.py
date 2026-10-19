@@ -101,6 +101,24 @@ def test_checkpointed_collection_preserves_pages_and_completes(tmp_path: Path) -
     assert len(client.calls) == 6
     assert Path(result["raw_jsonl"]).read_text().count("\n") == 6
     assert all(len(stratum["pages"]) == 1 for stratum in result["strata"])
+    diagnostics = result["diagnostics"]
+    assert diagnostics["pages_expected"] == diagnostics["pages_checkpointed"] == 6
+    assert diagnostics["raw_page_files_on_disk"] == 6
+    assert diagnostics["raw_page_bytes_on_disk"] == sum(
+        Path(page["path"]).stat().st_size
+        for stratum in result["strata"]
+        for page in stratum["pages"]
+    )
+    assert diagnostics["api_requests_attempted"] == 6
+    assert diagnostics["api_requests_succeeded"] == 6
+    assert diagnostics["api_failures"] == []
+    assert diagnostics["duplicate_check"]["passed"] is True
+    assert diagnostics["run_complete"] is True
+    assert all(
+        page["work_ids"]
+        for stratum in result["strata"]
+        for page in stratum["pages"]
+    )
 
 
 def test_failed_collection_can_resume_without_refetching_checkpoint(tmp_path: Path) -> None:
@@ -120,6 +138,10 @@ def test_failed_collection_can_resume_without_refetching_checkpoint(tmp_path: Pa
     failed = json.loads(manifest_path.read_text())
     assert failed["status"] == "failed"
     assert failed["strata"][0]["status"] == "complete"
+    assert failed["diagnostics"]["api_requests_attempted"] == 2
+    assert failed["diagnostics"]["api_requests_succeeded"] == 1
+    assert len(failed["diagnostics"]["api_failures"]) == 1
+    assert failed["diagnostics"]["run_complete"] is False
 
     resumed_client = FakeClient(list(range(2020, 2026)))
     resumed = collect_stratified_sample(
@@ -176,6 +198,33 @@ def test_resume_fails_safely_when_seeded_page_membership_changes(tmp_path: Path)
     assert probe["probe_work_ids"] == ["https://openalex.org/W999999"]
     assert Path(probe["probe_raw_path"]).exists()
     assert len(changed.calls) == 1
+
+
+def test_duplicate_failure_reports_raw_bytes_and_duplicate_check(tmp_path: Path) -> None:
+    class DuplicateClient(FakeClient):
+        def request(self, path: str, params: dict) -> FakeResponse:
+            year = self.years.pop(0)
+            self.calls.append(params)
+            return FakeResponse(year, identifier=1)
+
+    raw_root = tmp_path / "raw"
+    with pytest.raises(OpenAlexError, match="Duplicate Work ID"):
+        collect_stratified_sample(
+            plan=_plan(),
+            config=load_config("config/topics.yaml"),
+            client=DuplicateClient(list(range(2020, 2026))),
+            raw_root=raw_root,
+            interim_root=tmp_path / "interim",
+            base_seed=100,
+        )
+    manifest = json.loads(next(raw_root.glob("stratified_*/manifest.json")).read_text())
+    diagnostics = manifest["diagnostics"]
+    assert diagnostics["duplicate_check"]["duplicate_work_ids_detected"] == 1
+    assert diagnostics["duplicate_check"]["passed"] is False
+    assert diagnostics["pages_checkpointed"] == 1
+    assert diagnostics["raw_page_files_on_disk"] == 2
+    assert diagnostics["raw_page_bytes_on_disk"] > 0
+    assert diagnostics["run_complete"] is False
 
 
 def test_resume_path_must_stay_inside_raw_root(tmp_path: Path) -> None:
