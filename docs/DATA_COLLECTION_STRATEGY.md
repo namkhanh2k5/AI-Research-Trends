@@ -159,17 +159,27 @@ Official references: [filtering](https://help.openalex.org/api/filtering/),
 
 Keep exact raw response bytes unchanged. Every run gets a new UTC directory and a
 manifest with endpoint, non-secret parameters, timestamps, status, page/result
-counts, checksums, and completeness state. The Phase 2 collector checkpoints each
-validated page, resumes only when plan/config/seed/page settings match, rejects
-unsafe resume paths, and preserves a failed manifest. API keys are never written
+counts, checksums, and completeness state. Raw response and resume-probe bodies are
+written to exclusive `.part` files, flushed, and atomically renamed. An interrupted
+temporary or malformed orphan is quarantined with its path, bytes, SHA-256, reason,
+and error before any replacement is fetched. The Phase 2 collector resumes only
+when plan/config/seed/page settings match, rejects unsafe resume paths, preserves a
+failed manifest, and refuses to resume a completed run. API keys are never written
 to manifests.
 
-Before mixing checkpointed and newly retrieved pages, resume re-fetches the first
-checkpointed page from every started year stratum and requires an exact ordered
-Work-ID match. Probe bodies are stored separately. Failure leaves the run incomplete
-and preserves both snapshots. This detects drift on probed pages only; it cannot
-guarantee unprobed page membership, unchanged metadata fields, or database-wide
-snapshot isolation.
+Before mixing checkpointed and newly retrieved pages, the default `all` resume mode
+re-fetches every checkpointed page and requires exact ordered Work-ID matches.
+`sampled` checks the first and last checkpoint in each started stratum; `minimal`
+checks the first. A recovered valid orphan is mandatory in every mode. Probe bodies
+and attempt summaries are stored separately. Failure leaves the run incomplete and
+preserves both versions. Checking one page per stratum does not establish sample
+stability; checking all prior pages is stronger but still cannot guarantee unchanged
+metadata fields, future source changes, or database-wide snapshot isolation.
+
+On completion, SHA-256 values are recorded for both raw and interim JSONL outputs.
+`openalex-verify-collection <manifest>` performs a read-only verification of every
+page checksum and membership list, output checksum and ordered ID sequence, unique
+record count, and completeness diagnostics.
 
 The current 12,000-work implementation holds validated records and the canonical
 ID set in memory before atomically writing final JSONL. This bounded design is

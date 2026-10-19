@@ -67,6 +67,7 @@ openalex-profile-pilot --help
 openalex-audit-categories --help
 openalex-plan-sample --help
 openalex-collect-stratified --help
+openalex-verify-collection --help
 
 openalex-validate-topics
 openalex-discover-topics
@@ -118,13 +119,26 @@ Resume a failed run with the same plan, config, seed, and page size:
 openalex-collect-stratified \
   --plan data/metadata/phase2_sampling_plan.json \
   --resume-manifest data/raw/openalex_stratified/stratified_<UTC>/manifest.json \
+  --resume-verify all \
   --execute
 ```
 
-Before a resume downloads new pages, it re-fetches the first checkpointed page of
-each started year stratum and compares ordered Work IDs. A mismatch fails the run
-without deleting either response. This is a drift alarm, not proof that unprobed
-pages or record fields are unchanged.
+The default `all` mode re-fetches every checkpointed page and compares ordered Work
+IDs before new pages are requested. `sampled` checks the first and last page per
+started stratum, while `minimal` checks the first. Recovered orphan pages are always
+checked. A mismatch fails safely and preserves both responses. No mode proves full
+snapshot consistency because OpenAlex does not expose snapshot isolation; even
+`all` cannot guarantee unchanged metadata or changes occurring after the probe.
+
+Raw pages and probe bodies use an atomic `.part`-then-rename protocol. Interrupted
+temporary files and malformed unregistered pages are moved to the run's quarantine
+directory and recorded in its manifest before replacement. Completed runs cannot
+be resumed. Verify one without writing to it using:
+
+```bash
+openalex-verify-collection \
+  data/raw/openalex_stratified/stratified_<UTC>/manifest.json
+```
 
 OpenAlex documents random `sample` and reproducible `seed` behavior. The plan's
 `n/N` inclusion probabilities and `N/n` weights are nevertheless labeled nominal:
