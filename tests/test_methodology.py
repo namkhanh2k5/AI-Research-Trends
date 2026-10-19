@@ -35,8 +35,22 @@ def test_population_aggregation_uses_exact_fixed_filter() -> None:
         "from_publication_date:2020-01-01,to_publication_date:2025-12-31,"
         "primary_topic.subfield.id:1702|1707,type:article|review|preprint"
     )
-    assert specs[0]["params"] == {"filter": expected, "group_by": "publication_year"}
+    by_name = {spec["name"]: spec for spec in specs}
+    assert by_name["study_population_all"]["params"] == {
+        "filter": expected,
+        "group_by": "publication_year",
+    }
+    assert by_name["study_population_primary_non_retracted"]["params"] == {
+        "filter": f"{expected},is_retracted:false",
+        "group_by": "publication_year",
+    }
     assert all(spec["params"]["filter"].startswith(expected) for spec in specs)
+    assert all(
+        spec["params"]["filter"].endswith("is_retracted:false")
+        or ",is_retracted:false,topics.id:" in spec["params"]["filter"]
+        for spec in specs
+        if spec["estimand_role"] == "primary"
+    )
     assert all("search." not in spec["params"] for spec in specs)
 
 

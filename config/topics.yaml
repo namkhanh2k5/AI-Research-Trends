@@ -12,6 +12,7 @@ study:
   optional_snapshot_year: 2026
   work_types: [article, review, preprint]
   primary_subfield_ids: ["1702", "1707"]
+  primary_retraction_scope: "non_retracted"
   primary_subfields:
     - {id: "1702", display_name: "Artificial Intelligence"}
     - {id: "1707", display_name: "Computer Vision and Pattern Recognition"}
@@ -21,8 +22,9 @@ study:
   target_size: 25000
   retraction_policy: >-
     Retain and flag retracted works in the canonical analytical table for
-    transparency. Exclude them from primary impact, trend, OA, and collaboration
-    estimates; report their count and run an include-retracted sensitivity check.
+    transparency. Primary population and detailed-sample estimands apply
+    is_retracted:false. Parallel all-work population aggregates and an
+    include-retracted sensitivity analysis quantify the effect of this exclusion.
 
 # Layer A: OpenAlex-native, overlapping topic memberships. These are model-inferred
 # taxonomy labels from a work's topics array, never text-rule unions.

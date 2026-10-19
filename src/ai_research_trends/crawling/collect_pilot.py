@@ -6,7 +6,7 @@ import argparse
 import json
 from pathlib import Path
 
-from ai_research_trends.config import build_study_filter, load_config
+from ai_research_trends.config import build_primary_analysis_filter, load_config
 from ai_research_trends.crawling.openalex_client import OpenAlexClient
 from ai_research_trends.env import load_project_env
 
@@ -33,7 +33,7 @@ def main(argv: list[str] | None = None) -> int:
     study = config["study"]
     size = args.size if args.size is not None else int(study["pilot_size"])
     seed = args.seed if args.seed is not None else int(study["sampling_seed"])
-    query_filter = build_study_filter(study)
+    query_filter = build_primary_analysis_filter(study)
 
     client = OpenAlexClient()
     summary = client.collect_sample(

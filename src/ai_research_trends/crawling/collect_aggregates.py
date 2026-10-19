@@ -31,26 +31,40 @@ def build_parser() -> argparse.ArgumentParser:
 
 def _query_specs(config: dict[str, Any]) -> list[dict[str, Any]]:
     study = config["study"]
-    population_filter = build_study_filter(study)
-    specs: list[dict[str, Any]] = [
-        {
-            "name": "study_population",
-            "analytical_layer": "population_frame",
-            "method": "primary_subfield_frame",
-            "params": {"filter": population_filter, "group_by": "publication_year"},
-        }
-    ]
-    for slug, category in config["openalex_native_categories"].items():
-        topic_ids = category.get("topic_ids", [])
-        category_filter = f"{population_filter},topics.id:{'|'.join(topic_ids)}"
+    filters = {
+        "all": build_study_filter(study, retraction_scope="all"),
+        "primary_non_retracted": build_study_filter(
+            study, retraction_scope="non_retracted"
+        ),
+    }
+    specs: list[dict[str, Any]] = []
+    for scope, population_filter in filters.items():
         specs.append(
             {
-                "name": slug,
-                "analytical_layer": "openalex_native",
-                "method": "overlapping_openalex_topics_within_population_frame",
-                "params": {"filter": category_filter, "group_by": "publication_year"},
+                "name": f"study_population_{scope}",
+                "analytical_layer": "population_frame",
+                "estimand_role": "primary" if scope == "primary_non_retracted" else "sensitivity",
+                "retraction_scope": scope,
+                "method": "primary_subfield_frame",
+                "params": {"filter": population_filter, "group_by": "publication_year"},
             }
         )
+    for slug, category in config["openalex_native_categories"].items():
+        topic_ids = category.get("topic_ids", [])
+        for scope, population_filter in filters.items():
+            category_filter = f"{population_filter},topics.id:{'|'.join(topic_ids)}"
+            specs.append(
+                {
+                    "name": f"{slug}_{scope}",
+                    "analytical_layer": "openalex_native",
+                    "estimand_role": (
+                        "primary" if scope == "primary_non_retracted" else "sensitivity"
+                    ),
+                    "retraction_scope": scope,
+                    "method": "overlapping_openalex_topics_within_population_frame",
+                    "params": {"filter": category_filter, "group_by": "publication_year"},
+                }
+            )
     return specs
 
 
@@ -71,6 +85,8 @@ def collect(config: dict[str, Any], client: OpenAlexClient, raw_root: Path) -> d
             {
                 "name": spec["name"],
                 "analytical_layer": spec["analytical_layer"],
+                "estimand_role": spec["estimand_role"],
+                "retraction_scope": spec["retraction_scope"],
                 "method": spec["method"],
                 "query_parameters": spec["params"],
                 "meta_count": payload.get("meta", {}).get("count"),

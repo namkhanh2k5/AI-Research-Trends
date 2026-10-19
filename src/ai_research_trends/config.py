@@ -13,7 +13,10 @@ FIXED_CORPUS = {
     "end_date": "2025-12-31",
     "work_types": ("article", "review", "preprint"),
     "primary_subfield_ids": ("1702", "1707"),
+    "primary_retraction_scope": "non_retracted",
 }
+
+RETRACTION_SCOPES = {"all", "non_retracted"}
 
 
 def load_config(path: str | Path = "config/topics.yaml") -> dict[str, Any]:
@@ -62,17 +65,29 @@ def validate_fixed_corpus(study: dict[str, Any]) -> None:
             )
 
 
-def build_study_filter(study: dict[str, Any]) -> str:
-    """Build the reproducible, primary-topic sampling-frame filter."""
+def build_study_filter(
+    study: dict[str, Any], *, retraction_scope: str = "all"
+) -> str:
+    """Build the population filter for either all works or the primary estimand."""
     validate_fixed_corpus(study)
+    if retraction_scope not in RETRACTION_SCOPES:
+        raise ValueError(f"Unsupported retraction scope: {retraction_scope!r}")
     work_types = "|".join(str(value) for value in study["work_types"])
     subfields = "|".join(str(value) for value in study["primary_subfield_ids"])
-    return (
+    value = (
         f"from_publication_date:{study['start_date']},"
         f"to_publication_date:{study['end_date']},"
         f"primary_topic.subfield.id:{subfields},"
         f"type:{work_types}"
     )
+    if retraction_scope == "non_retracted":
+        value = f"{value},is_retracted:false"
+    return value
+
+
+def build_primary_analysis_filter(study: dict[str, Any]) -> str:
+    """Build the non-retracted filter used by every primary analysis estimand."""
+    return build_study_filter(study, retraction_scope=study["primary_retraction_scope"])
 
 
 def primary_subfield_id(work: dict[str, Any]) -> str | None:
