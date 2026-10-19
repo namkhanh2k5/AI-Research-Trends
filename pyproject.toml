@@ -46,6 +46,7 @@ dev = [
 openalex-validate-topics = "ai_research_trends.crawling.validate_topics:main"
 openalex-collect-pilot = "ai_research_trends.crawling.collect_pilot:main"
 openalex-collect-aggregates = "ai_research_trends.crawling.collect_aggregates:main"
+openalex-plan-sample = "ai_research_trends.crawling.plan_stratified_sample:main"
 openalex-profile-pilot = "ai_research_trends.crawling.profile_pilot:main"
 openalex-discover-topics = "ai_research_trends.crawling.discover_topics:main"
 
