@@ -20,6 +20,8 @@ verifier. The all-work sensitivity population contains 942,825 works. Phase 3
 converted the verified sample into eight typed, integrity-checked Parquet
 tables. See the [Phase 2 collection report](reports/PHASE2_COLLECTION_REPORT.md)
 and [Phase 3 data-quality report](reports/PHASE3_DATA_QUALITY_REPORT.md).
+Phase 4 has completed the four research-question analyses using 19 derived
+summary tables, 22 figure pairs and a reproducible [research report](reports/PHASE4_ANALYSIS_REPORT.md).
 
 ## Study design in one minute
 
@@ -224,11 +226,61 @@ row counts, schema version, validation checks, code hash) and `quality.json`
 `N_h/n_h` year-stratum weights do not imply verified uniform OpenAlex inclusion.
 Population trends use `population_year_counts.parquet`, never counts from the
 12,000-work sample. Native topics and custom text-rule labels remain distinct.
-Phase 4 analysis and Phase 5 ML are not yet implemented.
+Phase 5 ML is not yet implemented.
+
 The current processor streams the source JSONL line by line but holds normalized
 tables in memory until deterministic sorting and Parquet export. For a much
 larger corpus, move relationship tables to partitioned Arrow/DuckDB staging
 instead of scaling this in-memory run unchanged.
+
+## Phase 4 analysis and reproducibility
+
+Phase 4 analyzes the verified Phase 3 data without new OpenAlex requests. It
+uses complete population aggregates for publication volume, and the distinct
+12,000-work sample for citation, OA and collaboration analyses. Its fixed
+[statistical plan](docs/PHASE4_STATISTICAL_ANALYSIS_PLAN.md) describes the
+conditional, non-causal models. The [research report](reports/PHASE4_ANALYSIS_REPORT.md)
+and 22 local PNG/SVG figure pairs in `reports/figures/phase4/` report observed findings and
+denominators. Local machine-readable outputs are Git-ignored under
+`data/analysis/phase4_stratified_20261019T155909Z_v3/`; its `manifest.json`
+records input/output SHA-256, table grains, denominators and 18 validation
+checks. The four notebooks `03`–`06` inspect those local results.
+
+All analysis commands have `--help`. To reproduce without overwriting a
+completed run, use a **new** output and publication path:
+
+```bash
+openalex-analyze-phase4 --help
+openalex-validate-phase4 --help
+openalex-analyze-phase4 \
+  --processed-dir data/processed/openalex_stratified/stratified_20261019T155909Z \
+  --output-dir data/analysis/phase4_reproduction \
+  --plan data/metadata/phase2_sampling_plan.json \
+  --population data/metadata/population_counts_pre_phase2.json \
+  --config config/topics.yaml \
+  --analysis-plan docs/PHASE4_STATISTICAL_ANALYSIS_PLAN.md \
+  --seed 20261023 \
+  --publish \
+  --report-path reports/PHASE4_ANALYSIS_REPORT_reproduction.md \
+  --figure-dir reports/figures/phase4_reproduction
+openalex-validate-phase4 \
+  data/analysis/phase4_reproduction \
+  --compare-dir data/analysis/phase4_stratified_20261019T155909Z_v3
+jupyter nbconvert --execute --to notebook --output-dir /tmp \
+  notebooks/03_publication_trends.ipynb \
+  notebooks/04_citation_impact.ipynb \
+  notebooks/05_open_access_analysis.ipynb \
+  notebooks/06_collaboration_networks.ipynb
+pytest -q -ra
+pip check
+```
+
+The comparison checks all output hashes under identical input and settings;
+the completed local Phase 4 rerun matched all 64 outputs byte
+for byte (19 CSV, 44 figures and one report). The notebooks point to the
+versioned verified local run; adapt their path if reproducing elsewhere.
+Sample counts are not population counts. Nominal year weights are not verified
+inverse inclusion probabilities, and OA associations do not establish causality.
 
 ## Repository layout
 
@@ -238,6 +290,7 @@ docs/                           proposal, methods, dictionary, feasibility repor
 data/raw/                       immutable API response bodies (Git-ignored)
 data/interim/                   extracted/normalized intermediate data (Git-ignored)
 data/processed/                 Phase 3 Parquet analytical tables (Git-ignored)
+data/analysis/                  Phase 4 CSV results and manifests (Git-ignored)
 data/metadata/                  manifests and quality reports (Git-ignored)
 src/ai_research_trends/
   crawling/                     API client and collection CLIs
