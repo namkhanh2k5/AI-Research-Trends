@@ -16,10 +16,10 @@ interpretation. It does **not** treat citations as scientific quality.
 Phase 2 collection completed on 2026-10-19 UTC. The refreshed primary
 non-retracted population contains 937,493 works; a proportional six-year sample
 of 12,000 unique works was collected and passed the read-only page and JSONL
-verifier. The all-work sensitivity population contains 942,825 works. See the
-[Phase 2 collection report](reports/PHASE2_COLLECTION_REPORT.md) for observed
-counts, missingness, checksums, and interpretation limits. Phase 3 preprocessing
-has not started.
+verifier. The all-work sensitivity population contains 942,825 works. Phase 3
+converted the verified sample into eight typed, integrity-checked Parquet
+tables. See the [Phase 2 collection report](reports/PHASE2_COLLECTION_REPORT.md)
+and [Phase 3 data-quality report](reports/PHASE3_DATA_QUALITY_REPORT.md).
 
 ## Study design in one minute
 
@@ -179,6 +179,57 @@ Each pilot run creates:
 Raw and derived data are ignored by Git. Keep them in durable project storage and
 archive manifests with submitted reports.
 
+## Phase 3 preprocessing and validation
+
+The eight local Parquet outputs are reproducible only when the verified Phase 2
+raw/interim JSONL, collection manifest, sampling plan, aggregate artifact,
+quality profile and category config are available. GitHub does not contain
+these Git-ignored data artifacts. No OpenAlex key or network access is needed.
+The command refuses an existing output directory and never modifies Phase 2
+evidence. Use a new directory for each deterministic rerun.
+
+```bash
+openalex-preprocess --help
+openalex-validate-processed --help
+openalex-report-processed --help
+
+openalex-preprocess \
+  --source-jsonl data/interim/openalex_stratified/stratified_20261019T155909Z/works.jsonl \
+  --source-manifest data/raw/openalex_stratified/stratified_20261019T155909Z/manifest.json \
+  --plan data/metadata/phase2_sampling_plan.json \
+  --population data/metadata/population_counts_pre_phase2.json \
+  --phase2-profile data/metadata/phase2_profile.json \
+  --config config/topics.yaml \
+  --output-dir data/processed/openalex_stratified/stratified_20261019T155909Z
+
+openalex-validate-processed \
+  --output-dir data/processed/openalex_stratified/stratified_20261019T155909Z \
+  --plan data/metadata/phase2_sampling_plan.json \
+  --population data/metadata/population_counts_pre_phase2.json \
+  --config config/topics.yaml
+# For a deterministic byte-level comparison, repeat the preprocess command
+# above with --output-dir ending in stratified_20261019T155909Z_rerun.
+openalex-report-processed \
+  data/processed/openalex_stratified/stratified_20261019T155909Z \
+  --compare-dir data/processed/openalex_stratified/stratified_20261019T155909Z_rerun \
+  --output reports/PHASE3_DATA_QUALITY_REPORT.md
+jupyter nbconvert --execute --to notebook \
+  --output 02_processed_data_quality.executed.ipynb \
+  notebooks/02_processed_data_quality.ipynb
+```
+
+The processed run directory contains `manifest.json` (input/output SHA-256,
+row counts, schema version, validation checks, code hash) and `quality.json`
+(missingness by year/type and row-level quarantine issues). The nominal
+`N_h/n_h` year-stratum weights do not imply verified uniform OpenAlex inclusion.
+Population trends use `population_year_counts.parquet`, never counts from the
+12,000-work sample. Native topics and custom text-rule labels remain distinct.
+Phase 4 analysis and Phase 5 ML are not yet implemented.
+The current processor streams the source JSONL line by line but holds normalized
+tables in memory until deterministic sorting and Parquet export. For a much
+larger corpus, move relationship tables to partitioned Arrow/DuckDB staging
+instead of scaling this in-memory run unchanged.
+
 ## Repository layout
 
 ```text
@@ -186,7 +237,7 @@ config/                         study and category definitions
 docs/                           proposal, methods, dictionary, feasibility report
 data/raw/                       immutable API response bodies (Git-ignored)
 data/interim/                   extracted/normalized intermediate data (Git-ignored)
-data/processed/                 future Parquet analytical tables (Git-ignored)
+data/processed/                 Phase 3 Parquet analytical tables (Git-ignored)
 data/metadata/                  manifests and quality reports (Git-ignored)
 src/ai_research_trends/
   crawling/                     API client and collection CLIs
