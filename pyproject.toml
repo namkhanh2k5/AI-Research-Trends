@@ -54,6 +54,8 @@ openalex-profile-pilot = "ai_research_trends.crawling.profile_pilot:main"
 openalex-preprocess = "ai_research_trends.preprocessing.pipeline:main"
 openalex-validate-processed = "ai_research_trends.preprocessing.validate_tables:main"
 openalex-report-processed = "ai_research_trends.preprocessing.quality_report:main"
+openalex-analyze-phase4 = "ai_research_trends.analysis.pipeline:main"
+openalex-validate-phase4 = "ai_research_trends.analysis.validation:main"
 openalex-discover-topics = "ai_research_trends.crawling.discover_topics:main"
 
 [tool.setuptools.packages.find]

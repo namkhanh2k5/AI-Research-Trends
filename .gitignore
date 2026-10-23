@@ -14,6 +14,7 @@ __pycache__/
 data/raw/**
 data/interim/**
 data/processed/**
+data/analysis/**
 data/metadata/**
 !data/raw/.gitkeep
 !data/interim/.gitkeep
