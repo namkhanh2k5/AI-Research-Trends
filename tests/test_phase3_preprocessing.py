@@ -301,3 +301,9 @@ def test_quality_report_rejects_incomplete_run(tmp_path: Path) -> None:
     (tmp_path / "quality.json").write_text("{}")
     with pytest.raises(ValueError, match="incomplete"):
         render_report(tmp_path)
+
+
+def test_phase2_phase3_country_missingness_is_strictly_checked() -> None:
+    quality = {"missing_difference_vs_phase2": {"title": 0, "country": 1}}
+    with pytest.raises(ValueError, match="country missingness"):
+        pipeline.validate_missingness_against_phase2(quality)

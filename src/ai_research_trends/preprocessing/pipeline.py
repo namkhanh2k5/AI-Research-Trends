@@ -168,6 +168,13 @@ def _quality_summary(
     }
 
 
+def validate_missingness_against_phase2(quality: dict[str, Any]) -> None:
+    """Reject any processed/source missingness drift, including country coverage."""
+    for field, difference in quality["missing_difference_vs_phase2"].items():
+        if difference != 0:
+            raise ValueError(f"Processed {field} missingness differs from the Phase 2 profile")
+
+
 def process_collection(
     *,
     source_jsonl: Path,
@@ -262,9 +269,7 @@ def process_collection(
     checks = validate_rows(tables, plan, population_rows, config)
     quality = _quality_summary(tables["works"], issues, profile)
     # Directly comparable source fields should remain missing in exactly the same works.
-    for field in ("title", "doi", "abstract", "fwci", "institution", "language", "open_access"):
-        if quality["missing_difference_vs_phase2"][field] != 0:
-            raise ValueError(f"Processed {field} missingness differs from the Phase 2 profile")
+    validate_missingness_against_phase2(quality)
 
     output_dir.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix=".phase3_staging_", dir=output_dir.parent) as temporary:
