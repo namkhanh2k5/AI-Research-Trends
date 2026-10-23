@@ -34,6 +34,9 @@ Selected OpenAlex-native topic series (membership overlaps):
 | natural_language_processing | 10,302 | 28,449 | 12.24% |
 | reinforcement_learning | 3,665 | 8,224 | 3.54% |
 
+![RQ1 population publication counts for the complete non-retracted AI/CV primary-subfield corpus](figures/phase4/rq1_population_counts.png)
+*Figure RQ1. Annual publication counts from complete OpenAlex population aggregates, not the 12,000-work sample.*
+
 The native series share the approved primary-corpus and non-retraction filters. Their memberships overlap, so their counts cannot be summed into an AI total. Classification or database changes can affect apparent growth.
 
 Custom title/abstract matches in the detailed sample (exploratory, not population counts):
@@ -44,11 +47,14 @@ Custom title/abstract matches in the detailed sample (exploratory, not populatio
 | multimodal_ai | 165 | 94 | 2,976 |
 | retrieval_augmented_generation | 39 | 25 | 2,976 |
 
-The RAG rule identifies few works and has unmeasured recall; no RAG population trajectory is inferred. Abstract availability by year is included in the machine-readable table. Figures: [annual counts](figures/phase4/rq1_population_counts.png), [YoY](figures/phase4/rq1_yoy_growth.png), [index](figures/phase4/rq1_population_index.png), [native topics](figures/phase4/rq1_native_topic_trends.png), [sample text matches](figures/phase4/rq1_emerging_sample_trends.png).
+The RAG rule identifies few works and has unmeasured recall; no RAG population trajectory is inferred. Abstract availability by year is included in the machine-readable table. Supporting RQ1 figures: [population YoY](figures/phase4/rq1_yoy_growth.png), [population index](figures/phase4/rq1_population_index.png), [overlapping native-topic population series](figures/phase4/rq1_native_topic_trends.png), [sample text-rule matches](figures/phase4/rq1_emerging_sample_trends.png).
 
 ## 4. RQ2 — Citation impact
 
 Observed citation counts: n=12,000; mean 11.24; median 2.00; IQR 8.00; P90 23.00; P95 42.00; maximum 4,199; zero-citation share 37.75%. All zeroes and highly cited observations remain in the data. The mean–median gap is why robust summaries and log1p displays accompany raw counts.
+
+![RQ2 observed citation distribution in the detailed sample](figures/phase4/rq2_citation_distribution.png)
+*Figure RQ2. Descriptive log1p citation distribution for 12,000 sampled works; zeroes and outliers remain in the underlying data.*
 
 | Primary subfield | Sample n | Mean citations | Median citations | FWCI-eligible n | Median FWCI |
 |---|---:|---:|---:|---:|---:|
@@ -72,7 +78,7 @@ FWCI by selected, **overlapping** research-category memberships (eligible articl
 
 FWCI already incorporates OpenAlex field/time normalization, but these are still overlapping, selected and sometimes small complete-case samples—not independently sampled categories. In particular, a small RAG group does not justify a strong comparative-impact claim. Publication-year and work-type citation/FWCI breakdowns are retained in the machine-readable tables.
 At the common observation snapshot, publication age and observed citations have Spearman ρ=0.297, n=12,000, p=2e-242. This is an exploratory conditional-sample association; greater exposure time is one plausible contributor, not a full explanation or causal estimate.
-FWCI complete cases: 9,322/12,000 works; median 0.32, mean 1.13. Every sampled preprint lacks FWCI; article/review-only results cannot represent preprint impact. FWCI is normalized citation impact, not scientific quality. Figures: [citations](figures/phase4/rq2_citation_distribution.png), [cohorts](figures/phase4/rq2_citations_by_year.png), [FWCI](figures/phase4/rq2_fwci_distribution.png), [FWCI by subfield](figures/phase4/rq2_fwci_by_subfield.png), [age](figures/phase4/rq2_citation_age.png), [work type](figures/phase4/rq2_citations_by_type.png).
+FWCI complete cases: 9,322/12,000 works; median 0.32, mean 1.13. Every sampled preprint lacks FWCI; article/review-only results cannot represent preprint impact. FWCI is normalized citation impact, not scientific quality. Supporting RQ2 sample figures: [publication cohorts](figures/phase4/rq2_citations_by_year.png), [FWCI distribution](figures/phase4/rq2_fwci_distribution.png), [FWCI by subfield](figures/phase4/rq2_fwci_by_subfield.png), [citation age](figures/phase4/rq2_citation_age.png), [work type](figures/phase4/rq2_citations_by_type.png).
 
 ## 5. RQ3 — Open Access and citation association
 
@@ -92,7 +98,11 @@ Additional binary OA view (descriptive; statuses are retained separately above):
 | closed | 3,268 | 3.00 | 11.83 | 30.17% |
 | open | 8,732 | 1.00 | 11.02 | 40.59% |
 
-The primary prespecified model is OLS for `ln(1 + citations)` with six OA statuses (closed reference), publication-year fixed effects (2020 reference), work type (article reference), primary subfield (1702 reference), and HC3 robust standard errors. Coefficients compare conditional mean log outcomes; `exp(β)−1` describes a relative change in **1 + citations**, not raw citation counts or a causal treatment effect.
+![RQ3 OA-status composition of the detailed sample](figures/phase4/rq3_oa_distribution.png)
+*Figure RQ3a. Descriptive OA-status composition among 12,000 sampled works; statuses are not a population partition estimate.*
+The unadjusted binary OLS model (`unadjusted_binary`) combines all OA statuses: open versus closed has β=-0.330 for `ln(1 + citations)`. This raw contrast is descriptive and differs from each status-specific contrast below.
+
+The primary prespecified model (`adjusted_status_year`) is OLS for `ln(1 + citations)` with six OA statuses (closed reference), publication-year fixed effects (2020 reference), work type (article reference), primary subfield (1702 reference), and HC3 robust standard errors. Coefficients compare conditional mean log outcomes; `exp(β)−1` describes a relative change in the conditional geometric mean of **1 + citations** under model assumptions, not raw mean citation counts or a causal treatment effect.
 
 | OA contrast vs closed | β log1p | HC3 95% CI | p | BH q (five contrasts) |
 |---|---:|---:|---:|---:|
@@ -101,6 +111,10 @@ The primary prespecified model is OLS for `ln(1 + citations)` with six OA status
 | diamond | -0.672 | [-0.735, -0.609] | 1.17e-97 | 5.83e-97 |
 | green | +0.178 | [+0.087, +0.269] | 0.000128 | 0.00016 |
 | gold | +0.463 | [+0.396, +0.531] | 6.04e-41 | 1.51e-40 |
+
+![RQ3 adjusted OA-status coefficients with HC3 confidence intervals](figures/phase4/rq3_adjusted_coefficients.png)
+*Figure RQ3b. Adjusted six-status OLS associations in the sampled works; points are log1p coefficients versus closed access, with HC3 95% confidence intervals, not causal effects.*
+Within this fitted model, Gold OA (β=+0.463; HC3 95% CI [+0.396, +0.531]) and Green OA (β=+0.178; HC3 95% CI [+0.087, +0.269]) have higher conditional mean `ln(1 + citations)` than closed access after adjustment. For Gold, `100 × (exp(β) − 1)` is approximately 58.9% higher conditional geometric mean of **1 + citations**, not 58.9% more raw citations per paper. Statistical evidence does not establish practical importance or causality.
 
 Sensitivity estimates selected before modeling (all coefficients on log1p citations):
 
@@ -112,10 +126,10 @@ Sensitivity estimates selected before modeling (all coefficients on log1p citati
 | adjusted_status_age | oa_green | 12,000 | +0.196 | [+0.103, +0.289] |
 | adjusted_status_age | oa_gold | 12,000 | +0.506 | [+0.437, +0.574] |
 
-The unadjusted binary estimate differs in sign from some adjusted status-specific contrasts; OA groups are not compositionally comparable. In particular, **2,506 of 3,559** green-OA works are preprints. The models answer different exposure contrasts, so this is not a causal reversal. Within-year summaries and all model terms are in the CSV outputs.
+The raw binary comparison groups all OA statuses and suggests a lower observed log-citation outcome for combined OA. The adjusted model separates statuses and accounts for publication year, work type and primary subfield; these groups have different year/type compositions. In particular, **2,506 of 3,559** Green-OA works are preprints, and all 2,678 sampled preprints lack FWCI. The two coefficients describe different contrasts, not a causal sign reversal. Unmeasured confounding, selection effects and model misspecification remain possible. Within-year summaries and all model terms are in the CSV outputs.
 The primary design matrix has rank 14/14; condition number 18.07. Age-sensitivity complete cases: 12,000. Observed citation-count variance/mean is 409.77; an unadjusted Poisson model would therefore be inappropriate. No unsupported exposure offset is applied. HC3 protects standard errors against heteroskedasticity but does not solve unmeasured confounding or model misspecification.
 
-Figures: [OA mix](figures/phase4/rq3_oa_distribution.png), [citation distributions](figures/phase4/rq3_citations_by_oa.png), [medians](figures/phase4/rq3_median_citations_oa.png), [adjusted estimates](figures/phase4/rq3_adjusted_coefficients.png), [FWCI](figures/phase4/rq3_fwci_by_oa.png).
+Supporting RQ3 sample figures: [OA citation distributions](figures/phase4/rq3_citations_by_oa.png), [descriptive medians](figures/phase4/rq3_median_citations_oa.png), [FWCI-observed subset](figures/phase4/rq3_fwci_by_oa.png).
 
 ## 6. RQ4 — Collaboration networks
 
@@ -128,10 +142,13 @@ International co-affiliation: 1,979 true, 5,991 known false, and 4,030 unknown (
 | country_complete_affiliation | 118 | 945 | 6 | 0.13690 |
 | institution_all_observed | 5,872 | 18,179 | 1,156 | 0.00105 |
 
+![RQ4 country co-affiliation network in the detailed sample](figures/phase4/rq4_country_network.png)
+*Figure RQ4. Selected country co-affiliation links among sampled works with recorded affiliations; this is not the global AI collaboration network.*
+
 Top observed country pairs (unique supporting sampled works): CN–US (208); CN–GB (114); CN–HK (108); GB–US (88); AU–CN (85).
 Top observed institution pairs (OpenAlex IDs; unique supporting sampled works): I19820366–I4210165038 (85); I19820366–I4210112150 (33); I19820366–I4210156404 (22); I4210112150–I4210165038 (22); I1294671590–I1326498283 (18).
 
-Each unordered country/institution pair contributes at most once per work. Complete-country-coverage edge weights are stored alongside all-observed weights as a sensitivity check; country affiliation means institutional geography, not nationality. Graph centrality is sample-specific co-affiliation, not global influence or direct person-to-person collaboration. Figures: [counts](figures/phase4/rq4_author_institution_counts.png), [tri-state status](figures/phase4/rq4_international_status.png), [country graph](figures/phase4/rq4_country_network.png), [top pairs](figures/phase4/rq4_top_country_pairs.png), [institution graph](figures/phase4/rq4_institution_network.png), [coverage](figures/phase4/rq4_affiliation_coverage.png).
+Each unordered country/institution pair contributes at most once per work. Complete-country-coverage edge weights are stored alongside all-observed weights as a sensitivity check; country affiliation means institutional geography, not nationality. Graph centrality is sample-specific co-affiliation, not global influence or direct person-to-person collaboration. Supporting RQ4 sample figures: [author/institution counts](figures/phase4/rq4_author_institution_counts.png), [tri-state international status](figures/phase4/rq4_international_status.png), [top country pairs](figures/phase4/rq4_top_country_pairs.png), [institution co-affiliation graph](figures/phase4/rq4_institution_network.png), [affiliation coverage](figures/phase4/rq4_affiliation_coverage.png).
 
 ## 7. Cross-cutting data quality
 

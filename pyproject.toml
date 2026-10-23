@@ -57,6 +57,7 @@ openalex-report-processed = "ai_research_trends.preprocessing.quality_report:mai
 openalex-analyze-phase4 = "ai_research_trends.analysis.pipeline:main"
 openalex-validate-phase4 = "ai_research_trends.analysis.validation:main"
 openalex-publish-phase4-figures = "ai_research_trends.analysis.figure_publication:main"
+openalex-publish-phase4-report = "ai_research_trends.analysis.report:main"
 openalex-discover-topics = "ai_research_trends.crawling.discover_topics:main"
 
 [tool.setuptools.packages.find]
