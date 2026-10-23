@@ -240,18 +240,48 @@ uses complete population aggregates for publication volume, and the distinct
 12,000-work sample for citation, OA and collaboration analyses. Its fixed
 [statistical plan](docs/PHASE4_STATISTICAL_ANALYSIS_PLAN.md) describes the
 conditional, non-causal models. The [research report](reports/PHASE4_ANALYSIS_REPORT.md)
-and 22 local PNG/SVG figure pairs in `reports/figures/phase4/` report observed findings and
-denominators. Local machine-readable outputs are Git-ignored under
+links all 22 verified PNG figures, now published in
+[`reports/figures/phase4/`](reports/figures/phase4/); the original 300-DPI
+PNG/SVG pairs remain in the immutable local analytical run. The
+[figure-publication manifest](reports/PHASE4_FIGURE_PUBLICATION.json) records
+source and published SHA-256 values. Local machine-readable outputs are Git-ignored under
 `data/analysis/phase4_stratified_20261019T155909Z_v3/`; its `manifest.json`
 records input/output SHA-256, table grains, denominators and 18 validation
 checks. The four notebooks `03`–`06` inspect those local results.
 
+### Phase 4 — Research Results & Visualizations
+
+The complete non-retracted AI/CV primary-subfield corpus grew from 125,506
+works in 2020 to 232,476 in 2025. All citation, OA, text-rule and network
+findings below instead describe the separate 12,000-work detailed sample;
+they are not population prevalence estimates. RQ3 reports observational,
+conditional associations, not effects caused by OA. A compact
+[slide-ready presentation brief](docs/PHASE4_PRESENTATION_BRIEF.md) accompanies
+the full [academic report](reports/PHASE4_ANALYSIS_REPORT.md).
+
+| Preview | What it shows |
+|---|---|
+| ![Annual population publication counts](reports/figures/phase4/rq1_population_counts.png) | RQ1: complete-population annual AI/CV work counts. |
+| ![Overlapping native topic trajectories](reports/figures/phase4/rq1_native_topic_trends.png) | RQ1: selected, overlapping OpenAlex-native population topic series. |
+| ![Sample citation distribution](reports/figures/phase4/rq2_citation_distribution.png) | RQ2: skewed observed citations among sampled works. |
+| ![Adjusted OA status coefficients](reports/figures/phase4/rq3_adjusted_coefficients.png) | RQ3: conditional log1p-citation associations versus closed OA, with HC3 intervals; not causal effects. |
+| ![Sampled country co-affiliation network](reports/figures/phase4/rq4_country_network.png) | RQ4: sampled co-affiliation links, not a global collaboration map. |
+
 All analysis commands have `--help`. To reproduce without overwriting a
-completed run, use a **new** output and publication path:
+completed run, use a **new** output directory. To republish the verified
+figures or re-render the committed report, use the dedicated commands; they
+verify the original run and do not alter it:
 
 ```bash
 openalex-analyze-phase4 --help
 openalex-validate-phase4 --help
+openalex-publish-phase4-figures --help
+openalex-publish-phase4-report --help
+openalex-publish-phase4-figures \
+  data/analysis/phase4_stratified_20261019T155909Z_v3
+openalex-publish-phase4-report \
+  data/analysis/phase4_stratified_20261019T155909Z_v3 \
+  --output reports/PHASE4_ANALYSIS_REPORT.md
 openalex-analyze-phase4 \
   --processed-dir data/processed/openalex_stratified/stratified_20261019T155909Z \
   --output-dir data/analysis/phase4_reproduction \
@@ -259,10 +289,7 @@ openalex-analyze-phase4 \
   --population data/metadata/population_counts_pre_phase2.json \
   --config config/topics.yaml \
   --analysis-plan docs/PHASE4_STATISTICAL_ANALYSIS_PLAN.md \
-  --seed 20261023 \
-  --publish \
-  --report-path reports/PHASE4_ANALYSIS_REPORT_reproduction.md \
-  --figure-dir reports/figures/phase4_reproduction
+  --seed 20261023
 openalex-validate-phase4 \
   data/analysis/phase4_reproduction \
   --compare-dir data/analysis/phase4_stratified_20261019T155909Z_v3
