@@ -25,3 +25,6 @@ models/**
 !models/.gitkeep
 reports/figures/**
 !reports/figures/.gitkeep
+# Publish only verified Phase 4 PNGs; keep local SVGs and other generated figures ignored.
+!reports/figures/phase4/
+!reports/figures/phase4/*.png
