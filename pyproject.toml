@@ -51,6 +51,9 @@ openalex-verify-collection = "ai_research_trends.crawling.verify_collection:main
 openalex-collect-aggregates = "ai_research_trends.crawling.collect_aggregates:main"
 openalex-plan-sample = "ai_research_trends.crawling.plan_stratified_sample:main"
 openalex-profile-pilot = "ai_research_trends.crawling.profile_pilot:main"
+openalex-preprocess = "ai_research_trends.preprocessing.pipeline:main"
+openalex-validate-processed = "ai_research_trends.preprocessing.validate_tables:main"
+openalex-report-processed = "ai_research_trends.preprocessing.quality_report:main"
 openalex-discover-topics = "ai_research_trends.crawling.discover_topics:main"
 
 [tool.setuptools.packages.find]
