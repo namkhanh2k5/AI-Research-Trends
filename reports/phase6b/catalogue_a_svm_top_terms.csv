@@ -1,0 +1,76 @@
+topic_id,rank,term,coefficient
+https://openalex.org/T10028,1,language,1.659711477682676
+https://openalex.org/T10028,2,text,1.5279718813804677
+https://openalex.org/T10028,3,entity,1.281020656648724
+https://openalex.org/T10028,4,bert,1.137914037380264
+https://openalex.org/T10028,5,models,1.0698519619336648
+https://openalex.org/T10028,6,language models,1.0520351886851995
+https://openalex.org/T10028,7,knowledge,0.9745362281121154
+https://openalex.org/T10028,8,word,0.9060459863471712
+https://openalex.org/T10028,9,generation,0.8705947190395646
+https://openalex.org/T10028,10,sentence,0.8592903281518288
+https://openalex.org/T10028,11,summarization,0.8539337759101069
+https://openalex.org/T10028,12,sequence,0.8268267052166374
+https://openalex.org/T10028,13,gpt,0.8186070020800665
+https://openalex.org/T10028,14,question,0.8095139686406881
+https://openalex.org/T10028,15,ner,0.7794731555119668
+https://openalex.org/T10036,1,object,1.8330693157166316
+https://openalex.org/T10036,2,detection,1.5983188633359322
+https://openalex.org/T10036,3,recognition,1.4452879751636039
+https://openalex.org/T10036,4,image,1.3659291309934305
+https://openalex.org/T10036,5,vision,1.3029643484480413
+https://openalex.org/T10036,6,object detection,1.2003680079639616
+https://openalex.org/T10036,7,neural,1.0790614155898801
+https://openalex.org/T10036,8,cnn,1.037476025348716
+https://openalex.org/T10036,9,accuracy,1.0160471043006447
+https://openalex.org/T10036,10,objects,0.9942374862728641
+https://openalex.org/T10036,11,network,0.932108326196007
+https://openalex.org/T10036,12,neural networks,0.9260071509800281
+https://openalex.org/T10036,13,semantic segmentation,0.8618194403190891
+https://openalex.org/T10036,14,classification,0.8229297175554492
+https://openalex.org/T10036,15,networks,0.8068815241248193
+https://openalex.org/T10052,1,segmentation,2.669494975348527
+https://openalex.org/T10052,2,medical,1.3329763903622336
+https://openalex.org/T10052,3,segmentation of,1.063400479885202
+https://openalex.org/T10052,4,mri,1.0294709869377512
+https://openalex.org/T10052,5,image segmentation,1.0063492783627206
+https://openalex.org/T10052,6,ct,0.9587148968722425
+https://openalex.org/T10052,7,brain,0.9577117197515916
+https://openalex.org/T10052,8,images,0.9541327928423732
+https://openalex.org/T10052,9,dice,0.9172561196544549
+https://openalex.org/T10052,10,net,0.905335539277036
+https://openalex.org/T10052,11,medical image,0.896180444312751
+https://openalex.org/T10052,12,automatic,0.8354987081328672
+https://openalex.org/T10052,13,image,0.8127022773082764
+https://openalex.org/T10052,14,clinical,0.8048623590147639
+https://openalex.org/T10052,15,diagnosis,0.8002417839348575
+https://openalex.org/T10462,1,reinforcement learning,2.2783600566858055
+https://openalex.org/T10462,2,reinforcement,2.2598802282945845
+https://openalex.org/T10462,3,rl,1.6399459725229548
+https://openalex.org/T10462,4,agent,1.51987704347105
+https://openalex.org/T10462,5,policy,1.4475670661472113
+https://openalex.org/T10462,6,learning,1.1691606714032563
+https://openalex.org/T10462,7,environment,1.116539256056418
+https://openalex.org/T10462,8,robot,1.0469262059870659
+https://openalex.org/T10462,9,control,1.000150565786414
+https://openalex.org/T10462,10,agents,0.9191139768551052
+https://openalex.org/T10462,11,reward,0.9189069564977541
+https://openalex.org/T10462,12,robots,0.8163198957061736
+https://openalex.org/T10462,13,environments,0.7814442260642835
+https://openalex.org/T10462,14,actions,0.7280138996896611
+https://openalex.org/T10462,15,deep reinforcement,0.7141085814407431
+https://openalex.org/T10664,1,sentiment,3.017908221267641
+https://openalex.org/T10664,2,sentiment analysis,1.968350958211291
+https://openalex.org/T10664,3,analysis,1.7374972747134747
+https://openalex.org/T10664,4,twitter,1.3011559561514126
+https://openalex.org/T10664,5,emotion,1.1215425474024285
+https://openalex.org/T10664,6,social,1.0879048577227715
+https://openalex.org/T10664,7,reviews,1.0707866563201693
+https://openalex.org/T10664,8,media,1.0584688767313493
+https://openalex.org/T10664,9,emotional,0.9710686061595745
+https://openalex.org/T10664,10,tweets,0.9496738377847492
+https://openalex.org/T10664,11,online,0.8950754966558928
+https://openalex.org/T10664,12,aspect,0.832540700472382
+https://openalex.org/T10664,13,opinion,0.7983640477482614
+https://openalex.org/T10664,14,negative,0.7433859789006104
+https://openalex.org/T10664,15,és,0.7218096985527237
