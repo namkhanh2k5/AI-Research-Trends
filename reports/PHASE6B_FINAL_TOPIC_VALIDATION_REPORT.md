@@ -106,3 +106,5 @@ pip check
 ```
 
 The commands require local Git-ignored Phase 3 data; GitHub contains the small [public aggregate summary](phase6b/summary.json) and [aggregate CSVs](phase6b/README.md), not the raw/sample paper records or model artifact. A new versioned run is required for each reproduction; outputs are never overwritten.
+
+Final local validation after the report/code commits: `pytest -q -ra -o addopts=''` **149 passed, 1 opt-in live test skipped**; `pip check` found no broken requirements. The Phase 3 validator passed **29/29**, the Phase 6B run verifier passed **34/34** local artifact hashes, all **11/11** published aggregate CSV hashes matched their verified local source files, and the Phase 6A reproduction matched **16/16** prior output hashes. The opt-in live sampling test was not needed for this local-data classification audit.
