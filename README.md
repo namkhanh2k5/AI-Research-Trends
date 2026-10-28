@@ -431,6 +431,50 @@ Git-ignored annotation template and answer
 key remain local. The published [topic-support chart](reports/figures/phase6/topic_support.png)
 shows sample counts, not population topic prevalence.
 
+## Phase 6B final classification feasibility review
+
+The [Phase 6B report](reports/PHASE6B_FINAL_TOPIC_VALIDATION_REPORT.md) and
+[external-review handoff](reports/PHASE6B_EXTERNAL_REVIEW_HANDOFF.md) document
+the final bounded reassessment. A provisional 14-topic catalogue covers
+**689/1,873 (36.8%)** text-eligible sampled 2024 works, up from **20.2%** for
+the five-topic pilot. Its best Linear SVM reaches **0.857 macro-F1** against
+OpenAlex automated primary-topic labels, but an independently evaluated
+rejection threshold accepts only **74.2%** of in-catalogue works and falsely
+accepts **19.2%** of outside works. The fixed acceptance gate fails; human
+semantic validation is still pending. **Verdict: REVISE**, toward a narrowly
+labelled five-topic educational demonstration, not a general AI/CV topic finder.
+No 2025 final model test or full website has been run/built.
+
+The [official-description catalogue](config/phase6b_catalogue.yaml),
+[prospective expanded protocol](docs/PHASE6B_EXPANDED_CATALOGUE_PROTOCOL.md),
+[decision criteria](docs/PHASE6B_DECISION_CRITERIA.md), and
+[reviewer-safe aggregate outputs](reports/phase6b/README.md) are public.
+The local complete run, raw topic responses, paper-level predictions, blind
+annotation sheets/keys and fitted model remain Git-ignored. The PoC's context
+is from **sampled** 2020–2024 works, not full-population topic counts.
+
+Reproduce from the repository root with the locally retained Phase 3 data and
+an editable install. Choose new output directories; the CLIs refuse overwrite.
+The OpenAlex metadata fetch is a separate, bounded API step and is unnecessary
+when using the committed hash-verified `config/phase6b_topic_metadata.csv`.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+openalex-validate-topics-final --help
+openalex-validate-topics-final --output-dir data/analysis/phase6b_topic_validation_NEW
+openalex-verify-topic-run --run-dir data/analysis/phase6b_topic_validation_NEW
+openalex-place-research-draft --help
+openalex-analyze-topic-annotations --help
+pytest -q -ra
+pip check
+```
+
+The optional real two-rater process is specified in the
+[human-review instructions](docs/PHASE6B_HUMAN_REVIEW_INSTRUCTIONS.md); no
+human ratings have been generated or inferred.
+
 ## Repository layout
 
 ```text
@@ -446,9 +490,9 @@ src/ai_research_trends/
   preprocessing/               Phase 3 table builders
   features/                    bibliometric feature engineering
   analysis/                    Phase 4 statistical analysis
-  ml/                          Phase 5 audits and Phase 6A silver-label pilot
+  ml/                          Phase 5 audits and Phase 6A/6B silver-label pilots
 notebooks/                      thin, numbered presentation notebooks
-dashboard/                      Phase 6 application
+dashboard/                      reserved for a later scoped application
 models/                         fitted artifacts (Git-ignored)
 reports/                        reports and figures
 tests/                          unit tests
