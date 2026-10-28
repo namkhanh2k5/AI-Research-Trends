@@ -22,6 +22,11 @@ tables. See the [Phase 2 collection report](reports/PHASE2_COLLECTION_REPORT.md)
 and [Phase 3 data-quality report](reports/PHASE3_DATA_QUALITY_REPORT.md).
 Phase 4 has completed the four research-question analyses using 19 derived
 summary tables, 22 figure pairs and a reproducible [research report](reports/PHASE4_ANALYSIS_REPORT.md).
+Phase 5's first literature-discovery feasibility audit is complete. Its G1/G2
+decision is **REVISE**, so no supervised recommender or website has been claimed.
+See the [feasibility](reports/PHASE5_FEASIBILITY_REPORT.md),
+[RQ5 reference EDA](reports/PHASE5_REFERENCE_EDA_REPORT.md), and
+[ML decision](reports/PHASE5_ML_PILOT_REPORT.md) reports.
 
 ## Study design in one minute
 
@@ -226,7 +231,8 @@ row counts, schema version, validation checks, code hash) and `quality.json`
 `N_h/n_h` year-stratum weights do not imply verified uniform OpenAlex inclusion.
 Population trends use `population_year_counts.parquet`, never counts from the
 12,000-work sample. Native topics and custom text-rule labels remain distinct.
-Phase 5 ML is not yet implemented.
+Phase 5 ML training is not yet implemented; a reference-graph feasibility audit
+and exploratory RQ5 extension are available below.
 
 The current processor streams the source JSONL line by line but holds normalized
 tables in memory until deterministic sorting and Parquet export. For a much
@@ -308,6 +314,89 @@ for byte (19 CSV, 44 figures and one report). The notebooks point to the
 versioned verified local run; adapt their path if reproducing elsewhere.
 Sample counts are not population counts. Nominal year weights are not verified
 inverse inclusion probabilities, and OA associations do not establish causality.
+
+## Phase 5 literature-discovery feasibility pilot
+
+The exploratory [RQ5 plan](docs/PHASE5_RQ5_PLAN.md) asks what prior literature
+the sampled AI/CV works cite. The verified 12,000-work sample has 289,110 unique
+reference edges. Under the documented title/abstract/date/≥10-reference rules,
+5,141 works are eligible queries. For the 909 eligible 2023 queries, the
+2020–2022 historical ≥2-citer pool contains 8,183 candidate IDs; median
+reference-ID overlap is only 10.0%. Most candidate publication dates are not
+available locally. This is **pool coverage, not candidate-generation recall**.
+The first gate was **REVISE**; no supervised ranking, inference model or website
+was run. See the [actual first audit](reports/PHASE5_FEASIBILITY_REPORT.md) and
+[RQ5 EDA](reports/PHASE5_REFERENCE_EDA_REPORT.md). Four small diagnostic figures
+are published under [`reports/figures/phase5/`](reports/figures/phase5/).
+
+The audit uses only local, previously verified Phase 3 data—no API call or new
+collection. It refuses an existing output directory and, by default, refuses
+existing report names. Reproduce under a **new** versioned output and report
+directory to preserve the completed run:
+
+```bash
+openalex-audit-literature --help
+openalex-verify-literature-audit --help
+openalex-audit-literature \
+  --processed-dir data/processed/openalex_stratified/stratified_20261019T155909Z \
+  --plan data/metadata/phase2_sampling_plan.json \
+  --population data/metadata/population_counts_pre_phase2.json \
+  --config config/topics.yaml \
+  --output-dir data/analysis/phase5_literature_reproduction \
+  --report-dir reports/phase5_reproduction \
+  --published-figure-dir reports/figures/phase5_reproduction \
+  --seed 20261028
+openalex-verify-literature-audit \
+  data/analysis/phase5_literature_reproduction \
+  --processed-dir data/processed/openalex_stratified/stratified_20261019T155909Z \
+  --report-dir reports/phase5_reproduction \
+  --published-figure-dir reports/figures/phase5_reproduction
+pytest -q -ra
+pip check
+```
+
+The completed local audit is
+`data/analysis/phase5_literature_pilot_20261028_v4/`; its manifest records
+source and output SHA-256 checksums. Those detailed tables and the older local
+audit iterations are Git-ignored. Model training, model evaluation and inference
+commands intentionally do not exist yet because the feasibility gate failed.
+The bounded follow-up used **all** 2020–2022 edge-bearing sampled works (not
+only ML-eligible historical queries), raising the ≥2-pool 2023 median ID overlap
+from 10.0% to 12.1%. It then enriched 1,000 historically selected IDs (973
+retrieved; 27 unavailable) and compared three simple retrieval baselines on
+the same date-screened subset. The best fusion baseline reached only 2.53%
+mean end-to-end Recall@20 against observed 2023 references. The final gate is
+**NO-GO for citation-aware discovery as the main supervised ML task**; this
+does not invalidate the RQ5 reference EDA. See the [coverage reassessment](reports/PHASE5_COVERAGE_REASSESSMENT.md),
+[retrieval diagnostic](reports/PHASE5_RETRIEVAL_DIAGNOSTIC.md), and
+[final decision with audited alternatives](reports/PHASE5_FINAL_DECISION.md).
+No extra historical crawl or full-scale model training was started.
+
+Reproduce the follow-up from the local verified Phase 3 data (Git-ignored;
+not downloadable from this repository) under **new** output directory names:
+
+```bash
+openalex-reassess-literature --help
+openalex-enrich-candidates --help
+openalex-diagnose-retrieval --help
+openalex-reassess-literature --output-dir data/analysis/phase5_reassessment_reproduction
+openalex-enrich-candidates \
+  --output-dir data/analysis/phase5_candidate_enrichment_reproduction \
+  --maximum 1000
+openalex-enrich-candidates \
+  --output-dir data/analysis/phase5_candidate_enrichment_reproduction \
+  --verify-only
+openalex-diagnose-retrieval \
+  --enrichment-dir data/analysis/phase5_candidate_enrichment_reproduction \
+  --output-dir data/analysis/phase5_retrieval_reproduction
+```
+
+The enrichment command requires a local `OPENALEX_API_KEY` in Git-ignored `.env`;
+the read-only verification and other two commands do not call the API. The
+reassessment's five output hashes and retrieval diagnostic's three deterministic
+CSV hashes matched independent reruns. Timing diagnostics are intentionally kept
+outside deterministic CSV outputs. These are bounded proxy results, not a
+full-pool temporal-coverage estimate or human relevance evaluation.
 
 ## Repository layout
 
