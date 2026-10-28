@@ -1,0 +1,107 @@
+topic_id,topic_name,description,subfield_id,scope_status,reason,manual_review_required,train_usable,validation_usable,passes_support,provisional_selected
+https://openalex.org/T10020,Quantum Information and Cryptography,,1702,out,quantum information/cryptography is not primarily AI/CV,False,175,76,True,False
+https://openalex.org/T10028,Topic Modeling,"This cluster of papers covers a wide range of advancements in natural language processing, including neural network architectures, word representation models, machine translation techniques, text classification algorithms, semantic similarity measures, named entity recognition methods, pretrained language models, sequence-to-sequence learning approaches, topic modeling strategies, and information retrieval systems.",1702,in,topic modelling is a core NLP method; broad label,False,149,85,True,True
+https://openalex.org/T10036,Advanced Neural Network Applications,"This cluster of papers focuses on the application of deep learning, particularly convolutional neural networks, in computer vision tasks such as image recognition, object detection, and semantic segmentation. It covers various neural network architectures, model compression techniques, and their applications in fields like autonomous driving.",1707,in,neural-network methods within the CV primary subfield,False,369,146,True,True
+https://openalex.org/T10052,Medical Image Segmentation Techniques,"This cluster of papers covers advances in image segmentation techniques, particularly focusing on medical image analysis, graph cuts, active contours, MRI segmentation, deformable image registration, level set methods, statistical shape models, deep learning, and texture analysis.",1707,in,"image segmentation is a CV method, albeit medical-specific",False,127,45,True,True
+https://openalex.org/T10057,Face and Expression Recognition,,1707,manual_review,scope needs independent semantic review,True,15,1,False,False
+https://openalex.org/T10100,Metaheuristic Optimization Algorithms Research,,1702,manual_review,scope needs independent semantic review,True,104,36,False,False
+https://openalex.org/T10126,"Logic, programming, and type systems",,1702,manual_review,scope needs independent semantic review,True,63,5,False,False
+https://openalex.org/T10181,Natural Language Processing Techniques,,1702,manual_review,scope needs independent semantic review,True,94,36,False,False
+https://openalex.org/T10201,Speech Recognition and Synthesis,,1702,manual_review,scope needs independent semantic review,True,86,24,False,False
+https://openalex.org/T10215,Semantic Web and Ontologies,,1702,manual_review,scope needs independent semantic review,True,56,8,False,False
+https://openalex.org/T10237,Cryptography and Data Security,,1702,manual_review,scope needs independent semantic review,True,66,18,False,False
+https://openalex.org/T10320,Neural Networks and Applications,,1702,manual_review,scope needs independent semantic review,True,61,23,False,False
+https://openalex.org/T10331,Video Surveillance and Tracking Methods,,1707,manual_review,scope needs independent semantic review,True,103,22,False,False
+https://openalex.org/T10388,Advanced Steganography and Watermarking Techniques,,1707,manual_review,scope needs independent semantic review,True,70,15,False,False
+https://openalex.org/T10444,Context-Aware Activity Recognition Systems,,1707,manual_review,scope needs independent semantic review,True,63,17,False,False
+https://openalex.org/T10456,Multi-Agent Systems and Negotiation,,1702,manual_review,scope needs independent semantic review,True,14,2,False,False
+https://openalex.org/T10462,Reinforcement Learning in Robotics,"This cluster of papers encompasses a wide range of advancements in reinforcement learning algorithms and their applications, including deep learning, neural networks, robotics, autonomous control, policy gradient methods, multi-agent systems, model-based learning, curiosity-driven exploration, and simulation to real-world transfer.",1702,in,reinforcement learning is a core AI method; robotics-specific,False,120,45,True,True
+https://openalex.org/T10531,Advanced Vision and Imaging,,1707,manual_review,scope needs independent semantic review,True,45,16,False,False
+https://openalex.org/T10586,Robotic Path Planning Algorithms,,1707,manual_review,scope needs independent semantic review,True,73,18,False,False
+https://openalex.org/T10601,Handwritten Text Recognition Techniques,,1707,manual_review,scope needs independent semantic review,True,59,17,False,False
+https://openalex.org/T10627,Advanced Image and Video Retrieval Techniques,,1707,manual_review,scope needs independent semantic review,True,40,7,False,False
+https://openalex.org/T10637,Advanced Clustering Algorithms Research,,1702,manual_review,scope needs independent semantic review,True,40,16,False,False
+https://openalex.org/T10638,Optical measurement and interference techniques,,1707,manual_review,scope needs independent semantic review,True,55,16,False,False
+https://openalex.org/T10639,Advanced Software Engineering Methodologies,,1702,manual_review,scope needs independent semantic review,True,18,3,False,False
+https://openalex.org/T10664,Sentiment Analysis and Opinion Mining,"This cluster of papers focuses on sentiment analysis and opinion mining, particularly in the context of social media and text mining. It covers various techniques such as lexicon-based methods, deep learning, aspect-based sentiment analysis, and machine learning for analyzing emotions and opinions in textual data from platforms like Twitter. The research also delves into emotion recognition and the impact of sentiment analysis on public perception.",1702,in,sentiment/opinion analysis is an NLP task,False,190,58,True,True
+https://openalex.org/T10682,Quantum Computing Algorithms and Architecture,,1702,out,quantum-computing architecture is not primarily AI/CV,False,124,67,True,False
+https://openalex.org/T10688,Image and Signal Denoising Methods,,1707,manual_review,scope needs independent semantic review,True,52,16,False,False
+https://openalex.org/T10711,Target Tracking and Data Fusion in Sensor Networks,,1702,manual_review,scope needs independent semantic review,True,42,12,False,False
+https://openalex.org/T10764,Privacy-Preserving Technologies in Data,,1702,manual_review,"privacy technologies are broad, not necessarily AI methodology",True,150,62,True,False
+https://openalex.org/T10775,Generative Adversarial Networks and Image Synthesis,,1707,manual_review,scope needs independent semantic review,True,104,53,False,False
+https://openalex.org/T10799,Data Visualization and Analytics,,1707,manual_review,scope needs independent semantic review,True,60,16,False,False
+https://openalex.org/T10812,Human Pose and Action Recognition,,1707,manual_review,scope needs independent semantic review,True,73,21,False,False
+https://openalex.org/T10820,Fuzzy Logic and Control Systems,,1702,manual_review,scope needs independent semantic review,True,33,5,False,False
+https://openalex.org/T10824,Image Retrieval and Classification Techniques,,1707,manual_review,scope needs independent semantic review,True,35,4,False,False
+https://openalex.org/T10862,AI in cancer detection,,1702,manual_review,cancer-detection application overlaps CV/medical imaging,True,127,45,True,False
+https://openalex.org/T10888,Augmented Reality Applications,,1707,manual_review,scope needs independent semantic review,True,106,52,False,False
+https://openalex.org/T10901,Advanced Data Compression Techniques,,1707,manual_review,scope needs independent semantic review,True,32,10,False,False
+https://openalex.org/T10906,AI-based Problem Solving and Planning,,1702,manual_review,scope needs independent semantic review,True,15,3,False,False
+https://openalex.org/T10951,Cryptographic Implementations and Security,,1702,manual_review,scope needs independent semantic review,True,61,17,False,False
+https://openalex.org/T11010,"Logic, Reasoning, and Knowledge",,1702,manual_review,scope needs independent semantic review,True,34,11,False,False
+https://openalex.org/T11017,Chaos-based Image/Signal Encryption,,1707,manual_review,scope needs independent semantic review,True,36,13,False,False
+https://openalex.org/T11019,Image Enhancement Techniques,,1707,manual_review,scope needs independent semantic review,True,45,24,False,False
+https://openalex.org/T11105,Advanced Image Processing Techniques,,1707,manual_review,scope needs independent semantic review,True,54,22,False,False
+https://openalex.org/T11130,Coding theory and cryptography,,1702,manual_review,scope needs independent semantic review,True,70,14,False,False
+https://openalex.org/T11165,Image and Video Quality Assessment,,1707,manual_review,scope needs independent semantic review,True,22,8,False,False
+https://openalex.org/T11269,Algorithms and Data Compression,,1702,manual_review,scope needs independent semantic review,True,39,9,False,False
+https://openalex.org/T11273,Advanced Graph Neural Networks,,1702,manual_review,scope needs independent semantic review,True,61,28,False,False
+https://openalex.org/T11276,Solar Radiation and Photovoltaics,,1702,manual_review,scope needs independent semantic review,True,75,25,False,False
+https://openalex.org/T11303,Bayesian Modeling and Causal Inference,,1702,manual_review,scope needs independent semantic review,True,28,7,False,False
+https://openalex.org/T11307,Domain Adaptation and Few-Shot Learning,,1702,manual_review,scope needs independent semantic review,True,84,42,False,False
+https://openalex.org/T11349,Music Technology and Sound Studies,,1707,manual_review,scope needs independent semantic review,True,39,6,False,False
+https://openalex.org/T11424,Security and Verification in Computing,,1702,manual_review,scope needs independent semantic review,True,30,10,False,False
+https://openalex.org/T11439,Video Analysis and Summarization,,1707,manual_review,scope needs independent semantic review,True,8,3,False,False
+https://openalex.org/T11448,Face recognition and analysis,,1707,manual_review,scope needs independent semantic review,True,66,15,False,False
+https://openalex.org/T11512,Anomaly Detection Techniques and Applications,,1702,manual_review,scope needs independent semantic review,True,51,21,False,False
+https://openalex.org/T11550,Text and Document Classification Technologies,,1702,manual_review,scope needs independent semantic review,True,45,8,False,False
+https://openalex.org/T11574,Artificial Intelligence in Games,,1702,manual_review,scope needs independent semantic review,True,17,9,False,False
+https://openalex.org/T11598,Internet Traffic Analysis and Secure E-voting,,1702,manual_review,scope needs independent semantic review,True,20,8,False,False
+https://openalex.org/T11605,Visual Attention and Saliency Detection,,1707,manual_review,scope needs independent semantic review,True,23,5,False,False
+https://openalex.org/T11612,Stochastic Gradient Optimization Techniques,,1702,manual_review,scope needs independent semantic review,True,48,14,False,False
+https://openalex.org/T11652,Imbalanced Data Classification Techniques,,1702,manual_review,scope needs independent semantic review,True,43,20,False,False
+https://openalex.org/T11689,Adversarial Robustness in Machine Learning,,1702,manual_review,scope needs independent semantic review,True,73,39,False,False
+https://openalex.org/T11714,Multimodal Machine Learning Applications,,1707,manual_review,scope needs independent semantic review,True,37,32,False,False
+https://openalex.org/T11901,Bayesian Methods and Mixture Models,,1702,manual_review,scope needs independent semantic review,True,12,5,False,False
+https://openalex.org/T11902,Intelligent Tutoring Systems and Adaptive Learning,,1702,manual_review,scope needs independent semantic review,True,23,5,False,False
+https://openalex.org/T11975,Evolutionary Algorithms and Applications,,1702,manual_review,scope needs independent semantic review,True,14,2,False,False
+https://openalex.org/T12026,Explainable Artificial Intelligence (XAI),,1702,manual_review,scope needs independent semantic review,True,70,37,False,False
+https://openalex.org/T12031,Speech and dialogue systems,,1702,manual_review,scope needs independent semantic review,True,28,16,False,False
+https://openalex.org/T12072,Machine Learning and Algorithms,,1702,manual_review,scope needs independent semantic review,True,20,6,False,False
+https://openalex.org/T12128,AI in Service Interactions,,1702,manual_review,scope needs independent semantic review,True,44,46,False,False
+https://openalex.org/T12131,Wireless Signal Modulation Classification,,1702,manual_review,scope needs independent semantic review,True,21,4,False,False
+https://openalex.org/T12157,Geochemistry and Geologic Mapping,,1702,manual_review,scope needs independent semantic review,True,35,12,False,False
+https://openalex.org/T12260,Educational Technology and Pedagogy,,1702,manual_review,scope needs independent semantic review,True,50,18,False,False
+https://openalex.org/T12262,Hate Speech and Cyberbullying Detection,,1702,manual_review,scope needs independent semantic review,True,33,13,False,False
+https://openalex.org/T12292,Graph Theory and Algorithms,,1707,manual_review,scope needs independent semantic review,True,18,6,False,False
+https://openalex.org/T12357,Digital Media Forensic Detection,,1707,manual_review,scope needs independent semantic review,True,39,11,False,False
+https://openalex.org/T12380,Authorship Attribution and Profiling,,1702,manual_review,scope needs independent semantic review,True,14,3,False,False
+https://openalex.org/T12535,Machine Learning and Data Classification,,1702,manual_review,scope needs independent semantic review,True,40,15,False,False
+https://openalex.org/T12549,Image and Object Detection Techniques,,1707,manual_review,scope needs independent semantic review,True,5,3,False,False
+https://openalex.org/T12611,Neural Networks and Reservoir Computing,,1702,manual_review,scope needs independent semantic review,True,22,8,False,False
+https://openalex.org/T12676,Machine Learning and ELM,,1702,manual_review,scope needs independent semantic review,True,7,2,False,False
+https://openalex.org/T12761,Data Stream Mining Techniques,,1702,manual_review,scope needs independent semantic review,True,8,3,False,False
+https://openalex.org/T12805,Cognitive Science and Mapping,,1702,manual_review,scope needs independent semantic review,True,5,2,False,False
+https://openalex.org/T12814,Gaussian Processes and Bayesian Inference,,1702,manual_review,scope needs independent semantic review,True,28,6,False,False
+https://openalex.org/T12874,Digital Imaging for Blood Diseases,,1707,manual_review,scope needs independent semantic review,True,17,8,False,False
+https://openalex.org/T12923,Digital Image Processing Techniques,,1707,manual_review,scope needs independent semantic review,True,7,2,False,False
+https://openalex.org/T13018,Seismology and Earthquake Studies,,1702,manual_review,scope needs independent semantic review,True,22,4,False,False
+https://openalex.org/T13062,Cognitive Computing and Networks,,1702,manual_review,scope needs independent semantic review,True,4,2,False,False
+https://openalex.org/T13083,Advanced Text Analysis Techniques,,1702,manual_review,scope needs independent semantic review,True,19,5,False,False
+https://openalex.org/T13398,Data Analysis with R,,1702,manual_review,scope needs independent semantic review,True,8,1,False,False
+https://openalex.org/T13559,Edcuational Technology Systems,,1702,manual_review,scope needs independent semantic review,True,45,7,False,False
+https://openalex.org/T13579,Image and Video Stabilization,,1707,manual_review,scope needs independent semantic review,True,3,0,False,False
+https://openalex.org/T13623,Linguistic Studies and Language Acquisition,,1702,manual_review,scope needs independent semantic review,True,10,1,False,False
+https://openalex.org/T13629,Text Readability and Simplification,,1702,manual_review,scope needs independent semantic review,True,6,3,False,False
+https://openalex.org/T13650,Computational Physics and Python Applications,,1702,manual_review,scope needs independent semantic review,True,16,4,False,False
+https://openalex.org/T13674,Computer Science and Engineering,,1702,manual_review,scope needs independent semantic review,True,7,0,False,False
+https://openalex.org/T13702,Machine Learning in Healthcare,,1702,manual_review,scope needs independent semantic review,True,51,21,False,False
+https://openalex.org/T13734,Advanced Computational Techniques and Applications,,1702,manual_review,scope needs independent semantic review,True,4,0,False,False
+https://openalex.org/T13851,"Law, AI, and Intellectual Property",,1702,manual_review,scope needs independent semantic review,True,12,8,False,False
+https://openalex.org/T13898,Diverse Interdisciplinary Research Studies,,1702,manual_review,scope needs independent semantic review,True,1,2,False,False
+https://openalex.org/T13904,Artificial Intelligence Applications,,1702,manual_review,scope needs independent semantic review,True,62,43,False,False
+https://openalex.org/T13935,Mathematical Control Systems and Analysis,,1702,manual_review,scope needs independent semantic review,True,2,0,False,False
+https://openalex.org/T14319,Currency Recognition and Detection,,1707,manual_review,scope needs independent semantic review,True,3,0,False,False
+https://openalex.org/T14335,Educational Robotics and Engineering,,1702,manual_review,scope needs independent semantic review,True,23,6,False,False
+https://openalex.org/T14339,Image Processing and 3D Reconstruction,,1707,manual_review,scope needs independent semantic review,True,5,2,False,False
+https://openalex.org/T14381,"Psychiatry, Mental Health, Neuroscience",,1702,manual_review,scope needs independent semantic review,True,5,0,False,False

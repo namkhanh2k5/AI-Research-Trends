@@ -398,6 +398,39 @@ CSV hashes matched independent reruns. Timing diagnostics are intentionally kept
 outside deterministic CSV outputs. These are bounded proxy results, not a
 full-pool temporal-coverage estimate or human relevance evaluation.
 
+## Phase 6A topic-classification feasibility pilot
+
+The [pre-model selection protocol](docs/PHASE6_TOPIC_SELECTION_PROTOCOL.md)
+fixes 2020–2023 training, 2024 validation, a locked 2025 test, duplicate/version
+grouping, and the provisional 120/30 per-topic support rule. The actual local
+pilot found five scope-reviewed topics meeting that rule, below the intended
+8–15-topic catalogue. A five-class diagnostic model was therefore evaluated
+only as a **non-confirmatory** silver-label agreement experiment. The outcome
+and its scientific limitations are in the [feasibility report](reports/PHASE6A_TOPIC_CLASSIFICATION_FEASIBILITY.md)
+and [reviewer handoff](reports/PHASE6A_REVIEW_HANDOFF.md). No human-labelled
+validation has yet been performed; see the [blind annotation protocol](docs/PHASE6_HUMAN_ANNOTATION_GUIDELINES.md).
+
+The Phase 6A run uses only verified local Phase 3 Parquet data. No citation,
+year, topic score, or source metadata is supplied as a model feature. To
+reproduce it in a fresh Git-ignored directory (never reuse a completed output
+directory):
+
+```bash
+pip install -e ".[dev]"
+openalex-pilot-topics --help
+openalex-pilot-topics --output-dir data/analysis/phase6_topic_pilot_reproduction
+pytest -q -ra
+pip check
+```
+
+The run manifest hashes each CSV, the support figure, the verified input tables
+and catalogue configuration. The dedicated locked-test file has only 2025 Work
+IDs and version groups; the separate source-label audit includes descriptive
+2025 counts but these were not used for selection, fitting or evaluation. The
+Git-ignored annotation template and answer
+key remain local. The published [topic-support chart](reports/figures/phase6/topic_support.png)
+shows sample counts, not population topic prevalence.
+
 ## Repository layout
 
 ```text
@@ -406,14 +439,14 @@ docs/                           proposal, methods, dictionary, feasibility repor
 data/raw/                       immutable API response bodies (Git-ignored)
 data/interim/                   extracted/normalized intermediate data (Git-ignored)
 data/processed/                 Phase 3 Parquet analytical tables (Git-ignored)
-data/analysis/                  Phase 4 CSV results and manifests (Git-ignored)
+data/analysis/                  Phase 4–6 local CSV results and manifests (Git-ignored)
 data/metadata/                  manifests and quality reports (Git-ignored)
 src/ai_research_trends/
   crawling/                     API client and collection CLIs
   preprocessing/               Phase 3 table builders
   features/                    bibliometric feature engineering
   analysis/                    Phase 4 statistical analysis
-  ml/                          Phase 5 leakage-aware experiments
+  ml/                          Phase 5 audits and Phase 6A silver-label pilot
 notebooks/                      thin, numbered presentation notebooks
 dashboard/                      Phase 6 application
 models/                         fitted artifacts (Git-ignored)
