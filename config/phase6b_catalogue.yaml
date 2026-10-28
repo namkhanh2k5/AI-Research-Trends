@@ -1,0 +1,46 @@
+schema_version: 1
+status: "provisional single-researcher scope review; independent human review pending"
+source_metadata_csv: "config/phase6b_topic_metadata.csv"
+source_metadata_sha256: "024f9f13db713534fcc662ff95f477299c8cf939ca200565b2e88e13371ddd86"
+train_years: [2020, 2021, 2022, 2023]
+validation_year: 2024
+locked_test_year: 2025
+minimum_train: 70
+minimum_validation: 20
+catalogue_a: [T10036, T10664, T10028, T10052, T10462]
+catalogue_b:
+  - T10036
+  - T10664
+  - T10028
+  - T10052
+  - T10462
+  - T10775
+  - T10181
+  - T11307
+  - T11689
+  - T12026
+  - T10201
+  - T10331
+  - T10812
+  - T10100
+scope_review:
+  T10020: {status: out, reason: "Quantum information/cryptography, not primarily AI/CV methodology", overlap: "Quantum computing"}
+  T10028: {status: in, reason: "NLP methods; broad historical OpenAlex cluster", overlap: "T10181, T10664"}
+  T10036: {status: in, reason: "Deep-learning CV tasks; broad cluster", overlap: "T10052, T10775, T11307"}
+  T10052: {status: in, reason: "Image segmentation is a CV method despite medical focus", overlap: "T10036"}
+  T10100: {status: in, reason: "Nature-inspired optimization methods used within AI", overlap: "Broad cross-domain applications; human review needed"}
+  T10181: {status: in, reason: "Core NLP techniques and language modelling", overlap: "T10028, T10664"}
+  T10201: {status: in, reason: "Speech recognition and synthesis methods", overlap: "NLP and audio"}
+  T10331: {status: in, reason: "CV tracking and re-identification methods", overlap: "T10036, T10812"}
+  T10462: {status: in, reason: "Reinforcement-learning methods in robotics", overlap: "Robotic control"}
+  T10664: {status: in, reason: "Sentiment analysis is an NLP task", overlap: "T10028, T10181"}
+  T10682: {status: out, reason: "Quantum-computing architecture is not primarily AI/CV", overlap: "Quantum information"}
+  T10764: {status: uncertain, reason: "Privacy technologies include federated ML but also broad data security", overlap: "Security and ML; independent scope decision needed"}
+  T10775: {status: in, reason: "GAN and image-synthesis methodology", overlap: "T10036"}
+  T10812: {status: in, reason: "CV pose estimation and action recognition", overlap: "T10036, T10331"}
+  T10862: {status: uncertain, reason: "Cancer-detection application; methods overlap medical CV", overlap: "T10052"}
+  T10888: {status: uncertain, reason: "Augmented-reality applications span many domains", overlap: "CV tracking subset"}
+  T11276: {status: out, reason: "Solar forecasting application, not primarily AI/CV methodology", overlap: "Energy systems"}
+  T11307: {status: in, reason: "Domain adaptation and few-shot learning methods", overlap: "T10036"}
+  T11689: {status: in, reason: "Adversarial robustness of ML models", overlap: "T10036"}
+  T12026: {status: in, reason: "Explainable AI and model interpretability", overlap: "Cross-cutting methods"}
