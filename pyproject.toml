@@ -64,6 +64,11 @@ openalex-reassess-literature = "ai_research_trends.ml.candidate_pool:main"
 openalex-enrich-candidates = "ai_research_trends.ml.metadata_enrichment:main"
 openalex-diagnose-retrieval = "ai_research_trends.ml.retrieval_baselines:main"
 openalex-pilot-topics = "ai_research_trends.ml.topic_pilot:main"
+openalex-fetch-topic-metadata = "ai_research_trends.ml.topic_catalogue:main"
+openalex-validate-topics-final = "ai_research_trends.ml.topic_final_validation:main"
+openalex-verify-topic-run = "ai_research_trends.ml.validate_topic_run:main"
+openalex-place-research-draft = "ai_research_trends.ml.topic_brief:main"
+openalex-analyze-topic-annotations = "ai_research_trends.ml.topic_annotation:main"
 openalex-discover-topics = "ai_research_trends.crawling.discover_topics:main"
 
 [tool.setuptools.packages.find]
