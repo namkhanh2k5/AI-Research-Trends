@@ -168,8 +168,11 @@ class OpenAlexClient:
         if wait > 0:
             self.sleep(wait)
 
-    def request(self, path: str, params: Mapping[str, Any] | None = None) -> requests.Response:
+    def request(self, path: str, params: Mapping[str, Any] | None = None,
+                *, allow_statuses: frozenset[int] = frozenset()) -> requests.Response:
         """GET an endpoint, retrying transient errors with bounded exponential backoff."""
+        if not allow_statuses.issubset({404}):
+            raise ValueError("Only HTTP 404 may be returned as a non-exception response")
         url = path if path.startswith("http") else f"{self.base_url}/{path.lstrip('/')}"
         last_error: Exception | None = None
 
@@ -186,6 +189,8 @@ class OpenAlexClient:
                 continue
 
             if response.status_code not in RETRYABLE_STATUS_CODES:
+                if response.status_code in allow_statuses:
+                    return response
                 if response.status_code == 401:
                     raise OpenAlexError(
                         "OpenAlex returned 401. A verified API key is required for cursor "
