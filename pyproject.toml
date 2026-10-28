@@ -63,6 +63,7 @@ openalex-verify-literature-audit = "ai_research_trends.ml.validate_literature_au
 openalex-reassess-literature = "ai_research_trends.ml.candidate_pool:main"
 openalex-enrich-candidates = "ai_research_trends.ml.metadata_enrichment:main"
 openalex-diagnose-retrieval = "ai_research_trends.ml.retrieval_baselines:main"
+openalex-pilot-topics = "ai_research_trends.ml.topic_pilot:main"
 openalex-discover-topics = "ai_research_trends.crawling.discover_topics:main"
 
 [tool.setuptools.packages.find]
