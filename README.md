@@ -475,6 +475,48 @@ The optional real two-rater process is specified in the
 [human-review instructions](docs/PHASE6B_HUMAN_REVIEW_INSTRUCTIONS.md); no
 human ratings have been generated or inferred.
 
+## Finalization Phase 1 — targeted training-data foundation
+
+A bounded, **training-years-only (2020–2023)** OpenAlex expansion acquired
+2,515 unique works in a separate immutable run. After text and identity checks,
+1,947 new records are provisionally usable for later ML training (1,638 within
+the fourteen-topic catalogue, 309 outside). Eleven topics now meet the planning
+target of 225 usable examples; the residual shortfall is 12 across three topics.
+This is **not** a population sample and does not revise the original 12,000-work
+EDA dataset or the Phase 6B model-performance verdict. Independent human topic
+review remains pending. See the [primary expansion report](reports/FINALIZATION_P1_EXPANSION_REPORT.md),
+[data-gap audit](reports/FINALIZATION_P1_DATA_GAP_AUDIT.md),
+[collection plan](reports/FINALIZATION_P1_COLLECTION_PLAN.md),
+[label-drift audit](reports/FINALIZATION_P1_LABEL_DRIFT_AUDIT.md), and
+[Phase 2 handoff](reports/FINALIZATION_P1_PHASE2_HANDOFF.md). Small
+[reviewer-safe aggregate CSVs](reports/finalization_p1/reproducibility_manifest.json)
+are committed; raw works, private audits, manifests and credentials are local only.
+
+Install and inspect the local verified run from the repository root:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+openalex-audit-ml-gaps --help
+openalex-audit-label-drift --help
+openalex-plan-ml-expansion --help
+openalex-collect-ml-expansion --help
+openalex-verify-ml-expansion data/raw/openalex_ml_expansion/ml_expansion_20261101T052506Z/manifest.json
+openalex-audit-label-drift --verify-manifest data/analysis/finalization_p1_label_drift_20261101_v1/manifest.json
+openalex-audit-ml-expansion --help
+openalex-publish-ml-audit --help
+pytest -q -ra
+pip check
+```
+
+The local run paths are not downloadable from GitHub. These commands verify
+existing evidence and do not start an API crawl. The acquisition command runs
+in dry-run mode unless `--execute` is explicitly supplied; only use it with a
+new versioned output root and a validated plan. Phase 2 should implement the
+[non-destructive integration contract](config/finalization_phase2_integration.yaml)
+and blinded scope review before any final model fitting.
+
 ## Repository layout
 
 ```text
