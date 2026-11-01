@@ -1,0 +1,11 @@
+# Independent topic-label review: handoff protocol
+
+The frozen Catalogue B has 14 OpenAlex topics. OpenAlex labels are machine-generated; model agreement with them is *not* independent evidence of semantic validity. Two real human raters are needed before topic-label validity can be called established.
+
+`openalex-prepare-human-review prepare --output-dir data/analysis/finalization_p2_human_review_20261101_v1` creates two separate packages. Each contains the same 40 calibration and 100 evaluation papers with shuffled topic-option order and a 14-topic scope form. The restricted OpenAlex answer keys remain in the original ignored Phase 6B directory and are **not** copied. The package manifest records checksums, not ratings. Do not publish the package or restricted keys on GitHub.
+
+Give each reviewer only their own package. Ask them to read official topic names, descriptions and parent subfields, then independently judge each topic as in-scope, out-of-scope or uncertain and document overlaps. For each paper, read title/abstract and choose the best topic among the randomized options, or `NONE`/`UNCLEAR`; optionally identify a second plausible topic and add a short explanation. Calibration can be discussed only **after both independent calibration sheets are returned**. Freeze the evaluation procedure before either reviewer starts the 100-paper sheet. Evaluation ratings must remain independent.
+
+Validate each returned file with `openalex-prepare-human-review validate-ratings --ratings PATH --blind PATH --reviewer reviewer_a` (or `reviewer_b`). The validator requires every example exactly once and rejects unknown topics. Only after both genuine rating files exist should the analysis join by blind `example_id`, compute raw agreement and Cohen's kappa (including `NONE`/`UNCLEAR`), confusion and mismatch counts, then access the restricted answer keys. Record disputed examples and any topic-scope revisions as a *new* catalogue version; do not retroactively alter the sealed 2025 test set or claim model superiority from this audit alone.
+
+Current state: packages prepared and integrity-checked; **zero human ratings received**. Therefore agreement, precision, recall, and independent label-validity estimates are not measured. This is a conditional research gate, not a completed human validation.
