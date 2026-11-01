@@ -11,6 +11,7 @@ import pytest
 from ai_research_trends.ml.final_experiments import (
     metric_row, paired_bootstrap, stratified_expansion_fraction, text_features,
 )
+from ai_research_trends.ml.final_diagnostics import summarize_groups
 from ai_research_trends.ml.final_inference import TopicPlacementService, select_champion
 from ai_research_trends.ml.final_open_set import bootstrap_open_set, score_predictions
 from ai_research_trends.ml.final_test_gate import evaluate_once, verify_human_gate
@@ -130,6 +131,18 @@ def test_model_loader_rejects_corrupt_bundle_before_deserialization(tmp_path: Pa
         TopicPlacementService(model_dir, tmp_path / "unread_web")
 
 
+def test_diagnostic_groups_only_emit_aggregate_errors():
+    frame = pd.DataFrame({"bucket": ["short", "short", "long"],
+                          "correct": [True, False, False],
+                          "work_id": ["private-1", "private-2", "private-3"]})
+    result = summarize_groups(frame, "bucket")
+    assert result == [
+        {"group": "long", "n": 1, "errors": 1, "error_rate": 1.0},
+        {"group": "short", "n": 2, "errors": 1, "error_rate": .5},
+    ]
+    assert "private-1" not in str(result)
+
+
 def test_local_verified_runs_and_inference_when_available():
     """Integration smoke uses real local artifacts, but is optional on GitHub clones."""
     root = Path.cwd()
@@ -180,3 +193,20 @@ def test_published_development_figures_and_markdown_links():
         content = markdown.read_text()
         for relative in re.findall(r"\]\(([^)]+\.png)\)", content):
             assert (markdown.parent / relative).is_file(), f"Broken figure link: {markdown}: {relative}"
+
+
+def test_local_aggregate_diagnostic_manifest_when_available():
+    root = Path(__file__).resolve().parents[1]
+    run = root / "data/analysis/finalization_p3_diagnostics_20261101_v3"
+    if not run.is_dir():
+        pytest.skip("Git-ignored development diagnostics unavailable")
+    manifest = json.loads((run / "manifest.json").read_text())
+    assert manifest["status"] == "complete"
+    assert file_sha256(root / "src/ai_research_trends/ml/final_diagnostics.py") == manifest["code_sha256"]
+    for name, entry in manifest["files"].items():
+        assert file_sha256(run / name) == entry["sha256"]
+    result = json.loads((run / "results.json").read_text())
+    assert result["source_scope"].startswith("2024 original-sample")
+    assert result["year_specific_limitation"].endswith("2025 is sealed")
+    assert result["n"] == sum(row["n"] for row in result["margin_quartiles"])
+    assert result["errors"] == sum(row["errors"] for row in result["margin_quartiles"])

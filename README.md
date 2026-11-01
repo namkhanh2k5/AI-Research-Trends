@@ -575,6 +575,7 @@ primary-topic labels, not independent human semantic correctness. On a separate
 explicit user confirmation. Human ratings are pending, and the 2025 final test
 remains **sealed**. Read the [scientific report](reports/FINALIZATION_P3_FINAL_ML_REPORT.md),
 [open-set assessment](reports/FINALIZATION_P3_OPEN_SET_EVALUATION.md), and
+[error diagnostics](reports/FINALIZATION_P3_ERROR_DIAGNOSTICS.md), and the
 [Phase 4 reviewer handoff](reports/FINALIZATION_P3_PHASE4_HANDOFF.md).
 
 Compact development figures: [model comparison](reports/figures/finalization_p3/model_comparison.png),
@@ -592,6 +593,7 @@ openalex-final-ml --output-dir data/analysis/finalization_p3_models_rebuild_v1
 openalex-final-open-set --closed-run data/analysis/finalization_p3_models_rebuild_v1 --output-dir data/analysis/finalization_p3_open_rebuild_v1
 openalex-verify-final-ml data/analysis/finalization_p3_models_rebuild_v1
 openalex-verify-final-ml data/analysis/finalization_p3_open_rebuild_v1
+openalex-final-ml-diagnostics --closed-run data/analysis/finalization_p3_models_rebuild_v1 --output-dir data/analysis/finalization_p3_diagnostics_rebuild_v1
 openalex-package-topic-model package --closed-run data/analysis/finalization_p3_models_rebuild_v1 --open-run data/analysis/finalization_p3_open_rebuild_v1 --output-dir models/finalization_p3/topic_placement_rebuild_v1
 openalex-package-topic-model infer --help
 openalex-final-test --help

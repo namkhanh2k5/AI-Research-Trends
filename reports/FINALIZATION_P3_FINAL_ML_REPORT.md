@@ -36,7 +36,7 @@ All values below use the **same 681 in-catalogue 2024 original-sample works** an
 | Logistic Regression | 0.7710 | 0.8580 | 0.8649 |
 | Linear SVM | 0.8506 | **0.8808** | **0.8796** |
 
-The description baseline uses only official topic descriptions and is not a supervised learner. See [model comparison](FINALIZATION_P3_MODEL_COMPARISON.md) and [figure](figures/finalization_p3/model_comparison.png).
+The description baseline uses only official topic descriptions and is not a supervised learner. Paired 500-resample intervals for expanded SVM macro-F1 minus expanded LR and NB are **[0.0042, 0.0419]** and **[0.0051, 0.0408]**, respectively; they do not account for silver-label error or sampling uncertainty. See [model comparison](FINALIZATION_P3_MODEL_COMPARISON.md) and [figure](figures/finalization_p3/model_comparison.png).
 
 ## 8. Per-class evaluation
 
@@ -44,11 +44,11 @@ The champion's weakest measured classes included T10181 (36 validation works, F1
 
 ## 9. Error analysis
 
-Largest observed directed confusions include T10181→T10028 (7), T10028→T10181 (7), and T10036→T10052 (7); the [confusion matrix](figures/finalization_p3/confusion.png) shows the full pattern. Expansion did not benefit every class: T10036 recall fell from about 0.916 to 0.839, and T10028 from about 0.845 to 0.810. Dominant SVM terms are association diagnostics, not causal explanations of the OpenAlex labels.
+The SVM disagreed with the OpenAlex primary label for **82/681** works. Its lowest-margin quartile had **57/171** disagreements, versus **1/170** in the highest; margins are not probabilities. Among the 82 disagreements, **48** predicted topics also appear as an OpenAlex secondary topic, suggesting single-label ambiguity but not proving semantic correctness. Largest directed confusions include T10181→T10028 (7), T10028→T10181 (7), and T10036→T10052 (7); the [confusion matrix](figures/finalization_p3/confusion.png) shows the full pattern. Expansion corrected 36 previously wrong cases but made 19 previously right cases wrong; T10036 and T10028 recall declined. Abstract-length quartile error rates were not monotonic, and preprints showed 37/228 disagreements versus articles 44/450; no causal or subgroup-fairness conclusion follows. Full aggregate evidence is in the [error diagnostics](FINALIZATION_P3_ERROR_DIAGNOSTICS.md). Dominant SVM terms are association diagnostics, not causal explanations of the OpenAlex labels.
 
 ## 10. Sampling bias and generalization
 
-Expansion was targeted to catalogue topics and historical years. It changes training composition and cannot establish improvement for other topics, future years, or the global AI population. The original 2024 validation is held fixed to make the ablation comparable. Grouping by version family reduces duplicate leakage; residual near-duplicates and label drift remain possible. The fixed-parameter ablation is the cleaner estimate of data addition, but still reflects this chosen targeted addition and one development set.
+Expansion was targeted to catalogue topics and historical years. It changes training composition and cannot establish improvement for other topics, future years, or the global AI population. The original 2024 validation is held fixed to make the ablation comparable. Grouping by version family reduces duplicate leakage; residual near-duplicates and label drift remain possible. The fixed-parameter ablation is the cleaner estimate of data addition, but still reflects this chosen targeted addition and one development set. Year-specific **validation** performance cannot be estimated from only the 2024 development year without opening the sealed 2025 test.
 
 ## 11. Open-set rejection and abstention
 

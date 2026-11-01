@@ -91,6 +91,7 @@ openalex-verify-final-ml = "ai_research_trends.ml.verify_final_ml:main"
 openalex-package-topic-model = "ai_research_trends.ml.final_inference:main"
 openalex-final-test = "ai_research_trends.ml.final_test_gate:main"
 openalex-final-ml-figures = "ai_research_trends.analysis.final_ml_figures:main"
+openalex-final-ml-diagnostics = "ai_research_trends.ml.final_diagnostics:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

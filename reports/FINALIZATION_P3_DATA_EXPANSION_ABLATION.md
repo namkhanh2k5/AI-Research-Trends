@@ -12,4 +12,13 @@ These comparisons independently retuned each training source using historical gr
 
 The expansion improves aggregate agreement with OpenAlex labels, but class-level outcomes differ. T11307 and T10181 recall improved, whereas T10036 and T10028 recall declined. Targeted acquisition favors selected classes and may amplify OpenAlex label conventions. It is not evidence that all AI research topics benefit, and it must never enter population-trend denominators. Figures: [support](figures/finalization_p3/training_support.png), [learning curve](figures/finalization_p3/learning_curve.png).
 
+The following descriptive composition uses **all eligible 2020–2023 model-ready rows**, not just the 14-class subset. Counts come from the frozen training-run manifest and demonstrate why the targeted addition cannot be treated as representative:
+
+| Source | Eligible rows | Selected-topic rows | 2020 / 2021 / 2022 / 2023 | Article / preprint / review | English / all | Mean abstract words |
+|---|---:|---:|---|---|---:|---:|
+| Original analytical sample | 5,055 | 1,717 | 1,099 / 1,225 / 1,250 / 1,481 | 3,818 / 1,210 / 27 | 4,680 / 5,055 | 183.55 |
+| Targeted training expansion | 1,947 | 1,638 | 410 / 465 / 488 / 584 | 1,244 / 685 / 18 | 1,854 / 1,947 | 184.62 |
+
+The expansion has a much larger fraction of in-catalogue labels and more preprints proportionally. No population or inclusion weights are inferred. In the paired same-paper SVM comparison, expansion corrected **36** original-only errors but introduced **19** new errors, as measured in the [aggregate error audit](FINALIZATION_P3_ERROR_DIAGNOSTICS.md).
+
 Reproduce locally with `openalex-final-ml --output-dir data/analysis/<new-immutable-run>` after verifying the integrated Phase 2 manifest. Source predictions and model binaries are Git-ignored; aggregate metrics are in the [main report](FINALIZATION_P3_FINAL_ML_REPORT.md).

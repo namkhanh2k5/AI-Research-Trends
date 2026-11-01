@@ -13,13 +13,14 @@ Original-sample 2024 open-set calibration: 738; disjoint evaluation: 1,105 (408 
 
 ## Verification
 
-Source integrated manifest and Phase 2 web-data checksums are verified before experiments. Closed/open run validators check local output hashes, source linkage and evaluation universes. The bounded original-vs-expanded evaluation uses the same original-sample 2024 papers. Offline `pytest -o addopts='' -q -ra`: **189 passed, 1 opt-in live test skipped**; `python -m pip check`: **No broken requirements found**. The closed/open verifiers checked 14/23 files, a second closed run reproduced all reported deterministic metric blocks, nine published figure hashes matched, and the six inference contract cases were exercised. Development model binaries and record-level predictions are Git-ignored.
+Source integrated manifest and Phase 2 web-data checksums are verified before experiments. Closed/open run validators check local output hashes, source linkage and evaluation universes. The bounded original-vs-expanded evaluation uses the same original-sample 2024 papers. Offline `pytest -o addopts='' -q -ra`: **191 passed, 1 opt-in live test skipped**; `python -m pip check`: **No broken requirements found**. The closed/open verifiers checked 14/23 files, a second closed run reproduced all reported deterministic metric blocks, aggregate error diagnostics reproduced, nine published figure hashes matched, and the six inference contract cases were exercised. Development model binaries and record-level predictions are Git-ignored.
 
 ## Artifacts
 
 - [Main report](reports/FINALIZATION_P3_FINAL_ML_REPORT.md)
 - [Expansion ablation](reports/FINALIZATION_P3_DATA_EXPANSION_ABLATION.md)
 - [Model comparison](reports/FINALIZATION_P3_MODEL_COMPARISON.md)
+- [Aggregate error diagnostics](reports/FINALIZATION_P3_ERROR_DIAGNOSTICS.md)
 - [Open-set evaluation](reports/FINALIZATION_P3_OPEN_SET_EVALUATION.md)
 - [Inference integration](reports/FINALIZATION_P3_INFERENCE_INTEGRATION.md)
 - [Reviewer handoff](reports/FINALIZATION_P3_PHASE4_HANDOFF.md)
