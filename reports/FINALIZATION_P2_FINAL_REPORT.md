@@ -1,0 +1,24 @@
+# Finalization Phase 2 — decision report
+
+**Decision: CONDITIONAL GO to Finalization Phase 3 model engineering.** Data integrity, leakage controls, automated RQ6 analysis and read-only web data products pass. Independent two-human topic review has been prepared but has **zero real ratings**, so semantic label validity and any final user-facing accuracy claim remain conditional. No final classifier, website or sealed-2025 evaluation was produced in this phase.
+
+The complete local run is bound by `data/analysis/finalization_p2_master_20261101_v1.json`: seven child manifests, source/code hashes, row counts, 14 new API requests and the pending human-review state. Its read-only verification passed. The manifest remains Git-ignored because it refers to local datasets; the human-readable evidence below and the safe RQ6 figures/tables are committed.
+
+Final offline validation: `.venv/bin/pytest -q -ra -o addopts=''` → **178 passed, 1 live probe skipped** (opt-in only); `.venv/bin/pip check` → **no broken requirements**. The integration validator compared all eight Parquet SHA-256 hashes across two runs; RQ6 validated 8 CSV + 5 PNG source/publication hashes; topic aggregates validated 14 raw responses and 84 year groups; web data validated 22 outputs and 12,000 unique original Work IDs; the human package validator confirmed two isolated, unanswered reviewer packages. All newly installed CLI entry points responded to `--help`. The skipped live sampling test does not negate the separately completed bounded 14-request aggregate snapshot.
+
+## What was completed
+
+1. Verified the original 12,000-work collection, eight Phase 3 analytical tables, 64 Phase 4 outputs and the separate 2,515-work ML expansion before integration. Preserved all source data unchanged.
+2. Built an auditable 14,470-group integrated source inventory from 14,515 source rows, with Work-ID/DOI/title version resolution, split-safe representative selection and near-title risk quarantine. The ML splits have 7,002 2020–2023 train, 1,843 2024 validation and 2,318 sealed 2025 rows (count only). The targeted expansion contributes 1,947 train rows and no validation/test rows. All eight Parquet outputs reproduced byte-for-byte in a second run.
+3. Completed RQ6 automatic support, year, overlap, score-gap, text-missingness and duplicate diagnostics: eight CSV tables and five PNG figures verified and published. Five selected classes are 1–9 rows below the 225-row planning heuristic, 23 rows in total. This does not invalidate the training set but is a limitation for per-class estimates.
+4. Prepared isolated blind packages for two human raters: 40 calibration and 100 evaluation examples each, plus 14-topic scope forms. Restricted keys remain private; no fabricated ratings or agreement statistics.
+5. Queried and verified 14 OpenAlex `primary_topic.id` annual aggregate series (84 topic-year rows) within the approved non-retracted 2020–2025 AI/CV primary-subfield frame. This 2026-11-01 snapshot is distinct from the older Phase 4 population snapshot.
+6. Built and verified 22 local website data products: 12,000-paper original-sample index, 14 Topic Briefs, Phase 4 research summaries and separate population-topic trajectories. No oversampled ML expansion enters sample statistics or the paper explorer.
+
+## Limits and gates
+
+OpenAlex primary topics are silver labels, possibly overlapping in content and subject to source-classifier drift. The 225-example target is heuristic. Text and abstract missingness vary by topic; metadata quality is not uniform. Exact identity grouping and one rare-title near-match screen reduce but cannot prove absence of all semantic duplicates. A 2025 class distribution and model metric were deliberately not inspected. The OpenAlex topic snapshot is a current query-time observation, not immutable history. Original-sample EDA does not become a full-population estimate merely because a web interface exposes it.
+
+Phase 3 may start with reproducible baseline and model-engineering comparisons on **2020–2023 train / 2024 validation**, treating 2025 as sealed. Before final test unsealing or strong semantic claims, obtain two genuine independent human reviews and resolve any fundamental catalogue scope issue in a new version. Do not train to the 2025 labels or change the frozen class list using 2025 statistics. The smallest next task is to distribute the two private review packages and simultaneously establish a simple TF-IDF + linear baseline on the training/validation split only.
+
+See the [integration](FINALIZATION_P2_DATA_INTEGRATION_REPORT.md), [RQ6](FINALIZATION_P2_RQ6_TOPIC_LABEL_ANALYSIS.md), [human validation status](FINALIZATION_P2_HUMAN_VALIDATION_STATUS.md), [web readiness](FINALIZATION_P2_WEB_DATA_READINESS.md), and [Phase 3 handoff](FINALIZATION_P2_PHASE3_HANDOFF.md) reports for evidence and exact paths.
