@@ -1,0 +1,48 @@
+schema_version: 1
+status: frozen_development_configuration_pending_human_scope_approval
+final_test_status: SEALED
+technical_signoff: "Development procedure frozen by Phase 3 implementation; independent human sign-off pending"
+catalogue_version: phase6b-14-topic
+catalogue_path: config/phase6b_catalogue.yaml
+catalogue_sha256: e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9
+topic_metadata_sha256: 024f9f13db713534fcc662ff95f477299c8cf939ca200565b2e88e13371ddd86
+integrated_manifest_sha256: 7feee5f38bb98a33ec3fbd936e9a197a5caa08b2a1559719c9e316201c44a2c5
+closed_experiment_manifest_sha256: 4f6c9e9a774cff17bed11b072baa2edb92614cd54a74705705ba15f6225a2d4e
+open_set_manifest_sha256: 3e36601a8a6bbf952044e19917d8c72624f8675fc361060218342ca41d4fa2f2
+model_manifest_sha256: fb78307f219c933e35151a905ca327e00a058ec4cca3c99f294d41b0ab93907d
+model_binary_sha256: b066ba80ab0768052f585fa1ed2e6b56c24f46c511508b3394580452e40bb788
+model_version: topic_placement_v2
+model_family: linear_svm
+feature_representation: word_tfidf_unigrams_bigrams_min_df_2_max_features_50000_sublinear_tf
+text_rule: clean_text_title_newline_clean_text_abstract
+training_years: [2020, 2021, 2022, 2023]
+validation_year: 2024
+sealed_test_year: 2025
+training_policy: original_plus_targeted_eligible_training_only
+hyperparameters: {C: 1.0, random_state: 20251019}
+class_order:
+  - https://openalex.org/T10028
+  - https://openalex.org/T10036
+  - https://openalex.org/T10052
+  - https://openalex.org/T10100
+  - https://openalex.org/T10181
+  - https://openalex.org/T10201
+  - https://openalex.org/T10331
+  - https://openalex.org/T10462
+  - https://openalex.org/T10664
+  - https://openalex.org/T10775
+  - https://openalex.org/T10812
+  - https://openalex.org/T11307
+  - https://openalex.org/T11689
+  - https://openalex.org/T12026
+score: raw_multiclass_linear_svm_maximum_decision_margin_not_probability
+rejection_threshold: -0.22227267687798036
+confirmation_floor: -0.516798309254057
+threshold_source: 2024_calibration_40_percent_only
+threshold_objective: lowest_calibration_threshold_with_outside_false_acceptance_at_most_20_percent
+evaluation_denominators: {closed_set: selected_catalogue_works, open_set: all_eligible_works}
+required_metrics: [closed_macro_f1, closed_accuracy, closed_weighted_f1, per_class_precision_recall_f1,
+                   open_in_acceptance, open_out_false_acceptance, open_auroc, open_end_to_end_correct_placement]
+human_review: pending_two_independent_real_raters
+allow_final_test_execution: false
+random_seed: 20251019
