@@ -85,6 +85,12 @@ openalex-prepare-human-review = "ai_research_trends.ml.human_review_workflow:mai
 openalex-build-web-data = "ai_research_trends.analysis.web_data:main"
 openalex-topic-population = "ai_research_trends.analysis.topic_population:main"
 openalex-bind-finalization-p2 = "ai_research_trends.analysis.finalization_manifest:main"
+openalex-final-ml = "ai_research_trends.ml.final_experiments:main"
+openalex-final-open-set = "ai_research_trends.ml.final_open_set:main"
+openalex-verify-final-ml = "ai_research_trends.ml.verify_final_ml:main"
+openalex-package-topic-model = "ai_research_trends.ml.final_inference:main"
+openalex-final-test = "ai_research_trends.ml.final_test_gate:main"
+openalex-final-ml-figures = "ai_research_trends.analysis.final_ml_figures:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
