@@ -22,11 +22,44 @@ tables. See the [Phase 2 collection report](reports/PHASE2_COLLECTION_REPORT.md)
 and [Phase 3 data-quality report](reports/PHASE3_DATA_QUALITY_REPORT.md).
 Phase 4 has completed the four research-question analyses using 19 derived
 summary tables, 22 figure pairs and a reproducible [research report](reports/PHASE4_ANALYSIS_REPORT.md).
-Phase 5's first literature-discovery feasibility audit is complete. Its G1/G2
-decision is **REVISE**, so no supervised recommender or website has been claimed.
-See the [feasibility](reports/PHASE5_FEASIBILITY_REPORT.md),
-[RQ5 reference EDA](reports/PHASE5_REFERENCE_EDA_REPORT.md), and
-[ML decision](reports/PHASE5_ML_PILOT_REPORT.md) reports.
+The citation-aware literature-discovery direction received a final **NO-GO**
+as the main ML task after the [bounded reassessment](reports/PHASE5_FINAL_DECISION.md).
+Finalization Phases 1–3 instead integrated targeted historical training data,
+audited 14 OpenAlex primary-topic labels, and developed a TF-IDF + Linear SVM
+assisted topic suggestion model. Finalization Phase 4 adds a six-page local
+research explorer and editable [Vietnamese academic report](deliverables/report/FINAL_ACADEMIC_REPORT.md)
+and [presentation](deliverables/presentation/FINAL_PRESENTATION.pptx).
+The 2025 ML test is **sealed** and independent human semantic validation is
+**pending**. The app is an educational research prototype, not an autonomous
+or human-validated classifier.
+
+## Final research explorer
+
+On the machine with the verified local (Git-ignored) web-data package and model:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev,web,deliverables]"
+openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
+openalex-verify-final-ml data/analysis/finalization_p3_models_20261101_v1
+streamlit run dashboard/app.py --server.address 127.0.0.1
+```
+
+Pages: Home, Research Landscape (RQ1–RQ4), native Topic Explorer/Brief,
+Classify My Research (top three with explicit confirmation), sampled Paper
+Explorer, and Methodology & Model Evaluation. Manual topic browsing does not
+need a model. The full-population count plots are distinct from sample-based
+citation, OA and collaboration displays. No OpenAlex API call occurs during
+normal browsing or inference. The GitHub checkout alone cannot run the real
+explorer because the data/model artifacts are intentionally excluded. See the
+[user guide](docs/WEB_USER_GUIDE.md), [deployment guide](docs/DEPLOYMENT_GUIDE.md),
+and [artifact contract](docs/MODEL_AND_DATA_ARTIFACTS.md).
+
+The [report PDF](deliverables/report/FINAL_ACADEMIC_REPORT.pdf),
+[slides PDF](deliverables/presentation/FINAL_PRESENTATION.pdf), and
+[demo script](deliverables/presentation/DEMO_SCRIPT.md) are included; rebuild
+editable formats with `python deliverables/generate.py` and LibreOffice.
 
 ## Study design in one minute
 
@@ -325,8 +358,10 @@ reference edges. Under the documented title/abstract/date/≥10-reference rules,
 2020–2022 historical ≥2-citer pool contains 8,183 candidate IDs; median
 reference-ID overlap is only 10.0%. Most candidate publication dates are not
 available locally. This is **pool coverage, not candidate-generation recall**.
-The first gate was **REVISE**; no supervised ranking, inference model or website
-was run. See the [actual first audit](reports/PHASE5_FEASIBILITY_REPORT.md) and
+At this **first historical gate**, the verdict was **REVISE** and no supervised
+ranking or website had yet been run; the later bounded reassessment reached
+**NO-GO** for citation-aware discovery as the main ML direction. See the
+[final decision](reports/PHASE5_FINAL_DECISION.md), [first audit](reports/PHASE5_FEASIBILITY_REPORT.md) and
 [RQ5 EDA](reports/PHASE5_REFERENCE_EDA_REPORT.md). Four small diagnostic figures
 are published under [`reports/figures/phase5/`](reports/figures/phase5/).
 
@@ -442,9 +477,11 @@ the five-topic pilot. Its best Linear SVM reaches **0.857 macro-F1** against
 OpenAlex automated primary-topic labels, but an independently evaluated
 rejection threshold accepts only **74.2%** of in-catalogue works and falsely
 accepts **19.2%** of outside works. The fixed acceptance gate fails; human
-semantic validation is still pending. **Verdict: REVISE**, toward a narrowly
-labelled five-topic educational demonstration, not a general AI/CV topic finder.
-No 2025 final model test or full website has been run/built.
+semantic validation is still pending. Its **historical verdict was REVISE**;
+later targeted expansion and development evaluation are documented in
+Finalization Phases 1–3. The 2025 final model test remains sealed. A local
+six-page research website was subsequently built in Finalization Phase 4;
+the Phase 6B report predates it.
 
 The [official-description catalogue](config/phase6b_catalogue.yaml),
 [prospective expanded protocol](docs/PHASE6B_EXPANDED_CATALOGUE_PROTOCOL.md),
