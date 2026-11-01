@@ -1,0 +1,67 @@
+{
+  "status": "complete",
+  "purpose": "small GitHub-reviewable aggregates only",
+  "no_record_level_abstracts_or_heldout_labels": true,
+  "source_gap_manifest_sha256": "c9b9adc3d39fc2f8406538ba49c014925f1a627a31222063f66a561d1e0ccd29",
+  "source_drift_manifest_sha256": "4fd96eb731525dc8cd455ab46cfafcd2c92030ab7248508e3dd3dc7a7f146676",
+  "source_plan_sha256": "6d73adcf3c7e74b7d3323f679daa657c6453b634997e7f1873a33d70f6c48627",
+  "source_collection_manifest_sha256": "0c8c6de13a71dd69ab9e2099140ae11e100c321787f15564c39b3d883526cda3",
+  "source_quality_manifest_sha256": "fe615717844e360aa86174bcdab9bfddfc96fa42649491b2da3c491f76ad26a0",
+  "verified_raw_records": 2515,
+  "verified_drift_responses": 120,
+  "files": {
+    "data_gap.csv": {
+      "sha256": "f8f09c86edc1b510215c82f7614e02201c11bc58c53b22beb96b7e7e9feeb704",
+      "bytes": 11374
+    },
+    "topic_support.csv": {
+      "sha256": "741c06c66e8d53b95b791aefa8761bb8bcb5310490c77e135b01bdd58661d3ce",
+      "bytes": 622
+    },
+    "by_year.csv": {
+      "sha256": "e251a18364558b4745807a32655e0c45c275600c9b127f6b3247f05f8f7d8315",
+      "bytes": 125
+    },
+    "by_type.csv": {
+      "sha256": "e4545d820850332a30bf860aa25307633c2a3fc7486ef0d11ae13cb3efd26ffd",
+      "bytes": 85
+    },
+    "by_language.csv": {
+      "sha256": "9287bb439c7a7bdd82645adf5c5fed666adcdc43d59bbd83b305a5f219820b30",
+      "bytes": 239
+    },
+    "label_drift_summary.json": {
+      "sha256": "3cd29e747e12b47e75c2a306fad7f1ef678544d1cf53049a9915d00125a95b45",
+      "bytes": 398
+    },
+    "label_drift_transitions.csv": {
+      "sha256": "2e5af9469b731e41c16dc5137c05e8e72e0dae69a2b6ce7efac787a07bfcd353",
+      "bytes": 2826
+    },
+    "collection_quotas_by_topic_year.csv": {
+      "rows": 80,
+      "sha256": "c02a1bf2788f4c375091f9efe08af6e173464f9ff039a10c7b04967f4f8de86f",
+      "bytes": 3850
+    },
+    "collection_quotas_by_year.csv": {
+      "rows": 4,
+      "sha256": "1e52998025a0ef4f26ee025ba4059df3068c22fc928124ceddaedb272f82fd08",
+      "bytes": 83
+    },
+    "source_group_yield.csv": {
+      "rows": 8,
+      "sha256": "90f9000eccb491eec3de3dcafca6d69711d7a58308dadecfa5f46d8c1c40a5fa",
+      "bytes": 306
+    },
+    "text_quality.csv": {
+      "rows": 4,
+      "sha256": "57bd7e82837288fe34d341f56af4f913a6da9af19a8bf6c79a8bda1f58ed7b0d",
+      "bytes": 95
+    },
+    "human_topic_review_queue.csv": {
+      "rows": 14,
+      "sha256": "918a6e739dc5dfd7529aaa416b7f597c516b009890878279a2fb8d48bb655581",
+      "bytes": 7059
+    }
+  }
+}

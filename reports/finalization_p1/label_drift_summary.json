@@ -1,0 +1,16 @@
+{
+  "checked": 120,
+  "retrieved": 120,
+  "unavailable": 0,
+  "primary_agree": 120,
+  "primary_changed": 0,
+  "primary_agreement_rate": 1.0,
+  "top_three_set_agree": 120,
+  "old_selected_retrieved": 84,
+  "old_selected_primary_changed": 0,
+  "old_selected_moved_outside_catalogue": 0,
+  "old_title_missing": 0,
+  "new_title_missing": 0,
+  "old_abstract_missing": 24,
+  "new_abstract_missing": 24
+}

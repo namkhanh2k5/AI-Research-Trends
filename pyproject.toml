@@ -70,6 +70,13 @@ openalex-verify-topic-run = "ai_research_trends.ml.validate_topic_run:main"
 openalex-place-research-draft = "ai_research_trends.ml.topic_brief:main"
 openalex-analyze-topic-annotations = "ai_research_trends.ml.topic_annotation:main"
 openalex-discover-topics = "ai_research_trends.crawling.discover_topics:main"
+openalex-audit-ml-gaps = "ai_research_trends.analysis.ml_data_gap:main"
+openalex-audit-label-drift = "ai_research_trends.analysis.label_drift:main"
+openalex-plan-ml-expansion = "ai_research_trends.crawling.ml_expansion_plan:main"
+openalex-collect-ml-expansion = "ai_research_trends.crawling.collect_ml_expansion:main"
+openalex-verify-ml-expansion = "ai_research_trends.crawling.verify_ml_expansion:main"
+openalex-audit-ml-expansion = "ai_research_trends.preprocessing.ml_expansion_quality:main"
+openalex-publish-ml-audit = "ai_research_trends.analysis.finalization_artifacts:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
