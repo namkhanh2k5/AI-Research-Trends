@@ -34,3 +34,7 @@ reports/figures/**
 # One small verified Phase 6A label-support chart; analytical outputs remain ignored.
 !reports/figures/phase6/
 !reports/figures/phase6/topic_support.png
+# Verified, compact Finalization Phase 3 development figures only.
+!reports/figures/finalization_p3/
+!reports/figures/finalization_p3/*.png
+!reports/figures/finalization_p3/manifest.json

@@ -1,0 +1,44 @@
+{
+  "status": "complete",
+  "source_closed_sha256": "4f6c9e9a774cff17bed11b072baa2edb92614cd54a74705705ba15f6225a2d4e",
+  "source_open_sha256": "3e36601a8a6bbf952044e19917d8c72624f8675fc361060218342ca41d4fa2f2",
+  "source_scope": "2024 development; never population performance or 2025 final test",
+  "files": {
+    "confusion.png": {
+      "sha256": "c307fe185abf6afe301a7608cdfa56093de14b5b235819b5749244ecf1998bb3",
+      "bytes": 96948
+    },
+    "inference_latency.png": {
+      "sha256": "a09290bcedad921d0a3a0197ffb0f8efd9d264afc9dd874446c244716015fb68",
+      "bytes": 52590
+    },
+    "learning_curve.png": {
+      "sha256": "1df96bfaa21ee435126cf37d8e5ba405c479f5516bfea23796f15e4d11ff85bb",
+      "bytes": 71335
+    },
+    "model_comparison.png": {
+      "sha256": "6af3c089dc79714c070e5c86166e845839c8777f0135d0d5de22fd3691eac8b3",
+      "bytes": 49352
+    },
+    "open_set_roc.png": {
+      "sha256": "29a9a07231c625b9a3b1d36ff3a41968ac00cee4f0fcadb2ffd0c9868eb4834f",
+      "bytes": 89086
+    },
+    "per_class_f1.png": {
+      "sha256": "a8ab714ecca43c9133733533e0cdf1b7ea404d97439951b2e46a8ec5f67b1ca2",
+      "bytes": 55553
+    },
+    "risk_coverage.png": {
+      "sha256": "df6f60133d5bcba54c2f369792033f6ceaa1511c27c77f1dab2a7a8571c013dc",
+      "bytes": 55449
+    },
+    "threshold_sensitivity.png": {
+      "sha256": "43244082d4560ffbcaf0370b349472c7ee6ea406b4120e90a9da34f1a3a6fbba",
+      "bytes": 59446
+    },
+    "training_support.png": {
+      "sha256": "440ff4336137ddf76d17d9e140c1f382bef03495b51c8e4671637c3baf2e704a",
+      "bytes": 72863
+    }
+  }
+}
