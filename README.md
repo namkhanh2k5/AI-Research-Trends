@@ -29,9 +29,16 @@ audited 14 OpenAlex primary-topic labels, and developed a TF-IDF + Linear SVM
 assisted topic suggestion model. Finalization Phase 4 adds a six-page local
 research explorer and editable [Vietnamese academic report](deliverables/report/FINAL_ACADEMIC_REPORT.md)
 and [presentation](deliverables/presentation/FINAL_PRESENTATION.pptx).
+The Phase 4.1 remediation repairs topic confirmation and stale suggestions,
+adds sourced RQ5/RQ6/model-evaluation panels, expands the report to a rendered
+23-page A4 PDF and the slides to 15 pages, and adds real Chrome E2E checks.
 The 2025 ML test is **sealed** and independent human semantic validation is
 **pending**. The app is an educational research prototype, not an autonomous
 or human-validated classifier.
+See the [independent pre-fix audit](reports/FINAL_INDEPENDENT_PROJECT_AUDIT.md)
+and [Phase 4.1 remediation evidence](reports/FINALIZATION_P4_REMEDIATION_REPORT.md)
+for the twelve tracked defects, local Chrome checks, preservation verifiers
+and remaining deployment limits.
 
 ## Final research explorer
 
@@ -40,13 +47,13 @@ On the machine with the verified local (Git-ignored) web-data package and model:
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install -e ".[dev,web,deliverables]"
+pip install -e ".[dev,web,deliverables,browser]"
 openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
 openalex-verify-final-ml data/analysis/finalization_p3_models_20261101_v1
 streamlit run dashboard/app.py --server.address 127.0.0.1
 ```
 
-Pages: Home, Research Landscape (RQ1–RQ4), native Topic Explorer/Brief,
+Pages: Home, Research Landscape (RQ1–RQ6), native Topic Explorer/Brief,
 Classify My Research (top three with explicit confirmation), sampled Paper
 Explorer, and Methodology & Model Evaluation. Manual topic browsing does not
 need a model. The full-population count plots are distinct from sample-based
@@ -55,6 +62,12 @@ normal browsing or inference. The GitHub checkout alone cannot run the real
 explorer because the data/model artifacts are intentionally excluded. See the
 [user guide](docs/WEB_USER_GUIDE.md), [deployment guide](docs/DEPLOYMENT_GUIDE.md),
 and [artifact contract](docs/MODEL_AND_DATA_ARTIFACTS.md).
+An approved local web package and model bundle can be copied into a clean
+checkout with `openalex-restore-local-artifact` after manifest and file-hash
+verification; this is **not** a public artifact download. For the opt-in real
+browser checks, start the app above and run
+`AI_TRENDS_RUN_BROWSER_TESTS=1 pytest -q tests/browser/test_live_app.py`.
+Screenshots stay under ignored `data/analysis/finalization_p4_1_browser_evidence/`.
 
 The [report PDF](deliverables/report/FINAL_ACADEMIC_REPORT.pdf),
 [slides PDF](deliverables/presentation/FINAL_PRESENTATION.pdf), and
