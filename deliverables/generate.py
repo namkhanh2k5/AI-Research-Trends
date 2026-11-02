@@ -92,6 +92,8 @@ def report_docx() -> None:
             continue
         if line.startswith("# "):
             continue  # The title is on the separate cover.
+        elif line.startswith("> "):
+            doc.add_paragraph(clean_markdown(line[2:]), style="Quote")
         elif line.startswith("## "):
             doc.add_heading(clean_markdown(line[3:]), 1)
         elif line.startswith("### "):
@@ -110,10 +112,13 @@ def report_docx() -> None:
                 matrix[0][0] = caption_match.group(1)
             table = doc.add_table(rows=0, cols=len(matrix[0]))
             table.style = "Table Grid"
-            for row in matrix:
+            for row_number, row in enumerate(matrix):
                 cells = table.add_row().cells
                 for j, value in enumerate(row):
                     cells[j].text = value
+                    if row_number < len(matrix) - 1:
+                        for paragraph in cells[j].paragraphs:
+                            paragraph.paragraph_format.keep_with_next = True
                 tr_pr = table.rows[-1]._tr.get_or_add_trPr()
                 tr_pr.append(OxmlElement("w:cantSplit"))
         else:

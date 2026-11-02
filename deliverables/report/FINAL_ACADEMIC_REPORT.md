@@ -124,9 +124,9 @@ Chủ đề gốc OpenAlex, phân ngành và các nhãn từ quy tắc văn bả
 
 ![Xu hướng các chủ đề OpenAlex bản địa trong ảnh chụp tổng hợp riêng; chủ đề có thể chồng lắp và không được cộng thành tổng thể.](../../reports/figures/phase4/rq1_native_topic_trends.png)
 
-### 5.2 RQ2 — Trích dẫn
-
 Chuỗi RQ1 tăng nhưng không đơn điệu: 2022 thấp hơn 2021 2,10%, rồi tăng rõ trong 2023–2025. “Đủ năm” ở 2025 không loại khả năng OpenAlex lập chỉ mục hồi tố hoặc sửa nhãn sau ngày truy xuất. Mọi đồ thị chủ đề bản địa là ảnh chụp riêng; nhãn custom từ văn bản không phải cùng thước đo. Tăng trưởng trong khung primary-subfield AI/CV cũng không thể ngoại suy sang tất cả công trình AI liên ngành [11].
+
+### 5.2 RQ2 — Trích dẫn
 
 Trên 12.000 công trình mẫu gốc, trung vị trích dẫn là 2, trung bình 11,24, phân vị 90 là 23 và tối đa 4.199; 37,75% có 0 trích dẫn [11]. Phân phối lệch phải mạnh, do vậy trung vị và phân phối theo năm hữu ích hơn việc chỉ so sánh trung bình. Tuổi bài và loại công trình giải thích một phần khác biệt quan sát; không suy luận chất lượng nghiên cứu từ trích dẫn thô. FWCI chỉ phân tích trên công trình có quan sát, đặc biệt không đại diện cho preprint trong mẫu.
 
@@ -134,9 +134,9 @@ Trên 12.000 công trình mẫu gốc, trung vị trích dẫn là 2, trung bìn
 
 ![Quan hệ giữa tuổi công bố và số trích dẫn quan sát trong mẫu 12.000; không đo chất lượng khoa học.](../../reports/figures/phase4/rq2_citation_age.png)
 
-### 5.3 RQ3 — Open Access và trích dẫn
-
 Giá trị cực đại 4.199 so với trung vị 2 cho thấy đuôi phân phối rất dài. Báo cáo giữ trung vị, phân vị và tỷ lệ 0 trích dẫn, không xóa ngoại lệ để làm “đẹp” dữ liệu. Bài 2025 có cửa sổ tích lũy ngắn hơn bài 2020; vì vậy trích dẫn thô theo năm không phản ánh chất lượng tương đối. Thiếu FWCI ở 2.678 bài, toàn bộ là preprint, khiến so sánh FWCI giữa preprint và article không thể thực hiện hợp lệ trong mẫu [8], [11].
+
+### 5.3 RQ3 — Open Access và trích dẫn
 
 Mô hình nhị phân chưa điều chỉnh (`unadjusted_binary`) gộp mọi trạng thái OA: hệ số OA so với closed là β = −0,330 trên `ln(1 + citations)`. Mô hình chính (`adjusted_status_year`) tách sáu trạng thái OA, kiểm soát năm công bố, loại bài và primary subfield với sai số chuẩn HC3. Gold so với closed: β = +0,463; khoảng tin cậy 95% [+0,396; +0,531]. Green so với closed: β = +0,178; khoảng tin cậy 95% [+0,087; +0,269] [11]. Hệ số dương là *liên hệ có điều kiện trong mô hình log(1 + trích dẫn)*, không phải OA gây tăng trích dẫn hay tăng chất lượng. `100(exp(0,463) − 1) ≈ 58,9%` là chênh lệch trung bình hình học có điều kiện của **1 + trích dẫn** dưới giả định mô hình; không phải “58,9% trích dẫn thô nhiều hơn trên mỗi bài”.
 
@@ -144,9 +144,9 @@ Nhóm Green gồm 3.559 công trình, trong đó 2.506 preprint; toàn bộ 2.67
 
 ![Hệ số hồi quy OA đã điều chỉnh trên thang log(1 + trích dẫn), mẫu chi tiết.](../../reports/figures/phase4/rq3_adjusted_coefficients.png)
 
-### 5.4 RQ4 — Hợp tác
-
 Với `Y = ln(1 + cited_by_count)`, β Gold là khác biệt trung bình có điều kiện trên thang log sau điều chỉnh, không phải chênh lệch trích dẫn thô. HC3 xử lý phương sai không đồng nhất dưới giả định mô hình nhưng không sửa sai lệch chọn mẫu, sai phân loại OA hay nhiễu chưa đo. Hệ số nhị phân âm và Gold/Green dương không phải “đảo dấu nhân quả”: đối tượng so sánh và điều kiện hóa khác nhau. Green chứa 2.506 preprint, vì vậy việc gộp sáu trạng thái che đi thành phần loại công trình. Kết quả thích hợp để đặt giả thuyết, không để khuyên OA nhằm tăng trích dẫn [11].
+
+### 5.4 RQ4 — Hợp tác
 
 Mạng hợp tác được dựng từ **đồng liên kết cơ quan trong mẫu**, không phải toàn mạng cộng tác AI/CV. Có 2.902 bài không có tổ chức và 2.949 bài không có quốc gia được quan sát; các trường hợp này không được mã hóa là “không hợp tác” [11]. Trong 7.970 bài đủ dữ liệu để xét hợp tác quốc tế, 1.979 có nhiều hơn một quốc gia liên kết (24,83%). Tỷ lệ này có điều kiện trên mẫu số đã biết, không đại diện cho 12.000 bài hay toàn dân số.
 
@@ -154,27 +154,27 @@ Mạng hợp tác được dựng từ **đồng liên kết cơ quan trong mẫ
 
 ![Mức độ sẵn có của thông tin liên kết trong mẫu chi tiết; tỷ lệ hợp tác chỉ có nghĩa trên mẫu số đủ dữ liệu.](../../reports/figures/phase4/rq4_affiliation_coverage.png)
 
-### 5.5 RQ5 — Bối cảnh tham khảo
-
 Nút mạng là quốc gia liên kết và cạnh là cùng xuất hiện trên một công trình trong mẫu. Bài nhiều tổ chức có thể đóng góp nhiều quan hệ; độ lớn nút không đo số nhà khoa học hay dự án độc lập. Dữ liệu quốc gia thiếu ở gần một phần tư mẫu; tỷ lệ 1.979/7.970 chỉ dành cho bài đủ thông tin để phân loại trạng thái hợp tác. Quốc gia ít hiện diện không nhất thiết ít hợp tác vì khả năng thiếu liên kết có thể khác theo nguồn và loại công trình [11].
 
-12.000 bài mẫu chứa 289.110 cạnh tham khảo duy nhất đến 207.102 Work ID được dẫn. 7.529 bài có danh sách tham khảo không rỗng; 4.471 danh sách quan sát được rỗng [7]. Độ phủ ứng viên lịch sử yếu: dùng mọi bài dẫn trước 2023, pool có ít nhất hai bài dẫn lịch sử đạt trung vị ID-overlap 12,1% trên 909 truy vấn năm 2023. Hệ truy xuất chẩn đoán giới hạn metadata đạt mean end-to-end Recall@20 2,53%; vì vậy **NO-GO** cho hệ gợi ý tài liệu trích dẫn là ML chính. Số ID được nhắc đến không đánh giá độ phù hợp của tài liệu chưa được dẫn.
+### 5.5 RQ5 — Bối cảnh tham khảo
 
-### 5.6 RQ6 — Tính phù hợp của nhãn chủ đề
+12.000 bài mẫu chứa 289.110 cạnh tham khảo duy nhất đến 207.102 Work ID được dẫn. 7.529 bài có danh sách tham khảo không rỗng; 4.471 danh sách quan sát được rỗng [7]. Độ phủ ứng viên lịch sử yếu: dùng mọi bài dẫn trước 2023, pool có ít nhất hai bài dẫn lịch sử đạt trung vị ID-overlap 12,1% trên 909 truy vấn năm 2023. Hệ truy xuất chẩn đoán giới hạn metadata đạt mean end-to-end Recall@20 2,53%; vì vậy **NO-GO** cho hệ gợi ý tài liệu trích dẫn là ML chính. Số ID được nhắc đến không đánh giá độ phù hợp của tài liệu chưa được dẫn.
 
 Kiểm toán ban đầu yêu cầu bài dẫn lịch sử cũng đủ điều kiện làm truy vấn ML, cho trung vị overlap 10,0% ở ngưỡng hai bài dẫn. Nới sang mọi bài mẫu có cạnh hợp lệ giai đoạn 2020–2022 làm pool tăng từ 8.183 lên 12.019 ID và trung vị trên 909 truy vấn 2023 lên 12,1%; tỷ lệ không giao giảm từ 23,2% xuống 19,0% [7]. Đây là cải thiện nhỏ của **ID-overlap**, không phải Recall@20 hoặc độ phủ được xác thực về thời gian. Truy xuất metadata chỉ trả 973/1.000 ID chọn theo tần suất lịch sử, không tạo ra ID ngoài pool. Vì vậy quyết định NO-GO cho gợi ý trích dẫn làm nhiệm vụ ML chính vẫn có căn cứ.
 
 ![Tăng trưởng pool lịch sử và ID-overlap 2023 theo phần mẫu bài dẫn; năm đánh giá không đóng góp cạnh vào pool.](../../reports/figures/phase5/pool_saturation_2023.png)
 
+### 5.6 RQ6 — Tính phù hợp của nhãn chủ đề
+
 14 lớp có 3.355 ví dụ huấn luyện đủ điều kiện; 681 ví dụ validation trong danh mục năm 2024 [12]. Các chủ đề gốc chồng lấp, nhất là cặp T10028/T10181. Thiếu abstract phụ thuộc chủ đề; với một số chủ đề đạt hơn 30% trong tập gốc 2020–2024. Việc nhãn OpenAlex và mô hình bất đồng không chứng minh mô hình sai hoặc đúng về mặt ngữ nghĩa. Không có kết quả đánh giá của hai người chấm độc lập; độ đúng của nhãn và ranh giới chủ đề còn mở.
+
+Điểm topic do OpenAlex sinh là tín hiệu phân loại nguồn, không phải mức độ đúng theo chuyên gia. Primary-topic ép bài giao thoa vào một lớp dù secondary topics mô tả thêm khía cạnh. Thiếu abstract theo chủ đề làm giảm tập đủ điều kiện ML không đồng đều, nên support sau lọc không phản ánh prevalence dân số. Cặp T10028/T10181 có nhầm lẫn hai chiều trong validation, tương thích với ranh giới mờ nhưng cần người chấm độc lập để khẳng định [12].
 
 ![Thiếu abstract theo chủ đề OpenAlex được chọn; tập gốc 2020–2024 và mẫu số theo từng lớp.](../../reports/finalization_p2/figures/rq6_abstract_missingness.png)
 
 ![Mức chồng lắp nhãn OpenAlex trong tập phân tích RQ6; không phải mức đồng thuận của chuyên gia.](../../reports/finalization_p2/figures/rq6_topic_cooccurrence.png)
 
 ## 6. Phương pháp học máy
-
-Điểm topic do OpenAlex sinh là tín hiệu phân loại nguồn, không phải mức độ đúng theo chuyên gia. Primary-topic ép bài giao thoa vào một lớp dù secondary topics mô tả thêm khía cạnh. Thiếu abstract theo chủ đề làm giảm tập đủ điều kiện ML không đồng đều, nên support sau lọc không phản ánh prevalence dân số. Cặp T10028/T10181 có nhầm lẫn hai chiều trong validation, tương thích với ranh giới mờ nhưng cần người chấm độc lập để khẳng định [12].
 
 Bài toán: từ title và abstract, xếp hạng 14 primary-topic nhãn bạc OpenAlex đã đóng băng. Đầu vào không chứa citation, Work ID, năm, OA hoặc topic score. Dữ liệu lịch sử 2020–2023 gồm 7.002 bài đủ điều kiện; 3.355 bài thuộc 14 chủ đề. 2024 có 1.843 bài gốc đủ điều kiện để phát triển; 681 thuộc danh mục. 2025 có 2.318 bài đủ điều kiện nhưng **không được đọc cho việc chọn mô hình hay báo cáo này** [9].
 
