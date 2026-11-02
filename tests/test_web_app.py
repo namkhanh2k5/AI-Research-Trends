@@ -4,7 +4,19 @@ from pathlib import Path
 
 import pytest
 
-from ai_research_trends.web.service import artifact_paths, classify, load_research, topic_brief, validate_draft
+from ai_research_trends.web.service import (
+    artifact_paths, classify, doi_url, draft_fingerprint, load_research, topic_brief, validate_draft,
+)
+
+
+def test_draft_fingerprint_and_doi_links():
+    assert draft_fingerprint("  My   title ", "An  abstract") == draft_fingerprint("My title", "An abstract")
+    assert draft_fingerprint("My title", "An abstract") != draft_fingerprint("Another title", "An abstract")
+    assert draft_fingerprint("My title", "An abstract") != draft_fingerprint("My title", "Another abstract")
+    assert doi_url("https://doi.org/10.1000/example") == "https://doi.org/10.1000/example"
+    assert doi_url("10.1000/example") == "https://doi.org/10.1000/example"
+    assert doi_url(None) is None
+    assert doi_url("not-a-doi") is None
 
 
 def test_manual_topic_browse_does_not_load_model(monkeypatch):
@@ -77,3 +89,32 @@ def test_actual_local_inference_requires_confirmation():
     assert result["automatic_placement"] is False
     assert result["requires_user_confirmation"] is True
     assert result["status"] in {"confident_suggestion", "needs_user_confirmation", "no_confident_match"}
+
+
+def test_app_confirmation_and_stale_draft_state():
+    web, model = artifact_paths()
+    if not web.exists() or not model.exists():
+        pytest.skip("Private model/web artifacts absent from clean clone")
+    from streamlit.testing.v1 import AppTest
+
+    app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "dashboard" / "app.py"),
+                            default_timeout=45).run()
+    app.sidebar.radio[0].set_value("Classify My Research").run()
+    app.text_input[0].set_value("Interpretable medical image segmentation").run()
+    app.text_area[0].set_value(
+        "This synthetic draft investigates convolutional neural networks for medical image segmentation "
+        "and visual explanation methods across clinical imaging data.").run()
+    app.button[0].click().run()
+    assert not app.exception
+    assert "suggestion" in app.session_state
+    assert len(app.session_state["suggestion"]["predictions"]) == 3
+    selected = app.selectbox[0].options[1]
+    app.selectbox[0].set_value(selected).run()
+    app.button[1].click().run()
+    assert not app.exception
+    expected_id = next(item["topic_id"] for item in load_research().get_topics()
+                       if item["official_name"] == selected)
+    assert app.session_state["confirmed_topic"] == expected_id
+    app.text_input[0].set_value("A changed research title").run()
+    assert "suggestion" not in app.session_state
+    assert "confirmed_topic" not in app.session_state
