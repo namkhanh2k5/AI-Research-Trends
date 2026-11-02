@@ -18,7 +18,7 @@ The P0 confirmation crash is repaired: real local Chrome followed **synthetic ti
 | AUD-06 | P2 | FIXED AND VERIFIED | Source-checked model comparison, ablation, classwise F1, confusion and open-set development content. |
 | AUD-07 | P2 | FIXED AND VERIFIED | Topic Brief includes sample-year/citation/OA/related-topic context, representative rule and provenance. |
 | AUD-08 | P2 | FIXED AND VERIFIED | Separate RQ5 and RQ6 research panels with limitations and verified figures. |
-| AUD-09 | P2 | FIXED AND VERIFIED | Year filtering and impossible keyword checked in Chrome; DOI URL validation and page reset in tests. |
+| AUD-09 | P2 | FIXED AND VERIFIED | Year filtering and impossible keyword checked in Chrome; DOI URL validation, page reset and warning-free widget state verified. |
 | AUD-10 | P2 | PARTIALLY FIXED | 15 slides and actual UI screenshots; scripted action types tested in Chrome, but no timed human rehearsal. |
 | AUD-11 | P2 | FIXED AND VERIFIED | Cover, contents, A4, page field, captions and no split model table inspected in PDF. |
 | AUD-12 | P3 | PARTIALLY FIXED | Offline CI checks restoration CLI; both PR #3 jobs succeeded. Chrome/local artifact checks remain deliberately opt-in. |
@@ -26,6 +26,8 @@ The P0 confirmation crash is repaired: real local Chrome followed **synthetic ti
 ## Implementation and functional evidence
 
 The first web patch changed `dashboard/app.py`, `src/ai_research_trends/web/service.py` and added aggregate-only `src/ai_research_trends/web/evidence.py` plus `reports/FINALIZATION_P4_RESEARCH_EVIDENCE.json`. The evidence contract records source SHA-256 for local Phase 3 closed/open-set results, Phase 5 pool comparison and published RQ6 support. Tests compare its values to the originals when locally available; no work-level abstract or sealed label is published. The Methodology page uses model names and denominators from this contract. “Gold vs closed” remains an **association on `ln(1+citations)`**, not a causal or raw-citation claim.
+
+During the final browser run, Streamlit logged a `paper_page` warning because the number input had both an explicit default and a session-state value. A narrow follow-up patch initializes the key once and lets session state own the value. Paper Explorer Chrome regression and the complete eight-case browser suite passed again; the restarted server log contained no recurrence of this warning.
 
 `deliverables/report/FINAL_ACADEMIC_REPORT.md` is the editable source; `deliverables/generate.py` regenerated DOCX/PDF and PPTX/slide PDF. The report now has 16 source-linked research/application figures and four numbered tables. A visual pass caught and fixed two concrete document issues: RQ-specific paragraphs initially sat under the following heading, and the model-comparison table split across pages. The final generator keeps the table together. The rendered PDF is A4, 23 pages, 1,837,261 bytes; the slide PDF has 15 pages, 1,055,585 bytes. LibreOffice conversion was actually executed; the PDFs are not placeholders. The 23-page count is below the task's approximate 25–35-page *goal* but above the audited 11-page baseline; no course-specific minimum or template was provided. It must be reviewed by the supervisor before formal submission.
 

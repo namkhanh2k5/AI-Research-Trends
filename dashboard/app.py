@@ -258,9 +258,11 @@ def papers(data) -> None:
     first = data.search_papers(keyword=keyword, topic_id=topic_id, year=year, work_type=work_type,
                                oa_status=oa, sort=sort, page=1, page_size=20)
     max_page = max(1, (first["total"] + 19) // 20)
+    if "paper_page" not in st.session_state:
+        st.session_state["paper_page"] = 1
     if st.session_state.get("paper_page", 1) > max_page:
         st.session_state["paper_page"] = max_page
-    page = st.number_input("Page", min_value=1, max_value=max_page, value=1, key="paper_page")
+    page = st.number_input("Page", min_value=1, max_value=max_page, key="paper_page")
     result = data.search_papers(keyword=keyword, topic_id=topic_id, year=year, work_type=work_type,
                                 oa_status=oa, sort=sort, page=int(page), page_size=20)
     st.caption(f"{result['total']:,} matching sampled works · page {result['page']} of {max_page} · 20 per page")
