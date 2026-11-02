@@ -21,7 +21,7 @@ The P0 confirmation crash is repaired: real local Chrome followed **synthetic ti
 | AUD-09 | P2 | FIXED AND VERIFIED | Year filtering and impossible keyword checked in Chrome; DOI URL validation and page reset in tests. |
 | AUD-10 | P2 | PARTIALLY FIXED | 15 slides and actual UI screenshots; scripted action types tested in Chrome, but no timed human rehearsal. |
 | AUD-11 | P2 | FIXED AND VERIFIED | Cover, contents, A4, page field, captions and no split model table inspected in PDF. |
-| AUD-12 | P3 | PARTIALLY FIXED | Offline CI now checks restoration CLI; Chrome/local artifacts remain deliberately opt-in, remote PR CI pending. |
+| AUD-12 | P3 | PARTIALLY FIXED | Offline CI checks restoration CLI; both PR #3 jobs succeeded. Chrome/local artifact checks remain deliberately opt-in. |
 
 ## Implementation and functional evidence
 
@@ -39,7 +39,7 @@ Read-only scientific verifiers all returned valid: original collection **123 pag
 
 ## Deployment and CI boundaries
 
-`openalex-restore-local-artifact` now copies only manifest-listed files from an approved local source, verifies SHA-256 and byte count before and after, defaults to dry run, and refuses existing destinations. Unit tests cover tampering and traversal. A separate `/tmp` clean local clone was given the authorized 22-file web package and 3-file model bundle; the cloned code loaded 14 topics, 12,000 indexed papers and `TopicPlacementService`. This proves a **local handoff with available authorized artifacts using the existing virtual environment**, not a fully independent install, public artifact distribution or rights clearance. A clean GitHub clone alone still cannot run the full site. The public CI workflow installs dependencies and runs offline tests/CLI contract, but has neither private packages nor Chrome E2E; do not equate CI green with full end-to-end certification. Remote PR CI must be checked after the branch is pushed.
+`openalex-restore-local-artifact` now copies only manifest-listed files from an approved local source, verifies SHA-256 and byte count before and after, defaults to dry run, and refuses existing destinations. Unit tests cover tampering and traversal. A separate `/tmp` clean local clone was given the authorized 22-file web package and 3-file model bundle; the cloned code loaded 14 topics, 12,000 indexed papers and `TopicPlacementService`. This proves a **local handoff with available authorized artifacts using the existing virtual environment**, not a fully independent install, public artifact distribution or rights clearance. A clean GitHub clone alone still cannot run the full site. The public CI workflow installs dependencies and runs offline tests/CLI contract, but has neither private packages nor Chrome E2E; do not equate CI green with full end-to-end certification. On Draft PR [#3](https://github.com/namkhanh2k5/AI-Research-Trends/pull/3), **both GitHub Actions `test` jobs completed SUCCESS** on 2026-11-02 UTC; this is the remote offline gate, not the local Chrome/artifact gate.
 
 ## Remaining risks and acceptance verdict
 
