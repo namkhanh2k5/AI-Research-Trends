@@ -18,6 +18,21 @@ def test_report_figures_resolve_and_generated_files_exist():
         assert (ROOT / "deliverables/presentation" / name).stat().st_size > 1000
 
 
+def test_expanded_editable_deliverables_have_numbered_evidence():
+    from docx import Document
+    from pptx import Presentation
+
+    document = Document(REPORT.with_suffix(".docx"))
+    captions = [paragraph.text for paragraph in document.paragraphs if paragraph.style.name == "Caption"]
+    figure_captions = [caption for caption in captions if caption.startswith("Hình ")]
+    table_captions = [caption for caption in captions if caption.startswith("Bảng ")]
+    source_figures = re.findall(r"!\[[^]]+\]\(([^)]+)\)", REPORT.read_text())
+    assert len(figure_captions) == len(source_figures) >= 12
+    assert [int(re.match(r"Hình (\d+)", caption).group(1)) for caption in figure_captions] == list(range(1, len(source_figures) + 1))
+    assert len(table_captions) >= 4
+    assert len(Presentation(ROOT / "deliverables/presentation/FINAL_PRESENTATION.pptx").slides) == 15
+
+
 def test_report_development_metrics_and_test_status():
     text = REPORT.read_text()
     assert "0,8808" in text

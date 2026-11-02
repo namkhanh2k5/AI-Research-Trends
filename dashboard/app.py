@@ -93,7 +93,7 @@ def landscape(data) -> None:
         st.dataframe(frame[["oa_status", "n", "median_citations", "fwci_coverage_percent"]], hide_index=True)
         caption("Original 12,000-work sample", "The adjusted Phase 4 analysis finds associations, not causal OA effects; groups differ in year/type composition.")
         published_figure("reports/figures/phase4/rq3_adjusted_coefficients.png",
-                         "2024 Phase 4 adjusted six-status OLS on ln(1 + citations), HC3 95% intervals; original sample, not a causal effect.")
+                         "Phase 4 adjusted six-status OLS on ln(1 + citations), HC3 95% intervals; original sample, not a causal effect.")
         st.write("Gold versus closed: β = +0.463, HC3 95% CI [0.396, 0.531]. Green versus closed: β = +0.178, CI [0.087, 0.269]. The unadjusted binary model instead pools all OA statuses (β = −0.330); these are different contrasts. Green contains many preprints and all sampled preprints lack FWCI.")
     with tabs[3]:
         info = data.get_collaboration_summary()
