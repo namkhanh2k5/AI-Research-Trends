@@ -513,9 +513,53 @@ pip check
 The local run paths are not downloadable from GitHub. These commands verify
 existing evidence and do not start an API crawl. The acquisition command runs
 in dry-run mode unless `--execute` is explicitly supplied; only use it with a
-new versioned output root and a validated plan. Phase 2 should implement the
-[non-destructive integration contract](config/finalization_phase2_integration.yaml)
-and blinded scope review before any final model fitting.
+new versioned output root and a validated plan. The subsequent integration
+follows the [non-destructive integration contract](config/finalization_phase2_integration.yaml);
+independent blinded scope review is still required before final model claims.
+
+## Finalization Phase 2: integrated topic data and RQ6
+
+The non-destructive integration of the original 12,000 works and separate 2,515-work
+training expansion produced 7,002 usable 2020–2023 training rows, 1,843 usable
+2024 validation rows and 2,318 sealed 2025 test rows (count only). Labels from
+2025 are masked in general development tables. Exact Work-ID, DOI and title
+version groups, plus a high-similarity cross-year risk audit, prevent obvious
+cross-split reuse. The 14-class topic catalogue is frozen; five classes remain
+slightly below the 225-row planning target after uniform text and leakage checks.
+No final classifier has been trained and no 2025 performance has been measured.
+
+The [RQ6 topic-label report](reports/FINALIZATION_P2_RQ6_TOPIC_LABEL_ANALYSIS.md)
+and [figures/tables](reports/finalization_p2/manifest.json) describe OpenAlex
+silver-label support, overlap, score margins and missing text. A 14-topic ×
+6-year OpenAlex primary-topic aggregate snapshot was fetched separately; its
+retrieval date differs from the older Phase 4 population aggregates. The
+[human-review protocol](docs/FINALIZATION_P2_HUMAN_REVIEW.md) has two isolated
+blind reviewer packages, but **no real ratings have been received**.
+
+A verified local [web-data contract](docs/FINALIZATION_P2_WEB_DATA_CONTRACT.md)
+provides population trends, original-sample Topic Briefs and paper search;
+the targeted ML expansion never enters the public landscape view. See the
+[integration report](reports/FINALIZATION_P2_DATA_INTEGRATION_REPORT.md),
+[web readiness report](reports/FINALIZATION_P2_WEB_DATA_READINESS.md),
+and [final decision](reports/FINALIZATION_P2_FINAL_REPORT.md).
+
+Local verification from the repository root (these files are Git-ignored and
+must already exist locally):
+
+```bash
+openalex-verify-integrated-topics data/processed/ml_topic_classification/finalization_p2_20261101_v3 --compare-dir data/processed/ml_topic_classification/finalization_p2_20261101_v3_rerun
+openalex-verify-rq6 data/analysis/finalization_p2_rq6_20261101_v3 --published-dir reports/finalization_p2
+openalex-prepare-human-review verify data/analysis/finalization_p2_human_review_20261101_v1
+openalex-topic-population verify data/analysis/finalization_p2_topic_population_20261101_v2
+openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
+openalex-bind-finalization-p2 verify data/analysis/finalization_p2_master_20261101_v1.json
+pytest -q -ra
+pip check
+```
+
+Each builder refuses to overwrite a completed versioned run. The 14 OpenAlex
+aggregate requests were a bounded one-time snapshot, not part of the offline
+verification commands.
 
 ## Repository layout
 

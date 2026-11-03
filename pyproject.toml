@@ -77,6 +77,14 @@ openalex-collect-ml-expansion = "ai_research_trends.crawling.collect_ml_expansio
 openalex-verify-ml-expansion = "ai_research_trends.crawling.verify_ml_expansion:main"
 openalex-audit-ml-expansion = "ai_research_trends.preprocessing.ml_expansion_quality:main"
 openalex-publish-ml-audit = "ai_research_trends.analysis.finalization_artifacts:main"
+openalex-integrate-topics = "ai_research_trends.ml.integrate_topic_data:main"
+openalex-verify-integrated-topics = "ai_research_trends.ml.validate_integrated_data:main"
+openalex-analyze-rq6 = "ai_research_trends.analysis.rq6_topic_labels:main"
+openalex-verify-rq6 = "ai_research_trends.analysis.validate_rq6:main"
+openalex-prepare-human-review = "ai_research_trends.ml.human_review_workflow:main"
+openalex-build-web-data = "ai_research_trends.analysis.web_data:main"
+openalex-topic-population = "ai_research_trends.analysis.topic_population:main"
+openalex-bind-finalization-p2 = "ai_research_trends.analysis.finalization_manifest:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
