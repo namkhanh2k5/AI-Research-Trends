@@ -231,8 +231,9 @@ row counts, schema version, validation checks, code hash) and `quality.json`
 `N_h/n_h` year-stratum weights do not imply verified uniform OpenAlex inclusion.
 Population trends use `population_year_counts.parquet`, never counts from the
 12,000-work sample. Native topics and custom text-rule labels remain distinct.
-Phase 5 ML training is not yet implemented; a reference-graph feasibility audit
-and exploratory RQ5 extension are available below.
+The earlier citation-aware literature-discovery proposal was reassessed below;
+the later 14-topic silver-label classifier is documented in the Finalization
+Phase 3 section. These are different ML tasks.
 
 The current processor streams the source JSONL line by line but holds normalized
 tables in memory until deterministic sorting and Parquet export. For a much
@@ -526,7 +527,8 @@ training expansion produced 7,002 usable 2020–2023 training rows, 1,843 usable
 version groups, plus a high-similarity cross-year risk audit, prevent obvious
 cross-split reuse. The 14-class topic catalogue is frozen; five classes remain
 slightly below the 225-row planning target after uniform text and leakage checks.
-No final classifier has been trained and no 2025 performance has been measured.
+The subsequent Finalization Phase 3 trained a development classifier; no 2025
+performance has been measured.
 
 The [RQ6 topic-label report](reports/FINALIZATION_P2_RQ6_TOPIC_LABEL_ANALYSIS.md)
 and [figures/tables](reports/finalization_p2/manifest.json) describe OpenAlex
@@ -560,6 +562,49 @@ pip check
 Each builder refuses to overwrite a completed versioned run. The 14 OpenAlex
 aggregate requests were a bounded one-time snapshot, not part of the offline
 verification commands.
+
+## Finalization Phase 3: assisted research-topic placement
+
+The frozen 14-topic silver-label development task now has a trained **Linear
+SVM** (C=1). On the same 681 in-catalogue, original-sample 2024 works,
+macro-F1 rose from **0.8506** with original-only training to **0.8808** with
+targeted historical training addition. This measures agreement with OpenAlex
+primary-topic labels, not independent human semantic correctness. On a separate
+1,105-work 2024 open-set evaluation, the selected rejection rule accepted
+**21.66%** of outside-catalogue works; therefore every suggestion requires
+explicit user confirmation. Human ratings are pending, and the 2025 final test
+remains **sealed**. Read the [scientific report](reports/FINALIZATION_P3_FINAL_ML_REPORT.md),
+[open-set assessment](reports/FINALIZATION_P3_OPEN_SET_EVALUATION.md), and
+[error diagnostics](reports/FINALIZATION_P3_ERROR_DIAGNOSTICS.md), and the
+[Phase 4 reviewer handoff](reports/FINALIZATION_P3_PHASE4_HANDOFF.md).
+
+Compact development figures: [model comparison](reports/figures/finalization_p3/model_comparison.png),
+[per-topic F1](reports/figures/finalization_p3/per_class_f1.png),
+[open-set ROC](reports/figures/finalization_p3/open_set_roc.png), and
+[risk–coverage](reports/figures/finalization_p3/risk_coverage.png).
+These are **sample-based development** results, not publication-population
+statistics or final 2025 outcomes.
+
+With the locally preserved, Git-ignored Phase 2 data and an editable install:
+
+```bash
+openalex-verify-integrated-topics data/processed/ml_topic_classification/finalization_p2_20261101_v3
+openalex-final-ml --output-dir data/analysis/finalization_p3_models_rebuild_v1
+openalex-final-open-set --closed-run data/analysis/finalization_p3_models_rebuild_v1 --output-dir data/analysis/finalization_p3_open_rebuild_v1
+openalex-verify-final-ml data/analysis/finalization_p3_models_rebuild_v1
+openalex-verify-final-ml data/analysis/finalization_p3_open_rebuild_v1
+openalex-final-ml-diagnostics --closed-run data/analysis/finalization_p3_models_rebuild_v1 --output-dir data/analysis/finalization_p3_diagnostics_rebuild_v1
+openalex-package-topic-model package --closed-run data/analysis/finalization_p3_models_rebuild_v1 --open-run data/analysis/finalization_p3_open_rebuild_v1 --output-dir models/finalization_p3/topic_placement_rebuild_v1
+openalex-package-topic-model infer --help
+openalex-final-test --help
+```
+
+The final-test CLI is **disabled by the frozen human-review gate**; `--help`
+does not open test data. The model binary is intentionally not committed and
+must be rebuilt from trusted local data. The inference service reuses the
+existing `ResearchData` Topic Brief interface; no website is claimed here.
+Each builder requires an unused versioned destination; change the `rebuild_v1`
+suffix if that directory already exists.
 
 ## Repository layout
 
