@@ -1,0 +1,29 @@
+name: Offline research and web checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install project and web dependencies
+        run: python -m pip install -e ".[dev,web,deliverables]"
+      - name: Dependency integrity
+        run: python -m pip check
+      - name: Syntax check
+        run: python -m compileall -q src dashboard deliverables tests
+      - name: Offline tests (local-only artifact tests explicitly skip)
+        run: python -m pytest -q -ra -o addopts=''
+      - name: Exclude credentials and private data from tracked files
+        run: |
+          if git ls-files | grep -E '(^|/)(\.env$|[^/]*\.joblib$)|^data/(raw|interim|processed|analysis)/.+\.(jsonl|parquet|csv)$'; then
+            echo "Private data or credentials tracked" >&2
+            exit 1
+          fi
