@@ -28,3 +28,9 @@ reports/figures/**
 # Publish only verified Phase 4 PNGs; keep local SVGs and other generated figures ignored.
 !reports/figures/phase4/
 !reports/figures/phase4/*.png
+# Four small, source-verified Phase 5 feasibility/RQ5 figures.
+!reports/figures/phase5/
+!reports/figures/phase5/*.png
+# One small verified Phase 6A label-support chart; analytical outputs remain ignored.
+!reports/figures/phase6/
+!reports/figures/phase6/topic_support.png

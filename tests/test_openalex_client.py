@@ -74,6 +74,18 @@ def test_non_retryable_authentication_failure_is_explicit() -> None:
         client.get_json("works")
 
 
+def test_optional_404_preserves_response_without_hiding_other_errors() -> None:
+    missing = FakeResponse({"error": "not found"}, status_code=404)
+    client = OpenAlexClient(session=FakeSession([missing]), min_interval_seconds=0)
+    assert client.request("works/W1", allow_statuses=frozenset({404})).status_code == 404
+    denied = OpenAlexClient(session=FakeSession([FakeResponse({}, status_code=403)]),
+                            min_interval_seconds=0)
+    with pytest.raises(OpenAlexError, match="403"):
+        denied.request("works/W1", allow_statuses=frozenset({404}))
+    with pytest.raises(ValueError, match="Only HTTP 404"):
+        denied.request("works/W1", allow_statuses=frozenset({401}))
+
+
 def test_api_parameter_handling_for_basic_page() -> None:
     response = FakeResponse(
         {"meta": {"count": 1, "next_cursor": None}, "results": [{"id": "https://openalex.org/W1"}], "group_by": []}

@@ -22,6 +22,11 @@ tables. See the [Phase 2 collection report](reports/PHASE2_COLLECTION_REPORT.md)
 and [Phase 3 data-quality report](reports/PHASE3_DATA_QUALITY_REPORT.md).
 Phase 4 has completed the four research-question analyses using 19 derived
 summary tables, 22 figure pairs and a reproducible [research report](reports/PHASE4_ANALYSIS_REPORT.md).
+Phase 5's first literature-discovery feasibility audit is complete. Its G1/G2
+decision is **REVISE**, so no supervised recommender or website has been claimed.
+See the [feasibility](reports/PHASE5_FEASIBILITY_REPORT.md),
+[RQ5 reference EDA](reports/PHASE5_REFERENCE_EDA_REPORT.md), and
+[ML decision](reports/PHASE5_ML_PILOT_REPORT.md) reports.
 
 ## Study design in one minute
 
@@ -226,7 +231,8 @@ row counts, schema version, validation checks, code hash) and `quality.json`
 `N_h/n_h` year-stratum weights do not imply verified uniform OpenAlex inclusion.
 Population trends use `population_year_counts.parquet`, never counts from the
 12,000-work sample. Native topics and custom text-rule labels remain distinct.
-Phase 5 ML is not yet implemented.
+Phase 5 ML training is not yet implemented; a reference-graph feasibility audit
+and exploratory RQ5 extension are available below.
 
 The current processor streams the source JSONL line by line but holds normalized
 tables in memory until deterministic sorting and Parquet export. For a much
@@ -309,6 +315,208 @@ versioned verified local run; adapt their path if reproducing elsewhere.
 Sample counts are not population counts. Nominal year weights are not verified
 inverse inclusion probabilities, and OA associations do not establish causality.
 
+## Phase 5 literature-discovery feasibility pilot
+
+The exploratory [RQ5 plan](docs/PHASE5_RQ5_PLAN.md) asks what prior literature
+the sampled AI/CV works cite. The verified 12,000-work sample has 289,110 unique
+reference edges. Under the documented title/abstract/date/≥10-reference rules,
+5,141 works are eligible queries. For the 909 eligible 2023 queries, the
+2020–2022 historical ≥2-citer pool contains 8,183 candidate IDs; median
+reference-ID overlap is only 10.0%. Most candidate publication dates are not
+available locally. This is **pool coverage, not candidate-generation recall**.
+The first gate was **REVISE**; no supervised ranking, inference model or website
+was run. See the [actual first audit](reports/PHASE5_FEASIBILITY_REPORT.md) and
+[RQ5 EDA](reports/PHASE5_REFERENCE_EDA_REPORT.md). Four small diagnostic figures
+are published under [`reports/figures/phase5/`](reports/figures/phase5/).
+
+The audit uses only local, previously verified Phase 3 data—no API call or new
+collection. It refuses an existing output directory and, by default, refuses
+existing report names. Reproduce under a **new** versioned output and report
+directory to preserve the completed run:
+
+```bash
+openalex-audit-literature --help
+openalex-verify-literature-audit --help
+openalex-audit-literature \
+  --processed-dir data/processed/openalex_stratified/stratified_20261019T155909Z \
+  --plan data/metadata/phase2_sampling_plan.json \
+  --population data/metadata/population_counts_pre_phase2.json \
+  --config config/topics.yaml \
+  --output-dir data/analysis/phase5_literature_reproduction \
+  --report-dir reports/phase5_reproduction \
+  --published-figure-dir reports/figures/phase5_reproduction \
+  --seed 20261028
+openalex-verify-literature-audit \
+  data/analysis/phase5_literature_reproduction \
+  --processed-dir data/processed/openalex_stratified/stratified_20261019T155909Z \
+  --report-dir reports/phase5_reproduction \
+  --published-figure-dir reports/figures/phase5_reproduction
+pytest -q -ra
+pip check
+```
+
+The completed local audit is
+`data/analysis/phase5_literature_pilot_20261028_v4/`; its manifest records
+source and output SHA-256 checksums. Those detailed tables and the older local
+audit iterations are Git-ignored. Model training, model evaluation and inference
+commands intentionally do not exist yet because the feasibility gate failed.
+The bounded follow-up used **all** 2020–2022 edge-bearing sampled works (not
+only ML-eligible historical queries), raising the ≥2-pool 2023 median ID overlap
+from 10.0% to 12.1%. It then enriched 1,000 historically selected IDs (973
+retrieved; 27 unavailable) and compared three simple retrieval baselines on
+the same date-screened subset. The best fusion baseline reached only 2.53%
+mean end-to-end Recall@20 against observed 2023 references. The final gate is
+**NO-GO for citation-aware discovery as the main supervised ML task**; this
+does not invalidate the RQ5 reference EDA. See the [coverage reassessment](reports/PHASE5_COVERAGE_REASSESSMENT.md),
+[retrieval diagnostic](reports/PHASE5_RETRIEVAL_DIAGNOSTIC.md), and
+[final decision with audited alternatives](reports/PHASE5_FINAL_DECISION.md).
+No extra historical crawl or full-scale model training was started.
+
+Reproduce the follow-up from the local verified Phase 3 data (Git-ignored;
+not downloadable from this repository) under **new** output directory names:
+
+```bash
+openalex-reassess-literature --help
+openalex-enrich-candidates --help
+openalex-diagnose-retrieval --help
+openalex-reassess-literature --output-dir data/analysis/phase5_reassessment_reproduction
+openalex-enrich-candidates \
+  --output-dir data/analysis/phase5_candidate_enrichment_reproduction \
+  --maximum 1000
+openalex-enrich-candidates \
+  --output-dir data/analysis/phase5_candidate_enrichment_reproduction \
+  --verify-only
+openalex-diagnose-retrieval \
+  --enrichment-dir data/analysis/phase5_candidate_enrichment_reproduction \
+  --output-dir data/analysis/phase5_retrieval_reproduction
+```
+
+The enrichment command requires a local `OPENALEX_API_KEY` in Git-ignored `.env`;
+the read-only verification and other two commands do not call the API. The
+reassessment's five output hashes and retrieval diagnostic's three deterministic
+CSV hashes matched independent reruns. Timing diagnostics are intentionally kept
+outside deterministic CSV outputs. These are bounded proxy results, not a
+full-pool temporal-coverage estimate or human relevance evaluation.
+
+## Phase 6A topic-classification feasibility pilot
+
+The [pre-model selection protocol](docs/PHASE6_TOPIC_SELECTION_PROTOCOL.md)
+fixes 2020–2023 training, 2024 validation, a locked 2025 test, duplicate/version
+grouping, and the provisional 120/30 per-topic support rule. The actual local
+pilot found five scope-reviewed topics meeting that rule, below the intended
+8–15-topic catalogue. A five-class diagnostic model was therefore evaluated
+only as a **non-confirmatory** silver-label agreement experiment. The outcome
+and its scientific limitations are in the [feasibility report](reports/PHASE6A_TOPIC_CLASSIFICATION_FEASIBILITY.md)
+and [reviewer handoff](reports/PHASE6A_REVIEW_HANDOFF.md). No human-labelled
+validation has yet been performed; see the [blind annotation protocol](docs/PHASE6_HUMAN_ANNOTATION_GUIDELINES.md).
+
+The Phase 6A run uses only verified local Phase 3 Parquet data. No citation,
+year, topic score, or source metadata is supplied as a model feature. To
+reproduce it in a fresh Git-ignored directory (never reuse a completed output
+directory):
+
+```bash
+pip install -e ".[dev]"
+openalex-pilot-topics --help
+openalex-pilot-topics --output-dir data/analysis/phase6_topic_pilot_reproduction
+pytest -q -ra
+pip check
+```
+
+The run manifest hashes each CSV, the support figure, the verified input tables
+and catalogue configuration. The dedicated locked-test file has only 2025 Work
+IDs and version groups; the separate source-label audit includes descriptive
+2025 counts but these were not used for selection, fitting or evaluation. The
+Git-ignored annotation template and answer
+key remain local. The published [topic-support chart](reports/figures/phase6/topic_support.png)
+shows sample counts, not population topic prevalence.
+
+## Phase 6B final classification feasibility review
+
+The [Phase 6B report](reports/PHASE6B_FINAL_TOPIC_VALIDATION_REPORT.md) and
+[external-review handoff](reports/PHASE6B_EXTERNAL_REVIEW_HANDOFF.md) document
+the final bounded reassessment. A provisional 14-topic catalogue covers
+**689/1,873 (36.8%)** text-eligible sampled 2024 works, up from **20.2%** for
+the five-topic pilot. Its best Linear SVM reaches **0.857 macro-F1** against
+OpenAlex automated primary-topic labels, but an independently evaluated
+rejection threshold accepts only **74.2%** of in-catalogue works and falsely
+accepts **19.2%** of outside works. The fixed acceptance gate fails; human
+semantic validation is still pending. **Verdict: REVISE**, toward a narrowly
+labelled five-topic educational demonstration, not a general AI/CV topic finder.
+No 2025 final model test or full website has been run/built.
+
+The [official-description catalogue](config/phase6b_catalogue.yaml),
+[prospective expanded protocol](docs/PHASE6B_EXPANDED_CATALOGUE_PROTOCOL.md),
+[decision criteria](docs/PHASE6B_DECISION_CRITERIA.md), and
+[reviewer-safe aggregate outputs](reports/phase6b/README.md) are public.
+The local complete run, raw topic responses, paper-level predictions, blind
+annotation sheets/keys and fitted model remain Git-ignored. The PoC's context
+is from **sampled** 2020–2024 works, not full-population topic counts.
+
+Reproduce from the repository root with the locally retained Phase 3 data and
+an editable install. Choose new output directories; the CLIs refuse overwrite.
+The OpenAlex metadata fetch is a separate, bounded API step and is unnecessary
+when using the committed hash-verified `config/phase6b_topic_metadata.csv`.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+openalex-validate-topics-final --help
+openalex-validate-topics-final --output-dir data/analysis/phase6b_topic_validation_NEW
+openalex-verify-topic-run --run-dir data/analysis/phase6b_topic_validation_NEW
+openalex-place-research-draft --help
+openalex-analyze-topic-annotations --help
+pytest -q -ra
+pip check
+```
+
+The optional real two-rater process is specified in the
+[human-review instructions](docs/PHASE6B_HUMAN_REVIEW_INSTRUCTIONS.md); no
+human ratings have been generated or inferred.
+
+## Finalization Phase 1 — targeted training-data foundation
+
+A bounded, **training-years-only (2020–2023)** OpenAlex expansion acquired
+2,515 unique works in a separate immutable run. After text and identity checks,
+1,947 new records are provisionally usable for later ML training (1,638 within
+the fourteen-topic catalogue, 309 outside). Eleven topics now meet the planning
+target of 225 usable examples; the residual shortfall is 12 across three topics.
+This is **not** a population sample and does not revise the original 12,000-work
+EDA dataset or the Phase 6B model-performance verdict. Independent human topic
+review remains pending. See the [primary expansion report](reports/FINALIZATION_P1_EXPANSION_REPORT.md),
+[data-gap audit](reports/FINALIZATION_P1_DATA_GAP_AUDIT.md),
+[collection plan](reports/FINALIZATION_P1_COLLECTION_PLAN.md),
+[label-drift audit](reports/FINALIZATION_P1_LABEL_DRIFT_AUDIT.md), and
+[Phase 2 handoff](reports/FINALIZATION_P1_PHASE2_HANDOFF.md). Small
+[reviewer-safe aggregate CSVs](reports/finalization_p1/reproducibility_manifest.json)
+are committed; raw works, private audits, manifests and credentials are local only.
+
+Install and inspect the local verified run from the repository root:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+openalex-audit-ml-gaps --help
+openalex-audit-label-drift --help
+openalex-plan-ml-expansion --help
+openalex-collect-ml-expansion --help
+openalex-verify-ml-expansion data/raw/openalex_ml_expansion/ml_expansion_20261101T052506Z/manifest.json
+openalex-audit-label-drift --verify-manifest data/analysis/finalization_p1_label_drift_20261101_v1/manifest.json
+openalex-audit-ml-expansion --help
+openalex-publish-ml-audit --help
+pytest -q -ra
+pip check
+```
+
+The local run paths are not downloadable from GitHub. These commands verify
+existing evidence and do not start an API crawl. The acquisition command runs
+in dry-run mode unless `--execute` is explicitly supplied; only use it with a
+new versioned output root and a validated plan. Phase 2 should implement the
+[non-destructive integration contract](config/finalization_phase2_integration.yaml)
+and blinded scope review before any final model fitting.
+
 ## Repository layout
 
 ```text
@@ -317,16 +525,16 @@ docs/                           proposal, methods, dictionary, feasibility repor
 data/raw/                       immutable API response bodies (Git-ignored)
 data/interim/                   extracted/normalized intermediate data (Git-ignored)
 data/processed/                 Phase 3 Parquet analytical tables (Git-ignored)
-data/analysis/                  Phase 4 CSV results and manifests (Git-ignored)
+data/analysis/                  Phase 4–6 local CSV results and manifests (Git-ignored)
 data/metadata/                  manifests and quality reports (Git-ignored)
 src/ai_research_trends/
   crawling/                     API client and collection CLIs
   preprocessing/               Phase 3 table builders
   features/                    bibliometric feature engineering
   analysis/                    Phase 4 statistical analysis
-  ml/                          Phase 5 leakage-aware experiments
+  ml/                          Phase 5 audits and Phase 6A/6B silver-label pilots
 notebooks/                      thin, numbered presentation notebooks
-dashboard/                      Phase 6 application
+dashboard/                      reserved for a later scoped application
 models/                         fitted artifacts (Git-ignored)
 reports/                        reports and figures
 tests/                          unit tests

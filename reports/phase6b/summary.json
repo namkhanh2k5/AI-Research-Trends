@@ -1,0 +1,490 @@
+{
+  "run_manifest_sha256": "8adeee71c0b37d3e5b85d06360d2d471b72618daf1a4427b023570664bac9c79",
+  "outputs_verified": 34,
+  "source_manifest_sha256": "5d21e6187f0cf569b284ea399ffff02cb02d29d1e936a5fa716c7c96758de19c",
+  "source_work_sha256": "9318c456d916b8c9a35b0a3c86a829a92347083357693593e743abb0253264d4",
+  "source_topic_sha256": "e65356b899f3c9dec4d9d47ec9dae54557b23dc1709a1b3ea1d4c5f746acf6d5",
+  "catalogue_sha256": "e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9",
+  "metadata_sha256": "024f9f13db713534fcc662ff95f477299c8cf939ca200565b2e88e13371ddd86",
+  "development_works": 9024,
+  "eligible_development": 7058,
+  "train_eligible": 5185,
+  "validation_eligible": 1873,
+  "duplicate_audit": {
+    "exact_text_cross_period_groups": 0,
+    "exact_title_cross_period_groups": 0,
+    "exact_abstract_cross_period_groups": 3,
+    "canonical_doi_cross_period_groups": 0,
+    "blocked_candidate_pairs": 37456,
+    "near_duplicate_pairs": 0,
+    "near_duplicate_validation_works": 0,
+    "blocking_limit": "four rare non-stop title tokens, frequency <=100; may miss reworded titles"
+  },
+  "near_duplicate_sensitivity": {
+    "A": {
+      "removed_validation_works": 0,
+      "svm_macro_f1_after_removal": 0.9526208470034137
+    },
+    "B": {
+      "removed_validation_works": 0,
+      "svm_macro_f1_after_removal": 0.8573802211204724
+    }
+  },
+  "catalogues": {
+    "A": {
+      "selected_topics": [
+        "https://openalex.org/T10028",
+        "https://openalex.org/T10036",
+        "https://openalex.org/T10052",
+        "https://openalex.org/T10462",
+        "https://openalex.org/T10664"
+      ],
+      "train_rows": 955,
+      "validation_rows": 379,
+      "validation_eligible_denominator": 1873,
+      "coverage_validation": 0.20234917245061398,
+      "metrics": {
+        "majority": {
+          "accuracy": 0.38522427440633245,
+          "macro_f1": 0.11123809523809525,
+          "weighted_f1": 0.2142580726221887
+        },
+        "description_match": {
+          "accuracy": 0.6253298153034301,
+          "macro_f1": 0.5771501423477708,
+          "weighted_f1": 0.6251635119602101
+        },
+        "complement_nb": {
+          "accuracy": 0.8337730870712401,
+          "macro_f1": 0.8265833909097667,
+          "weighted_f1": 0.8291739852022829
+        },
+        "logistic_regression": {
+          "accuracy": 0.8601583113456465,
+          "macro_f1": 0.8488538353194386,
+          "weighted_f1": 0.8563927203187524
+        },
+        "linear_svm": {
+          "accuracy": 0.9498680738786279,
+          "macro_f1": 0.9526208470034137,
+          "weighted_f1": 0.9498748082602624
+        }
+      },
+      "fit_info": {
+        "complement_nb": {
+          "fixed_parameter": 1.0,
+          "fit_seconds": 0.6527062319983088,
+          "validation_predict_seconds_including_vectorization": 0.15237062600135687,
+          "validation_predict_ms_per_paper": 0.402033313987749,
+          "top3_accuracy": 0.9973614775725593
+        },
+        "logistic_regression": {
+          "fixed_parameter": 1.0,
+          "fit_seconds": 5.156164489002549,
+          "validation_predict_seconds_including_vectorization": 0.24087167299876455,
+          "validation_predict_ms_per_paper": 0.6355453113423867,
+          "top3_accuracy": 1.0
+        },
+        "linear_svm": {
+          "fixed_parameter": 1.0,
+          "fit_seconds": 0.6476746379994438,
+          "validation_predict_seconds_including_vectorization": 0.16767594100019778,
+          "validation_predict_ms_per_paper": 0.44241673087123423,
+          "top3_accuracy": 1.0
+        }
+      },
+      "strongest_baseline": "description_match",
+      "bootstrap": {
+        "per_model": {
+          "majority": {
+            "accuracy": [
+              0.33509234828496043,
+              0.43937994722955137
+            ],
+            "macro_f1": [
+              0.10039525691699605,
+              0.12210232886379675
+            ]
+          },
+          "description_match": {
+            "accuracy": [
+              0.5738126649076517,
+              0.6768469656992083
+            ],
+            "macro_f1": [
+              0.518753751189811,
+              0.6310152341244115
+            ]
+          },
+          "complement_nb": {
+            "accuracy": [
+              0.7993403693931398,
+              0.8720976253298152
+            ],
+            "macro_f1": [
+              0.7863300682180077,
+              0.8679243477713573
+            ]
+          },
+          "logistic_regression": {
+            "accuracy": [
+              0.8271108179419525,
+              0.899736147757256
+            ],
+            "macro_f1": [
+              0.8050076914888402,
+              0.889828173516675
+            ]
+          },
+          "linear_svm": {
+            "accuracy": [
+              0.9300131926121372,
+              0.9709762532981531
+            ],
+            "macro_f1": [
+              0.9336532241716723,
+              0.9726881814497031
+            ]
+          }
+        },
+        "paired_macro_f1_difference": {
+          "linear_svm_minus_logistic_regression": [
+            0.06370902751717249,
+            0.1456856586409258
+          ]
+        },
+        "draws": 300
+      },
+      "train_class_counts": {
+        "https://openalex.org/T10028": 149,
+        "https://openalex.org/T10036": 369,
+        "https://openalex.org/T10052": 127,
+        "https://openalex.org/T10462": 120,
+        "https://openalex.org/T10664": 190
+      },
+      "validation_class_counts": {
+        "https://openalex.org/T10028": 85,
+        "https://openalex.org/T10036": 146,
+        "https://openalex.org/T10052": 45,
+        "https://openalex.org/T10462": 45,
+        "https://openalex.org/T10664": 58
+      },
+      "vocabulary_sizes": {
+        "complement_nb": 24559,
+        "logistic_regression": 24559,
+        "linear_svm": 24559
+      },
+      "coverage_training": 0.18418514946962392
+    },
+    "B": {
+      "selected_topics": [
+        "https://openalex.org/T10028",
+        "https://openalex.org/T10036",
+        "https://openalex.org/T10052",
+        "https://openalex.org/T10100",
+        "https://openalex.org/T10181",
+        "https://openalex.org/T10201",
+        "https://openalex.org/T10331",
+        "https://openalex.org/T10462",
+        "https://openalex.org/T10664",
+        "https://openalex.org/T10775",
+        "https://openalex.org/T10812",
+        "https://openalex.org/T11307",
+        "https://openalex.org/T11689",
+        "https://openalex.org/T12026"
+      ],
+      "train_rows": 1746,
+      "validation_rows": 689,
+      "validation_eligible_denominator": 1873,
+      "coverage_validation": 0.3678590496529632,
+      "metrics": {
+        "majority": {
+          "accuracy": 0.21190130624092887,
+          "macro_f1": 0.024978614200171088,
+          "weighted_f1": 0.07410201367946256
+        },
+        "description_match": {
+          "accuracy": 0.5718432510885341,
+          "macro_f1": 0.5500266262884929,
+          "weighted_f1": 0.5748497898794759
+        },
+        "complement_nb": {
+          "accuracy": 0.7924528301886793,
+          "macro_f1": 0.7745312906946535,
+          "weighted_f1": 0.7837496987785969
+        },
+        "logistic_regression": {
+          "accuracy": 0.7880986937590712,
+          "macro_f1": 0.7729101768256612,
+          "weighted_f1": 0.7808677842833036
+        },
+        "linear_svm": {
+          "accuracy": 0.8621190130624092,
+          "macro_f1": 0.8573802211204724,
+          "weighted_f1": 0.8595184190643435
+        }
+      },
+      "fit_info": {
+        "complement_nb": {
+          "options": [
+            0.5,
+            1.0,
+            2.0
+          ],
+          "best_params": {
+            "model__alpha": 0.5
+          },
+          "best_training_cv_macro_f1": 0.7454671350832892,
+          "candidate_mean_cv_scores": [
+            0.7454671350832892,
+            0.64041067602417,
+            0.5038385544529033
+          ],
+          "best_parameter_fold_scores": [
+            0.8013417692802494,
+            0.7271736600663605,
+            0.7078859759032579
+          ],
+          "fit_search_seconds": 9.944567368998833,
+          "validation_predict_seconds_including_vectorization": 0.19758500699754222,
+          "validation_predict_ms_per_paper": 0.28677069230412516,
+          "top3_accuracy": 0.969521044992743
+        },
+        "logistic_regression": {
+          "options": [
+            0.3,
+            1.0,
+            3.0
+          ],
+          "best_params": {
+            "model__C": 3.0
+          },
+          "best_training_cv_macro_f1": 0.7183119276853939,
+          "candidate_mean_cv_scores": [
+            0.10752813234971853,
+            0.5114907552666156,
+            0.7183119276853939
+          ],
+          "best_parameter_fold_scores": [
+            0.7671273586670114,
+            0.7021379219296545,
+            0.6856705024595158
+          ],
+          "fit_search_seconds": 70.16311589399993,
+          "validation_predict_seconds_including_vectorization": 0.2833872010014602,
+          "validation_predict_ms_per_paper": 0.4113021785217129,
+          "top3_accuracy": 0.9680696661828737
+        },
+        "linear_svm": {
+          "options": [
+            0.3,
+            1.0,
+            3.0
+          ],
+          "best_params": {
+            "model__C": 3.0
+          },
+          "best_training_cv_macro_f1": 0.8466088666131008,
+          "candidate_mean_cv_scores": [
+            0.8005349100872631,
+            0.8397143291515929,
+            0.8466088666131008
+          ],
+          "best_parameter_fold_scores": [
+            0.8657211899830387,
+            0.845554579152131,
+            0.8285508307041328
+          ],
+          "fit_search_seconds": 9.842303132998495,
+          "validation_predict_seconds_including_vectorization": 0.20648630100185983,
+          "validation_predict_ms_per_paper": 0.29968984180240904,
+          "top3_accuracy": 0.9724238026124818
+        }
+      },
+      "strongest_baseline": "description_match",
+      "bootstrap": {
+        "per_model": {
+          "majority": {
+            "accuracy": [
+              0.17851959361393324,
+              0.24383164005805516
+            ],
+            "macro_f1": [
+              0.021639690358902182,
+              0.028004667444574093
+            ]
+          },
+          "description_match": {
+            "accuracy": [
+              0.537699564586357,
+              0.6081277213352685
+            ],
+            "macro_f1": [
+              0.5098774993307968,
+              0.5846560055888713
+            ]
+          },
+          "complement_nb": {
+            "accuracy": [
+              0.7583091436865022,
+              0.8200290275761973
+            ],
+            "macro_f1": [
+              0.732363048407086,
+              0.8033124930446225
+            ]
+          },
+          "logistic_regression": {
+            "accuracy": [
+              0.7554063860667635,
+              0.8156748911465893
+            ],
+            "macro_f1": [
+              0.7331813986439376,
+              0.8027012711008928
+            ]
+          },
+          "linear_svm": {
+            "accuracy": [
+              0.8345428156748912,
+              0.8853410740203193
+            ],
+            "macro_f1": [
+              0.8298874801463848,
+              0.8784042191148708
+            ]
+          }
+        },
+        "paired_macro_f1_difference": {
+          "linear_svm_minus_logistic_regression": [
+            0.06008608266705205,
+            0.11712807035205662
+          ]
+        },
+        "draws": 300
+      },
+      "train_class_counts": {
+        "https://openalex.org/T10028": 149,
+        "https://openalex.org/T10036": 369,
+        "https://openalex.org/T10052": 127,
+        "https://openalex.org/T10100": 104,
+        "https://openalex.org/T10181": 94,
+        "https://openalex.org/T10201": 86,
+        "https://openalex.org/T10331": 103,
+        "https://openalex.org/T10462": 120,
+        "https://openalex.org/T10664": 190,
+        "https://openalex.org/T10775": 104,
+        "https://openalex.org/T10812": 73,
+        "https://openalex.org/T11307": 84,
+        "https://openalex.org/T11689": 73,
+        "https://openalex.org/T12026": 70
+      },
+      "validation_class_counts": {
+        "https://openalex.org/T10028": 85,
+        "https://openalex.org/T10036": 146,
+        "https://openalex.org/T10052": 45,
+        "https://openalex.org/T10100": 36,
+        "https://openalex.org/T10181": 36,
+        "https://openalex.org/T10201": 24,
+        "https://openalex.org/T10331": 22,
+        "https://openalex.org/T10462": 45,
+        "https://openalex.org/T10664": 58,
+        "https://openalex.org/T10775": 53,
+        "https://openalex.org/T10812": 21,
+        "https://openalex.org/T11307": 42,
+        "https://openalex.org/T11689": 39,
+        "https://openalex.org/T12026": 37
+      },
+      "vocabulary_sizes": {
+        "complement_nb": 39812,
+        "logistic_regression": 39812,
+        "linear_svm": 39812
+      },
+      "coverage_training": 0.33674059787849564
+    }
+  },
+  "open_set": {
+    "svm_max_decision": {
+      "calibration": {
+        "total": 749,
+        "in_catalogue": 275,
+        "outside_catalogue": 474,
+        "threshold": -0.14025548277181898,
+        "in_acceptance_rate": 0.7418181818181818,
+        "out_false_acceptance_rate": 0.19831223628691982,
+        "in_false_rejection_rate": 0.2581818181818182,
+        "auroc_in_vs_out": 0.8587495205216725,
+        "accepted_precision_in_catalogue": 0.6845637583892618,
+        "accuracy_among_accepted_in": 0.9411764705882353,
+        "selective_risk": 0.05882352941176472,
+        "selective_coverage_in": 0.7418181818181818,
+        "end_to_end_correct_placement": 0.25634178905206945,
+        "accepted_in": 204,
+        "accepted_out": 94,
+        "correct_accepted_in": 192
+      },
+      "evaluation": {
+        "total": 1124,
+        "in_catalogue": 414,
+        "outside_catalogue": 710,
+        "threshold": -0.14025548277181898,
+        "in_acceptance_rate": 0.7415458937198067,
+        "out_false_acceptance_rate": 0.19154929577464788,
+        "in_false_rejection_rate": 0.2584541062801932,
+        "auroc_in_vs_out": 0.8675239844866299,
+        "accepted_precision_in_catalogue": 0.6930022573363431,
+        "accuracy_among_accepted_in": 0.9348534201954397,
+        "selective_risk": 0.06514657980456029,
+        "selective_coverage_in": 0.7415458937198067,
+        "end_to_end_correct_placement": 0.25533807829181493,
+        "accepted_in": 307,
+        "accepted_out": 136,
+        "correct_accepted_in": 287
+      },
+      "threshold_source": "2024 calibration only; <=20% outside false acceptance constraint",
+      "score_interpretation": "raw SVM decision score, not probability"
+    },
+    "logistic_max_probability": {
+      "calibration": {
+        "total": 749,
+        "in_catalogue": 275,
+        "outside_catalogue": 474,
+        "threshold": 0.3275200216847886,
+        "in_acceptance_rate": 0.6072727272727273,
+        "out_false_acceptance_rate": 0.19831223628691982,
+        "in_false_rejection_rate": 0.3927272727272727,
+        "auroc_in_vs_out": 0.7871423091676256,
+        "accepted_precision_in_catalogue": 0.6398467432950191,
+        "accuracy_among_accepted_in": 0.9041916167664671,
+        "selective_risk": 0.09580838323353291,
+        "selective_coverage_in": 0.6072727272727273,
+        "end_to_end_correct_placement": 0.20160213618157544,
+        "accepted_in": 167,
+        "accepted_out": 94,
+        "correct_accepted_in": 151
+      },
+      "evaluation": {
+        "total": 1124,
+        "in_catalogue": 414,
+        "outside_catalogue": 710,
+        "threshold": 0.3275200216847886,
+        "in_acceptance_rate": 0.6521739130434783,
+        "out_false_acceptance_rate": 0.18732394366197183,
+        "in_false_rejection_rate": 0.34782608695652173,
+        "auroc_in_vs_out": 0.8116758522147378,
+        "accepted_precision_in_catalogue": 0.6699751861042184,
+        "accuracy_among_accepted_in": 0.9185185185185185,
+        "selective_risk": 0.08148148148148149,
+        "selective_coverage_in": 0.6521739130434783,
+        "end_to_end_correct_placement": 0.2206405693950178,
+        "accepted_in": 270,
+        "accepted_out": 133,
+        "correct_accepted_in": 248
+      },
+      "threshold_source": "2024 calibration only; <=20% outside false acceptance constraint",
+      "score_interpretation": "uncalibrated Logistic Regression maximum probability; diagnostic"
+    }
+  },
+  "human_semantic_validation": "pending",
+  "test_2025": "sealed_not_evaluated"
+}

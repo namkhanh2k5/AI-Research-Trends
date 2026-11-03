@@ -56,14 +56,14 @@ def test_published_figure_manifest_and_decodable_images() -> None:
 def test_report_readme_and_brief_figure_links() -> None:
     expected = {PUBLISHED / item["name"] for item in json.loads(PUBLICATION.read_text())["files"]}
     report_links = _links(REPORT)
-    readme_links = _links(README)
+    readme_links = [path for path in _links(README) if path.parent == PUBLISHED]
     brief_links = _links(BRIEF)
     assert len(report_links) == len(expected) == 22
     assert set(report_links) == expected
     assert len(readme_links) == 5
     assert len(set(readme_links)) == 5
     assert len(brief_links) == 8
-    assert all(path.is_file() for path in report_links + readme_links + brief_links)
+    assert all(path.is_file() for path in report_links + _links(README) + brief_links)
     text = REPORT.read_text(encoding="utf-8")
     assert "*Figure RQ1. Annual publication counts from complete OpenAlex population aggregates" in text
     assert "*Figure RQ2. Descriptive log1p citation distribution for 12,000 sampled works" in text
