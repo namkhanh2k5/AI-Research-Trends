@@ -12,6 +12,9 @@ import tempfile
 from pathlib import Path
 
 from docx import Document
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
 from docx.shared import Cm, Pt
 from pptx import Presentation
 from pptx.dml.color import RGBColor
@@ -31,15 +34,43 @@ def clean_markdown(text: str) -> str:
 def report_docx() -> None:
     doc = Document()
     section = doc.sections[0]
+    section.page_width = Cm(21)
+    section.page_height = Cm(29.7)
     section.top_margin = section.bottom_margin = Cm(2.3)
     section.left_margin = section.right_margin = Cm(2.5)
     style = doc.styles["Normal"]
     style.font.name = "Liberation Serif"
     style.font.size = Pt(11)
     style.paragraph_format.space_after = Pt(6)
+    for heading in ("Heading 1", "Heading 2"):
+        doc.styles[heading].paragraph_format.keep_with_next = True
     in_code = False
     lines = SOURCE.read_text(encoding="utf-8").splitlines()
+    title = clean_markdown(lines[0].removeprefix("# "))
+    cover = doc.add_paragraph()
+    cover.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    cover.paragraph_format.space_before = Pt(120)
+    run = cover.add_run(title)
+    run.bold = True
+    run.font.size = Pt(20)
+    subtitle = doc.add_paragraph("DỰ ÁN NHẬP MÔN KHOA HỌC DỮ LIỆU\nBáo cáo nghiên cứu · 2026")
+    subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    subtitle.runs[0].font.size = Pt(14)
+    doc.add_page_break()
+    doc.add_heading("Mục lục", 0)
+    for line in lines:
+        if line.startswith("## "):
+            doc.add_paragraph(clean_markdown(line[3:]), style="Normal")
+    doc.add_page_break()
+    footer = section.footer.paragraphs[0]
+    footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    footer.add_run("AI/CV Research Landscape · ")
+    field = OxmlElement("w:fldSimple")
+    field.set(qn("w:instr"), "PAGE")
+    footer._p.append(field)
     i = 0
+    figure_number = 0
+    table_number = 0
     while i < len(lines):
         line = lines[i].strip()
         i += 1
@@ -54,11 +85,15 @@ def report_docx() -> None:
                 path = (SOURCE.parent / match.group(2)).resolve()
                 if not path.is_file():
                     raise FileNotFoundError(path)
-                doc.add_picture(str(path), width=Cm(15))
-                doc.add_paragraph(match.group(1), style="Caption")
+                doc.add_picture(str(path), width=Cm(14.5))
+                figure_number += 1
+                caption = re.sub(r"^Hình\s+\d+\.\s*", "", match.group(1))
+                doc.add_paragraph(f"Hình {figure_number}. {caption}", style="Caption")
             continue
         if line.startswith("# "):
-            doc.add_heading(clean_markdown(line[2:]), 0)
+            continue  # The title is on the separate cover.
+        elif line.startswith("> "):
+            doc.add_paragraph(clean_markdown(line[2:]), style="Quote")
         elif line.startswith("## "):
             doc.add_heading(clean_markdown(line[3:]), 1)
         elif line.startswith("### "):
@@ -69,12 +104,23 @@ def report_docx() -> None:
             while i < len(lines) and lines[i].startswith("|"):
                 rows.append(lines[i]); i += 1
             matrix = [[clean_markdown(cell.strip()) for cell in row.strip("|").split("|")] for row in rows]
+            table_number += 1
+            first = matrix[0][0]
+            caption_match = re.match(r"Bảng\s+\d+\.\s*(.*)", first)
+            if caption_match:
+                doc.add_paragraph(f"Bảng {table_number}. {caption_match.group(1)}", style="Caption")
+                matrix[0][0] = caption_match.group(1)
             table = doc.add_table(rows=0, cols=len(matrix[0]))
             table.style = "Table Grid"
-            for row in matrix:
+            for row_number, row in enumerate(matrix):
                 cells = table.add_row().cells
                 for j, value in enumerate(row):
                     cells[j].text = value
+                    if row_number < len(matrix) - 1:
+                        for paragraph in cells[j].paragraphs:
+                            paragraph.paragraph_format.keep_with_next = True
+                tr_pr = table.rows[-1]._tr.get_or_add_trPr()
+                tr_pr.append(OxmlElement("w:cantSplit"))
         else:
             doc.add_paragraph(clean_markdown(line), style="Normal")
     REPORT.parent.mkdir(parents=True, exist_ok=True)
@@ -92,10 +138,13 @@ def presentation() -> None:
         ("RQ2 · Trích dẫn", ["Mẫu 12.000: trung vị 2, trung bình 11,24", "37,75% có 0 trích dẫn; trích dẫn phụ thuộc tuổi bài", "FWCI thiếu ở mọi preprint trong mẫu"], "reports/figures/phase4/rq2_citation_distribution.png"),
         ("RQ3 · Open Access", ["β nhị phân chưa điều chỉnh = −0,330 trên ln(1 + trích dẫn)", "Gold vs closed, đã điều chỉnh: β = +0,463; HC3 CI [0,396; 0,531]", "Green vs closed: β = +0,178; HC3 CI [0,087; 0,269]", "Liên hệ có điều kiện, không phải hiệu ứng nhân quả"], "reports/figures/phase4/rq3_adjusted_coefficients.png"),
         ("RQ4 · Hợp tác", ["Đồng liên kết quốc gia trong mẫu, không phải quốc tịch", "1.979/7.970 bài đủ thông tin có hợp tác quốc tế", "2.949 bài thiếu quốc gia liên kết"], "reports/figures/phase4/rq4_country_network.png"),
-        ("RQ5 · Tài liệu tham khảo", ["289.110 cạnh tham khảo trong mẫu 12.000", "Pool lịch sử ≥2 bài dẫn: median ID overlap 12,1%", "NO-GO cho hệ gợi ý tài liệu là ML chính"], None),
-        ("RQ6 · Nhãn chủ đề", ["14 chủ đề OpenAlex được chọn trước", "Nhãn bạc và chủ đề chồng lắp; chưa có đánh giá hai người chấm", "Mô hình học sự tương hợp với nhãn OpenAlex, không đo chân lý ngữ nghĩa"], None),
+        ("RQ5 · Tài liệu tham khảo", ["289.110 cạnh tham khảo trong mẫu 12.000", "Pool lịch sử ≥2 bài dẫn: median ID overlap 12,1%", "NO-GO cho hệ gợi ý tài liệu là ML chính"], "reports/figures/phase5/pool_saturation_2023.png"),
+        ("RQ6 · Nhãn chủ đề", ["14 chủ đề OpenAlex được chọn trước", "Nhãn bạc và chủ đề chồng lắp; chưa có đánh giá hai người chấm", "Mô hình học sự tương hợp với nhãn OpenAlex, không đo chân lý ngữ nghĩa"], "reports/finalization_p2/figures/rq6_topic_cooccurrence.png"),
+        ("Từ dữ liệu tới mô hình", ["12.000 bài gốc cho EDA; 2.515 bài bổ sung chỉ cho ML", "Title + abstract → TF-IDF → Linear SVM → top 3", "Train 2020–2023; dev 2024; test 2025 SEALED"], None),
         ("So sánh mô hình", ["681 bài 2024 trong danh mục: SVM macro-F1 0,8808", "SVM chỉ mẫu gốc: 0,8506; NB/LR mở rộng: 0,8580", "2025 vẫn niêm phong; đây là kết quả phát triển"], "reports/figures/finalization_p3/model_comparison.png"),
-        ("Open-set & giao diện", ["Chấp nhận nhầm ngoài danh mục: 21,66% (2024)", "Top 3 + từ chối + xác nhận thủ công", "Topic Explorer sử dụng được khi không có mô hình"], None),
+        ("Open-set & giới hạn", ["Chấp nhận nhầm ngoài danh mục: 21,66% (2024)", "Ngưỡng margin, không phải xác suất", "Top 3 + từ chối + xác nhận thủ công"], "reports/figures/finalization_p3/open_set_roc.png"),
+        ("Giao diện thật · Home", ["Sáu trang nghiên cứu và khám phá", "Số liệu tổng thể tách khỏi mẫu", "Chrome cục bộ; không phải mockup"], "deliverables/presentation/figures/home_chrome.png"),
+        ("Giao diện thật · Xác nhận", ["Đổi bản thảo xóa gợi ý cũ", "Người dùng chọn/ghi đè thủ công", "Topic Brief có nguồn gốc và giới hạn"], "deliverables/presentation/figures/classify_confirmed_chrome.png"),
         ("Tái lập & giới hạn", ["Raw, manifest, checksum và kiểm tra số mẫu", "Dữ liệu/mô hình không có trên public GitHub", "Chưa có chấm người thật; không suy luận nhân quả OA"], None),
         ("Kết luận", ["Nghiên cứu dữ liệu và giao diện khám phá có thể kiểm chứng", "Nguyên mẫu hỗ trợ, không gán nhãn tự động", "Bước tiếp: đánh giá người thật và rà soát phạm vi"], None),
     ]
@@ -120,7 +169,7 @@ def presentation() -> None:
                 raise FileNotFoundError(path)
             slide.shapes.add_picture(str(path), Inches(6.2), Inches(1.6), width=Inches(6.5))
         footer = slide.shapes.add_textbox(Inches(.7), Inches(7.05), Inches(12), Inches(.25)).text_frame.paragraphs[0]
-        footer.text = f"AI Research Trends · {number}/12 · số liệu theo nguồn gốc ghi trong báo cáo"
+        footer.text = f"AI Research Trends · {number}/{len(spec)} · số liệu theo nguồn gốc ghi trong báo cáo"
         footer.font.size = PptPt(10); footer.font.color.rgb = RGBColor(161, 174, 190)
     SLIDES.parent.mkdir(parents=True, exist_ok=True)
     prs.save(SLIDES)

@@ -1,0 +1,60 @@
+{
+  "scope": "Published aggregate development evidence only; no work-level data or 2025 labels",
+  "model_comparison": {
+    "source": "data/analysis/finalization_p3_models_20261101_v1/results.json",
+    "source_sha256": "f7faf2d88b7ee486f4fc751110ab6c3b9cdafc3a8dbec921ca01e5d90f9d5f7c",
+    "validation_year": 2024,
+    "validation_in_catalogue": 681,
+    "training_original_selected": 1717,
+    "training_expansion_selected": 1638,
+    "training_combined_selected": 3355,
+    "methods": [
+      {"name": "Majority", "macro_f1": 0.024791955617198335, "accuracy": 0.20998531571218795},
+      {"name": "Topic description TF-IDF", "macro_f1": 0.5522330553278841, "accuracy": 0.5741556534508077},
+      {"name": "ComplementNB · expanded", "macro_f1": 0.8579807642330711, "accuracy": 0.8531571218795888},
+      {"name": "Logistic Regression · expanded", "macro_f1": 0.8579776854567716, "accuracy": 0.8649045521292217},
+      {"name": "Linear SVM · original only", "macro_f1": 0.8505684721448359, "accuracy": 0.8546255506607929},
+      {"name": "Linear SVM · expanded", "macro_f1": 0.8807971902524944, "accuracy": 0.8795888399412628}
+    ],
+    "ablation_bootstrap_macro_f1_difference_95": [0.008411786349567593, 0.05265055390927734]
+  },
+  "open_set": {
+    "source": "data/analysis/finalization_p3_open_set_20261101_v1/results.json",
+    "source_sha256": "d0aa2ecc37cc9ada3dce9f625c3f4b7e5b5fcad0af3267e7d438c54ecd0bcc1a",
+    "year": 2024,
+    "calibration_n": 738,
+    "evaluation_n": 1105,
+    "evaluation_in_catalogue": 408,
+    "evaluation_outside_catalogue": 697,
+    "in_catalogue_acceptance": 0.8308823529411765,
+    "outside_false_acceptance": 0.21664275466284075,
+    "auroc": 0.8918755450530284,
+    "end_to_end_correct_placement": 0.2832579185520362,
+    "threshold": -0.22227267687798036,
+    "human_validation": "PENDING",
+    "final_2025_test": "SEALED"
+  },
+  "reference_context": {
+    "source": "data/analysis/phase5_reassessment_20261028_v1/pool_comparison.csv",
+    "source_sha256": "cc966e121fcf16022cec047a5bbed6e3609207be139241ecb27730e3bcd1c7ab",
+    "original_sample_works": 12000,
+    "reference_edges": 289110,
+    "unique_referenced_work_ids": 207102,
+    "evaluation_year": 2023,
+    "historical_cutoff_year": 2022,
+    "evaluation_queries": 909,
+    "minimum_historical_citers": 2,
+    "original_pool_candidate_ids": 8183,
+    "original_pool_median_id_overlap": 0.1,
+    "all_historical_pool_candidate_ids": 12019,
+    "all_historical_pool_median_id_overlap": 0.121212121212,
+    "bounded_retrieval_end_to_end_recall_at_20": 0.0253,
+    "decision": "NO-GO for citation-aware related-literature discovery as the main ML task"
+  },
+  "rq6": {
+    "source": "reports/finalization_p2/topic_support.csv",
+    "source_sha256": "f925edb1ed4014e1889d094c8df77390b9a017fc5315abadf8de9a718659385a",
+    "topic_count": 14,
+    "human_semantic_validation": "PENDING"
+  }
+}

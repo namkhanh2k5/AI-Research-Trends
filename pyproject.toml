@@ -49,6 +49,9 @@ deliverables = [
   "python-docx>=1.1,<2",
   "python-pptx>=1.0,<2",
 ]
+browser = [
+  "playwright>=1.64,<2",
+]
 
 [project.scripts]
 openalex-validate-topics = "ai_research_trends.crawling.validate_topics:main"
@@ -100,6 +103,7 @@ openalex-package-topic-model = "ai_research_trends.ml.final_inference:main"
 openalex-final-test = "ai_research_trends.ml.final_test_gate:main"
 openalex-final-ml-figures = "ai_research_trends.analysis.final_ml_figures:main"
 openalex-final-ml-diagnostics = "ai_research_trends.ml.final_diagnostics:main"
+openalex-restore-local-artifact = "ai_research_trends.web.restore_artifacts:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

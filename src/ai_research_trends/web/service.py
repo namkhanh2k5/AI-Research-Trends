@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import hashlib
 from pathlib import Path
 
 from ai_research_trends.analysis.web_queries import ResearchData
@@ -39,6 +40,28 @@ def validate_draft(title: str, abstract: str) -> tuple[str, str]:
     if "\x00" in title + abstract:
         raise ValueError("NUL characters are not allowed")
     return title, abstract
+
+
+def draft_fingerprint(title: str, abstract: str) -> str:
+    """Bind a suggestion to the normalized text actually supplied by the user."""
+    if not isinstance(title, str) or not isinstance(abstract, str):
+        raise ValueError("Title and abstract must be text")
+    normalized = "\0".join(" ".join(value.split()) for value in (title, abstract))
+    return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+
+
+def doi_url(value: str | None) -> str | None:
+    """Return an HTTPS DOI resolver URL only for a plausible DOI."""
+    if not isinstance(value, str) or not value.strip():
+        return None
+    doi = value.strip()
+    for prefix in ("https://doi.org/", "http://doi.org/", "doi:"):
+        if doi.lower().startswith(prefix):
+            doi = doi[len(prefix):]
+            break
+    if not doi.lower().startswith("10.") or "/" not in doi or any(c.isspace() for c in doi):
+        return None
+    return f"https://doi.org/{doi}"
 
 
 def topic_brief(data: ResearchData, topic_id: str) -> dict:

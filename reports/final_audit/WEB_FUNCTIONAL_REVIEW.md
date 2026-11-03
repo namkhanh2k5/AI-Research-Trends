@@ -1,0 +1,23 @@
+# Web functional audit — actual local Streamlit run
+
+Tested `dashboard/app.py`, `src/ai_research_trends/web/service.py`, `src/ai_research_trends/analysis/web_queries.py`, the saved inference bundle, and the checksum-verified `data/analysis/finalization_p2_web_data_20261101_v3/` package. Server ran on localhost and Chrome rendered all six navigation pages. Real browser evidence: ignored `data/analysis/final_audit_screenshots/browser_observations.json` and PNGs. The package has 22 verified outputs, a 12,000-row **original-sample-only** paper index and 14 Topic Brief JSONs. AppTest passing is not substituted for Chrome interaction.
+
+| Feature | Expected | Actually works / evidence | Defect | Severity |
+|---|---|---|---|---|
+| Home | Purpose, 12k/14/abstract metrics, RQ1 trend, scope | Rendered at 1440 and 390 px; image `01_home_desktop.png` / `10_home_mobile.png`; values from verified package | No major functional defect observed | — |
+| Research Landscape RQ1–RQ4 | Distinct population/sample views | RQ1 bar/table, RQ2 yearly median, RQ3 OA status chart, RQ4 affiliation tables rendered; RQ3/RQ4 tabs clicked | Lacks RQ3 adjusted model and RQ4 graph; limited RQ2 details | P2 |
+| Topic Explorer | 14 native topics, manual browsing no model | Selector and one brief rendered; direct `ResearchData.get_topic_brief('T10028')` worked without model | JSON context fields not shown | P2 |
+| Classify initial | Input validation, top 3, no auto-placement | Form rendered; service independently returned three statuses across synthetic probes | UI click-through fails after actual prediction | **P0** |
+| Classify prediction/confirm | Explicit user choice and brief | Chrome reached prediction status/top-3 then raised `KeyError: 'topic_name'`, `dashboard/app.py:132`; no confirmation screenshot possible | `get_topics()` returns `official_name`, not `topic_name`; core promised flow broken | **P0** |
+| Input edit/session state | Old suggestion invalidated | After title change, old status remained visible in Chrome observation | Stale suggestion/possible prior confirmation misattribution | P1 |
+| Missing model | Manual browsing remains usable | Topic Explorer service path worked without loading model; code catches missing bundle on suggestion | End-to-end browser missing-model state NOT VERIFIED (would require environment change) | Test gap |
+| Missing Topic Brief | Safe error | Service rejects unknown topic ID; browser branch NOT VERIFIED | Missing-brief UI error handling not exercised | Test gap |
+| Paper Explorer | Search/filter/sort/page/details | Service probes: year 2020=1,607, T10028=1,040, review=57, gold=1,890, impossible keyword=0; date/citation sort page 2 returns 20; page renders original sampled papers | Browser tested impossible keyword, not every filter combination; no explicit zero-results message; DOI is text, not link | P2 |
+| Methodology | Actual model evaluation and report links | Page rendered; warns silver labels/2025 status; Chrome link hrefs are localhost `/reports/...` | No model comparison/confusion/classwise/ablation/open-set metrics; both links return Streamlit HTML shell, first target nonexistent | P2 |
+| Reviewer UI | Isolated blind packages and progress | Existing local AppTest rendered reviewer A; package verifier passed | Real two-reviewer workflow not executed (no genuine ratings) | NOT VERIFIED beyond mechanics |
+
+Topic Brief available but unused in `dashboard/app.py:102-116`: `sample_year_counts`, `sample_citation_median`, `sample_oa_counts`, `related_native_topics`, `representative_rule`; representative paper `cited_by_count` also not displayed. Existing fields shown: official name/description, topic/subfield/scope, primary/any sample counts, native-topic population series and snapshot, representative title/date/OpenAlex link, warnings. Text description and topic score should not be presented as human-certified relevance or quality.
+
+Methodology link check: browser DOM resolved `../reports/FINALIZATION_P4_ACADEMIC_REPORT.md` to `http://127.0.0.1:8501/reports/FINALIZATION_P4_ACADEMIC_REPORT.md`; there is **no** file `reports/FINALIZATION_P4_ACADEMIC_REPORT.md` (actual report is under `deliverables/report/`). The Phase 3 report file exists in `reports/`, but its localhost URL returned Streamlit `text/html` shell rather than the Markdown document. Both are broken from a user's point of view even though HTTP status was 200.
+
+Browser exploration was non-destructive and used synthetic drafts. The 2025 sealed set and reviewer keys were not read. End-to-end confirmation, all permutations of filters, accessibility keyboard/screen-reader testing and failure-path browser testing remain NOT VERIFIED. The demo script's 4:25–5:20 confirmation step is presently impossible.
