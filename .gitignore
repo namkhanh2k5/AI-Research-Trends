@@ -38,3 +38,6 @@ reports/figures/**
 !reports/figures/finalization_p3/
 !reports/figures/finalization_p3/*.png
 !reports/figures/finalization_p3/manifest.json
+# Small aggregate-only figures for the isolated venue feasibility experiment.
+!reports/figures/venue_experiment/
+!reports/figures/venue_experiment/*.png
