@@ -1,4 +1,0 @@
-method,queries,mean_subset_coverage,median_subset_coverage,mean_recall_at_20,mean_recall_at_50,mean_conditional_recall_at_20,queries_with_available_positive,queries_with_hit_at_20
-historical_popularity,909,0.071758393727,0.037037037037,0.0155350809271,0.0235859742829,0.185067138313,568,269
-reciprocal_rank_fusion,909,0.071758393727,0.037037037037,0.0252671623574,0.0367868633945,0.349661507067,568,398
-tfidf_title_abstract,909,0.071758393727,0.037037037037,0.0183565919735,0.0251272363522,0.276455277224,568,338

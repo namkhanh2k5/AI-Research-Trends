@@ -78,9 +78,11 @@ Python 3.11+ on Ubuntu/Linux:
 
 ```bash
 git lfs install
-git clone https://github.com/namkhanh2k5/AI-Research-Trends.git
+# Minimal clone: do not download all research LFS objects by default.
+GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/namkhanh2k5/AI-Research-Trends.git
 cd AI-Research-Trends
-git lfs pull
+# Restore only the frozen app model and the compact website paper index:
+git lfs pull --include="models/finalization_p3/topic_placement_v2/model.joblib,data/analysis/finalization_p2_web_data_20261101_v3/paper_index.parquet"
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e ".[dev,web,deliverables]"
@@ -112,8 +114,11 @@ openalex-package-topic-model infer \
 The [web user guide](docs/WEB_USER_GUIDE.md),
 [artifact contract](docs/MODEL_AND_DATA_ARTIFACTS.md) and
 [deployment guide](docs/DEPLOYMENT_GUIDE.md) explain the local-only demo and
-verified artifact restoration. A clean clone requires `git lfs pull` to
-restore the published large data/model artifacts. There is no public hosted URL.
+verified artifact restoration. The selective `git lfs pull` above suffices for
+the local demo; `git lfs pull` without a filter restores all 35 LFS paths
+needed for full research verification. The published snapshot intentionally
+omits historical reruns, pilots and superseded model/data versions; see
+[artifact retention policy](docs/REPOSITORY_CLEANUP.md). No public hosted URL exists.
 
 ## Data, ETL and reproducibility
 

@@ -118,6 +118,33 @@ def validate_analytical_results(t: dict[str, pd.DataFrame], plan: dict) -> dict[
     return checks
 
 
+
+def _portable_input_path(recorded_path: str, analysis_dir: Path) -> Path:
+    """Locate a recorded input after a trusted repository has moved.
+
+    Historical Phase 4 manifests contain machine-specific absolute paths.
+    Only well-known project-relative subtrees are remapped; verification still
+    checks the original recorded SHA-256 and rejects changed content.
+    """
+    recorded = Path(recorded_path)
+    if recorded.is_file():
+        return recorded
+    project_root = next(
+        (parent for parent in (analysis_dir.resolve(), *analysis_dir.resolve().parents)
+         if (parent / "pyproject.toml").is_file()),
+        None,
+    )
+    if project_root is None:
+        return recorded
+    parts = recorded_path.replace("\\", "/").split("/")
+    for segment in ("data", "config", "docs"):
+        if segment in parts:
+            candidate = project_root.joinpath(*parts[parts.index(segment):])
+            if candidate.is_file():
+                return candidate
+    return recorded
+
+
 def verify_run(directory: Path, compare_dir: Path | None = None) -> dict:
     """Verify a completed run and optionally compare deterministic result artifacts."""
     manifest = json.loads((directory / "manifest.json").read_text())
@@ -126,7 +153,7 @@ def verify_run(directory: Path, compare_dir: Path | None = None) -> dict:
     if not manifest.get("validation") or any(item.get("status") != "PASS" for item in manifest["validation"].values()):
         raise ValueError("Phase 4 run records a failed analytical check")
     for name, item in manifest["inputs"].items():
-        if file_sha256(Path(item["path"])) != item["sha256"]:
+        if file_sha256(_portable_input_path(item["path"], directory)) != item["sha256"]:
             raise ValueError(f"Phase 4 source changed: {name}")
     for name, item in manifest["outputs"].items():
         path = directory / item["path"]

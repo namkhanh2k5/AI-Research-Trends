@@ -1,5 +1,0 @@
-model,input_works,complete_cases,excluded_works,rank,parameters,condition_number,r_squared,abs_residual_vs_fitted_spearman,outcome,covariance,reference_oa,reference_year,reference_work_type,reference_subfield
-unadjusted_binary,12000,12000,0,2,2,3.60348816071,0.0123290128751,0.0870909846742,log1p_citations,HC3,not OA,age continuous or unadjusted,article,1702
-adjusted_status_year,12000,12000,0,14,14,18.0725240504,0.223152795173,0.394073367472,log1p_citations,HC3,closed,2020,article,1702
-articles_reviews_status_year,12000,9322,2678,13,13,15.4354405064,0.172205261661,0.235801574789,log1p_citations,HC3,closed,2020,article,1702
-adjusted_status_age,12000,12000,0,10,10,58.8866487153,0.203671955191,0.377947390638,log1p_citations,HC3,closed,age continuous or unadjusted,article,1702

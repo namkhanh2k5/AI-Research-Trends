@@ -40,14 +40,19 @@ Do not claim a subsequent independent sealed-test evaluation on this copy,
 and do not expose the human reviewers to answer keys before their work.
 
 Large `*.jsonl`, `*.parquet`, `*.joblib` and `*.pkl` files use Git LFS.
-Install Git LFS before cloning, then fetch the full artifacts:
+Prefer a shallow clone and fetch only runtime assets for website work:
 
 ```bash
 git lfs install
-git clone https://github.com/namkhanh2k5/AI-Research-Trends.git
+GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/namkhanh2k5/AI-Research-Trends.git
 cd AI-Research-Trends
-git lfs pull
+git lfs pull --include="models/finalization_p3/topic_placement_v2/model.joblib,data/analysis/finalization_p2_web_data_20261101_v3/paper_index.parquet"
 ```
+
+Run plain `git lfs pull` to fetch the 35 retained LFS paths for full research
+verification. Historical reruns and intermediate outputs were intentionally
+pruned from the current tree. Read [retention details](docs/REPOSITORY_CLEANUP.md).
+
 
 The clone contains datasets and the saved model, but **not** `.env` or a
 Python environment. Configure credentials locally only if making new API
