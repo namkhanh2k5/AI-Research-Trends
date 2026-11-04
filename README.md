@@ -762,3 +762,15 @@ openalex-report-dual-source --run data/analysis/dual_source_etl_pilot/dual_sourc
 ```
 
 The collection command resumes incomplete runs from hash-verified raw checkpoints; a completed collection cannot be re-collected. The CLI caps fresh Crossref attempts at 1,500. It reuses checksum-verified prior Crossref responses where DOI identifiers match. Reports are generated only after the local verifier passes. See [RQ7 final report](reports/DUAL_SOURCE_ETL_PILOT_FINAL_REPORT.md) for observed results and limitations.
+
+## RQ7.1 independent metadata-quality gate
+
+The [RQ7.1 validation report](reports/RQ7_1_INDEPENDENT_METADATA_VALIDATION_REPORT.md) audits the completed pilot without recollecting works. It draws a private, deterministic 100-work diagnostic sample, conservatively reclassifies every original provider-field difference, and separates metadata coverage from independently supported correctness. The 2025 final test, original 12,000-work tables, and frozen model are not used. The private review sheets, source checks and DOI response evidence remain under Git-ignored `data/analysis/rq7_quality_validation/`.
+
+To verify the completed local run:
+
+```bash
+openalex-validate-dual-source verify --run data/analysis/rq7_quality_validation/rq7_1_20261104_v2
+```
+
+To reproduce the sampling and classification in a **new** run directory, use `openalex-validate-dual-source prepare --run data/analysis/rq7_quality_validation/my_new_run`. Optional `agency` and `license-urls` stages make at most 20 and 10 logged external requests respectively; `--help` documents their limits. Do not rerun `prepare` against an existing run or mistake unfilled reviewer sheets for completed human validation. The independent publisher correctness gate remains pending; full 12,000-work enrichment is not authorized by this experiment.

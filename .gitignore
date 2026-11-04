@@ -45,3 +45,6 @@ reports/figures/**
 !reports/figures/dual_source_etl/
 !reports/figures/dual_source_etl/*.png
 !reports/figures/dual_source_etl/manifest.json
+!reports/figures/rq7_validation/
+!reports/figures/rq7_validation/*.png
+!reports/figures/rq7_validation/manifest.json
