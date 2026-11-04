@@ -2,6 +2,7 @@
 .env.*
 !.env.example
 .venv/
+.vscode/
 __pycache__/
 *.py[cod]
 *.egg-info/
@@ -10,7 +11,7 @@ __pycache__/
 .ruff_cache/
 .ipynb_checkpoints/
 
-# Retrieved and derived data are reproducible, but too large for Git.
+# Local research artifacts stay out of Git until a separate publication decision.
 data/raw/**
 data/interim/**
 data/processed/**
