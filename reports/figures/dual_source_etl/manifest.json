@@ -1,0 +1,46 @@
+{
+  "run_id": "dual_source_rq7_20261104_v1",
+  "source_evaluation_sha256": "2557f114f7b2c174c8658e874ae888f3680f160f0fe2c189e6964fe24d6dafd6",
+  "figures": {
+    "01_missingness_before_after.png": {
+      "sha256": "482d9811aa9baeb08fe0b91f9abfa347c42e8e70d680771b3fdd325d41552edf",
+      "bytes": 88668
+    },
+    "02_provider_completeness.png": {
+      "sha256": "b8ab8430a6c8523a3b398da321219f2d35962ef0a31cf57438519c3ae9e4d552",
+      "bytes": 45832
+    },
+    "03_doi_match_status.png": {
+      "sha256": "9cc7d70b686acdc28dd2a745442a07abc605eb44aae54a01e1b7647dc9a36902",
+      "bytes": 53263
+    },
+    "04_publisher_recovery_year.png": {
+      "sha256": "e67263071d5dc434addd203905f2058bb4c7eb948323a0000174f7dfd5a64fb7",
+      "bytes": 31536
+    },
+    "05_venue_issn_recovery.png": {
+      "sha256": "654add021e249203d83f3c7dcd552dd652896bd9dea927702bb4a5de97b4211f",
+      "bytes": 28418
+    },
+    "06_quality_issues_work_type.png": {
+      "sha256": "3408a575c4e41d08dacb941ff6605fcc1f8334276312acb2df71ab43d384f27d",
+      "bytes": 46029
+    },
+    "07_publication_year_conflicts.png": {
+      "sha256": "9f0f8a6783caea4263e1a3b71d306028b6965107b462fc09a242b4e8e9e3f980",
+      "bytes": 35044
+    },
+    "08_duplicate_and_drift_audit.png": {
+      "sha256": "4ee6b56d632f89aad19a6239fa602851d519bc509bf615c6033f9a860eacbc69",
+      "bytes": 28382
+    },
+    "09_retraction_evidence.png": {
+      "sha256": "3b6ae1aea828b43f607d50d95a0425872adf5957d798b0efabb328fb38247026",
+      "bytes": 39427
+    },
+    "10_request_efficiency.png": {
+      "sha256": "b928c9a23e88939fb19c65035603d84b35825996a34859a4e9ecdc6832a6ee9d",
+      "bytes": 42855
+    }
+  }
+}
