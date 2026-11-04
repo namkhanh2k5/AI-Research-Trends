@@ -1,0 +1,11 @@
+# RQ7.1 independent review handoff
+
+- Branch: `experiment/rq7-independent-metadata-validation`; base: `cd0421bd03852a5dd0780436012939d81ab54d11`; final Git SHA: see Draft PR HEAD (self-referential SHA cannot be stored in its own commit).
+- Private run: `data/analysis/rq7_quality_validation/rq7_1_20261104_v2`; source: `data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1`. Review seed: 20261104, domain-separated hash. Review sample: 100 unique works, with 30/30/20/20 disjoint primary strata. Human decisions: **0**, all PENDING_HUMAN_REVIEW.
+- Source manifest SHA-256: `396c6013c24ae17a036af8d1995078057e2bde868a5e49227d499b276d71352f`. Review sample SHA-256: `01b4104e3888b3a23ca33cd38c3b19e38c9d4737057a1205365b4e4bd07ddbe1`. Classified conflicts SHA-256: `8819c35d3756c79bd847dd5319a8f6275655f9cb58bba641e0e243016dbe6a3b`. Original RQ7 verifier: PASS (1,427 artifacts); new verifier: PASS.
+- Execution evidence SHA-256: `e2909c4cc1aeec0b7e96e8c6803f21364ddb9a342d28f66e8ed20a04864d4c13`; exit-134 diagnostics SHA-256: `9cb176d8759ed3be9b681f0869c48ae305e9280417e926d1eceda61e4bdc1145`. Offline tests: 270 passed, 9 skipped, 0 failed. `pip check`: No broken requirements found.
+- External evidence: DOI Foundation Which RA? (20 logged GET requests), publisher-policy URL HEAD (10 logged requests), and one AI source-backed publisher identity check using an official article page plus a separate publisher directory. Human publisher adjudications: 0. Raw evidence and private paper-level sheets are local only.
+- Results: 167 publisher metadata additions (1 AI source-backed, 0 human adjudicated), 277 license metadata additions (0 verified reuse grants), 2,597 field differences fully accounted, 19/20 selected 404 cases identified as DataCite. One DOI agency status unresolved.
+- Run commands: `openalex-validate-dual-source verify`; `openalex-report-rq7-validation --run data/analysis/rq7_quality_validation/rq7_1_20261104_v2`. Manual reviewer sheets: `review_sheet_*.csv` in the private run. Do not commit those files.
+- Exit-134: NOT REPRODUCED — ROOT CAUSE UNKNOWN. No full 12,000-work expansion; 2025 final test remains sealed.
+- Next gate: genuine official-source review of the 30 publisher recoveries, preserving evidence URLs, timestamps, aliases and decisions before any targeted follow-on.
