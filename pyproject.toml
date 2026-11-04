@@ -104,6 +104,18 @@ openalex-final-test = "ai_research_trends.ml.final_test_gate:main"
 openalex-final-ml-figures = "ai_research_trends.analysis.final_ml_figures:main"
 openalex-final-ml-diagnostics = "ai_research_trends.ml.final_diagnostics:main"
 openalex-restore-local-artifact = "ai_research_trends.web.restore_artifacts:main"
+openalex-inventory-venues = "ai_research_trends.experiments.venue_inventory:main"
+openalex-enrich-venues = "ai_research_trends.experiments.venue_enrichment:main"
+openalex-audit-retractions = "ai_research_trends.experiments.venue_retraction:main"
+openalex-integrate-venues = "ai_research_trends.experiments.venue_analysis:main"
+openalex-evaluate-venues = "ai_research_trends.experiments.venue_retrieval:main"
+openalex-report-venue-experiment = "ai_research_trends.experiments.venue_reporting:main"
+openalex-verify-venue-experiment = "ai_research_trends.experiments.venue_verify:main"
+openalex-dual-source = "ai_research_trends.experiments.dual_source.pipeline:main"
+openalex-report-dual-source = "ai_research_trends.experiments.dual_source.reporting:main"
+openalex-validate-dual-source = "ai_research_trends.experiments.dual_source.validation_pipeline:main"
+openalex-report-rq7-validation = "ai_research_trends.experiments.dual_source.validation_reporting:main"
+openalex-ai-validate = "ai_research_trends.experiments.ai_validation:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

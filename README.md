@@ -707,3 +707,70 @@ Coverage, author disambiguation, affiliation matching, references, abstracts,
 topics, countries, and OA status can all be missing or wrong. Results describe
 OpenAlex coverage under the declared design—not all research activity or research
 quality. No causal claim is made from the OA/impact association.
+
+## Isolated venue-discovery feasibility experiment (RQ7–RQ8)
+
+The [experiment decision](reports/EXPERIMENT_MULTI_SOURCE_VENUE_FINAL_REPORT.md)
+and [independent review handoff](reports/EXPERIMENT_MULTI_SOURCE_VENUE_REVIEW_HANDOFF.md)
+are based on 2020–2024 historical local records. The project website and frozen
+topic classifier were not modified. The 2025 final test remains sealed. A
+historically observed publication venue is **not** evidence of acceptance
+likelihood or present-day suitability.
+
+After `pip install -e ".[dev]"`, with the Git-ignored Phase 2/3 artifacts
+restored locally, run the offline inventory into a **new** versioned directory:
+
+```bash
+openalex-inventory-venues --output-dir data/analysis/venue_discovery_experiment/my_new_run --doi-limit 500
+openalex-enrich-venues crossref --selection data/analysis/venue_discovery_experiment/my_new_run/crossref_selection.parquet --output-dir data/analysis/venue_discovery_experiment/my_new_run/crossref --cap 600
+openalex-enrich-venues openalex-sources --source-table data/analysis/venue_discovery_experiment/my_new_run/openalex_sources.parquet --output-dir data/analysis/venue_discovery_experiment/my_new_run/openalex_sources_api --cap 30
+openalex-audit-retractions --output-dir data/analysis/venue_discovery_experiment/my_new_run/retractions --sample-size 100
+```
+
+The last three commands are **dry runs**. Add the specific `--execute` or
+`--execute-openalex` / `--execute-crossref` switches only after checking the
+request budget and current provider rules. The API stage resumes from its own
+checksummed checkpoints and never changes original raw data. Once bounded
+collections are complete:
+
+```bash
+openalex-integrate-venues --inventory-dir data/analysis/venue_discovery_experiment/my_new_run
+openalex-evaluate-venues evaluate --inventory-dir data/analysis/venue_discovery_experiment/my_new_run --min-support 2
+python -c 'from pathlib import Path; from ai_research_trends.experiments.venue_retrieval import benchmark_breakdown; benchmark_breakdown(Path("data/analysis/venue_discovery_experiment/my_new_run"))'
+openalex-report-venue-experiment --inventory-dir data/analysis/venue_discovery_experiment/my_new_run
+openalex-verify-venue-experiment data/analysis/venue_discovery_experiment/my_new_run
+openalex-evaluate-venues discover --index data/analysis/venue_discovery_experiment/my_new_run/venue_retrieval_index.joblib --title "Example title" --abstract "A substantive research abstract with enough detail for comparison."
+```
+
+The last `discover` command uses only the local historical index, never a live
+API. A new run will reflect a newer provider snapshot and need not reproduce
+the original API responses or scientific counts. Record-level responses,
+metadata tables and the fitted venue index remain Git-ignored.
+# Dual-source RQ7 ETL pilot (isolated experiment)
+
+The experimental branch `experiment/dual-source-etl-pilot-rq7` compares an original-sample 2020–2024 cohort across current OpenAlex raw metadata, cleaned OpenAlex metadata, and exact-DOI-linked Crossref enrichment. The 300-work missingness-targeted group is reported separately from the 1,200-work general group. Local raw responses and record-level Parquet outputs remain Git-ignored; this does not alter RQ1–RQ6, the website, or the frozen model.
+
+Run from the repository root after `pip install -e ".[dev]"` and setting `OPENALEX_API_KEY` and `CROSSREF_EMAIL` in the Git-ignored `.env`:
+
+```bash
+openalex-dual-source plan --run data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1
+openalex-dual-source preflight --run data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1
+openalex-dual-source collect --run data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1
+openalex-dual-source process --run data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1
+openalex-dual-source verify --run data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1
+openalex-report-dual-source --run data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1
+```
+
+The collection command resumes incomplete runs from hash-verified raw checkpoints; a completed collection cannot be re-collected. The CLI caps fresh Crossref attempts at 1,500. It reuses checksum-verified prior Crossref responses where DOI identifiers match. Reports are generated only after the local verifier passes. See [RQ7 final report](reports/DUAL_SOURCE_ETL_PILOT_FINAL_REPORT.md) for observed results and limitations.
+
+## RQ7.1 independent metadata-quality gate
+
+The [RQ7.1 validation report](reports/RQ7_1_INDEPENDENT_METADATA_VALIDATION_REPORT.md) audits the completed pilot without recollecting works. It draws a private, deterministic 100-work diagnostic sample, conservatively reclassifies every original provider-field difference, and separates metadata coverage from independently supported correctness. The 2025 final test, original 12,000-work tables, and frozen model are not used. The private review sheets, source checks and DOI response evidence remain under Git-ignored `data/analysis/rq7_quality_validation/`.
+
+To verify the completed local run:
+
+```bash
+openalex-validate-dual-source verify --run data/analysis/rq7_quality_validation/rq7_1_20261104_v2
+```
+
+To reproduce the sampling and classification in a **new** run directory, use `openalex-validate-dual-source prepare --run data/analysis/rq7_quality_validation/my_new_run`. Optional `agency` and `license-urls` stages make at most 20 and 10 logged external requests respectively; `--help` documents their limits. Do not rerun `prepare` against an existing run or mistake unfilled reviewer sheets for completed human validation. The independent publisher correctness gate remains pending; full 12,000-work enrichment is not authorized by this experiment.

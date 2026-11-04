@@ -38,3 +38,13 @@ reports/figures/**
 !reports/figures/finalization_p3/
 !reports/figures/finalization_p3/*.png
 !reports/figures/finalization_p3/manifest.json
+# Small aggregate-only figures for the isolated venue feasibility experiment.
+!reports/figures/venue_experiment/
+!reports/figures/venue_experiment/*.png
+# Aggregate-only figures from the bounded, isolated RQ7 ETL experiment.
+!reports/figures/dual_source_etl/
+!reports/figures/dual_source_etl/*.png
+!reports/figures/dual_source_etl/manifest.json
+!reports/figures/rq7_validation/
+!reports/figures/rq7_validation/*.png
+!reports/figures/rq7_validation/manifest.json
