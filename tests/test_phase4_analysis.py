@@ -198,7 +198,9 @@ def test_unknown_affiliation_not_encoded_as_domestic() -> None:
 
 
 def test_completed_run_verifier_detects_changed_csv(tmp_path) -> None:
-    source = tmp_path / "input.json"
+    (tmp_path / "pyproject.toml").write_text("[project]\nname = 'test'\n")
+    source = tmp_path / "data/metadata/input.json"
+    source.parent.mkdir(parents=True)
     source.write_text("{}")
     table = tmp_path / "results.csv"
     table.write_text("year,count\n2020,1\n")

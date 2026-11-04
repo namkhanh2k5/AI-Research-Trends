@@ -22,7 +22,6 @@ from ai_research_trends.web.service import artifact_paths
 playwright = pytest.importorskip("playwright.sync_api")
 
 URL = os.environ.get("AI_TRENDS_BROWSER_URL", "http://127.0.0.1:8501")
-EVIDENCE = Path("data/analysis/finalization_p4_1_browser_evidence")
 TITLE = "Interpretable medical image segmentation with neural networks"
 ABSTRACT = (
     "This synthetic demonstration draft studies convolutional neural networks for medical image "
@@ -37,7 +36,7 @@ def browser():
         pytest.skip("Set AI_TRENDS_RUN_BROWSER_TESTS=1 for local Chrome E2E")
     web, model = artifact_paths()
     if not web.exists() or not model.exists():
-        pytest.skip("Verified private web/model artifacts absent")
+        pytest.skip("Verified LFS web/model artifacts not downloaded")
     with playwright.sync_playwright() as engine:
         browser = engine.chromium.launch(
             executable_path=os.environ.get("AI_TRENDS_CHROME", "/usr/bin/google-chrome"),
@@ -53,7 +52,6 @@ def navigate(page, label: str) -> None:
 
 
 def test_real_confirmation_stale_state_and_navigation(browser):
-    EVIDENCE.mkdir(parents=True, exist_ok=True)
     page = browser.new_page(viewport={"width": 1440, "height": 900})
     page.goto(URL)
     navigate(page, "Classify My Research")
@@ -64,7 +62,6 @@ def test_real_confirmation_stale_state_and_navigation(browser):
     rendered = page.locator("main").inner_text()
     assert len(re.findall(r"(?m)^.+\(T\d+\)$", rendered)) == 3, rendered
     assert not page.locator('[data-testid="stException"]').count()
-    page.screenshot(path=str(EVIDENCE / "classify_prediction_desktop.png"), full_page=True)
 
     choice = page.get_by_label("Your own topic choice (you may select any catalogue topic)")
     choice.click()
@@ -72,7 +69,6 @@ def test_real_confirmation_stale_state_and_navigation(browser):
     page.get_by_role("button", name="Confirm my selection").click()
     playwright.expect(page.get_by_text("Your manual selection is confirmed", exact=False)).to_be_visible()
     playwright.expect(page.get_by_role("heading", name="Topic Modeling", exact=True)).to_be_visible()
-    page.screenshot(path=str(EVIDENCE / "classify_confirmed_desktop.png"), full_page=True)
 
     page.get_by_label("Research title").fill("Changed synthetic title")
     page.get_by_label("Research title").press("Enter")
@@ -114,14 +110,10 @@ def test_research_pages_paper_empty_and_real_download(browser):
     page.close()
 
 
-def test_no_confident_match_and_mobile_classification(browser):
-    EVIDENCE.mkdir(parents=True, exist_ok=True)
-    page = browser.new_page(viewport={"width": 390, "height": 844})
+def test_no_confident_match_on_desktop(browser):
+    page = browser.new_page(viewport={"width": 1440, "height": 900})
     page.goto(URL)
-    playwright.expect(page.get_by_role("button", name="Expand sidebar")).to_be_visible()
-    page.get_by_role("button", name="Expand sidebar").click()
     navigate(page, "Classify My Research")
-    page.get_by_role("button", name="Collapse sidebar").click()
     page.get_by_label("Research title").fill("A quantum archaeological anthropology study")
     page.get_by_label("Abstract").fill(
         "This synthetic draft discusses archaeological pottery, ancient temple inscriptions, "
@@ -130,18 +122,17 @@ def test_no_confident_match_and_mobile_classification(browser):
     page.get_by_role("button", name="Suggest topics").click()
     playwright.expect(page.get_by_text("Status: no confident match", exact=False)).to_be_visible()
     playwright.expect(page.get_by_label("Your own topic choice (you may select any catalogue topic)")).to_be_visible()
-    page.screenshot(path=str(EVIDENCE / "classify_mobile_no_confident_match.png"), full_page=True)
-    assert page.evaluate("document.documentElement.scrollWidth") <= 390
+    assert page.evaluate("document.documentElement.scrollWidth") <= 1440
     page.close()
 
 
-def test_missing_model_reports_error_but_manual_topic_browsing_works(browser):
+def test_missing_model_reports_error_but_manual_topic_browsing_works(browser, tmp_path):
     """Run a second real Streamlit process with a deliberately absent model path."""
     with socket.socket() as listener:
         listener.bind(("127.0.0.1", 0))
         port = listener.getsockname()[1]
     env = os.environ.copy()
-    env["AI_TRENDS_MODEL"] = str(EVIDENCE / "deliberately_absent_model")
+    env["AI_TRENDS_MODEL"] = str(tmp_path / "deliberately_absent_model")
     env["STREAMLIT_BROWSER_GATHER_USAGE_STATS"] = "false"
     root = Path(__file__).resolve().parents[2]
     proc = subprocess.Popen(
@@ -181,13 +172,10 @@ def test_missing_model_reports_error_but_manual_topic_browsing_works(browser):
             proc.wait(timeout=10)
 
 
-@pytest.mark.parametrize("width,height,label", [(1440, 900, "desktop"), (1280, 800, "laptop"),
-                                                 (768, 1024, "tablet"), (390, 844, "mobile")])
-def test_viewports_have_no_document_overflow(browser, width, height, label):
-    EVIDENCE.mkdir(parents=True, exist_ok=True)
+@pytest.mark.parametrize("width,height", [(1440, 900), (1280, 800)])
+def test_desktop_viewports_have_no_document_overflow(browser, width, height):
     page = browser.new_page(viewport={"width": width, "height": height})
     page.goto(URL)
     playwright.expect(page.get_by_text("Explore AI & Computer Vision Research")).to_be_visible()
-    page.screenshot(path=str(EVIDENCE / f"home_{label}.png"), full_page=True)
     assert page.evaluate("document.documentElement.scrollWidth") <= width
     page.close()

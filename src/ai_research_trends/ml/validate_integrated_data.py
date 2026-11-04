@@ -7,9 +7,30 @@ import json
 from pathlib import Path
 
 import pandas as pd
+import pyarrow.parquet as pq
 
+from ai_research_trends.artifact_paths import resolve_manifest_input
 from ai_research_trends.ml.integrate_topic_data import validate_splits
 from ai_research_trends.preprocessing.validate_tables import file_sha256
+
+
+def verify_input_hashes(run_dir: Path, inputs: dict) -> list[str]:
+    """Verify retained inputs; report the one deliberately retired interim file.
+
+    The immutable output hashes and integration diagnostics remain mandatory.
+    If the historical interim file is supplied again, its hash is mandatory too.
+    """
+    unavailable_historical=[]
+    for label,entry in inputs.items():
+        path=resolve_manifest_input(entry["path"],run_dir)
+        if not path.is_file():
+            if label=="expansion_interim":
+                unavailable_historical.append(label)
+                continue
+            raise ValueError(f"Changed or missing Phase 2 input: {label}")
+        if file_sha256(path)!=entry["sha256"]:
+            raise ValueError(f"Changed or missing Phase 2 input: {label}")
+    return unavailable_historical
 
 
 def verify_run(run_dir: Path, compare_dir: Path|None=None) -> dict:
@@ -17,14 +38,13 @@ def verify_run(run_dir: Path, compare_dir: Path|None=None) -> dict:
     manifest=json.loads(manifest_path.read_text())
     if manifest.get("status")!="complete" or manifest.get("complete") is not True:
         raise ValueError("Phase 2 integration run incomplete")
-    for label,entry in manifest["inputs"].items():
-        path=Path(entry["path"])
-        if not path.is_file() or file_sha256(path)!=entry["sha256"]:
-            raise ValueError(f"Changed or missing Phase 2 input: {label}")
+    unavailable_historical=verify_input_hashes(run_dir,manifest["inputs"])
     for name,entry in manifest["outputs"].items():
         path=run_dir/name
         if not path.is_file() or path.stat().st_size!=entry["bytes"] or file_sha256(path)!=entry["sha256"]:
             raise ValueError(f"Phase 2 output integrity failure: {name}")
+        if pq.read_metadata(path).num_rows!=entry["rows"]:
+            raise ValueError(f"Phase 2 output row count failure: {name}")
     reps=pd.read_parquet(run_dir/"ml_papers.parquet")
     audit=pd.read_parquet(run_dir/"source_record_audit.parquet")
     for frame in (reps,audit,pd.read_parquet(run_dir/"excluded.parquet")):
@@ -57,6 +77,8 @@ def verify_run(run_dir: Path, compare_dir: Path|None=None) -> dict:
             "canonical_groups":len(reps),"train":checks["eligible_training"],
             "validation_2024":checks["eligible_validation"],
             "test_2025_sealed_total_only":checks["sealed_test_total"],
+            "verified_retained_inputs":len(manifest["inputs"])-len(unavailable_historical),
+            "unavailable_historical_inputs":unavailable_historical,
             "output_files_verified":len(manifest["outputs"]),
             "deterministic_compare":same}
 

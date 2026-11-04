@@ -144,7 +144,7 @@ def test_diagnostic_groups_only_emit_aggregate_errors():
 
 
 def test_local_verified_runs_and_inference_when_available():
-    """Integration smoke uses real local artifacts, but is optional on GitHub clones."""
+    """Integration smoke uses retained artifacts, optional in source-only clones."""
     root = Path.cwd()
     integrated = root / "data/processed/ml_topic_classification/finalization_p2_20261101_v3"
     closed = root / "data/analysis/finalization_p3_models_20261101_v1"
@@ -152,7 +152,7 @@ def test_local_verified_runs_and_inference_when_available():
     bundle = root / "models/finalization_p3/topic_placement_v2"
     web = root / "data/analysis/finalization_p2_web_data_20261101_v3"
     if not all(path.is_dir() for path in (integrated, closed, opened, bundle, web)):
-        pytest.skip("Git-ignored local research artifacts unavailable")
+        pytest.skip("Retained research artifacts unavailable")
     assert verify_experiment(closed, integrated)["valid"]
     assert verify_experiment(opened, integrated)["valid"]
     service = TopicPlacementService(bundle, web)

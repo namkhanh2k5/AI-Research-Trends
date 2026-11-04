@@ -1,6 +1,6 @@
 # Academic report and rendered-document review
 
-Inspected `deliverables/report/FINAL_ACADEMIC_REPORT.md`, `.docx`, `.pdf`, `deliverables/generate.py`; `unzip -t` passed DOCX, `pdfinfo` reports **11 US Letter pages** (600,300 bytes), `pdftotext -layout` extracted the text, `pdfimages -list` found five embedded figures, and actual pages 1, 7, 11 were rendered and visually inspected in ignored `data/analysis/final_audit_screenshots/report_page_*.png`. These inspections do not imply an unknown supervisor template has been met. Vietnamese diacritics visible on inspected pages. No blank/overflowing page observed in the inspected subset; a page-by-page manual typography certification of all 11 pages is **NOT VERIFIED**.
+Inspected the historical pre-remediation `deliverables/report/FINAL_ACADEMIC_REPORT.md`, `.docx`, `.pdf`, `deliverables/generate.py`; `unzip -t` passed DOCX, `pdfinfo` reported **11 US Letter pages** (600,300 bytes), `pdftotext -layout` extracted the text, and `pdfimages -list` found five embedded figures. Rendered audit-page captures were later removed as disposable evidence; they are no longer available from the current tree. These historical inspections do not imply an unknown supervisor template has been met or describe the later expanded report.
 
 | Chapter | Rating | Evidence and needed depth |
 |---|---|---|

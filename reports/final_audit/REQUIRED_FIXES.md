@@ -1,5 +1,9 @@
 # Prioritized, evidence-backed defects — no fixes applied
 
+Historical pre-remediation tracker: the disposable browser screenshots and
+observation JSON cited below were removed in a later cleanup. The entries are
+not current defect claims; see the subsequent remediation report for outcomes.
+
 Severity: **P0 BLOCKER** prevents a correct live demo or creates critical integrity/leakage/secret risk; **P1 HIGH** materially weakens scientific submission or a major workflow; **P2 MEDIUM** incomplete UX/visualization/formatting; **P3 LOW** lower-priority assurance/polish. Effort is relative (S≈hours, M≈1–3 days, L≈several days) and is not a deadline commitment.
 
 | ID / severity | File / approximate location | Expected → actual; evidence | Impact / proposed later fix | Effort; blocks |

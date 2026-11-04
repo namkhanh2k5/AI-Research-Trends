@@ -19,3 +19,7 @@ __pycache__/
 *.swp
 *.tmp
 *.partial
+
+# Disposable browser/audit captures; scientific figures remain tracked.
+data/analysis/final_audit_screenshots/
+data/analysis/finalization_p4_1_browser_evidence/

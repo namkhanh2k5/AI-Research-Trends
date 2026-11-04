@@ -36,12 +36,24 @@ for provenance; the local demo does not require downloading them.
 - Superseded Phase 2 integrated datasets, Phase 3 model rerun, and model v1.
 - Intermediate `data/interim/` LFS copies, smoke-test snapshots and old pilot
   collection outputs.
+- Disposable browser screenshots/probe outputs from the old web audits;
+  scientific figures and the two report/presentation Chrome assets remain.
 
 This is a **retention policy**, not a claim that prior experiments never
 happened. Their findings and research decisions remain documented in reports.
 The older repository snapshot `811e98f7b3db9fba9d7fd187dbecce963fa0a863`
 contains the original full workspace for historical reference. Git history
 and Git LFS objects are not rewritten or purged by these commits.
+
+The integrated ML manifest still records the retired
+`expansion_interim` JSONL and its original SHA-256. The current verifier
+reports this one historical source as unavailable, while checking every
+retained input and output against its recorded hash, size and row count, then
+rechecking split identities and isolation. It cannot independently replay
+the original expansion transformation without the retired interim file.
+Phase 4 manifests contain old absolute paths; verification and report
+generation resolve them only within the current checkout and retain the
+original checksum requirements.
 
 ## Efficient fresh checkout
 

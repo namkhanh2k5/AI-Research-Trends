@@ -1,10 +1,10 @@
 # Web functional audit — actual local Streamlit run
 
-Tested `dashboard/app.py`, `src/ai_research_trends/web/service.py`, `src/ai_research_trends/analysis/web_queries.py`, the saved inference bundle, and the checksum-verified `data/analysis/finalization_p2_web_data_20261101_v3/` package. Server ran on localhost and Chrome rendered all six navigation pages. Real browser evidence: ignored `data/analysis/final_audit_screenshots/browser_observations.json` and PNGs. The package has 22 verified outputs, a 12,000-row **original-sample-only** paper index and 14 Topic Brief JSONs. AppTest passing is not substituted for Chrome interaction.
+Tested `dashboard/app.py`, `src/ai_research_trends/web/service.py`, `src/ai_research_trends/analysis/web_queries.py`, the saved inference bundle, and the checksum-verified `data/analysis/finalization_p2_web_data_20261101_v3/` package. Server ran on localhost and Chrome rendered all six navigation pages. The disposable browser-observation JSON and PNGs cited in this historical pre-remediation audit were later removed; they are not current repository files. The package has 22 verified outputs, a 12,000-row **original-sample-only** paper index and 14 Topic Brief JSONs. AppTest passing is not substituted for Chrome interaction.
 
 | Feature | Expected | Actually works / evidence | Defect | Severity |
 |---|---|---|---|---|
-| Home | Purpose, 12k/14/abstract metrics, RQ1 trend, scope | Rendered at 1440 and 390 px; image `01_home_desktop.png` / `10_home_mobile.png`; values from verified package | No major functional defect observed | — |
+| Home | Purpose, 12k/14/abstract metrics, RQ1 trend, scope | Historically rendered at multiple widths; disposable image evidence removed; values from verified package | No major functional defect observed | — |
 | Research Landscape RQ1–RQ4 | Distinct population/sample views | RQ1 bar/table, RQ2 yearly median, RQ3 OA status chart, RQ4 affiliation tables rendered; RQ3/RQ4 tabs clicked | Lacks RQ3 adjusted model and RQ4 graph; limited RQ2 details | P2 |
 | Topic Explorer | 14 native topics, manual browsing no model | Selector and one brief rendered; direct `ResearchData.get_topic_brief('T10028')` worked without model | JSON context fields not shown | P2 |
 | Classify initial | Input validation, top 3, no auto-placement | Form rendered; service independently returned three statuses across synthetic probes | UI click-through fails after actual prediction | **P0** |

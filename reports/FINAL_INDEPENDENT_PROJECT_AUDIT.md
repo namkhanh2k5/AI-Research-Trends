@@ -1,6 +1,6 @@
 # Independent project audit — 2026-11-01
 
-**Scope:** local evidence at `3a75abc76129d3063c5c79ab38dd6e085057d26a`, branch `feature/finalization-p4-complete-delivery`. This is an audit, not a new scientific result or a repair. No source, collected data, model, Git history, human response or 2025 sealed label was changed or opened. Supporting evidence is linked below; browser screenshots remain in Git-ignored `data/analysis/final_audit_screenshots/`.
+**Scope:** local evidence at `3a75abc76129d3063c5c79ab38dd6e085057d26a`, branch `feature/finalization-p4-complete-delivery`. This is an audit, not a new scientific result or a repair. No source, collected data, model, Git history, human response or 2025 sealed label was changed or opened. Supporting evidence is linked below. The disposable browser screenshots cited in this historical audit were removed in a later repository cleanup; their paths below are historical references, not current files.
 
 ## Executive decision
 

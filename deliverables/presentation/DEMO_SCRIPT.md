@@ -17,4 +17,4 @@
 
 **Dự phòng:** Nếu ứng dụng không khởi động do thiếu dữ liệu riêng tư, trình bày các hình và bảng đã xuất bản cùng log xác minh; không sử dụng dữ liệu giả hoặc tuyên bố đã demo trực tiếp. Không đưa thông tin API key hoặc tài liệu niêm phong lên màn hình.
 
-**Lần diễn tập Phase 4.1:** Chrome/Playwright cục bộ đã đi qua thao tác dự đoán → top ba → ghi đè thủ công → xác nhận → Topic Brief, thay input, RQ5/RQ6, Paper Explorer không có kết quả và tải báo cáo. Các ảnh chụp ở `data/analysis/finalization_p4_1_browser_evidence/` là bằng chứng cục bộ; bản công khai của hai ảnh không nhạy cảm nằm trong `figures/`. Đây không phải khảo sát khả dụng với người dùng thật.
+**Lần diễn tập Phase 4.1 (lịch sử):** Chrome/Playwright cục bộ đã đi qua thao tác dự đoán → top ba → ghi đè thủ công → xác nhận → Topic Brief, thay input, RQ5/RQ6, Paper Explorer không có kết quả và tải báo cáo. Bộ ảnh kiểm thử tạm đã được dọn khỏi repository; hai ảnh Chrome không nhạy cảm dùng trong báo cáo và slide vẫn nằm trong `figures/`. Đây không phải khảo sát khả dụng với người dùng thật.

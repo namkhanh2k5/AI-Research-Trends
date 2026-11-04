@@ -11,6 +11,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from ai_research_trends.artifact_paths import resolve_manifest_input
+
 
 def _number(value: float, digits: int = 2) -> str:
     return f"{value:,.{digits}f}" if math.isfinite(float(value)) else "not estimable"
@@ -184,12 +186,16 @@ def publish_verified_report(analysis_dir: Path, output: Path) -> str:
         raise ValueError("Refusing to overwrite a completed Phase 4 analytical run")
     manifest = json.loads((analysis_dir / "manifest.json").read_text(encoding="utf-8"))
     tables = {path.stem: pd.read_csv(path) for path in analysis_dir.glob("*.csv")}
-    tables["works"] = pd.read_parquet(manifest["inputs"]["phase3_works"]["path"])
+    tables["works"] = pd.read_parquet(resolve_manifest_input(
+        manifest["inputs"]["phase3_works"]["path"], analysis_dir
+    ))
     content = render_report(
         tables, run_id=manifest["source_run_id"],
         observed_at=manifest["citation_observation_time_utc"],
         population_total=manifest["population_total"],
-        processed_hash=file_sha256(Path(manifest["inputs"]["phase3_manifest"]["path"])),
+        processed_hash=file_sha256(resolve_manifest_input(
+            manifest["inputs"]["phase3_manifest"]["path"], analysis_dir
+        )),
         seed=manifest["seed"],
     )
     output.parent.mkdir(parents=True, exist_ok=True)
