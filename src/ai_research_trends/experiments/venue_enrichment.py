@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import os
 import time
@@ -16,37 +15,13 @@ import requests
 from dotenv import load_dotenv
 
 from ai_research_trends.crawling.openalex_client import OpenAlexClient
+from ai_research_trends.experiments.common import atomic_bytes, atomic_manifest, stable_name
 from ai_research_trends.experiments.venue_core import parse_crossref
 from ai_research_trends.preprocessing.validate_tables import file_sha256
 
 
 def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
-
-
-def atomic_bytes(path: Path, payload: bytes) -> None:
-    if path.exists():
-        raise FileExistsError(path)
-    temporary = path.with_name("." + path.name + ".partial")
-    with temporary.open("xb") as handle:
-        handle.write(payload)
-        handle.flush()
-        os.fsync(handle.fileno())
-    temporary.replace(path)
-
-
-def atomic_manifest(path: Path, data: dict) -> None:
-    temporary = path.with_name("." + path.name + ".partial")
-    with temporary.open("w", encoding="utf-8") as handle:
-        json.dump(data, handle, indent=2, ensure_ascii=False)
-        handle.write("\n")
-        handle.flush()
-        os.fsync(handle.fileno())
-    temporary.replace(path)
-
-
-def stable_name(identifier: str) -> str:
-    return hashlib.sha256(identifier.encode("utf-8")).hexdigest() + ".json"
 
 
 def checked_manifest(path: Path, *, provider: str, identifiers: list[str], cap: int) -> dict:

@@ -23,7 +23,7 @@ from ai_research_trends.experiments.dual_source.core import (
     integrate_record, normalize_crossref, normalize_openalex, quality_counts,
     safe_doi, select_cohort,
 )
-from ai_research_trends.experiments.venue_enrichment import atomic_bytes, atomic_manifest, stable_name
+from ai_research_trends.experiments.common import atomic_bytes, atomic_manifest, stable_name
 from ai_research_trends.preprocessing.validate_tables import file_sha256
 
 

@@ -18,7 +18,7 @@ from ai_research_trends.experiments.dual_source.validation_core import (
     REVIEW_STATUS, STRATA, classify_404, classify_conflict, license_evidence, parse_license_records,
     reviewed_correctness, select_review_sample,
 )
-from ai_research_trends.experiments.venue_enrichment import atomic_manifest
+from ai_research_trends.experiments.common import atomic_manifest
 from ai_research_trends.preprocessing.validate_tables import file_sha256
 
 

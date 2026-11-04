@@ -17,7 +17,7 @@ from urllib.parse import unquote
 import pandas as pd
 
 from ai_research_trends.crawling.openalex_client import canonical_work_id
-from ai_research_trends.experiments.venue_core import valid_issns
+from ai_research_trends.experiments.common import valid_issns
 from ai_research_trends.preprocessing.common import clean_text, normalize_doi
 from ai_research_trends.preprocessing.text import reconstruct_abstract
 

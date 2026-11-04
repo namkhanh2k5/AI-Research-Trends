@@ -5,11 +5,11 @@ from __future__ import annotations
 import re
 from typing import Any
 
+from ai_research_trends.experiments.common import normalize_issn, valid_issns
 from ai_research_trends.preprocessing.common import normalize_doi
 
 
 SOURCE_ID = re.compile(r"^(?:https://openalex\.org/)?(S\d+)$", re.I)
-ISSN = re.compile(r"^\d{4}-\d{3}[\dX]$", re.I)
 VENUE_TYPES = {"journal", "conference", "book series", "repository", "ebook platform"}
 RANKABLE_TYPES = {"journal", "conference"}
 
@@ -20,41 +20,6 @@ def source_id(value: Any) -> str | None:
     if not isinstance(value, str) or not (match := SOURCE_ID.fullmatch(value.strip())):
         raise ValueError(f"Invalid OpenAlex Source ID: {value!r}")
     return "https://openalex.org/" + match.group(1).upper()
-
-
-def normalize_issn(value: Any) -> str | None:
-    if value is None or value == "":
-        return None
-    if not isinstance(value, str):
-        raise ValueError("ISSN must be text")
-    cleaned = value.strip().upper().replace("-", "")
-    if len(cleaned) != 8 or not ISSN.fullmatch(cleaned[:4] + "-" + cleaned[4:]):
-        raise ValueError(f"Invalid ISSN syntax: {value!r}")
-    total = sum((8 - i) * int(ch) for i, ch in enumerate(cleaned[:7]))
-    check = (11 - total % 11) % 11
-    expected = "X" if check == 10 else str(check)
-    if cleaned[-1] != expected:
-        raise ValueError(f"Invalid ISSN check digit: {value!r}")
-    return cleaned[:4] + "-" + cleaned[4:]
-
-
-def valid_issns(values: Any) -> tuple[list[str], list[str]]:
-    if not values:
-        return [], []
-    if isinstance(values, str):
-        values = [values]
-    if not isinstance(values, list):
-        return [], [str(values)]
-    good: set[str] = set()
-    bad: list[str] = []
-    for value in values:
-        try:
-            normalized = normalize_issn(value)
-            if normalized:
-                good.add(normalized)
-        except ValueError:
-            bad.append(str(value))
-    return sorted(good), bad
 
 
 def normalize_source_type(value: Any) -> str:
