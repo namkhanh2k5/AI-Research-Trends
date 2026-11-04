@@ -4,8 +4,7 @@ A reproducible undergraduate Data Science study of the **OpenAlex-defined AI/CV
 research landscape**, with bibliometric analysis and an assisted research-topic
 explorer. The project asks how publications, citation impact, Open Access and
 co-affiliation changed in 2020–2025. It also examines reference-network
-limitations, topic-label reliability and a bounded OpenAlex–Crossref metadata
-integration experiment. It does **not** cover all global AI research.
+limitations and topic-label reliability. It does **not** cover all global AI research.
 
 ## What the project provides
 
@@ -13,24 +12,17 @@ integration experiment. It does **not** cover all global AI research.
   documented data-quality checks.
 - Population-level publication counts kept separate from a 12,000-work
   detailed sample. Raw citations are not measures of research quality.
-- RQ1–RQ6 reports and figures; RQ7 is an **isolated experimental** dual-source
-  ETL and publisher-quality assessment, not a replacement analytical corpus.
+- RQ1–RQ6 analyses, research reports and figures, with separate data for bibliometrics and ML.
 - A local Streamlit explorer: research landscape, 14-topic briefs, assisted
   topic suggestion, sampled-paper search and methodology/model evaluation.
 - A frozen TF-IDF + Linear SVM topic-suggestion bundle. Its labels are
   OpenAlex-generated, suggestions require user confirmation, independent human
-  validation is pending, and the 2025 final test remains sealed.
+  validation is pending, and the historical 2025 test labels were made public in the uploaded workspace; that test is no longer independently sealed.
 - An [academic report](deliverables/report/FINAL_ACADEMIC_REPORT.md), editable
   [presentation](deliverables/presentation/FINAL_PRESENTATION.pptx) and
   [demo script](deliverables/presentation/DEMO_SCRIPT.md).
 
-The earlier citation-aware literature recommender and Venue Discovery
-recommender received **NO-GO** decisions as final app features. Their measured
-findings and reproducibility code remain under
-[Phase 5](reports/PHASE5_FINAL_DECISION.md) and the
-[venue experiment](reports/EXPERIMENT_MULTI_SOURCE_VENUE_FINAL_REPORT.md).
-Venue inventory and provider helpers are also used by RQ7; do not remove its
-local data without checking those dependencies.
+The earlier citation-aware literature recommender was rejected as the main ML task; see the [RQ5 decision](reports/PHASE5_FINAL_DECISION.md). The published application instead focuses on an assisted topic explorer.
 
 **Stack:** Python 3.11+, requests, pandas/PyArrow, NumPy/SciPy,
 scikit-learn, Matplotlib/Seaborn, Streamlit/Plotly and pytest. The source
@@ -56,7 +48,6 @@ Targeted historical ML expansion is a third, separate dataset.
 | RQ4 | Institutional/country co-affiliation | Original detailed sample |
 | RQ5 | Reference-network coverage and retrieval feasibility | Sampled reference edges |
 | RQ6 | Topic-label scope and ambiguity | Frozen catalogue and development data |
-| RQ7 | OpenAlex–Crossref metadata quality | Bounded, isolated experiment |
 
 The [research report](reports/PHASE4_ANALYSIS_REPORT.md),
 [data-collection strategy](docs/DATA_COLLECTION_STRATEGY.md),
@@ -86,6 +77,10 @@ results or independent human semantic accuracy.
 Python 3.11+ on Ubuntu/Linux:
 
 ```bash
+git lfs install
+git clone https://github.com/namkhanh2k5/AI-Research-Trends.git
+cd AI-Research-Trends
+git lfs pull
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e ".[dev,web,deliverables]"
@@ -95,8 +90,8 @@ python -m pytest -q -ra -o addopts=''
 ```
 
 Set `OPENALEX_API_KEY` in the ignored `.env` **only if running collection**;
-normal browsing and inference make no OpenAlex calls. The real app needs the
-verified local web-data package and trusted model bundle, both Git-ignored:
+normal browsing and inference make no OpenAlex calls. The app uses the
+verified web-data package and trusted model bundle included in this workspace:
 
 ```bash
 openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
@@ -117,20 +112,19 @@ openalex-package-topic-model infer \
 The [web user guide](docs/WEB_USER_GUIDE.md),
 [artifact contract](docs/MODEL_AND_DATA_ARTIFACTS.md) and
 [deployment guide](docs/DEPLOYMENT_GUIDE.md) explain the local-only demo and
-verified artifact restoration. A clean GitHub clone cannot run the real app
-until its approved local data/model artifacts are supplied. There is no public
-hosted URL.
+verified artifact restoration. A clean clone requires `git lfs pull` to
+restore the published large data/model artifacts. There is no public hosted URL.
 
 ## Data, ETL and reproducibility
 
 ```text
 config/                      frozen study and topic definitions
-src/ai_research_trends/      crawling, preprocessing, analysis, ML, web, experiments
+src/ai_research_trends/      crawling, preprocessing, analysis, ML, web
 dashboard/                   Streamlit research and separate reviewer apps
-data/raw/, interim/          original API responses and extracted records (ignored)
-data/processed/              normalized Parquet and integrated ML tables (ignored)
-data/analysis/, metadata/    versioned analyses, manifests and profiles (ignored)
-models/                      frozen local model bundles (ignored)
+data/raw/, interim/          original API responses and extracted records
+data/processed/              normalized Parquet and integrated ML tables
+data/analysis/, metadata/    versioned analyses, manifests and profiles
+models/                      frozen model bundles; large artifacts use Git LFS
 notebooks/                   thin inspection notebooks
 reports/, docs/              findings, methodology and published figures
 deliverables/                academic report, presentation and demo
@@ -139,22 +133,19 @@ tests/                       offline tests; optional live/browser checks
 
 The [Phase 2 report](reports/PHASE2_COLLECTION_REPORT.md) and
 [Phase 3 quality report](reports/PHASE3_DATA_QUALITY_REPORT.md) identify the
-original runs. RQ7 has a separate
-[ETL report](reports/DUAL_SOURCE_ETL_PILOT_FINAL_REPORT.md),
-[independent validation](reports/RQ7_1_INDEPENDENT_METADATA_VALIDATION_REPORT.md)
-and [AI-assisted evidence report](reports/AI_ASSISTED_TOPIC_PUBLISHER_VALIDATION_FINAL_REPORT.md).
-These reports do not authorize replacing the original sample.
+original collection and preprocessing runs. Targeted ML development records
+must not be silently merged into the 12,000-work analytical sample.
 
 Core commands expose `--help`: `openalex-collect-stratified`,
 `openalex-verify-collection`, `openalex-preprocess`,
 `openalex-validate-processed`, `openalex-analyze-phase4`,
-`openalex-validate-phase4`, `openalex-dual-source`,
-`openalex-validate-dual-source` and `openalex-ai-validate`.
-Collection and ETL commands must use a **new versioned output directory**;
+`openalex-validate-phase4`, `openalex-analyze-rq6` and
+`openalex-package-topic-model`.
+New collection commands must use a **new versioned output directory**;
 do not rerun acquisition or training just to start the website.
 
 For an agent-facing map of exact local paths and remaining work, read
-[PROJECT_HANDOFF.md](PROJECT_HANDOFF.md). The repository contains source,
-aggregate-safe reports and selected figures; raw research data, reviewer
-packages, sealed test records and model binaries remain local until a separate
-artifact-publication decision is made.
+[PROJECT_HANDOFF.md](PROJECT_HANDOFF.md). The public repository contains source,
+raw and processed research data, reviewer packages, former sealed-test records
+and model binaries. Publication does **not** prove redistribution permission or
+independent blind-test validity. Review those issues before external reuse.
