@@ -746,3 +746,19 @@ The last `discover` command uses only the local historical index, never a live
 API. A new run will reflect a newer provider snapshot and need not reproduce
 the original API responses or scientific counts. Record-level responses,
 metadata tables and the fitted venue index remain Git-ignored.
+# Dual-source RQ7 ETL pilot (isolated experiment)
+
+The experimental branch `experiment/dual-source-etl-pilot-rq7` compares an original-sample 2020–2024 cohort across current OpenAlex raw metadata, cleaned OpenAlex metadata, and exact-DOI-linked Crossref enrichment. The 300-work missingness-targeted group is reported separately from the 1,200-work general group. Local raw responses and record-level Parquet outputs remain Git-ignored; this does not alter RQ1–RQ6, the website, or the frozen model.
+
+Run from the repository root after `pip install -e ".[dev]"` and setting `OPENALEX_API_KEY` and `CROSSREF_EMAIL` in the Git-ignored `.env`:
+
+```bash
+openalex-dual-source plan --run data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1
+openalex-dual-source preflight --run data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1
+openalex-dual-source collect --run data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1
+openalex-dual-source process --run data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1
+openalex-dual-source verify --run data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1
+openalex-report-dual-source --run data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1
+```
+
+The collection command resumes incomplete runs from hash-verified raw checkpoints; a completed collection cannot be re-collected. The CLI caps fresh Crossref attempts at 1,500. It reuses checksum-verified prior Crossref responses where DOI identifiers match. Reports are generated only after the local verifier passes. See [RQ7 final report](reports/DUAL_SOURCE_ETL_PILOT_FINAL_REPORT.md) for observed results and limitations.

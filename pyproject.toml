@@ -111,6 +111,8 @@ openalex-integrate-venues = "ai_research_trends.experiments.venue_analysis:main"
 openalex-evaluate-venues = "ai_research_trends.experiments.venue_retrieval:main"
 openalex-report-venue-experiment = "ai_research_trends.experiments.venue_reporting:main"
 openalex-verify-venue-experiment = "ai_research_trends.experiments.venue_verify:main"
+openalex-dual-source = "ai_research_trends.experiments.dual_source.pipeline:main"
+openalex-report-dual-source = "ai_research_trends.experiments.dual_source.reporting:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
