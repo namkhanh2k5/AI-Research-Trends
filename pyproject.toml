@@ -115,6 +115,7 @@ openalex-dual-source = "ai_research_trends.experiments.dual_source.pipeline:main
 openalex-report-dual-source = "ai_research_trends.experiments.dual_source.reporting:main"
 openalex-validate-dual-source = "ai_research_trends.experiments.dual_source.validation_pipeline:main"
 openalex-report-rq7-validation = "ai_research_trends.experiments.dual_source.validation_reporting:main"
+openalex-ai-validate = "ai_research_trends.experiments.ai_validation:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
