@@ -1,7 +1,0 @@
-{
-  "purpose": "Confirm DOI Foundation Which RA? endpoint syntax before bounded 404 audit",
-  "search_queries": 2,
-  "official_documentation_url": "https://www.doi.org/the-identifier/resources/factsheets/doi-resolution-documentation",
-  "provider": "web search tool",
-  "notes": "Browser backend HTTP request count is not observable; no record-level DOI was queried in these two documentation lookups."
-}

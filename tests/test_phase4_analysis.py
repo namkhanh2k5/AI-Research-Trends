@@ -213,3 +213,32 @@ def test_completed_run_verifier_detects_changed_csv(tmp_path) -> None:
     table.write_text("year,count\n2020,2\n")
     with pytest.raises(ValueError, match="checksum mismatch"):
         verify_run(tmp_path)
+
+
+def test_completed_run_verifier_portable_paths_keep_checksum_gate(tmp_path) -> None:
+    repo = tmp_path / "fresh_checkout"
+    repo.mkdir()
+    (repo / "pyproject.toml").write_text("[project]\nname = 'test'\n")
+    source = repo / "data/metadata/source.json"
+    source.parent.mkdir(parents=True)
+    source.write_text('{"sample": 12000}')
+    run = repo / "data/analysis/phase4"
+    run.mkdir(parents=True)
+    table = run / "results.csv"
+    table.write_text("year,count\n2020,1\n")
+    digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+    (run / "manifest.json").write_text(json.dumps({
+        "status": "complete", "complete": True,
+        "inputs": {"source": {
+            "path": "/home/old-machine/AI-Research-Trends/data/metadata/source.json",
+            "sha256": digest(source),
+        }},
+        "outputs": {"results.csv": {
+            "path": "results.csv", "sha256": digest(table), "rows": 1,
+        }},
+        "validation": {"fixture": {"status": "PASS"}},
+    }))
+    assert verify_run(run)["valid"]
+    source.write_text('{"sample": 12001}')
+    with pytest.raises(ValueError, match="source changed"):
+        verify_run(run)

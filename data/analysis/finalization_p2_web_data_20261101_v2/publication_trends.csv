@@ -1,7 +1,0 @@
-year,work_count,absolute_yoy_change,yoy_growth_percent,index_2020_100,series,source_scope
-2020,125506,,,100.0,study_population_primary_non_retracted,complete OpenAlex primary non-retracted aggregate
-2021,128893,3387.0,2.69867576052,102.698675761,study_population_primary_non_retracted,complete OpenAlex primary non-retracted aggregate
-2022,126189,-2704.0,-2.09786411985,100.54419709,study_population_primary_non_retracted,complete OpenAlex primary non-retracted aggregate
-2023,145735,19546.0,15.4894642164,116.11795452,study_population_primary_non_retracted,complete OpenAlex primary non-retracted aggregate
-2024,178694,32959.0,22.6157065907,142.378850414,study_population_primary_non_retracted,complete OpenAlex primary non-retracted aggregate
-2025,232476,53782.0,30.0972612399,185.230984973,study_population_primary_non_retracted,complete OpenAlex primary non-retracted aggregate

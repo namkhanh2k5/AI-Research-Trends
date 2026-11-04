@@ -1,7 +1,0 @@
-# Retraction Metadata Quality Audit
-
-Separate seeded OpenAlex convenience sample: **100 explicitly retracted works**, 2020–2024, primary subfields 1702|1707, article|review|preprint. Exact query: `from_publication_date:2020-01-01,to_publication_date:2024-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:true`; `sample=100`, `seed=20261104`. This does not change the approved non-retracted analytical corpus and is not a prevalence estimate.
-
-All 100 sampled works had DOI values and Crossref metadata were retrieved for 100 of them. Explicit Crossref `update-to` retraction evidence was parsed for **39** records. For the other **61**, the correct status is **unknown from this Crossref field**, not 'Crossref says not retracted'. Corrections, expressions of concern and withdrawals are not counted as retractions by substring-independent status logic; provider data are retained separately. No independent retraction reference standard or human adjudication was performed; agreement/accuracy cannot be estimated from these data. Notice DOI linkage and status conflicts require manual follow-up.
-
-Raw evidence: `data/analysis/venue_discovery_experiment/venue_poc_20261104_v1/retractions`. OpenAlex sample SHA-256: `8f3e78ea903d20f05a9c31c66729f09178a7ff5a6227d01bc3501d894eeedd0a`. Crossref per-DOI hashes: `crossref_request_manifest.json`. Original research data remain unchanged.

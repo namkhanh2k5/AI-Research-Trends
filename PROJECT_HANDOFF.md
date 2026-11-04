@@ -16,17 +16,8 @@ use the 2025 test labels for evaluation.
   `dashboard/app.py`. Topic suggestions use OpenAlex silver labels and
   require explicit user confirmation. `dashboard/reviewer.py` is a separate
   local human-review workflow.
-- Bounded RQ7 OpenAlex–Crossref ETL, RQ7.1 metadata validation and isolated
-  AI-assisted topic/publisher assessment
-  (`src/ai_research_trends/experiments/dual_source/` and
-  `experiments/ai_validation.py`).
 - Academic report and slides in `deliverables/`; research outputs and figures
   in `reports/` and `data/analysis/`.
-
-The Venue Discovery **recommendation** experiment is a historical NO-GO, not
-an app feature. Its inventory/provider code and local outputs remain because
-RQ7 uses its inventory and some experiments must be reproducible. Shared
-ISSN and atomic-storage helpers now live in `experiments/common.py`.
 
 ## Research artifact map
 
@@ -38,11 +29,8 @@ ISSN and atomic-storage helpers now live in `experiments/common.py`.
 | Integrated ML development data | `data/processed/ml_topic_classification/finalization_p2_20261101_v3/` |
 | Website data package | `data/analysis/finalization_p2_web_data_20261101_v3/` |
 | Frozen topic model | `models/finalization_p3/topic_placement_v2/` |
-| RQ7 bounded ETL | `data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/` |
-| RQ7.1 validation | `data/analysis/rq7_quality_validation/rq7_1_20261104_v2/` |
-| AI-assisted assessment | `data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/` |
 
-The original analytical sample and the targeted RQ7/ML experiments have
+The original analytical sample and targeted ML development data have
 **different purposes and selection mechanisms**. Do not use targeted records
 for population prevalence or silently merge them into the 12,000-work sample.
 The repository is public and the complete workspace transfer includes
@@ -52,14 +40,19 @@ Do not claim a subsequent independent sealed-test evaluation on this copy,
 and do not expose the human reviewers to answer keys before their work.
 
 Large `*.jsonl`, `*.parquet`, `*.joblib` and `*.pkl` files use Git LFS.
-Install Git LFS before cloning, then fetch the full artifacts:
+Prefer a shallow clone and fetch only runtime assets for website work:
 
 ```bash
 git lfs install
-git clone https://github.com/namkhanh2k5/AI-Research-Trends.git
+GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/namkhanh2k5/AI-Research-Trends.git
 cd AI-Research-Trends
-git lfs pull
+git lfs pull --include="models/finalization_p3/topic_placement_v2/model.joblib,data/analysis/finalization_p2_web_data_20261101_v3/paper_index.parquet"
 ```
+
+Run plain `git lfs pull` to fetch the 35 retained LFS paths for full research
+verification. Historical reruns and intermediate outputs were intentionally
+pruned from the current tree. Read [retention details](docs/REPOSITORY_CLEANUP.md).
+
 
 The clone contains datasets and the saved model, but **not** `.env` or a
 Python environment. Configure credentials locally only if making new API
@@ -79,8 +72,7 @@ streamlit run dashboard/app.py --server.address 127.0.0.1
 ```
 
 `OPENALEX_API_KEY` (local ignored `.env`) is needed only for new OpenAlex
-requests. `OPENALEX_CONTACT_EMAIL` is optional; `CROSSREF_EMAIL` is used by
-the bounded RQ7 Crossref collector. `AI_TRENDS_WEB_DATA` and
+requests. `OPENALEX_CONTACT_EMAIL` is optional; `AI_TRENDS_WEB_DATA` and
 `AI_TRENDS_MODEL` can override local app artifact paths. Never print or
 commit credentials.
 
@@ -90,29 +82,13 @@ Direct frozen-model inference:
 openalex-package-topic-model infer --help
 ```
 
-The existing RQ7 pipeline is available through
-`openalex-dual-source --help`; its actions are `plan`, `preflight`,
-`collect`, `process` and read-only `verify`. Inspect the
-[RQ7 ETL report](reports/DUAL_SOURCE_ETL_PILOT_FINAL_REPORT.md) before any
-new versioned run. `openalex-validate-dual-source --help` exposes the RQ7.1
-quality gate. The AI assessment can be checked without changing it:
-
-```bash
-openalex-ai-validate verify-run --run data/analysis/ai_assisted_validation/ai_assisted_20261104_v2
-```
-
-Neither command makes an AI judgment or counts as human validation.
-
 ## Where to read and what remains
 
 - RQ1–RQ4: [Phase 4 research report](reports/PHASE4_ANALYSIS_REPORT.md).
   RQ5: [reference-network decision](reports/PHASE5_FINAL_DECISION.md).
   RQ6/ML: [topic validation](reports/PHASE6B_FINAL_TOPIC_VALIDATION_REPORT.md)
   and [model evaluation](reports/FINALIZATION_P3_FINAL_ML_REPORT.md).
-- RQ7: [dual-source report](reports/DUAL_SOURCE_ETL_PILOT_FINAL_REPORT.md),
-  [RQ7.1 validation](reports/RQ7_1_INDEPENDENT_METADATA_VALIDATION_REPORT.md)
-  and [AI assessment](reports/AI_ASSISTED_TOPIC_PUBLISHER_VALIDATION_FINAL_REPORT.md).
-- Human semantic validation and publisher adjudication remain **pending**.
+- Independent human semantic validation remains **pending**.
   The 2025 final-test gate was historically sealed but is no longer
   independently sealed after this public workspace transfer. Public
   deployment and redistribution rights require separate review.

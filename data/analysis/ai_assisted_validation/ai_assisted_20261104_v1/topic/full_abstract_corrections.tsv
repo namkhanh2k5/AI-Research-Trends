@@ -1,3 +1,0 @@
-example_id	selected_topic_id	second_plausible_topic_id	confidence_category	evidence_summary	ambiguity_notes
-P6B-CAL-024	T10028		MEDIUM	The full abstract describes recurrent-neural-network classification of Spanish natural-language complaints.	The title alone hid the central NLP method.
-P6B-EVA-052	NONE		MEDIUM	The full abstract centers a visual-analytics workflow for evaluating summarization prompts rather than a new NLP method.	Text summarization is an application, but the contribution falls outside the selected method clusters.
