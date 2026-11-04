@@ -113,6 +113,8 @@ openalex-report-venue-experiment = "ai_research_trends.experiments.venue_reporti
 openalex-verify-venue-experiment = "ai_research_trends.experiments.venue_verify:main"
 openalex-dual-source = "ai_research_trends.experiments.dual_source.pipeline:main"
 openalex-report-dual-source = "ai_research_trends.experiments.dual_source.reporting:main"
+openalex-validate-dual-source = "ai_research_trends.experiments.dual_source.validation_pipeline:main"
+openalex-report-rq7-validation = "ai_research_trends.experiments.dual_source.validation_reporting:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
