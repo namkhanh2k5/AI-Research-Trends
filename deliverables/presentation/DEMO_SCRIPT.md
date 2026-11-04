@@ -1,6 +1,6 @@
 # Kịch bản trình diễn 7–9 phút
 
-**Chuẩn bị:** tạo môi trường theo `docs/DEVELOPMENT_SETUP.md`, xác minh gói web và bundle mô hình, chạy `streamlit run dashboard/app.py --server.address 127.0.0.1`. Không mở tập kiểm thử 2025. Nếu không có artifact cục bộ, trình bày slide và nêu rõ ứng dụng không thể chạy từ clone công khai.
+**Chuẩn bị:** tạo môi trường theo `docs/REPRODUCIBILITY.md`, xác minh gói web và bundle mô hình, chạy `streamlit run dashboard/app.py --server.address 127.0.0.1`. Không mở tập kiểm thử 2025. Nếu không có artifact cục bộ, trình bày slide và nêu rõ ứng dụng không thể chạy từ clone công khai.
 
 | Thời gian | Nội dung nói và thao tác | Thông điệp khoa học |
 |---|---|---|

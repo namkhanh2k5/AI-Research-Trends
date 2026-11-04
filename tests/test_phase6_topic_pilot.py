@@ -98,11 +98,11 @@ def test_open_set_diagnostic_counts_unknowns_without_claiming_calibration():
 
 def test_published_phase6_figure_is_a_real_linked_png():
     root=Path(__file__).resolve().parents[1]
-    figure=root/"reports/figures/phase6/topic_support.png"
+    figure=root/"reports/phase6/figures/topic_support.png"
     assert figure.stat().st_size>1000
     assert figure.read_bytes().startswith(b"\x89PNG\r\n\x1a\n")
-    assert "reports/figures/phase6/topic_support.png" in (root/"README.md").read_text()
-    assert "figures/phase6/topic_support.png" in (root/"reports/PHASE6A_TOPIC_CLASSIFICATION_FEASIBILITY.md").read_text()
+    assert "reports/phase6/figures/topic_support.png" in (root/"README.md").read_text()
+    assert "phase6/figures/topic_support.png" in (root/"reports/PHASE6A_TOPIC_CLASSIFICATION_FEASIBILITY.md").read_text()
 
 
 def test_published_audit_tables_are_small_aggregates_without_paper_text():
@@ -110,6 +110,6 @@ def test_published_audit_tables_are_small_aggregates_without_paper_text():
     names={"topic_summary","topic_by_year","topic_by_type","topic_by_language",
            "top3_cooccurrence","scope_review","per_class","confusion_matrix"}
     for name in names:
-        table=pd.read_csv(root/f"reports/phase6a/{name}.csv")
+        table=pd.read_csv(root/f"reports/phase6/pilot/{name}.csv")
         assert len(table)>0
         assert not {"title","abstract","text","work_id"}.intersection(table.columns)

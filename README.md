@@ -50,10 +50,10 @@ Targeted historical ML expansion is a third, separate dataset.
 | RQ5 | Reference-network coverage and retrieval feasibility | Sampled reference edges |
 | RQ6 | Topic-label scope and ambiguity | Frozen catalogue and development data |
 
-The [research report](reports/PHASE4_ANALYSIS_REPORT.md),
-[data-collection strategy](docs/DATA_COLLECTION_STRATEGY.md),
+The [project overview](docs/PROJECT_OVERVIEW.md),
+[research methodology](docs/RESEARCH_METHODOLOGY.md),
 [data dictionary](docs/DATA_DICTIONARY.md) and
-[project limitations](docs/FINAL_PROJECT_LIMITATIONS.md) explain the estimands,
+[Phase 4 research report](reports/PHASE4_ANALYSIS_REPORT.md) explain estimands,
 missingness and non-causal interpretation. Custom LLM/Multimodal/RAG text rules
 are not equivalent to OpenAlex-native topics or population counts.
 
@@ -68,8 +68,9 @@ These five GitHub-readable previews link to the verified
 - [Adjusted OA coefficients](reports/figures/phase4/rq3_adjusted_coefficients.png) — RQ3 conditional associations, not causal effects.
 - [Country co-affiliation network](reports/figures/phase4/rq4_country_network.png) — RQ4 sampled collaboration links, not a global network.
 
-See the [RQ6 topic-support chart](reports/figures/phase6/topic_support.png)
-and [ML development report](reports/FINALIZATION_P3_FINAL_ML_REPORT.md) for
+See the [unified Phase 6 report](reports/phase6/PHASE6_REPORT.md),
+[RQ6 topic-support chart](reports/phase6/figures/topic_support.png) and
+[ML development report](reports/FINALIZATION_P3_FINAL_ML_REPORT.md) for
 classification evidence. The 2024 development results are **not** final-test
 results or independent human semantic accuracy.
 
@@ -126,8 +127,9 @@ openalex-package-topic-model infer \
   --abstract "We study a neural network approach to segmenting images and compare its behavior across several visual datasets and evaluation settings."
 ```
 
-The [paper-discovery method](docs/PAPER_DISCOVERY_METHOD.md), [technical evaluation](reports/PAPER_DISCOVERY_TECHNICAL_EVALUATION.md), [web user guide](docs/WEB_USER_GUIDE.md),
-[artifact contract](docs/MODEL_AND_DATA_ARTIFACTS.md) and
+The [web application guide](docs/WEB_APPLICATION.md),
+[technical discovery evaluation](reports/PAPER_DISCOVERY_TECHNICAL_EVALUATION.md),
+[reproducibility guide](docs/REPRODUCIBILITY.md) and
 [deployment guide](docs/DEPLOYMENT_GUIDE.md) explain the local-only demo and
 verified artifact restoration. The selective `git lfs pull` above suffices for
 the local demo after the discovery index is built; `git lfs pull` without a filter restores all 35 LFS paths
@@ -151,7 +153,8 @@ deliverables/                academic report, presentation and demo
 tests/                       offline tests; optional live/browser checks
 ```
 
-The [Phase 2 report](reports/PHASE2_COLLECTION_REPORT.md) and
+The [report index](reports/README.md),
+[Phase 2 report](reports/PHASE2_COLLECTION_REPORT.md) and
 [Phase 3 quality report](reports/PHASE3_DATA_QUALITY_REPORT.md) identify the
 original collection and preprocessing runs. Targeted ML development records
 must not be silently merged into the 12,000-work analytical sample.

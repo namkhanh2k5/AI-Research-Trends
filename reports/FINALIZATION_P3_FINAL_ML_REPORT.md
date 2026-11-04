@@ -80,4 +80,4 @@ OpenAlex primary-topic labels are generated silver labels, not human ground trut
 
 ## 18. Phase 4 handoff
 
-Build the accessible interface around the service contract, display rank/margin and limitations, require explicit topic confirmation, show Topic Brief source scope, and keep the model binary local or distributed via a separately approved mechanism. Obtain genuine human ratings and an independent scope decision before enabling one-time 2025 evaluation. See the [reviewer handoff](FINALIZATION_P3_PHASE4_HANDOFF.md).
+Build the accessible interface around the service contract, display rank/margin and limitations, require explicit topic confirmation, show Topic Brief source scope, and keep the model binary local or distributed via a separately approved mechanism. Obtain genuine human ratings and an independent scope decision before enabling one-time 2025 evaluation. The later [web application guide](../docs/WEB_APPLICATION.md) describes the delivered interface; this paragraph records the earlier development recommendation.

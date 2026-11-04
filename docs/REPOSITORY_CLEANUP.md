@@ -26,6 +26,30 @@ pipeline were removed from the active tree.
 The remaining original Phase 2 and ML expansion raw data are intentionally kept
 for provenance; the local demo does not require downloading them.
 
+## Reader-facing consolidation (2026-11-05)
+
+Start with [the project overview](PROJECT_OVERVIEW.md),
+[research methodology](RESEARCH_METHODOLOGY.md),
+[web guide](WEB_APPLICATION.md), [reproducibility](REPRODUCIBILITY.md), and the
+[report index](../reports/README.md). Repeated setup/proposal/handoff prose was
+merged into those guides; original predeclared protocols and manifest-hashed
+documents remain in place. Phase 6 published aggregate tables moved from
+`reports/phase6a/` and `reports/phase6b/` to
+`reports/phase6/pilot/` and `reports/phase6/validation/`; its support figure
+moved to `reports/phase6/figures/`. All these published artifact bytes and
+their source hashes are unchanged. The [unified Phase 6 report](../reports/phase6/PHASE6_REPORT.md)
+and [artifact map](../reports/phase6/artifact_map.json) distinguish pilot,
+reproduction, metadata, validation and integrated RQ6 runs.
+
+The five original Phase 6-related `data/analysis/` directories did **not**
+move. Their manifests describe distinct runs and some downstream consumers
+expect original paths; the 16 identical pilot/reproduction outputs also have
+different manifests. Deleting one would lose a separately verifiable run, while
+Git already deduplicates equal blobs internally. This is a deliberate
+provenance-preserving exception to physical consolidation, not a hidden second
+canonical result. The old report filenames retained at the top level are
+detailed historical evidence; readers should enter through the new index.
+
 ## Removed from the active branch
 
 - RQ7/RQ7.1 Crossref ETL, AI-assisted source validation, historical Venue

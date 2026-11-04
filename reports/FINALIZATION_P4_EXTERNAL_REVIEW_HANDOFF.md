@@ -1,7 +1,0 @@
-# External reviewer handoff
-
-Review the [academic report](../deliverables/report/FINAL_ACADEMIC_REPORT.md), [slide deck](../deliverables/presentation/FINAL_PRESENTATION.pptx), [web code](../dashboard/app.py), and prior [Phase 3 ML report](FINALIZATION_P3_FINAL_ML_REPORT.md). Reproduce tests with `pip install -e ".[dev,web,deliverables]" && pytest -q -ra -o addopts=''`. A clean clone will skip local-only tests requiring ignored artifacts; this is expected and disclosed. Do **not** mistake an absent artifact for fabricated UI data.
-
-The app needs the ignored local `data/analysis/finalization_p2_web_data_20261101_v3/` package; the classifier additionally needs `models/finalization_p3/topic_placement_v2/`. Trusted local verifiers check checksums. No GitHub-hosted live URL exists. Human semantic validation is pending. The 2025 test is SEALED, and the frozen protocol forbids execution. The available results are 2024 development values against OpenAlex silver labels only.
-
-Suggested independent review: (1) verify population/sample scope in every graph, (2) inspect RQ3 association wording, (3) try ambiguous/out-of-catalogue drafts and ensure no forced placement, (4) inspect a Topic Brief without the model installed, (5) verify reviewer A/B isolation and restricted-key absence, (6) confirm no private artifacts are in Git, (7) visually inspect report/slide rendering and responsive layout. Record findings as reviewer feedback before main-branch integration. Do not authorize final-test execution merely because the website is finished.

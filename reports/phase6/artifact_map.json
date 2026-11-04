@@ -1,0 +1,10 @@
+{
+  "purpose": "Reader-facing Phase 6 map; historical manifests and experiment identities are unchanged",
+  "entries": [
+    {"stage": "pilot_v12", "path": "data/analysis/phase6_topic_pilot_20261028_v12", "manifest_sha256": "c5f8666dadff86a299b5a82de89b1eb16a1d16f1ab629b7247a743dce0f8b4f9", "published_aggregates": "reports/phase6/pilot", "retention": "distinct pilot run identity"},
+    {"stage": "pilot_reproduction", "path": "data/analysis/phase6a_reproduction_20261028_phase6b", "manifest_sha256": "b5768826802f8d33bad0aa130a74bbdbe24ac3bb659cc41fea94f955af2c1932", "published_aggregates": "reports/phase6/pilot", "retention": "distinct reproduction manifest; non-manifest outputs match pilot v12"},
+    {"stage": "topic_metadata", "path": "data/analysis/phase6b_topic_metadata_20261028_v1", "manifest_sha256": "d0d6c48d5d9bd1b41f3a9648d94991565aff146eeb10943b4db007f3cbd1255f", "published_aggregates": "reports/phase6/validation", "retention": "source metadata for catalogue validation"},
+    {"stage": "validation_v3", "path": "data/analysis/phase6b_topic_validation_20261028_v3", "manifest_sha256": "8adeee71c0b37d3e5b85d06360d2d471b72618daf1a4427b023570664bac9c79", "published_aggregates": "reports/phase6/validation", "retention": "canonical 14-topic validation"},
+    {"stage": "integrated_rq6", "path": "data/analysis/finalization_p2_rq6_20261101_v3", "manifest_sha256": "4588fc872581f91eccc713e86e845d0cf8a11bc79eeb0603631c825cf091c570", "published_aggregates": "reports/FINALIZATION_P2_RQ6_TOPIC_LABEL_ANALYSIS.md", "retention": "later integrated dataset and different estimands"}
+  ]
+}

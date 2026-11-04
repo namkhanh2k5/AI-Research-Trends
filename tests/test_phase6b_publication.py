@@ -9,7 +9,7 @@ from ai_research_trends.preprocessing.validate_tables import file_sha256
 
 
 ROOT=Path(__file__).resolve().parents[1]
-PUBLIC=ROOT/"reports"/"phase6b"
+PUBLIC=ROOT/"reports"/"phase6"/"validation"
 
 
 def test_public_summary_matches_catalogue_and_decision_text():

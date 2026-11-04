@@ -11,4 +11,4 @@ These are byte-identical copies of selected small **aggregate** CSV outputs from
 | `catalogue_b_coverage_*.csv` | Detailed-sample catalogue coverage by year, primary subfield, work type and language |
 | `summary.json` | Model comparisons, uncertainty, open-set calibration/evaluation and provenance hashes |
 
-Coverage and citation/metadata context here refer to a **sample**, not full-population prevalence. OpenAlex primary-topic labels are automated silver labels; human semantic review is pending. The [main report](../PHASE6B_FINAL_TOPIC_VALIDATION_REPORT.md) interprets the evidence and explains why the 2025 final test was not run.
+Coverage and citation/metadata context here refer to a **sample**, not full-population prevalence. OpenAlex primary-topic labels are automated silver labels; human semantic review is pending. The [Phase 6 synthesis](../PHASE6_REPORT.md) gives the current entry point; the [original validation report](../../PHASE6B_FINAL_TOPIC_VALIDATION_REPORT.md) preserves detailed historical interpretation.

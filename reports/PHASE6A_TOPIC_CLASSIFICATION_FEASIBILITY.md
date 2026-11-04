@@ -10,7 +10,7 @@ Input: unchanged Phase 3 `works.parquet` and `work_topics.parquet` in `data/proc
 
 There are **12,000** unique works and **36,000** work-topic relationships. Every work has a primary topic; all 12,000 `works.primary_topic_id` values match the rank-1 `work_topics.topic_id`. **9,440** works have both nonblank title and abstract; 2,560 fail that text criterion. DOI/normalized-title grouping finds **10** multi-work version groups, **9** later rows excluded after earliest-version retention, and **0** groups with conflicting primary labels in this sample. Thus **9,431** rows are text-eligible and version-isolated. This exact-key grouping may miss near-duplicate versions with changed titles and no shared DOI. No unrestricted all-pairs search was attempted. The full sample has **106** primary topic IDs; all have per-topic support, year, work-type, language and score audits in the Git-ignored run directory. Topic descriptions are preserved where verified; most are unavailable in Phase 3. Works with non-English or missing OpenAlex language tags were retained if text was present; cross-language performance was not independently established. OpenAlex scores are classifier outputs, not calibrated probabilities or a measure of paper quality.
 
-![Top 25 sampled primary-topic supports](figures/phase6/topic_support.png)
+![Top 25 sampled primary-topic supports](phase6/figures/topic_support.png)
 
 *Figure 1. Top primary topics in the 12,000-work detailed sample; these bars are **not** full-population topic counts.*
 
@@ -58,7 +58,7 @@ Logistic Regression confusion matrix (rows: OpenAlex primary label; columns: mod
 | **T10052** | 20 | 0 | 0 | 25 | 0 |
 | **T10462** | 8 | 0 | 1 | 0 | 36 |
 
-Small aggregate [per-class results](phase6a/per_class.csv), [scope review](phase6a/scope_review.csv) and [complete topic audits](phase6a/topic_summary.csv) are published for reviewers. Record-level predictions, paper text and answer keys remain local and Git-ignored.
+Small aggregate [per-class results](phase6/pilot/per_class.csv), [scope review](phase6/pilot/scope_review.csv) and [complete topic audits](phase6/pilot/topic_summary.csv) are published for reviewers. Record-level predictions, paper text and answer keys remain local and Git-ignored.
 
 ### Out-of-catalogue diagnostic
 
@@ -72,6 +72,6 @@ The [blind human annotation guidelines](../docs/PHASE6_HUMAN_ANNOTATION_GUIDELIN
 
 ## 5. Reproducibility, limitations, next action
 
-Final local output: `data/analysis/phase6_topic_pilot_20261028_v11/` (Git-ignored), with manifest, hashed CSVs, support chart, split IDs/text, scope table, confusion matrix, prediction audit, blind sheet and restricted key. Its 2026-10-28 08:23:25 UTC manifest records 16 output hashes; independent v12 rerun matched **16/16**, and all 16 v11 artifact hashes verified. [Eight published aggregate CSVs and provenance hashes](phase6a/README.md) and the published support PNG match their local source hashes. The unchanged Phase 3 validator passed **29/29** checks. Final offline `pytest -q -ra` yielded **137 passed, 1 opt-in live test skipped**; `pip check` reported no broken requirements; the installed `openalex-pilot-topics --help` entry point executed. The source Parquet, Phase 3 manifest and prior analytical outputs remain untouched. Do not publish local training/annotation CSVs: they contain paper text and label-sensitive records.
+Final local output: `data/analysis/phase6_topic_pilot_20261028_v11/` (historical original run; not retained in the current tree), with manifest, hashed CSVs, support chart, split IDs/text, scope table, confusion matrix, prediction audit, blind sheet and restricted key. Its 2026-10-28 08:23:25 UTC manifest recorded 16 output hashes; the retained independent v12 rerun matched **16/16**. [Eight published aggregate CSVs and provenance hashes](phase6/pilot/README.md) and the published support PNG match the retained reproduction. The unchanged Phase 3 validator passed **29/29** checks. Historical offline `pytest -q -ra` yielded **137 passed, 1 opt-in live test skipped**; `pip check` reported no broken requirements; the installed `openalex-pilot-topics --help` entry point executed. The source Parquet, Phase 3 manifest and prior analytical outputs remain untouched. Do not publish local training/annotation CSVs: they contain paper text and label-sensitive records.
 
 **Recommendation: REVISE.** Keep the five-class model as a transparent teaching diagnostic, not the main 8–15-topic user-facing claim. The smallest next task is independent semantic review of the 99 unresolved topic names/definitions and a blinded 36-paper human calibration. Then decide prospectively whether a narrower five-topic educational tool is acceptable, whether a scientifically justified regrouping can reach 8–15 topics, or whether to abandon broad classification. Do not run 2025 model evaluation until that decision and a final evaluation protocol are frozen.

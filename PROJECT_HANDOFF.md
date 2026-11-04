@@ -88,9 +88,10 @@ openalex-package-topic-model infer --help
 
 ## Where to read and what remains
 
+- [Project overview](docs/PROJECT_OVERVIEW.md), [research methodology](docs/RESEARCH_METHODOLOGY.md), [web guide](docs/WEB_APPLICATION.md), and [reproducibility](docs/REPRODUCIBILITY.md) are the current documentation entry points.
 - RQ1–RQ4: [Phase 4 research report](reports/PHASE4_ANALYSIS_REPORT.md).
   RQ5: [reference-network decision](reports/PHASE5_FINAL_DECISION.md).
-  RQ6/ML: [topic validation](reports/PHASE6B_FINAL_TOPIC_VALIDATION_REPORT.md)
+  RQ6/ML: [unified topic report](reports/phase6/PHASE6_REPORT.md)
   and [model evaluation](reports/FINALIZATION_P3_FINAL_ML_REPORT.md).
 - Independent human semantic validation remains **pending**.
   The 2025 final-test gate was historically sealed but is no longer

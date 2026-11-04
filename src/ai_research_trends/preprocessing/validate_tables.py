@@ -18,6 +18,7 @@ from ai_research_trends.crawling.openalex_client import canonical_work_id
 from ai_research_trends.crawling.plan_stratified_sample import validate_sampling_plan
 from ai_research_trends.preprocessing.normalize_population import normalize_population
 from ai_research_trends.preprocessing.schemas import KEYS, SCHEMAS
+from ai_research_trends.artifact_paths import resolve_manifest_input
 
 
 class ProcessedValidationError(ValueError):
@@ -38,6 +39,39 @@ def file_sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def verified_processing_source(label: str, source: dict[str, Any],
+                               output_dir: Path, manifest: dict[str, Any]) -> tuple[Path, str]:
+    """Verify a recorded input inside this checkout; permit one byte-identical raw fallback.
+
+    The original interim JSONL was not retained in Git LFS. The collection
+    manifest records the same SHA-256 for its raw JSONL, so the latter can
+    verify the processing input bytes without pretending the interim file exists.
+    """
+    try:
+        path = resolve_manifest_input(source["path"], output_dir)
+    except (KeyError, ValueError) as exc:
+        raise ProcessedValidationError(f"Unsafe {label} source path: {exc}") from exc
+    if path.is_file():
+        if file_sha256(path) != source["sha256"]:
+            raise ProcessedValidationError(f"{label} source checksum differs from processing manifest")
+        return path, "retained"
+    if label != "source_jsonl":
+        raise ProcessedValidationError(f"Missing {label} source: {path}")
+    if path.name != "works.jsonl" or "interim" not in path.parts:
+        raise ProcessedValidationError("Missing source JSONL is not the declared interim works file")
+    recorded_manifest = manifest["inputs"]["source_manifest"]
+    raw_manifest_path = resolve_manifest_input(recorded_manifest["path"], output_dir)
+    if not raw_manifest_path.is_file() or file_sha256(raw_manifest_path) != recorded_manifest["sha256"]:
+        raise ProcessedValidationError("Collection manifest missing or changed")
+    raw_manifest = json.loads(raw_manifest_path.read_text(encoding="utf-8"))
+    if raw_manifest.get("raw_jsonl_sha256") != source["sha256"]:
+        raise ProcessedValidationError("Raw and omitted interim JSONL hashes differ")
+    raw_jsonl = raw_manifest_path.parent / "works.jsonl"
+    if not raw_jsonl.is_file() or file_sha256(raw_jsonl) != source["sha256"]:
+        raise ProcessedValidationError("Raw fallback JSONL missing or changed")
+    return raw_jsonl, "verified_identical_raw_fallback"
 
 
 def validate_rows(
@@ -293,10 +327,9 @@ def main(argv: list[str] | None = None) -> int:
     config = load_config(args.config)
     population_rows = normalize_population(population, config)
     manifest = json.loads((Path(args.output_dir) / "manifest.json").read_text())
+    source_locations = {}
     for label, source in manifest["inputs"].items():
-        path = Path(source["path"])
-        if source["sha256"] != file_sha256(path):
-            raise ProcessedValidationError(f"{label} source checksum differs from processing manifest")
+        _, source_locations[label] = verified_processing_source(label, source, Path(args.output_dir), manifest)
     if manifest["inputs"]["plan"]["sha256"] != file_sha256(plan_path):
         raise ProcessedValidationError("Supplied plan differs from processing input")
     if manifest["inputs"]["population"]["sha256"] != file_sha256(Path(args.population)):
@@ -306,7 +339,7 @@ def main(argv: list[str] | None = None) -> int:
     if manifest["quality_json_sha256"] != file_sha256(Path(args.output_dir) / "quality.json"):
         raise ProcessedValidationError("Quality-audit checksum mismatch")
     checks, tables = validate_output_directory(Path(args.output_dir), plan, population_rows, config)
-    print(json.dumps({"valid": True, "checks_passed": len(checks), "tables": {k: len(v) for k,v in tables.items()}}, indent=2))
+    print(json.dumps({"valid": True, "checks_passed": len(checks), "tables": {k: len(v) for k,v in tables.items()}, "source_locations": source_locations}, indent=2))
     return 0
 
 

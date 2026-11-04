@@ -469,6 +469,30 @@ def test_completed_collection_verifier_rejects_changed_interim_jsonl(tmp_path: P
         verify_completed_collection(Path(completed["raw_jsonl"]).parent / "manifest.json")
 
 
+def test_completed_collection_verifier_accepts_missing_interim_only_if_hash_equivalent(
+    tmp_path: Path,
+) -> None:
+    completed = collect_stratified_sample(
+        plan=_plan(),
+        config=load_config("config/topics.yaml"),
+        client=FakeClient(list(range(2020, 2026))),
+        raw_root=tmp_path / "raw",
+        interim_root=tmp_path / "interim",
+        base_seed=100,
+    )
+    manifest_path = Path(completed["raw_jsonl"]).parent / "manifest.json"
+    interim_path = Path(completed["interim_jsonl"])
+    interim_path.unlink()
+    result = verify_completed_collection(manifest_path)
+    assert result["interim_source"] == "verified_identical_raw_fallback"
+    assert result["raw_jsonl_sha256"] == result["interim_jsonl_sha256"]
+    manifest = json.loads(manifest_path.read_text())
+    manifest["interim_jsonl_sha256"] = "0" * 64
+    manifest_path.write_text(json.dumps(manifest))
+    with pytest.raises(CollectionVerificationError, match="not equivalent"):
+        verify_completed_collection(manifest_path)
+
+
 def test_resume_path_must_stay_inside_raw_root(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="inside"):
         _safe_resume_manifest(tmp_path / "elsewhere" / "manifest.json", tmp_path / "raw")

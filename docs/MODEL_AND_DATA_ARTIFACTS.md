@@ -14,7 +14,7 @@ The paper index contains only original 12,000 sample works, not targeted expansi
 
 Public GitHub clones can fetch retained artifacts with Git LFS. Verify their original manifests before use; do not load an arbitrary joblib. Publication does not establish rights to redistribute OpenAlex abstracts or run a public website. See `docs/FINALIZATION_P2_WEB_DATA_CONTRACT.md` and the Phase 3 inference report for complete schemas and source hashes.
 
-For content-similarity discovery, fetch the retained original `works.parquet` LFS file and run `openalex-paper-discovery build` once. The new package contains only display metadata, a sparse matrix, and a portable JSON vocabulary/IDF representation (no pickle); it records the canonical works and web-manifest SHA-256 values. It is separate from the frozen SVM and never changes its manifest. The index is not bundled on GitHub because the retained canonical works allow deterministic local reconstruction and avoids an extra binary copy of research text. See [the discovery method](PAPER_DISCOVERY_METHOD.md).
+For content-similarity discovery, fetch the retained original `works.parquet` LFS file and run `openalex-paper-discovery build` once. The package contains only display metadata, a sparse matrix, and a portable JSON vocabulary/IDF representation (no pickle); it records the canonical works and web-manifest SHA-256 values. It is separate from the frozen SVM and never changes its manifest. The index is not bundled on GitHub because the retained canonical works allow deterministic local reconstruction and avoids an extra binary copy of research text. See [the web application guide](WEB_APPLICATION.md).
 
 ## Checksum-verified local restoration (authorized files only)
 
