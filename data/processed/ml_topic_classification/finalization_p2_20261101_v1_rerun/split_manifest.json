@@ -1,0 +1,158 @@
+{
+  "status": "complete",
+  "complete": true,
+  "run_id": "finalization_p2_20261101_v1_rerun",
+  "created_at_utc": "2026-11-01T06:57:00.878818+00:00",
+  "code_sha256": "5e4f4c70ac5f7e10a6d52d2e38ca4f18d9318d70df5b78b643e00f15ee755a26",
+  "source_run_ids": [
+    "stratified_20261019T155909Z",
+    "ml_expansion_20261101T052506Z"
+  ],
+  "human_annotation_status": "PENDING REAL HUMAN ANNOTATION",
+  "api_requests": 0,
+  "input_rows": {
+    "original": 12000,
+    "expansion": 2515
+  },
+  "inputs": {
+    "original_manifest": {
+      "path": "data/raw/openalex_stratified/stratified_20261019T155909Z/manifest.json",
+      "sha256": "c6fc71e6eee2fc3131df3cdfe2f300dc719ed3b6196be1be852a45519a08aa6e"
+    },
+    "expansion_manifest": {
+      "path": "data/raw/openalex_ml_expansion/ml_expansion_20261101T052506Z/manifest.json",
+      "sha256": "0c8c6de13a71dd69ab9e2099140ae11e100c321787f15564c39b3d883526cda3"
+    },
+    "phase3_manifest": {
+      "path": "data/processed/openalex_stratified/stratified_20261019T155909Z/manifest.json",
+      "sha256": "5d21e6187f0cf569b284ea399ffff02cb02d29d1e936a5fa716c7c96758de19c"
+    },
+    "phase1_quality_manifest": {
+      "path": "data/analysis/finalization_p1_quality_20261101_v2/manifest.json",
+      "sha256": "fe615717844e360aa86174bcdab9bfddfc96fa42649491b2da3c491f76ad26a0"
+    },
+    "catalogue": {
+      "path": "config/phase6b_catalogue.yaml",
+      "sha256": "e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9"
+    },
+    "topic_metadata": {
+      "path": "config/phase6b_topic_metadata.csv",
+      "sha256": "024f9f13db713534fcc662ff95f477299c8cf939ca200565b2e88e13371ddd86"
+    },
+    "integration_protocol": {
+      "path": "docs/FINALIZATION_P2_INTEGRATION_PROTOCOL.md",
+      "sha256": "2f391c708cbd85e490baeaec35554c2212cda3d98ca819cd822e550f06791419"
+    },
+    "expansion_interim": {
+      "path": "data/interim/openalex_ml_expansion/ml_expansion_20261101T052506Z/records.jsonl",
+      "sha256": "cd60da68c9d53ffe181e2f4ca847bbad21baf1952e840aa8537e0b1ae67533a3"
+    },
+    "phase3_works": {
+      "path": "data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet",
+      "sha256": "9318c456d916b8c9a35b0a3c86a829a92347083357693593e743abb0253264d4"
+    },
+    "phase3_work_topics": {
+      "path": "data/processed/openalex_stratified/stratified_20261019T155909Z/work_topics.parquet",
+      "sha256": "e65356b899f3c9dec4d9d47ec9dae54557b23dc1709a1b3ea1d4c5f746acf6d5"
+    },
+    "phase3_authorships": {
+      "path": "data/processed/openalex_stratified/stratified_20261019T155909Z/authorships.parquet",
+      "sha256": "ba8bee6e7da8deb7a4063acc66bb78c8cab9551472a12965071874c2cb298782"
+    },
+    "phase3_work_institutions": {
+      "path": "data/processed/openalex_stratified/stratified_20261019T155909Z/work_institutions.parquet",
+      "sha256": "d4fd9e1375b5d6369542a581b83aa9659497ee949bea7de146c2d74c872a1f4e"
+    },
+    "phase3_work_countries": {
+      "path": "data/processed/openalex_stratified/stratified_20261019T155909Z/work_countries.parquet",
+      "sha256": "6e4c8b1bf27bf260a98468d6e171a0ef4685057b26a43f382e2d532c4e449ed4"
+    },
+    "phase3_references": {
+      "path": "data/processed/openalex_stratified/stratified_20261019T155909Z/references.parquet",
+      "sha256": "1c0f306225e6f7fd673b2972744c702d184b2e8f5c88e09569eea24d831d599d"
+    },
+    "phase3_category_membership": {
+      "path": "data/processed/openalex_stratified/stratified_20261019T155909Z/category_membership.parquet",
+      "sha256": "438bf85a8858f135099e198ea552e93da59008f5677cc828694f9ee48ef50ae1"
+    },
+    "phase3_population_year_counts": {
+      "path": "data/processed/openalex_stratified/stratified_20261019T155909Z/population_year_counts.parquet",
+      "sha256": "ae723a94efa06981097fa059a0592b70f8807555678e8bff58d8b088593534ba"
+    }
+  },
+  "outputs": {
+    "source_record_audit.parquet": {
+      "rows": 14515,
+      "sha256": "faab165d87511b6bbb6eb683ec5d53e444a68e4a66daaf86e4240139346e14b4",
+      "bytes": 7075895
+    },
+    "ml_papers.parquet": {
+      "rows": 14470,
+      "sha256": "c04e963a0a6a21fb32255d7098f29f93cbb6b874ce169d29d04a084df80d993e",
+      "bytes": 6978579
+    },
+    "version_groups.parquet": {
+      "rows": 14470,
+      "sha256": "f3a806e03be394c2a1b081d90fa33242192934216b0ce90216bda05e2b592b7d",
+      "bytes": 197492
+    },
+    "near_duplicate_risks.parquet": {
+      "rows": 1,
+      "sha256": "2eb3d44a620a2466bf70b09e98bc4bb18b23d9ac1bdb4215475f2bd14076358b",
+      "bytes": 4304
+    },
+    "train.parquet": {
+      "rows": 7002,
+      "sha256": "249ac4fe7768483559bfd5a20373d40ec594f140aae0cdfdaa6ff9a1bb7dfd3b",
+      "bytes": 4055411
+    },
+    "validation_2024.parquet": {
+      "rows": 1843,
+      "sha256": "afc459fdab3c53e9fe31bec3781e98e736a2e8406b096c88acfd4bbd2ba93dfa",
+      "bytes": 1129153
+    },
+    "test_2025_sealed.parquet": {
+      "rows": 2318,
+      "sha256": "3f4d4a70f496ddf8674447cc93d95aae3bd1ddbeced49d1f5a8a027f14593f16",
+      "bytes": 1468585
+    },
+    "excluded.parquet": {
+      "rows": 3307,
+      "sha256": "c34eac1c361123ce1478a9dff95ffef8fe03b496941fffa9a4b873d1a782e3c4",
+      "bytes": 336163
+    }
+  },
+  "validation": {
+    "source_records": 14515,
+    "canonical_groups": 14470,
+    "eligible_training": 7002,
+    "eligible_validation": 1843,
+    "sealed_test_total": 2318,
+    "cross_split_work_id_doi_title_version_group": "PASS",
+    "expansion_training_only": "PASS"
+  },
+  "summary": {
+    "source_exclusion_reasons": {
+      "eligible": 11163,
+      "missing_abstract": 3055,
+      "short_abstract": 248,
+      "nonrepresentative_version": 42,
+      "missing_title": 3,
+      "cross_period_version": 3,
+      "near_cross_period_title_pending_review": 1
+    },
+    "canonical_exclusion_reasons": {
+      "short_abstract": 248,
+      "eligible": 11163,
+      "missing_abstract": 3055,
+      "missing_title": 3,
+      "near_cross_period_title_pending_review": 1
+    },
+    "cross_period_groups": 3,
+    "development_label_conflict_groups": 0,
+    "near_cross_period_pairs": 1,
+    "new_training_rows": 1947,
+    "original_training_rows": 5055
+  },
+  "sealed_test_policy": "row count and SHA-256 only; no class distributions or predictions"
+}

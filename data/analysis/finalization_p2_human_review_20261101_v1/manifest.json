@@ -1,0 +1,36 @@
+{
+  "status": "prepared_pending_real_human_annotation",
+  "calibration": {
+    "valid": true,
+    "examples": 40,
+    "options": 14,
+    "distinct_orders": 40
+  },
+  "evaluation": {
+    "valid": true,
+    "examples": 100,
+    "options": 14,
+    "distinct_orders": 100
+  },
+  "catalogue_sha256": "e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9",
+  "topic_metadata_sha256": "024f9f13db713534fcc662ff95f477299c8cf939ca200565b2e88e13371ddd86",
+  "restricted_key_hashes_not_copied": {
+    "calibration": "376295d4eab962154d7ad88b21fbcb32c3973080021cc5513dd9086bcb129857",
+    "evaluation": "7aa7cb0646a711e9ec60d3c7e95a5042c899f3fb19f5b55f39b0dff52d5d8b8a"
+  },
+  "package_checksums": {
+    "reviewer_a": {
+      "calibration": "bd803f2b2c69120ff07d442c874a77a6968691ec54f28926b50b20614990a05a",
+      "evaluation": "23a7aba6674cb1edfaf5fc8bb75400f0593de2197020fb6fc33dbf3dde66bd29",
+      "scope_form_sha256": "9146bf4ad60fb39396211ec0f99fe141b13c844ca11d473cca5b35a6af0d31ae"
+    },
+    "reviewer_b": {
+      "calibration": "bd803f2b2c69120ff07d442c874a77a6968691ec54f28926b50b20614990a05a",
+      "evaluation": "23a7aba6674cb1edfaf5fc8bb75400f0593de2197020fb6fc33dbf3dde66bd29",
+      "scope_form_sha256": "cd1f9c7d205df71a20b4c77f6ccf08ac481eb3379cfdfdfd0ced4b8717f882b4"
+    }
+  },
+  "rater_isolation": "separate folders; distribute separately",
+  "ratings_received": 0,
+  "human_statistics": "not_measured"
+}

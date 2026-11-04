@@ -1,0 +1,238 @@
+{
+  "run_version": "phase6a-v1",
+  "run_at_utc": "2026-10-28T04:14:06.093070+00:00",
+  "source_manifest_sha256": "5d21e6187f0cf569b284ea399ffff02cb02d29d1e936a5fa716c7c96758de19c",
+  "source_table_hashes": {
+    "works": "9318c456d916b8c9a35b0a3c86a829a92347083357693593e743abb0253264d4",
+    "work_topics": "e65356b899f3c9dec4d9d47ec9dae54557b23dc1709a1b3ea1d4c5f746acf6d5"
+  },
+  "source_manifest_status": "complete",
+  "sample_works": 12000,
+  "text_complete_before_versions": 9440,
+  "eligible_after_versions": 9431,
+  "observed_primary_topics": 106,
+  "selected_topics": [
+    "https://openalex.org/T10036",
+    "https://openalex.org/T10664",
+    "https://openalex.org/T10028",
+    "https://openalex.org/T10052",
+    "https://openalex.org/T10462"
+  ],
+  "target_8_to_15_passed": false,
+  "train_rows": 955,
+  "validation_rows": 379,
+  "locked_test_rows": 2373,
+  "validation_outside_rows": 1494,
+  "catalogue_coverage_training": 0.18418514946962392,
+  "catalogue_coverage_validation": 0.20234917245061398,
+  "duplicate_groups": 10,
+  "duplicate_conflict_groups": 0,
+  "model": {
+    "metrics": {
+      "majority": {
+        "accuracy": 0.38522427440633245,
+        "macro_f1": 0.11123809523809525,
+        "weighted_f1": 0.2142580726221887
+      },
+      "logistic_regression": {
+        "accuracy": 0.8601583113456465,
+        "macro_f1": 0.8488538353194386,
+        "weighted_f1": 0.8563927203187524
+      },
+      "complement_nb": {
+        "accuracy": 0.8337730870712401,
+        "macro_f1": 0.8265833909097667,
+        "weighted_f1": 0.8291739852022829
+      },
+      "linear_svm": {
+        "accuracy": 0.9498680738786279,
+        "macro_f1": 0.9526208470034137,
+        "weighted_f1": 0.9498748082602624
+      }
+    },
+    "per_class": [
+      {
+        "topic_id": "https://openalex.org/T10036",
+        "precision": 0.7631578947368421,
+        "recall": 0.9931506849315068,
+        "f1-score": 0.8630952380952381,
+        "support": 146.0
+      },
+      {
+        "topic_id": "https://openalex.org/T10664",
+        "precision": 0.9,
+        "recall": 0.9310344827586207,
+        "f1-score": 0.9152542372881356,
+        "support": 58.0
+      },
+      {
+        "topic_id": "https://openalex.org/T10028",
+        "precision": 0.9705882352941176,
+        "recall": 0.7764705882352941,
+        "f1-score": 0.8627450980392157,
+        "support": 85.0
+      },
+      {
+        "topic_id": "https://openalex.org/T10052",
+        "precision": 1.0,
+        "recall": 0.5555555555555556,
+        "f1-score": 0.7142857142857143,
+        "support": 45.0
+      },
+      {
+        "topic_id": "https://openalex.org/T10462",
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1-score": 0.8888888888888888,
+        "support": 45.0
+      }
+    ],
+    "open_set": {
+      "threshold": 0.5,
+      "in_catalogue": 379,
+      "outside_catalogue": 1494,
+      "in_median_max_probability": 0.5380973927748167,
+      "outside_median_max_probability": 0.41193343972789,
+      "incorrectly_rejected_in": 159,
+      "confidently_assigned_outside": 310
+    },
+    "bootstrap_ci": {
+      "majority": {
+        "accuracy_ci95": [
+          0.33766490765171503,
+          0.4354221635883905
+        ],
+        "macro_f1_ci95": [
+          0.10097141988446337,
+          0.12133631273610361
+        ]
+      },
+      "logistic_regression": {
+        "accuracy_ci95": [
+          0.8205145118733509,
+          0.8970976253298153
+        ],
+        "macro_f1_ci95": [
+          0.802016587372997,
+          0.8872260993919802
+        ]
+      },
+      "complement_nb": {
+        "accuracy_ci95": [
+          0.7967678100263852,
+          0.8655672823218997
+        ],
+        "macro_f1_ci95": [
+          0.7833468108212976,
+          0.8593005464313539
+        ]
+      },
+      "linear_svm": {
+        "accuracy_ci95": [
+          0.9286939313984168,
+          0.9684036939313985
+        ],
+        "macro_f1_ci95": [
+          0.9308532898568065,
+          0.9711617559791745
+        ]
+      }
+    },
+    "fit_seconds": {
+      "tfidf": 1.5282974790006847,
+      "logistic_regression": 5.194714454999485,
+      "complement_nb": 0.0635875030002353,
+      "linear_svm": 0.10171669000010297
+    },
+    "vocabulary_size": 24559,
+    "vectorizer_fit_rows": 955,
+    "validation_transform_rows": 379,
+    "test_transform_rows": 0,
+    "model_feature_columns": [
+      "title",
+      "abstract"
+    ]
+  },
+  "outputs": {
+    "topic_summary": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/topic_summary.csv",
+      "sha256": "47e77ddbc7cea90452761b9a90cafcadccc1dd983c4d332bcffe847c1693383f",
+      "rows": 106
+    },
+    "topic_by_year": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/topic_by_year.csv",
+      "sha256": "20f84faabc3c453951c713b8327c18e436ae36073391c30d016a9077bc5f8d0b",
+      "rows": 620
+    },
+    "topic_by_type": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/topic_by_type.csv",
+      "sha256": "75a007e68f173223c0e00e9ed8d9a7829aceba87a388a917161560ba9c54ee6c",
+      "rows": 237
+    },
+    "topic_by_language": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/topic_by_language.csv",
+      "sha256": "0a192d9faf8b11d9633fd3015c089107f914fed1b8c52954f2cf59377b29c90b",
+      "rows": 632
+    },
+    "top3_cooccurrence": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/top3_cooccurrence.csv",
+      "sha256": "8771ea4dad522134dc67aab51a738f59cb6cc64b1203ed3f28e3626252759119",
+      "rows": 6604
+    },
+    "scope_review": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/scope_review.csv",
+      "sha256": "09c5ddd2935bf21ae283dc54c82a212d0670ca455db110a0a7a3af35c7cbd1d0",
+      "rows": 106
+    },
+    "exclusion_audit": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/exclusion_audit.csv",
+      "sha256": "c3ff8142f7da4f19589712cb8c38655f9169dbbc01286c4750691d3f82dfd124",
+      "rows": 12000
+    },
+    "train": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/train.csv",
+      "sha256": "379823d18a542ce1d96bfead04fa31885f3a49eb12a071373461e6c592e2540a",
+      "rows": 955
+    },
+    "validation": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/validation.csv",
+      "sha256": "4ba011886340634b709a64eb86c36651cd206bbf6805a8a9130ece94c5193d8f",
+      "rows": 379
+    },
+    "locked_test_ids": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/locked_test_ids.csv",
+      "sha256": "a993fcaca9f9e54f1b25ef6f039505a34bc22e5e7b91f0e654e451bc491ac336",
+      "rows": 2373
+    },
+    "per_class": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/per_class.csv",
+      "sha256": "c2e75b3bcd784d3786577982a7fe105d8441c6e1c996cc9f5d6ce0e574c115ee",
+      "rows": 5
+    },
+    "confusion_matrix": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/confusion_matrix.csv",
+      "sha256": "405b7db3e14bedd45c8adc539fa5c3b2af4b076cf0d3236c61d55f163eab29f7",
+      "rows": 5
+    },
+    "validation_predictions": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/validation_predictions.csv",
+      "sha256": "e5e5d862a1d47dafe0d89ae150c87876d6e22da553b7898de89b6b0afe0ca933",
+      "rows": 379
+    },
+    "blind_annotation_template": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/blind_annotation_template.csv",
+      "sha256": "60012c53243253dc67ae02661f00e45f0b710338b9fb9da53fe227591bb48ddc",
+      "rows": 36
+    },
+    "restricted_answer_key": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/restricted_answer_key.csv",
+      "sha256": "95af744e640c9cd2a2986a157b325c7a8c0efb5d6b9338ac70f1a42416f87101",
+      "rows": 36
+    },
+    "topic_support": {
+      "path": "data/analysis/phase6_topic_pilot_20261028_v1/topic_support.png",
+      "sha256": "aeb0ef4907ed1d40ae589fce5a9384ea0e4d777db7ffe5cc23c1166c56ad58b4"
+    }
+  },
+  "interpretation": "Non-confirmatory 4–7-topic diagnostic; silver-label agreement only. 2025 locked and unevaluated."
+}

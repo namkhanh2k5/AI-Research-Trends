@@ -1,0 +1,87 @@
+{
+  "topic_id": "T10331",
+  "official_name": "Video Surveillance and Tracking Methods",
+  "official_description": "This cluster of papers focuses on visual object tracking and person re-identification, covering topics such as background subtraction, convolutional neural networks, real-time tracking, deep learning, foreground segmentation, multiple object tracking, and motion detection.",
+  "parent_subfield": "1707",
+  "scope_status": "in",
+  "sample_primary_topic_works": 209,
+  "sample_any_topic_works": 385,
+  "sample_year_counts": {
+    "2020": 32,
+    "2021": 39,
+    "2022": 27,
+    "2023": 40,
+    "2024": 31,
+    "2025": 40
+  },
+  "sample_citation_median": 3.0,
+  "sample_oa_counts": {
+    "closed": 65,
+    "green": 60,
+    "gold": 46,
+    "diamond": 23,
+    "bronze": 8,
+    "hybrid": 7
+  },
+  "related_native_topics": [
+    {
+      "topic_id": "https://openalex.org/T10036",
+      "shared_sample_works": 227
+    },
+    {
+      "topic_id": "https://openalex.org/T10812",
+      "shared_sample_works": 68
+    },
+    {
+      "topic_id": "https://openalex.org/T11099",
+      "shared_sample_works": 60
+    },
+    {
+      "topic_id": "https://openalex.org/T10627",
+      "shared_sample_works": 45
+    },
+    {
+      "topic_id": "https://openalex.org/T11605",
+      "shared_sample_works": 40
+    }
+  ],
+  "representative_papers": [
+    {
+      "work_id": "https://openalex.org/W7117554333",
+      "title": "Automatic Detection Method for Daytime Traffic Flow Based on Background Difference and Edge Extraction",
+      "publication_date": "2025-12-30",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7116828432",
+      "title": "Graph-based optimization of IoT positioning systems for vehicle path recognition and equipment status analysis",
+      "publication_date": "2025-12-23",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7116448087",
+      "title": "Tracking with attention: A review of transformer-based object tracking",
+      "publication_date": "2025-12-20",
+      "cited_by_count": 6
+    },
+    {
+      "work_id": "https://openalex.org/W4416748438",
+      "title": "Siamese Feature Decoupling and Adaptive Prototype Alignment for Clothes Changed Person Re-Identification",
+      "publication_date": "2025-11-27",
+      "cited_by_count": 2
+    },
+    {
+      "work_id": "https://openalex.org/W4416213034",
+      "title": "WITHDRAWN: Occ-MoE: Occlusion-Aware Mixture of Experts for Occluded Person Re-Identification",
+      "publication_date": "2025-11-14",
+      "cited_by_count": 0
+    }
+  ],
+  "representative_rule": "five most recent primary-topic sampled papers; citations break same-date ties",
+  "population_topic_year_counts": null,
+  "warnings": [
+    "Original 12,000-work sample is not a population estimate",
+    "OpenAlex primary topic is a machine-assigned label, not independently verified ground truth",
+    "Citation counts depend on publication age; representative does not mean best"
+  ]
+}

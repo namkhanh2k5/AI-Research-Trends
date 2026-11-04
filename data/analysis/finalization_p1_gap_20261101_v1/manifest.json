@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "training_years": [
+    2020,
+    2021,
+    2022,
+    2023
+  ],
+  "validation_year": "excluded",
+  "test_year": "excluded",
+  "source_work_sha256": "9318c456d916b8c9a35b0a3c86a829a92347083357693593e743abb0253264d4",
+  "source_topic_sha256": "e65356b899f3c9dec4d9d47ec9dae54557b23dc1709a1b3ea1d4c5f746acf6d5",
+  "catalogue_sha256": "e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9",
+  "metadata_sha256": "024f9f13db713534fcc662ff95f477299c8cf939ca200565b2e88e13371ddd86",
+  "data_gap_sha256": "f8f09c86edc1b510215c82f7614e02201c11bc58c53b22beb96b7e7e9feeb704",
+  "rows": 14,
+  "usable_selected_training": 1746
+}

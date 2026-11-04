@@ -1,0 +1,220 @@
+{
+  "run_id": "dual_source_rq7_20261104_v1",
+  "processed_at_utc": "2026-11-04T04:10:24+00:00",
+  "selected": 1500,
+  "stage": {
+    "raw_openalex": {
+      "doi": 1387,
+      "abstract": 1214,
+      "publisher": 1254,
+      "venue_name": 1438,
+      "issns": 1327,
+      "publication_date": 1500,
+      "license": 613,
+      "records": 1500,
+      "valid_doi": 1387,
+      "invalid_doi": 0,
+      "duplicate_work_ids": 0,
+      "duplicate_dois": 0
+    },
+    "cleaned_openalex": {
+      "doi": 1387,
+      "abstract": 1214,
+      "publisher": 1254,
+      "venue_name": 1438,
+      "issns": 1327,
+      "publication_date": 1500,
+      "license": 613,
+      "records": 1500,
+      "valid_doi": 1387,
+      "invalid_doi": 0,
+      "duplicate_work_ids": 0,
+      "duplicate_dois": 0
+    },
+    "integrated": {
+      "doi": 1387,
+      "abstract": 1214,
+      "publisher": 1421,
+      "venue_name": 1440,
+      "issns": 1330,
+      "publication_date": 1500,
+      "license": 890,
+      "records": 1500,
+      "valid_doi": 1387,
+      "invalid_doi": 0,
+      "duplicate_work_ids": 0,
+      "duplicate_dois": 0
+    }
+  },
+  "by_group": {
+    "A_GENERAL": {
+      "raw_openalex": {
+        "doi": 1087,
+        "abstract": 948,
+        "publisher": 993,
+        "venue_name": 1157,
+        "issns": 1085,
+        "publication_date": 1200,
+        "license": 510,
+        "records": 1200,
+        "valid_doi": 1087,
+        "invalid_doi": 0,
+        "duplicate_work_ids": 0,
+        "duplicate_dois": 0
+      },
+      "cleaned_openalex": {
+        "doi": 1087,
+        "abstract": 948,
+        "publisher": 993,
+        "venue_name": 1157,
+        "issns": 1085,
+        "publication_date": 1200,
+        "license": 510,
+        "records": 1200,
+        "valid_doi": 1087,
+        "invalid_doi": 0,
+        "duplicate_work_ids": 0,
+        "duplicate_dois": 0
+      },
+      "integrated": {
+        "doi": 1087,
+        "abstract": 948,
+        "publisher": 1128,
+        "venue_name": 1157,
+        "issns": 1086,
+        "publication_date": 1200,
+        "license": 782,
+        "records": 1200,
+        "valid_doi": 1087,
+        "invalid_doi": 0,
+        "duplicate_work_ids": 0,
+        "duplicate_dois": 0
+      }
+    },
+    "B_TARGETED_MISSINGNESS": {
+      "raw_openalex": {
+        "doi": 300,
+        "abstract": 266,
+        "publisher": 261,
+        "venue_name": 281,
+        "issns": 242,
+        "publication_date": 300,
+        "license": 103,
+        "records": 300,
+        "valid_doi": 300,
+        "invalid_doi": 0,
+        "duplicate_work_ids": 0,
+        "duplicate_dois": 0
+      },
+      "cleaned_openalex": {
+        "doi": 300,
+        "abstract": 266,
+        "publisher": 261,
+        "venue_name": 281,
+        "issns": 242,
+        "publication_date": 300,
+        "license": 103,
+        "records": 300,
+        "valid_doi": 300,
+        "invalid_doi": 0,
+        "duplicate_work_ids": 0,
+        "duplicate_dois": 0
+      },
+      "integrated": {
+        "doi": 300,
+        "abstract": 266,
+        "publisher": 293,
+        "venue_name": 283,
+        "issns": 244,
+        "publication_date": 300,
+        "license": 108,
+        "records": 300,
+        "valid_doi": 300,
+        "invalid_doi": 0,
+        "duplicate_work_ids": 0,
+        "duplicate_dois": 0
+      }
+    }
+  },
+  "recovery": {
+    "publisher": {
+      "missing_before": 246,
+      "crossref_available": 944,
+      "validated_additions": 167,
+      "rejected_or_deferred_additions": 0,
+      "conflicts": 571,
+      "missing_after": 79
+    },
+    "venue_name": {
+      "missing_before": 62,
+      "crossref_available": 840,
+      "validated_additions": 2,
+      "rejected_or_deferred_additions": 0,
+      "conflicts": 166,
+      "missing_after": 60
+    },
+    "issns": {
+      "missing_before": 173,
+      "crossref_available": 832,
+      "validated_additions": 3,
+      "rejected_or_deferred_additions": 0,
+      "conflicts": 166,
+      "missing_after": 170
+    },
+    "license": {
+      "missing_before": 887,
+      "crossref_available": 637,
+      "validated_additions": 277,
+      "rejected_or_deferred_additions": 0,
+      "conflicts": 360,
+      "missing_after": 610
+    },
+    "abstract": {
+      "missing_before": 286,
+      "crossref_available": 465,
+      "validated_additions": 0,
+      "rejected_or_deferred_additions": 20,
+      "conflicts": 60,
+      "missing_after": 286
+    },
+    "publication_date": {
+      "missing_before": 0,
+      "crossref_available": 944,
+      "validated_additions": 0,
+      "rejected_or_deferred_additions": 0,
+      "conflicts": 243,
+      "missing_after": 0
+    }
+  },
+  "match_status": {
+    "DOI_MISSING": 113,
+    "CROSSREF_NOT_FOUND": 440,
+    "EXACT_DOI_MATCH": 944,
+    "IDENTIFIER_CONFLICT": 3
+  },
+  "snapshot_drift_work_count": 36,
+  "metadata_conflict_count": 2597,
+  "conflicts_by_field": {
+    "work_type": 944,
+    "license": 360,
+    "publication_date": 243,
+    "issns": 166,
+    "publisher": 571,
+    "abstract": 60,
+    "venue_name": 166,
+    "publication_year": 71,
+    "title": 16
+  },
+  "invalid_openalex_issn_values": 0,
+  "invalid_crossref_issn_values": 0,
+  "malformed_openalex_abstracts": 0,
+  "crossref_retraction_evidence_count": 0,
+  "current_out_of_frame_count": 15,
+  "current_out_of_frame_reasons_not_disjoint": {
+    "date_outside_2020_2024": 1,
+    "type_outside_article_review_preprint": 12,
+    "primary_subfield_outside_1702_1707": 2,
+    "new_retraction_flag": 0
+  },
+  "processing_seconds": 3.907
+}

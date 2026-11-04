@@ -1,0 +1,45 @@
+{
+  "status": "frozen_ai_assessment_human_pending",
+  "frozen_at_utc": "2026-11-04T06:41:27+00:00",
+  "model_id": "OpenAI ChatGPT Codex (exact backend version unavailable)",
+  "exact_backend_version": "NOT_AVAILABLE",
+  "prompt_version": "ai-validation-v2-full-abstract-review",
+  "assessment_method": "Assistant reviewed blind titles and abstracts; not a calibrated classifier or human rater",
+  "input_hashes": {
+    "config/phase6b_catalogue.yaml": "e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9",
+    "config/phase6b_topic_metadata.csv": "024f9f13db713534fcc662ff95f477299c8cf939ca200565b2e88e13371ddd86",
+    "data/analysis/finalization_p2_human_review_20261101_v1/manifest.json": "b433069a1688145e02e52d3ddb3ef04b20b4660a1ca0c6697142f4426281cf95",
+    "data/analysis/finalization_p2_human_review_20261101_v1/reviewer_a/blind_calibration.csv": "bd803f2b2c69120ff07d442c874a77a6968691ec54f28926b50b20614990a05a",
+    "data/analysis/finalization_p2_human_review_20261101_v1/reviewer_a/blind_evaluation.csv": "23a7aba6674cb1edfaf5fc8bb75400f0593de2197020fb6fc33dbf3dde66bd29",
+    "data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/topic/topic_scope_decisions.tsv": "0d0fc6d707cc597e722a5849f24bae0ab993e16ce9b827e880756b02d46f9e62",
+    "data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/topic/blind_ai_decisions.tsv": "10dc2d562807898f6c8054c376d505029b529cb6e0ab4a05bf72ea3e018957ba"
+  },
+  "artifacts": {
+    "topic_scope_assessment": {
+      "path": "data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/topic/frozen/topic_scope_assessment.parquet",
+      "rows": 14,
+      "bytes": 12070,
+      "sha256": "ca38d40bf363d415ea0f51f5f256d8a741b65ec2607d2d3e750cd0427680de14"
+    },
+    "calibration_ai_assessments": {
+      "path": "data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/topic/frozen/calibration_ai_assessments.parquet",
+      "rows": 40,
+      "bytes": 13009,
+      "sha256": "8c13e14642809ff23d55a73b11539734b420cb4fd890999d2073e6dc694c2222"
+    },
+    "evaluation_ai_assessments": {
+      "path": "data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/topic/frozen/evaluation_ai_assessments.parquet",
+      "rows": 100,
+      "bytes": 18139,
+      "sha256": "ad1c608de27b6b38f9669ac4a0c17ced65daa4c4229e1eef2077944cd9fbd035"
+    },
+    "topic_metrics": {
+      "path": "data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/topic/frozen/topic_metrics.json",
+      "sha256": "c1f86baf6d53ee9ff49bac32dcbd5e99317fdb02cac361d9d5066accd2d29d56"
+    }
+  },
+  "human_topic_validation": "PENDING",
+  "restricted_keys_accessed": false,
+  "model_predictions_accessed": false,
+  "sealed_2025_test_accessed": false
+}

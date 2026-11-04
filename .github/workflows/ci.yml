@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          lfs: true
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -21,13 +23,12 @@ jobs:
         run: python -m compileall -q src dashboard deliverables tests
       - name: Artifact-handoff CLI contract (no private files)
         run: openalex-restore-local-artifact --help
-      - name: Offline tests (local-only artifact tests explicitly skip)
+      - name: Offline tests with published artifacts
         run: python -m pytest -q -ra -o addopts=''
-      # Real Chrome E2E and local model/data checks require approved Git-ignored
-      # artifacts; they run in the documented local gate, not public CI.
-      - name: Exclude credentials and private data from tracked files
+      # Published research artifacts are tracked, with large files in Git LFS.
+      - name: Exclude credentials from tracked files
         run: |
-          if git ls-files | grep -E '(^|/)(\.env$|[^/]*\.joblib$)|^data/(raw|interim|processed|analysis)/.+\.(jsonl|parquet|csv)$'; then
-            echo "Private data or credentials tracked" >&2
+          if git ls-files | grep -E '(^|/)(\.env|\.env\.[^/]+)$' | grep -v -E '(^|/)\.env\.example$'; then
+            echo "Credential file tracked" >&2
             exit 1
           fi

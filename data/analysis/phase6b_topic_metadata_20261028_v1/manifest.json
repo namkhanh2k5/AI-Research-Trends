@@ -1,0 +1,169 @@
+{
+  "status": "complete",
+  "source": "OpenAlex topics singleton endpoint",
+  "retrieved_at_utc": "2026-10-28T12:55:33.624071+00:00",
+  "rows": 20,
+  "topics_csv_sha256": "024f9f13db713534fcc662ff95f477299c8cf939ca200565b2e88e13371ddd86",
+  "responses": [
+    {
+      "topic_id": "T10036",
+      "url": "https://api.openalex.org/topics/T10036?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:24.402783+00:00",
+      "sha256": "81079ab741f252ca81ec5ab11d9e776cce084508f604167327ff3362aa755f86",
+      "bytes": 602,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10036.json"
+    },
+    {
+      "topic_id": "T10664",
+      "url": "https://api.openalex.org/topics/T10664?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:25.013657+00:00",
+      "sha256": "fd7bbc5f1101e0600c26210a4b0551606965664ca5f3fa3d30f68c614b5aae2e",
+      "bytes": 695,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10664.json"
+    },
+    {
+      "topic_id": "T10020",
+      "url": "https://api.openalex.org/topics/T10020?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:25.425684+00:00",
+      "sha256": "88eac93d14eac7c75fd217f956a267bddda2cdad49247bf97207258df0d4085b",
+      "bytes": 596,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10020.json"
+    },
+    {
+      "topic_id": "T10764",
+      "url": "https://api.openalex.org/topics/T10764?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:25.939585+00:00",
+      "sha256": "b6138cee983f40af097038c6ecc26fd796430b0845ec49c2dc97416a201e0981",
+      "bytes": 604,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10764.json"
+    },
+    {
+      "topic_id": "T10028",
+      "url": "https://api.openalex.org/topics/T10028?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:26.348142+00:00",
+      "sha256": "2ad4712c2a26dfbdc6642459ad30d0c094e48f760125df5ffcc5acf523269548",
+      "bytes": 638,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10028.json"
+    },
+    {
+      "topic_id": "T10052",
+      "url": "https://api.openalex.org/topics/T10052?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:26.734866+00:00",
+      "sha256": "e52a9e12cef110148e17d9b761d9e7f6bb2c13f939bfbc23fb09616e741d4aeb",
+      "bytes": 540,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10052.json"
+    },
+    {
+      "topic_id": "T10862",
+      "url": "https://api.openalex.org/topics/T10862?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:27.237963+00:00",
+      "sha256": "1bb605a536c29baead2f55ed3ea408c1535706f910f5819231b8cd5c77e4db0e",
+      "bytes": 658,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10862.json"
+    },
+    {
+      "topic_id": "T10682",
+      "url": "https://api.openalex.org/topics/T10682?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:27.681788+00:00",
+      "sha256": "b10c647e8e294499583418f024b1b2bbd625afc725b07c64776fddc8fa82cb42",
+      "bytes": 650,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10682.json"
+    },
+    {
+      "topic_id": "T10462",
+      "url": "https://api.openalex.org/topics/T10462?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:28.082782+00:00",
+      "sha256": "a26ffa60d1dc80e8b6fc8905e16c2a4ed1f4901e3fe1b8f9d890469b3621c34a",
+      "bytes": 573,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10462.json"
+    },
+    {
+      "topic_id": "T10888",
+      "url": "https://api.openalex.org/topics/T10888?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:28.498466+00:00",
+      "sha256": "88e581c1d51bd77d19c1e3367efbd45b5f96d8219c3fac00d3eb59c1212ea7a3",
+      "bytes": 703,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10888.json"
+    },
+    {
+      "topic_id": "T10100",
+      "url": "https://api.openalex.org/topics/T10100?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:29.010344+00:00",
+      "sha256": "ff42f02d8167014fbdf6a42d1ce21eb1dd0ade28a8ed8a1ef82a4b19c071ac22",
+      "bytes": 561,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10100.json"
+    },
+    {
+      "topic_id": "T10775",
+      "url": "https://api.openalex.org/topics/T10775?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:29.522743+00:00",
+      "sha256": "5af0955c00e39636ea0fccc9af1f1048ed8fe0b8da4df92d2b8ef3545af3640d",
+      "bytes": 636,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10775.json"
+    },
+    {
+      "topic_id": "T10331",
+      "url": "https://api.openalex.org/topics/T10331?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:30.036751+00:00",
+      "sha256": "3c28084a513b5925396d471477957c6e072a239adaba600a4ae1a21bed014b86",
+      "bytes": 534,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10331.json"
+    },
+    {
+      "topic_id": "T10181",
+      "url": "https://api.openalex.org/topics/T10181?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:30.546765+00:00",
+      "sha256": "3b1b04caef120705a13911c88501934f9f4360f564600da4cdf54957e409cec8",
+      "bytes": 560,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10181.json"
+    },
+    {
+      "topic_id": "T10201",
+      "url": "https://api.openalex.org/topics/T10201?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:30.956348+00:00",
+      "sha256": "e14cd8b5cb0f3ebcf269dbc2f4378f1e6f65ae3c5b3167e57ac45c627a85ac49",
+      "bytes": 640,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10201.json"
+    },
+    {
+      "topic_id": "T11307",
+      "url": "https://api.openalex.org/topics/T11307?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:31.365860+00:00",
+      "sha256": "9000882109b18917ac70e68c00a53119580cdcbbafad4bd45148bd5b744ec8f1",
+      "bytes": 528,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T11307.json"
+    },
+    {
+      "topic_id": "T11276",
+      "url": "https://api.openalex.org/topics/T11276?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:31.774710+00:00",
+      "sha256": "7e5b4a1c08e7d5344c0b86fd7f2b5740ad1dcda812223f9004519d61bcb298bd",
+      "bytes": 597,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T11276.json"
+    },
+    {
+      "topic_id": "T10812",
+      "url": "https://api.openalex.org/topics/T10812?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:32.158939+00:00",
+      "sha256": "b8ad42d7a9a04acdd3e40213c8fd22f1a14b1c112b7c17a9377f4168ffea1405",
+      "bytes": 672,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T10812.json"
+    },
+    {
+      "topic_id": "T11689",
+      "url": "https://api.openalex.org/topics/T11689?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:33.106782+00:00",
+      "sha256": "b832813b3b17f9baa2b349ed8239af8cae1306377014cbb147a48dfb42821ec1",
+      "bytes": 592,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T11689.json"
+    },
+    {
+      "topic_id": "T12026",
+      "url": "https://api.openalex.org/topics/T12026?select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cupdated_date",
+      "retrieved_at_utc": "2026-10-28T12:55:33.619554+00:00",
+      "sha256": "3ecb78dbf1e8790d817486b39e6b7d4a8014d7e213713b1c3c2b72621a09b532",
+      "bytes": 715,
+      "path": "data/analysis/phase6b_topic_metadata_20261028_v1/T12026.json"
+    }
+  ]
+}

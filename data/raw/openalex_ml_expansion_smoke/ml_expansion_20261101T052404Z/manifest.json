@@ -1,0 +1,417 @@
+{
+  "status": "complete",
+  "complete": true,
+  "run_id": "ml_expansion_20261101T052404Z",
+  "started_at_utc": "2026-11-01T05:24:04Z",
+  "endpoint": "https://api.openalex.org/works",
+  "plan_sha256": "ee545433404bb1ce6012b5b35773e17d09787b372b5453b54e3ba46ec7e0d786",
+  "config_sha256": "b1392a55a3f66f1c233079159efc084903fdf369b4bafe1c2b60abc6491df086",
+  "per_page": 100,
+  "maximum_api_requests": 180,
+  "maximum_api_credits": 180,
+  "planned_raw_records": 36,
+  "api_requests_attempted": 12,
+  "api_requests_succeeded": 12,
+  "api_credits_observed": 12,
+  "last_daily_credits_remaining": 9965,
+  "resume_attempts": 0,
+  "resume_probes": [],
+  "errors": [],
+  "strata": [
+    {
+      "source_group": "selected",
+      "topic_id": "T10028",
+      "year": 2020,
+      "source_population_count": 2901,
+      "planned_records": 3,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10028",
+      "seed": 1586629354,
+      "expected_pages": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "params": {
+            "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10028",
+            "sample": 3,
+            "seed": 1586629354,
+            "per_page": 100,
+            "page": 1
+          },
+          "sha256": "7362fd23ddd028ca001ee576838b36f3066a30487a7896fb3389f1150d5fcee4",
+          "bytes": 43713,
+          "work_ids": [
+            "https://openalex.org/W3045507125",
+            "https://openalex.org/W3096650070",
+            "https://openalex.org/W3003898634"
+          ],
+          "retrieved_at_utc": "2026-11-01T05:24:05Z",
+          "rate_limit_remaining": "9976",
+          "credits_used": "1"
+        }
+      ]
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10028",
+      "year": 2021,
+      "source_population_count": 3242,
+      "planned_records": 3,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10028",
+      "seed": 580542302,
+      "expected_pages": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "params": {
+            "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10028",
+            "sample": 3,
+            "seed": 580542302,
+            "per_page": 100,
+            "page": 1
+          },
+          "sha256": "c6942136409d3ca7bc4e6007d8ccedacffcb5993a1fe917ad5607780265fa3e5",
+          "bytes": 51070,
+          "work_ids": [
+            "https://openalex.org/W3157577978",
+            "https://openalex.org/W3200891190",
+            "https://openalex.org/W3196615400"
+          ],
+          "retrieved_at_utc": "2026-11-01T05:24:06Z",
+          "rate_limit_remaining": "9975",
+          "credits_used": "1"
+        }
+      ]
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10028",
+      "year": 2022,
+      "source_population_count": 3148,
+      "planned_records": 3,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10028",
+      "seed": 1022692778,
+      "expected_pages": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "params": {
+            "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10028",
+            "sample": 3,
+            "seed": 1022692778,
+            "per_page": 100,
+            "page": 1
+          },
+          "sha256": "91f3111ead23292c693121dedf17de09d20ca4777292baf2f3a650ac748956ee",
+          "bytes": 55241,
+          "work_ids": [
+            "https://openalex.org/W4312396558",
+            "https://openalex.org/W4225768509",
+            "https://openalex.org/W4313011722"
+          ],
+          "retrieved_at_utc": "2026-11-01T05:24:07Z",
+          "rate_limit_remaining": "9974",
+          "credits_used": "1"
+        }
+      ]
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10028",
+      "year": 2023,
+      "source_population_count": 4757,
+      "planned_records": 3,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10028",
+      "seed": 1527913219,
+      "expected_pages": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "params": {
+            "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10028",
+            "sample": 3,
+            "seed": 1527913219,
+            "per_page": 100,
+            "page": 1
+          },
+          "sha256": "e25c63da79f7a28d5cd6459d607c5c4e71637614476f31604ac9db42822be751",
+          "bytes": 57389,
+          "work_ids": [
+            "https://openalex.org/W4391381966",
+            "https://openalex.org/W4386275705",
+            "https://openalex.org/W4321392342"
+          ],
+          "retrieved_at_utc": "2026-11-01T05:24:08Z",
+          "rate_limit_remaining": "9973",
+          "credits_used": "1"
+        }
+      ]
+    },
+    {
+      "source_group": "neighboring_privacy",
+      "topic_id": "T10764",
+      "year": 2020,
+      "source_population_count": 2223,
+      "planned_records": 3,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10764",
+      "seed": 1006179829,
+      "expected_pages": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "params": {
+            "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10764",
+            "sample": 3,
+            "seed": 1006179829,
+            "per_page": 100,
+            "page": 1
+          },
+          "sha256": "097fd2fe5e98ad40b5536c58caa86f5c7e5c9c3ac18edb400de2e48a2d9497b7",
+          "bytes": 46173,
+          "work_ids": [
+            "https://openalex.org/W3007274011",
+            "https://openalex.org/W4255813100",
+            "https://openalex.org/W3014373822"
+          ],
+          "retrieved_at_utc": "2026-11-01T05:24:08Z",
+          "rate_limit_remaining": "9972",
+          "credits_used": "1"
+        }
+      ]
+    },
+    {
+      "source_group": "neighboring_privacy",
+      "topic_id": "T10764",
+      "year": 2021,
+      "source_population_count": 2716,
+      "planned_records": 3,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10764",
+      "seed": 3354193487,
+      "expected_pages": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "params": {
+            "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10764",
+            "sample": 3,
+            "seed": 3354193487,
+            "per_page": 100,
+            "page": 1
+          },
+          "sha256": "a39a6392151e0d56cc534efb34664f1a234ba3b42d52ccfece1fd2951a9c37cb",
+          "bytes": 45348,
+          "work_ids": [
+            "https://openalex.org/W3127564821",
+            "https://openalex.org/W7106157517",
+            "https://openalex.org/W3211914940"
+          ],
+          "retrieved_at_utc": "2026-11-01T05:24:09Z",
+          "rate_limit_remaining": "9971",
+          "credits_used": "1"
+        }
+      ]
+    },
+    {
+      "source_group": "neighboring_privacy",
+      "topic_id": "T10764",
+      "year": 2022,
+      "source_population_count": 3220,
+      "planned_records": 3,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10764",
+      "seed": 1177006866,
+      "expected_pages": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "params": {
+            "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10764",
+            "sample": 3,
+            "seed": 1177006866,
+            "per_page": 100,
+            "page": 1
+          },
+          "sha256": "05e8feecbccc3b00a56ab254b1f224c1416745b794a5854688b1db21550f1280",
+          "bytes": 46789,
+          "work_ids": [
+            "https://openalex.org/W4312317082",
+            "https://openalex.org/W4205835406",
+            "https://openalex.org/W4297969172"
+          ],
+          "retrieved_at_utc": "2026-11-01T05:24:10Z",
+          "rate_limit_remaining": "9970",
+          "credits_used": "1"
+        }
+      ]
+    },
+    {
+      "source_group": "neighboring_privacy",
+      "topic_id": "T10764",
+      "year": 2023,
+      "source_population_count": 4064,
+      "planned_records": 3,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10764",
+      "seed": 365563178,
+      "expected_pages": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "params": {
+            "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10764",
+            "sample": 3,
+            "seed": 365563178,
+            "per_page": 100,
+            "page": 1
+          },
+          "sha256": "11d2b9c8f7ab115040ec44a4f6912f4d220a7aa57ac20abdc1545d17fc049c4d",
+          "bytes": 61765,
+          "work_ids": [
+            "https://openalex.org/W4386246415",
+            "https://openalex.org/W4387046701",
+            "https://openalex.org/W4360603887"
+          ],
+          "retrieved_at_utc": "2026-11-01T05:24:11Z",
+          "rate_limit_remaining": "9969",
+          "credits_used": "1"
+        }
+      ]
+    },
+    {
+      "source_group": "broader_ai_cv_sample",
+      "topic_id": null,
+      "year": 2020,
+      "source_population_count": 124907,
+      "planned_records": 3,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false",
+      "seed": 797653152,
+      "expected_pages": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "params": {
+            "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false",
+            "sample": 3,
+            "seed": 797653152,
+            "per_page": 100,
+            "page": 1
+          },
+          "sha256": "8bf9178a2de3708d48f789bd332f1bfcbc6594a50fc89276298dbf6e06742db3",
+          "bytes": 55932,
+          "work_ids": [
+            "https://openalex.org/W3118175282",
+            "https://openalex.org/W3097944120",
+            "https://openalex.org/W3048324647"
+          ],
+          "retrieved_at_utc": "2026-11-01T05:24:12Z",
+          "rate_limit_remaining": "9968",
+          "credits_used": "1"
+        }
+      ]
+    },
+    {
+      "source_group": "broader_ai_cv_sample",
+      "topic_id": null,
+      "year": 2021,
+      "source_population_count": 128393,
+      "planned_records": 3,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false",
+      "seed": 1113542397,
+      "expected_pages": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "params": {
+            "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false",
+            "sample": 3,
+            "seed": 1113542397,
+            "per_page": 100,
+            "page": 1
+          },
+          "sha256": "eed08c733c7d0e2aba33ec00e9f736034ad04855bbf77b37841dd5fea3bb2182",
+          "bytes": 64392,
+          "work_ids": [
+            "https://openalex.org/W3200414141",
+            "https://openalex.org/W4243711255",
+            "https://openalex.org/W3198059351"
+          ],
+          "retrieved_at_utc": "2026-11-01T05:24:12Z",
+          "rate_limit_remaining": "9967",
+          "credits_used": "1"
+        }
+      ]
+    },
+    {
+      "source_group": "broader_ai_cv_sample",
+      "topic_id": null,
+      "year": 2022,
+      "source_population_count": 126076,
+      "planned_records": 3,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false",
+      "seed": 3153804753,
+      "expected_pages": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "params": {
+            "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false",
+            "sample": 3,
+            "seed": 3153804753,
+            "per_page": 100,
+            "page": 1
+          },
+          "sha256": "8e8b5508e40cbc3258d502571810e9a071313801cea7f235fec42a1f807e45bb",
+          "bytes": 54995,
+          "work_ids": [
+            "https://openalex.org/W3123745232",
+            "https://openalex.org/W4211090899",
+            "https://openalex.org/W4207042208"
+          ],
+          "retrieved_at_utc": "2026-11-01T05:24:13Z",
+          "rate_limit_remaining": "9966",
+          "credits_used": "1"
+        }
+      ]
+    },
+    {
+      "source_group": "broader_ai_cv_sample",
+      "topic_id": null,
+      "year": 2023,
+      "source_population_count": 145680,
+      "planned_records": 3,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false",
+      "seed": 3518462617,
+      "expected_pages": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "params": {
+            "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false",
+            "sample": 3,
+            "seed": 3518462617,
+            "per_page": 100,
+            "page": 1
+          },
+          "sha256": "414272dda01603b0e10d62427bc5d97fdfb0cdf143c2ae74b218e06652968e1e",
+          "bytes": 52205,
+          "work_ids": [
+            "https://openalex.org/W4385617041",
+            "https://openalex.org/W4387579383",
+            "https://openalex.org/W4385586519"
+          ],
+          "retrieved_at_utc": "2026-11-01T05:24:14Z",
+          "rate_limit_remaining": "9965",
+          "credits_used": "1"
+        }
+      ]
+    }
+  ],
+  "completed_at_utc": "2026-11-01T05:24:14Z",
+  "raw_records": 36,
+  "unique_collected_work_ids": 36,
+  "duplicate_ids_across_strata": 0,
+  "raw_jsonl_sha256": "29ec0bbf197a4950b736a128feae41d3821e6d60f0102c333858652e56a723da",
+  "raw_jsonl_bytes": 576453,
+  "interim_jsonl_sha256": "6914d99479f428be7f3aa0d51975283b09d44e1387552524768879677ff5de2c",
+  "interim_jsonl_bytes": 600300,
+  "raw_jsonl_path": "data/raw/openalex_ml_expansion_smoke/ml_expansion_20261101T052404Z/works.jsonl",
+  "interim_jsonl_path": "data/interim/openalex_ml_expansion_smoke/ml_expansion_20261101T052404Z/records.jsonl",
+  "retry_count": "not exposed by existing OpenAlex client"
+}

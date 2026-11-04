@@ -1,0 +1,1595 @@
+{
+  "status": "complete",
+  "started_at_utc": "2026-11-01T05:16:13Z",
+  "seed": 20261101,
+  "planned_ids": 120,
+  "requests_attempted": 120,
+  "requests_succeeded": 120,
+  "source_work_sha256": "9318c456d916b8c9a35b0a3c86a829a92347083357693593e743abb0253264d4",
+  "source_topic_sha256": "e65356b899f3c9dec4d9d47ec9dae54557b23dc1709a1b3ea1d4c5f746acf6d5",
+  "catalogue_sha256": "e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9",
+  "request_kind": "OpenAlex works singleton; historical training IDs only",
+  "responses": [
+    {
+      "requested_work_id": "https://openalex.org/W4318142141",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:14Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4318142141.json",
+      "sha256": "f538d4d59d95636c05b12e360a2593e3f3e9dacfcaa4e4db3cf023fcc0993a53",
+      "bytes": 13404,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4386814757",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:14Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4386814757.json",
+      "sha256": "50a4bb431b7a3a11fba04906d6b9566462ad48892c886e3c50ac0a1f28a7c16f",
+      "bytes": 14904,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4366822062",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:15Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4366822062.json",
+      "sha256": "4ab6b9a9382e7570f9b694374dcfc08de8645e56034513f2dfc4591095d68341",
+      "bytes": 22047,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3095169667",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:15Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3095169667.json",
+      "sha256": "65200dec9f8a8966a52268535043991aac7d2b1a165aae4171a44eb9cff42100",
+      "bytes": 7352,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4297903189",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:16Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4297903189.json",
+      "sha256": "60d7758ec66dc8c91bffc5a9024b1546a29cec962ce62a0d44df3d75f6286350",
+      "bytes": 13926,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3138411824",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:17Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3138411824.json",
+      "sha256": "17d17f273a05b7c6020ed5b6a26d9b21f082beddd3bc541f400f9398858d9cdc",
+      "bytes": 17638,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4385762736",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:17Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4385762736.json",
+      "sha256": "45bedae6a8869f1cd06052bb1da2f861a00276456ea146fa5da775d53bdee563",
+      "bytes": 28084,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4390271364",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:18Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4390271364.json",
+      "sha256": "563be19071ec60f8010fbfe033b997d5603e3fd4d189f8b97e299304f6b119f7",
+      "bytes": 15866,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4282549548",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:18Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4282549548.json",
+      "sha256": "d7a46b3c0b0eee77faf688daa3a7f3410cf2fa55be33498b49192a623a48848a",
+      "bytes": 18194,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4306914511",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:19Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4306914511.json",
+      "sha256": "dc2dd4352ff15ce5442b5f966acb6675d4a710763adc5bce15ebb5ac2a83ff09",
+      "bytes": 21501,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3011295267",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:19Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3011295267.json",
+      "sha256": "3005366cb2904e883ea2759365b9bf4d3b13702356089b7b47de41ebfdf3097d",
+      "bytes": 16322,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3210363289",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:20Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3210363289.json",
+      "sha256": "b5f76cc8e206cef50bfdf21e2c2956f5eff881ebf6d3f0b9dbe5f7f728446e51",
+      "bytes": 16546,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4306834825",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:21Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4306834825.json",
+      "sha256": "6169512535a09df9cfaf2f362585b090fda3571d37646a164be1888772888711",
+      "bytes": 25521,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4387009643",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:21Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4387009643.json",
+      "sha256": "361f1c5d5b3d914b60df421c3e26c12cf1d5eab093faaa9e4deb0f6bfa87b4c3",
+      "bytes": 31285,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3176502761",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:22Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3176502761.json",
+      "sha256": "37815953aa50b212a8e16fbb1818788ec38e512f4c8eed7a35b9226bdc2a0eeb",
+      "bytes": 17300,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3094052200",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:23Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3094052200.json",
+      "sha256": "8cc03a6933076e870b04fc3df16ed9dd40131fe157b72b0a54787fd26a256aae",
+      "bytes": 18890,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4365504496",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:23Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4365504496.json",
+      "sha256": "c6d7a817e93dcdfeeeed8c5c2ff80735134c74c6c5fe83d3e309683a6b6819d7",
+      "bytes": 33550,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4292678407",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:24Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4292678407.json",
+      "sha256": "9de4d71ea74d454f3d27869bc84ea9dbdf336700bd7f6a29324c23e6924159f3",
+      "bytes": 46994,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W2807279646",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:24Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W2807279646.json",
+      "sha256": "1d17b2696bcb811f8e5a8095ed9c732c9e677cf6c932750a56e841ca45a35c53",
+      "bytes": 15717,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3047050342",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:25Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3047050342.json",
+      "sha256": "bcd36f7e7cded5dce61a75c8627fd294fd2b827bbd7064870465097696db400d",
+      "bytes": 28846,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3210829384",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:26Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3210829384.json",
+      "sha256": "f9ea28acdb9aef2223eb20038e44c2d2eee2e6a0a0023c9c0b1dcc0e7875cfd0",
+      "bytes": 13656,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4200542395",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:26Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4200542395.json",
+      "sha256": "57b548a7326a7d68a8f7aa8b7d323560215be3d22010c8bb2542eb75dd46fd14",
+      "bytes": 14597,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4319878683",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:27Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4319878683.json",
+      "sha256": "c6dc1c58749a8731cb4fff50fa08efcc7f580e56c7b27ab6a56c72b440f965c3",
+      "bytes": 15957,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3095587567",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:28Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3095587567.json",
+      "sha256": "1c56f82d4cafd330202849baabe0b1d93ed2bbfb1917dbe325131861d25e8360",
+      "bytes": 11394,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4226501086",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:28Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4226501086.json",
+      "sha256": "8b2528c7cb03cb24bb78a22e8f2562ef38112ce6da70dfe3d0b88a56c5b8f33c",
+      "bytes": 8164,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3094341828",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:29Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3094341828.json",
+      "sha256": "6861dc824147bb8593cc10f74b0f5a29bd2c3ee157797c2899f95ff9dbb23d59",
+      "bytes": 20658,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3011373955",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:29Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3011373955.json",
+      "sha256": "207a98d693808b514fa0b4af25a687864707390b8c221be06dbd9545b6795d5e",
+      "bytes": 15200,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4327521434",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:30Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4327521434.json",
+      "sha256": "3f236c1e2b5cacbeaabd2b04f71d09f7e5af4caeebe54c86a47b668cf9e352e4",
+      "bytes": 16061,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4228999250",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:30Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4228999250.json",
+      "sha256": "a97dea8267308486d1b3a2c6ab814d1fc5f421d750bbe6bf8f41f42aa5c94219",
+      "bytes": 13780,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4298054035",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:30Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4298054035.json",
+      "sha256": "2fd916cd8a21c6d59ed6f04d8a6d19fc939a279111b2cc7472fa020a2de822bc",
+      "bytes": 12431,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3106477211",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:31Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3106477211.json",
+      "sha256": "2014e9c959212791ebeede6fa2b05f781dd665d97d0e1497fc3331e7174021cb",
+      "bytes": 14234,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3209984917",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:32Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3209984917.json",
+      "sha256": "ccdea53ed285a212f9a9e37f45b57203cac0844b87acdf9e445515ee904a656b",
+      "bytes": 33966,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4388685229",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:32Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4388685229.json",
+      "sha256": "87d64079c5e1c9daa0a5b78615bb838f9ec71bfe2a8a018a9e1c8ccca1ff25c5",
+      "bytes": 16482,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4386832555",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:33Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4386832555.json",
+      "sha256": "3b1e73ac10d45e96bef1a67b9abda82bb7946c4ff9b6483bca068b965eba2ad0",
+      "bytes": 16068,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W1493228242",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:33Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W1493228242.json",
+      "sha256": "690c11ee2e2057c121c636a4d79ba53054ec95b2ef5decfdfbbc24a232a2bbf8",
+      "bytes": 14206,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3082082333",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:34Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3082082333.json",
+      "sha256": "5eca5881f110b174363bb349beeedd498de285dce5681bfc9e8e291f0da7e5b4",
+      "bytes": 13809,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3207990067",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:35Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3207990067.json",
+      "sha256": "2202590419a660f803990783a627b2bedd4a4996aa0e40f5785da6cec43347ed",
+      "bytes": 15724,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3159605589",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:35Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3159605589.json",
+      "sha256": "e77f5814b522c8ca7bdcbd1bbe9daf977536a7a5384b18807450fdd866c8009c",
+      "bytes": 13867,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3207369426",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:36Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3207369426.json",
+      "sha256": "63884ec9a57bad04f160d1826155230286f863eb66115ed842d6c7436c958944",
+      "bytes": 10616,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4381094278",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:36Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4381094278.json",
+      "sha256": "3cc53e2477bcd1026b4544de11603b24a168c3f452f842189a0f355bae8c2ae2",
+      "bytes": 19531,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W7171241641",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:37Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W7171241641.json",
+      "sha256": "de7e406c73ed9affed5f58868e732af388d07d717189c51d528e255eb9fef323",
+      "bytes": 13286,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3127015906",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:37Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3127015906.json",
+      "sha256": "cccfef91ee0295d733edaf65f5dc1e63215b667084dc1f6b1cecc88d11f2fecf",
+      "bytes": 10142,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4389500066",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:38Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4389500066.json",
+      "sha256": "f7889291581ca91cee3880210a4abd6f8e39d9261b7c0adb1186e21bf7e847d7",
+      "bytes": 15410,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4282813866",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:38Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4282813866.json",
+      "sha256": "cf8677c28e5cfbc78926667267499f154b7bee7a1f0108b0fe65f4d4d46f325d",
+      "bytes": 13559,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3198671116",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:39Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3198671116.json",
+      "sha256": "a88c1a9244ce41c7be0990115a120ba958725e6205ada669cee728af121ca193",
+      "bytes": 19218,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4320459092",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:40Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4320459092.json",
+      "sha256": "c595b8c0c68982fb695d8ddb3207825eb881a7170c5d3979f1d4a5131f357eb2",
+      "bytes": 14779,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3200752027",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:40Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3200752027.json",
+      "sha256": "18cecd6091725b2febe21ddd427bcf8730f40952d23b9e0c01f7d13d0398abb7",
+      "bytes": 14325,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4400656601",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:41Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4400656601.json",
+      "sha256": "94e5b9f02505424beeb61ff9322183740d15eb945fce92768942a17553e3e8fb",
+      "bytes": 22140,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4281740313",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:41Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4281740313.json",
+      "sha256": "87e316ab190c8f5641ca140b04e3bd4ec52af8e0a56deec6dd317b19e3344d2b",
+      "bytes": 23096,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4226151289",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:42Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4226151289.json",
+      "sha256": "a4ae0c4cb42b46c74b0a26bb1c840a432fa28097162e05cafb4bc52e33ef22ef",
+      "bytes": 9366,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3083171904",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:42Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3083171904.json",
+      "sha256": "280dd700367283a60f8ac732e8ffd561836d352ef430dadf4e0c06e97828f32e",
+      "bytes": 8992,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4361225479",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:43Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4361225479.json",
+      "sha256": "216babf130599a962a69f24dc5455f786fa6a10dbe809cdf15e44d5b25f6a29e",
+      "bytes": 17985,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4372287666",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:43Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4372287666.json",
+      "sha256": "1de51f1bfd804b9747b5890fbb95cea6c49d3c4cc9823c867cf33039a7efa1a9",
+      "bytes": 14894,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3091461561",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:44Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3091461561.json",
+      "sha256": "f0e273106c7b597331d8874cca91967085e1331b6687887630c253b59edac9c2",
+      "bytes": 18882,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3103484893",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:44Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3103484893.json",
+      "sha256": "134990cdd9fd11a42da6a583331567e4adc17fdc59d0da3a6ca6231272b0e6a5",
+      "bytes": 8817,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4318263505",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:45Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4318263505.json",
+      "sha256": "df0a8096edf203b4e78ce5703bc6b1fc8da1d9c48ae612cea8c84bc3897d57b8",
+      "bytes": 50472,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4389111267",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:45Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4389111267.json",
+      "sha256": "a45a0105444ed87ebb57c06e88ad0728b4b4a15980d75fd711c0f4dddde6c636",
+      "bytes": 15342,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3105058270",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:47Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3105058270.json",
+      "sha256": "6f999b11ae44feb0b8ed28eb8ef7da906daed6788eadc754dce5d26cdc3af3ee",
+      "bytes": 12071,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3140485004",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:47Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3140485004.json",
+      "sha256": "cebe624ed142d29d63b4c03f5c8993276ff46505ea3a1283e0d6ec740bed2b26",
+      "bytes": 14869,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3210679525",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:48Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3210679525.json",
+      "sha256": "c0c9a3ac8b67fd335f71ea3e03d55c89d15baa8e610530b5e2a170b86550ae0f",
+      "bytes": 25327,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4387912379",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:49Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4387912379.json",
+      "sha256": "47bda93f9967f9c9ab038493a122a0e68f9d8295d598f369241f64debddaf440",
+      "bytes": 15092,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W7133298701",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:49Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W7133298701.json",
+      "sha256": "50586afa2e2c20ae966bff09dc9f0cd28ee403f5a0c578e343f208261ddaf789",
+      "bytes": 15698,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4313886702",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:50Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4313886702.json",
+      "sha256": "4d9396c7776bdc08137a6f034de1be5cfcaf4578fe02bdeb2a93516724f2ea81",
+      "bytes": 13569,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3123101662",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:50Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3123101662.json",
+      "sha256": "c4227fd76372a2fbb29fe92583bd5061e385cafac7749246e2c6d54f53a5ef79",
+      "bytes": 19103,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4387294260",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:51Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4387294260.json",
+      "sha256": "8a1d0beb45c256846a0c9733e994cfbd978de43a964ce2ec1cc945c52c346a81",
+      "bytes": 16138,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4313555695",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:52Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4313555695.json",
+      "sha256": "8b4bc50b566db179b74b75c6c320a6d8d3d125b34008c81ce9c24e829a0cd26b",
+      "bytes": 22135,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4224219490",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:52Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4224219490.json",
+      "sha256": "22755eacd7a84b64114681cd4bf9cd0f4915077d1692ae07ede403b7c9e2b429",
+      "bytes": 23860,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3039445302",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:53Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3039445302.json",
+      "sha256": "7e1763f700c7d0b862dc21d8d2074fa0a56a87bbe1d6945014522879b7164fb6",
+      "bytes": 19543,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4281773771",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:54Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4281773771.json",
+      "sha256": "352c0c3768cd8767252484ce6eaebbef4c1e0a7a3e921717eb0105248a53a378",
+      "bytes": 17188,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4387427773",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:55Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4387427773.json",
+      "sha256": "ba43569015013edad56183479f7ab9349c98f149864f7e7e1b3836336a6b1366",
+      "bytes": 20675,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4307074145",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:56Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4307074145.json",
+      "sha256": "7cef4694c37007a1114484d1905d01b64ee7bf7a70ec36d2189f7d1bcfcf2a97",
+      "bytes": 17516,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4386794496",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:56Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4386794496.json",
+      "sha256": "169488389cf01057010de5f4a9f10b7fdb8befa69b24150752e522a0f8d1dca3",
+      "bytes": 17311,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3210684964",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:57Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3210684964.json",
+      "sha256": "6b2f26cb0a10536e70d8b3fbffee8aec6aee997fa7ef0af3cd5f76b990f4cbe9",
+      "bytes": 12667,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3119570222",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:57Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3119570222.json",
+      "sha256": "6ab52bb1c4f0b8e0da26e0f08b86ebcbe1f6b92900684dae3dd726b0ccf388cc",
+      "bytes": 13492,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3129550269",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:58Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3129550269.json",
+      "sha256": "1532000a9734152454919c335a343a17f366a220dd80b74660a9e5246522b11b",
+      "bytes": 20302,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4380136140",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:58Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4380136140.json",
+      "sha256": "5d2b2e2a08ea63216da0c5a4a03d0232389f79024e60997f5e96d84f2da60d88",
+      "bytes": 15548,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3125782558",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:16:59Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3125782558.json",
+      "sha256": "2734ffa5c24040f26a956ed8e0a19bcd160be7bbae8fd567443b28db1939ed59",
+      "bytes": 17600,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3176913710",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:00Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3176913710.json",
+      "sha256": "04df26ef96c634b8f49dc0d913671d6273ac7459c4a8d575c39f9b186ce4b975",
+      "bytes": 21153,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3213273528",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:00Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3213273528.json",
+      "sha256": "a9ad091f2359df84b673413a11cb0affeb2f4eb863502d598d1680ec8a80d9a9",
+      "bytes": 16535,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4376632881",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:01Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4376632881.json",
+      "sha256": "2f3e52421b9078c4cb395b2481c573c723b3fd0d99f28e1f4d43ac0337ab4ed9",
+      "bytes": 21631,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4285138359",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:01Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4285138359.json",
+      "sha256": "ca0e0840e881142a34247f64bff21187643959e63d906de19f601b3f39cf255a",
+      "bytes": 18771,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4283456208",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:02Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4283456208.json",
+      "sha256": "cdbcb0c5f85405a9c9743622b3bc8b484c4d6fe03d0c92f4ad3122a058e644a2",
+      "bytes": 16212,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4285172419",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:02Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4285172419.json",
+      "sha256": "2a7b397a417c4b7d11e32e94d32a2570f379322c3b6cdfda2cfbd21177dd0f04",
+      "bytes": 18068,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3093033010",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:03Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3093033010.json",
+      "sha256": "dec9a5ec230ffafd23cc88a543e65fd58bca666dca5e5c1d761232dd3188f2e8",
+      "bytes": 14250,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3094247929",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:04Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3094247929.json",
+      "sha256": "de669a50f24bdded7cb9710a2b645070561611a9b85a2decda759ddcbff56f0b",
+      "bytes": 19337,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3138377389",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:04Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3138377389.json",
+      "sha256": "7e3e50c557b30e9774387c1065912368b8f6728751f9cf37c55919973cb0f6bb",
+      "bytes": 18752,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3136241930",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:05Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3136241930.json",
+      "sha256": "b3de195adf09955646e67b9dd8b3c2ef3a1cbed23b843b9c3ae9151a2cefd721",
+      "bytes": 6263,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4285499723",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:06Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4285499723.json",
+      "sha256": "d612509c801c4184158e354a3bd9c5de0b90eb5f67708566f6ed53ea389b2b06",
+      "bytes": 15763,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3183785069",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:06Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3183785069.json",
+      "sha256": "39955038ec8387090e62db8f6ec165d70a57e665e3eb153d53f4ba5f25073910",
+      "bytes": 18915,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4362475562",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:07Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4362475562.json",
+      "sha256": "a3d82bae4d3888768517b5a2969010b49b49da30271d2d2d2f6cd4b4dd514ddd",
+      "bytes": 15092,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3038255776",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:07Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3038255776.json",
+      "sha256": "24ba81afcfd4704605f75f9beb9ce1a58fb5b06a4ee7314f2570ace6d099fc81",
+      "bytes": 19963,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3082144291",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:08Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3082144291.json",
+      "sha256": "deaad99d99e1a4283dd92849c4c4e62821900e774bc0008627f840a1e4b609b1",
+      "bytes": 19223,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3024156945",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:09Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3024156945.json",
+      "sha256": "0eb1d06744ad304ee5e99f7cb9a7ee1e095891a5ecc19feaef1d13dc6ab9e60e",
+      "bytes": 27479,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4381738078",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:09Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4381738078.json",
+      "sha256": "3b18db118d12255b90776c446a79a62b3c6572e720fd42890a61c8a00f7bfb27",
+      "bytes": 14748,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3004944854",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:10Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3004944854.json",
+      "sha256": "7a7d11a4124735f2d03ce6c2b1c241b401c217e1d093f7c1c433067c0c323439",
+      "bytes": 13072,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4226171676",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:11Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4226171676.json",
+      "sha256": "9bac590e453835debfb209e4fdd8d21810afaa5b323e74e44e78f69b1b87285f",
+      "bytes": 16651,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4229446887",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:12Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4229446887.json",
+      "sha256": "875b50ed8e128a7e9e672d1c3523011e7e61147a37f9636118b1f38f56253121",
+      "bytes": 13690,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3184534926",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:13Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3184534926.json",
+      "sha256": "a0e72a5b47363957f8ef4dd5a1ba5add9a0deadff7f04f35c025b744dba980bd",
+      "bytes": 13296,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3093155892",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:14Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3093155892.json",
+      "sha256": "fcd0e080b098f1eee2d5a2adbb113f8c40317e011da96d1900a6558e0f435f8e",
+      "bytes": 6364,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4224924646",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:14Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4224924646.json",
+      "sha256": "0fc13864d5e87f37b9341d8a617a205837f8b5832e4423ca3a59cab36bcd36f1",
+      "bytes": 22103,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4281790457",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:15Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4281790457.json",
+      "sha256": "5170282c7614c4a4529d09a1e4eee0aca3dfc76d8f5b560313f768c9f9a3e1e2",
+      "bytes": 9920,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3206379451",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:15Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3206379451.json",
+      "sha256": "c1733ba2e990993d5d4922d6b46fac2b034bf2c5c7b611569b2864cdba72adbe",
+      "bytes": 28789,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3198811679",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:16Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3198811679.json",
+      "sha256": "c2dfd902769b75932105a0289736b407f8f770142099db597ec61a3d13967d88",
+      "bytes": 5229,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3049060842",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:16Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3049060842.json",
+      "sha256": "0ef3f1516ebe6712b6b0500dd038ee9eb9b33cc7c37cd1e350016bebf6fbdb6b",
+      "bytes": 17866,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4391644684",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:17Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4391644684.json",
+      "sha256": "0faa37212c2824261d345dfd22eaba1a88e76d4ee8add227f63bcc335b7adbd7",
+      "bytes": 12175,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4308162033",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:17Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4308162033.json",
+      "sha256": "04da1a9388cb2b62bf20677199493f4843f99c881eda9e9f3d02dd1f9c5a6d3a",
+      "bytes": 13932,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4322811255",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:18Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4322811255.json",
+      "sha256": "84ac4e6b5d4bdf97fc2db46bef3336302d4b642e0aa2d8eb595c53966a81eb4a",
+      "bytes": 14521,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4380988664",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:19Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4380988664.json",
+      "sha256": "8bc73df49ba7ce0e006ec5bff41ab37ffe88315593339596e9d41117c674e61b",
+      "bytes": 28377,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4387623760",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:19Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4387623760.json",
+      "sha256": "d42b9e6d09dc198eaeecec19889f3b6870ca6b050c908e73a503cd75a98cc9d3",
+      "bytes": 22125,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3136560016",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:20Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3136560016.json",
+      "sha256": "18205e53321513f5880a24423f26f54b6382012e3562157ded394f3dab922724",
+      "bytes": 13487,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4362676540",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:20Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4362676540.json",
+      "sha256": "ea6b46694963f6ff03ff8933dbedea1aba5594574481521eae05fbff8225db23",
+      "bytes": 14982,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4200478760",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:21Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4200478760.json",
+      "sha256": "d9110117fee6ff57c66541cf47aed77f585782536037b36779c48b804a8d8f0c",
+      "bytes": 14850,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4309868908",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:22Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4309868908.json",
+      "sha256": "6e97154f2ca0cf22dd1068a7d4b4a670712b1e3fe653dde7fcb5f809cef415ae",
+      "bytes": 13426,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3187346555",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:22Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3187346555.json",
+      "sha256": "92931ff5fd56c0b9a0c31f97cd35d930acb03e72e61b2cf5399ae490ea1a8960",
+      "bytes": 28169,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4381051621",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:23Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4381051621.json",
+      "sha256": "86ea15695af998f1d872c707eab9620b72c117518f96e249e04c3bf29cf8ccb6",
+      "bytes": 17865,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4388125611",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:23Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4388125611.json",
+      "sha256": "f02591b5f7b11f7df7a59b4338db9516bbd855fd6dd8ab1120148cec5872fafd",
+      "bytes": 13602,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3084405408",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:24Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3084405408.json",
+      "sha256": "d78efb780c858ec55324a44e2e72f8c6a204e5c06c88bf7252d9bd0d02909547",
+      "bytes": 16377,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W4385626928",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:24Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W4385626928.json",
+      "sha256": "7fe2412d00965dd4083ebed9d4b8bfdc8d9254906047bb496d7736064fe6ff2b",
+      "bytes": 7658,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W3023470176",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:25Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W3023470176.json",
+      "sha256": "fba167c5110aa43dde4d4633c9829efd48404372bbe9feeff94d9ff1d5ca6129",
+      "bytes": 18806,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    },
+    {
+      "requested_work_id": "https://openalex.org/W7217371245",
+      "status_code": 200,
+      "retrieved_at_utc": "2026-11-01T05:17:26Z",
+      "path": "data/analysis/finalization_p1_label_drift_20261101_v1/responses/W7217371245.json",
+      "sha256": "8d4e8b1465db5c2315a1c3e65591703a1680c3b2c32cfdc040ae15561eecca36",
+      "bytes": 17261,
+      "rate_limit": {
+        "X-RateLimit-Limit": "10000",
+        "X-RateLimit-Remaining": "9999",
+        "X-RateLimit-Credits-Used": "0"
+      }
+    }
+  ],
+  "errors": [],
+  "completed_at_utc": "2026-11-01T05:17:26Z",
+  "comparison_sha256": "041f244226d1cd1cf3746073870c603442e0db969271f72a711917b59206c507",
+  "transition_sha256": "2e5af9469b731e41c16dc5137c05e8e72e0dae69a2b6ce7efac787a07bfcd353",
+  "summary_sha256": "3cd29e747e12b47e75c2a306fad7f1ef678544d1cf53049a9915d00125a95b45",
+  "summary": {
+    "checked": 120,
+    "retrieved": 120,
+    "unavailable": 0,
+    "primary_agree": 120,
+    "primary_changed": 0,
+    "primary_agreement_rate": 1.0,
+    "top_three_set_agree": 120,
+    "old_selected_retrieved": 84,
+    "old_selected_primary_changed": 0,
+    "old_selected_moved_outside_catalogue": 0,
+    "old_title_missing": 0,
+    "new_title_missing": 0,
+    "old_abstract_missing": 24,
+    "new_abstract_missing": 24
+  }
+}

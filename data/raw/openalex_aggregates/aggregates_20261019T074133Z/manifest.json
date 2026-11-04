@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "run_id": "aggregates_20261019T074133Z",
+  "created_at_utc": "2026-10-19T07:41:33Z",
+  "status": "complete",
+  "complete": true,
+  "expected_query_count": 12,
+  "completed_queries": [
+    "study_population_all",
+    "study_population_primary_non_retracted",
+    "natural_language_processing_all",
+    "natural_language_processing_primary_non_retracted",
+    "computer_vision_all",
+    "computer_vision_primary_non_retracted",
+    "reinforcement_learning_all",
+    "reinforcement_learning_primary_non_retracted",
+    "explainable_ai_all",
+    "explainable_ai_primary_non_retracted",
+    "multimodal_machine_learning_applications_all",
+    "multimodal_machine_learning_applications_primary_non_retracted"
+  ],
+  "failed_query": null,
+  "completed_at_utc": "2026-10-19T07:41:41Z"
+}

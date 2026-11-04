@@ -60,9 +60,13 @@ def test_report_values_match_verified_local_results_when_available():
     assert primary["validation_selected"] == 681
 
 
-def test_no_private_artifacts_tracked():
+def test_no_credentials_or_environment_files_tracked():
     import subprocess
 
     files = subprocess.check_output(["git", "ls-files"], cwd=ROOT, text=True).splitlines()
-    assert not any(name == ".env" or name.startswith("data/raw/") and not name.endswith(".gitkeep")
-                   or name.endswith(".joblib") for name in files)
+    assert not any(
+        name in {".env", ".env.save"}
+        or name.startswith((".venv/", "venv/", "node_modules/", "site-packages/"))
+        or name.endswith(".pyc")
+        for name in files
+    )

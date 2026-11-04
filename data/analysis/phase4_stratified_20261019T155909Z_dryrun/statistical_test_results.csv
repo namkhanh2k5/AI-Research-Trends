@@ -1,0 +1,2 @@
+test,hypothesis,null_hypothesis,n,statistic,effect_size,p_value,scope
+Spearman rank correlation,Older sampled works have more observed citations,population monotonic association is zero under test assumptions,12000,0.296705337729,0.296705337729,2.00178635051e-242,exploratory conditional-sample association; inclusion probabilities unverified

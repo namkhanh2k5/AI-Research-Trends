@@ -2,7 +2,11 @@
 .env.*
 !.env.example
 .venv/
-.vscode/
+venv/
+node_modules/
+site-packages/
+build/
+dist/
 __pycache__/
 *.py[cod]
 *.egg-info/
@@ -10,42 +14,8 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 .ipynb_checkpoints/
-
-# Local research artifacts stay out of Git until a separate publication decision.
-data/raw/**
-data/interim/**
-data/processed/**
-data/analysis/**
-data/metadata/**
-!data/raw/.gitkeep
-!data/interim/.gitkeep
-!data/processed/.gitkeep
-!data/metadata/.gitkeep
-
-models/**
-!models/.gitkeep
-reports/figures/**
-!reports/figures/.gitkeep
-# Publish only verified Phase 4 PNGs; keep local SVGs and other generated figures ignored.
-!reports/figures/phase4/
-!reports/figures/phase4/*.png
-# Four small, source-verified Phase 5 feasibility/RQ5 figures.
-!reports/figures/phase5/
-!reports/figures/phase5/*.png
-# One small verified Phase 6A label-support chart; analytical outputs remain ignored.
-!reports/figures/phase6/
-!reports/figures/phase6/topic_support.png
-# Verified, compact Finalization Phase 3 development figures only.
-!reports/figures/finalization_p3/
-!reports/figures/finalization_p3/*.png
-!reports/figures/finalization_p3/manifest.json
-# Small aggregate-only figures for the isolated venue feasibility experiment.
-!reports/figures/venue_experiment/
-!reports/figures/venue_experiment/*.png
-# Aggregate-only figures from the bounded, isolated RQ7 ETL experiment.
-!reports/figures/dual_source_etl/
-!reports/figures/dual_source_etl/*.png
-!reports/figures/dual_source_etl/manifest.json
-!reports/figures/rq7_validation/
-!reports/figures/rq7_validation/*.png
-!reports/figures/rq7_validation/manifest.json
+.DS_Store
+*~
+*.swp
+*.tmp
+*.partial

@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "analysis_version": "phase5-feasibility-v1",
+  "created_at_utc": "2026-10-28T02:49:04.691111+00:00",
+  "status": "complete",
+  "complete": true,
+  "decision": "REVISE",
+  "historical_years": [
+    2020,
+    2021,
+    2022
+  ],
+  "evaluation_year": 2023,
+  "seed": 20261028,
+  "source_phase3_manifest_sha256": "5d21e6187f0cf569b284ea399ffff02cb02d29d1e936a5fa716c7c96758de19c",
+  "source_tables_sha256": {
+    "works": "9318c456d916b8c9a35b0a3c86a829a92347083357693593e743abb0253264d4",
+    "references": "1c0f306225e6f7fd673b2972744c702d184b2e8f5c88e09569eea24d831d599d",
+    "category_membership": "438bf85a8858f135099e198ea552e93da59008f5677cc828694f9ee48ef50ae1"
+  },
+  "outputs": {
+    "PHASE5_FEASIBILITY_REPORT.md": {
+      "sha256": "ab5ef6ccc7277e2bdce18f3f047c4ec968d1efe171efd2b1752b7d39907da576",
+      "bytes": 5570
+    },
+    "PHASE5_ML_PILOT_REPORT.md": {
+      "sha256": "3b5149eacf684c7a662be789e8e02d6dd5eb18bf727827f2e5c0dc51a054fc97",
+      "bytes": 2277
+    },
+    "PHASE5_REFERENCE_EDA_REPORT.md": {
+      "sha256": "ac0fa9960532f15d9d9227be4fc8ca62834c4ae0a1f846ff05d591dcbfa5afe3",
+      "bytes": 3098
+    },
+    "coverage_queries.csv": {
+      "sha256": "28d65e8effb58397d48514db6ba4c8e40ea44b7c7a7be3fcc17bbef441ab0838",
+      "bytes": 629733
+    },
+    "coverage_summary.csv": {
+      "sha256": "c7a2357e3f04f8f9d3dff744c5c3d1a9b661548e6d803870d107e7c41345e715",
+      "bytes": 3501
+    },
+    "eligibility_by_subfield.csv": {
+      "sha256": "c3f7e37ed9c839a450922bee8e89cd19a513b5d62b18b744989efd955bebb096",
+      "bytes": 364
+    },
+    "eligibility_by_work_type.csv": {
+      "sha256": "1754f870bbd3dc4cdb677eb2c313b6b690a8a61891b56576016f21eaba011a97",
+      "bytes": 410
+    },
+    "eligibility_by_year.csv": {
+      "sha256": "017d0f249d4debae493dcce0167282feeda75770b3f5c2f0c0864ade3c93cd40",
+      "bytes": 639
+    },
+    "figures/pool_coverage_2023.png": {
+      "sha256": "039acaac8b966cd919688ff2f79f808b493cf6b4a0b59ee75ca0c2c901e47c93",
+      "bytes": 62451
+    },
+    "figures/query_eligibility_by_year.png": {
+      "sha256": "109e36ad60cb25530777f6e4d340b23f4a44ebaab457b7b3a0e046229c0ac0a8",
+      "bytes": 52003
+    },
+    "figures/reference_lorenz.png": {
+      "sha256": "04b21a3fa13fa46eed2bb0e809dc5e147dc3fb33883ff42266dcce75455ae12f",
+      "bytes": 85645
+    },
+    "figures/references_per_work.png": {
+      "sha256": "2cac4e6f52ff71fa27a972efd519ef7b0ee7c1773e8e15909f1af8b6c4b5ed9a",
+      "bytes": 47691
+    },
+    "historical_candidate_frequencies.csv": {
+      "sha256": "e90e9949f569715b94595c24e9331fcc9de583a156308c747e80d02044312065",
+      "bytes": 2622406
+    },
+    "historical_fraction_sensitivity.csv": {
+      "sha256": "17ca5c911e1d7879623003bf939ba00052b085c5a56f7a5daf10239ab2ac95ec",
+      "bytes": 1909
+    },
+    "query_eligibility.csv": {
+      "sha256": "66ac170df27396146ffca0850eae11e7a9ade4cfb571e0e802e404f205b5a58e",
+      "bytes": 1510743
+    },
+    "reference_age_by_subfield.csv": {
+      "sha256": "aec1172cd3eb6b1540473daa52b3e3e7488b45b9fac61f694c3fcf2cba74055b",
+      "bytes": 177
+    },
+    "reference_age_known.csv": {
+      "sha256": "c727dc065545a0ed1882ddf6b0d06e7261ad7a098c1df085a4aff9732232c3a2",
+      "bytes": 90508
+    },
+    "reference_availability_native_categories.csv": {
+      "sha256": "593c3430e4c09e4aa01845f9cd95215e9d4d509afc9afceaaaa30d31bce0b47d",
+      "bytes": 307
+    },
+    "reference_distribution_by_subfield.csv": {
+      "sha256": "95de737dc54fe64e7c27cce3c4b49203217f04e81174e08ca422b0e66a0b7807",
+      "bytes": 261
+    },
+    "reference_distribution_by_type.csv": {
+      "sha256": "677e3b10fe0ed4286e1412eaed29332823e90815a5c51e05f8e8065cc4c8c7ab",
+      "bytes": 300
+    },
+    "reference_distribution_by_year.csv": {
+      "sha256": "3f15e4446ff0f09ed4dd2ec260b0d9e87b383a3c6376fdc41846e570702481ea",
+      "bytes": 440
+    },
+    "reference_lorenz.csv": {
+      "sha256": "c897b851d7e4303dcdd03f77e60ffc0fe84d6a58bd81afe2d2a2ca5038bc46f8",
+      "bytes": 6222058
+    },
+    "sample_reference_frequencies.csv": {
+      "sha256": "31d970d883055230b156cf9a9b2b0eb66b0a94e82daeeb1d2e8f3af717c64ad6",
+      "bytes": 7245339
+    },
+    "top_list_overlap.csv": {
+      "sha256": "02984fd6c71e0257276e12cddfdc6e200ccbad9ba2caadb959ad12f264635a63",
+      "bytes": 78
+    },
+    "top_references_by_subfield.csv": {
+      "sha256": "356ef3de2c67eaec10354c805337baf5201aadcef6dd39d86bff8fb006c1f927",
+      "bytes": 1890
+    }
+  },
+  "query_eligibility": 5141,
+  "evaluation_queries_2023": 909,
+  "coverage_threshold_2_median": 0.1,
+  "limitation": "ID-level overlap; unknown candidate publication dates; no model evaluated"
+}

@@ -1,0 +1,137 @@
+{
+  "schema_version": 2,
+  "retrieved_at_utc": "2026-10-19T03:06:51Z",
+  "run_directory": "data/raw/openalex_aggregates/aggregates_20261019T030648Z",
+  "period_complete_calendar_years": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "category_counts_overlap": true,
+  "warning": "OpenAlex-native category counts overlap and must not be summed. Custom text-derived technologies are deliberately excluded from this aggregate file.",
+  "queries": [
+    {
+      "name": "study_population",
+      "analytical_layer": "population_frame",
+      "method": "primary_subfield_frame",
+      "query_parameters": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint",
+        "group_by": "publication_year"
+      },
+      "meta_count": 942782,
+      "counts_by_year": {
+        "2025": 232589,
+        "2024": 179144,
+        "2023": 147631,
+        "2021": 129604,
+        "2022": 127946,
+        "2020": 125868
+      },
+      "raw_path": "data/raw/openalex_aggregates/aggregates_20261019T030648Z/study_population.json",
+      "sha256": "cb41e591b335ec0ed883cbc94212a45d4d6783de82fde2b60ea4cc7f34bcea45"
+    },
+    {
+      "name": "natural_language_processing",
+      "analytical_layer": "openalex_native",
+      "method": "overlapping_openalex_topics_within_population_frame",
+      "query_parameters": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,topics.id:T10181|T10028",
+        "group_by": "publication_year"
+      },
+      "meta_count": 92799,
+      "counts_by_year": {
+        "2025": 28460,
+        "2024": 20269,
+        "2023": 13382,
+        "2021": 10512,
+        "2020": 10322,
+        "2022": 9854
+      },
+      "raw_path": "data/raw/openalex_aggregates/aggregates_20261019T030648Z/natural_language_processing.json",
+      "sha256": "fd540a012806668d13cadc2c98d83b0ec535a2f887dda9bda09eb920ea9c3e28"
+    },
+    {
+      "name": "computer_vision",
+      "analytical_layer": "openalex_native",
+      "method": "overlapping_openalex_topics_within_population_frame",
+      "query_parameters": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,topics.id:T10036",
+        "group_by": "publication_year"
+      },
+      "meta_count": 142825,
+      "counts_by_year": {
+        "2025": 37249,
+        "2024": 29978,
+        "2023": 23829,
+        "2022": 19420,
+        "2021": 17600,
+        "2020": 14749
+      },
+      "raw_path": "data/raw/openalex_aggregates/aggregates_20261019T030648Z/computer_vision.json",
+      "sha256": "c18aec9983b1480bd98106489f536b1e863b3225ca415a18de8a5d9453b78cfd"
+    },
+    {
+      "name": "reinforcement_learning",
+      "analytical_layer": "openalex_native",
+      "method": "overlapping_openalex_topics_within_population_frame",
+      "query_parameters": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,topics.id:T10462",
+        "group_by": "publication_year"
+      },
+      "meta_count": 30594,
+      "counts_by_year": {
+        "2025": 8223,
+        "2024": 5822,
+        "2023": 4697,
+        "2021": 4193,
+        "2022": 3989,
+        "2020": 3670
+      },
+      "raw_path": "data/raw/openalex_aggregates/aggregates_20261019T030648Z/reinforcement_learning.json",
+      "sha256": "95415edbeca69c302f5d84d93fc3f24f88edbea20247489f6e2a06a716f7861b"
+    },
+    {
+      "name": "explainable_ai",
+      "analytical_layer": "openalex_native",
+      "method": "overlapping_openalex_topics_within_population_frame",
+      "query_parameters": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,topics.id:T12026",
+        "group_by": "publication_year"
+      },
+      "meta_count": 18726,
+      "counts_by_year": {
+        "2025": 6341,
+        "2024": 3860,
+        "2023": 2735,
+        "2022": 2208,
+        "2021": 2044,
+        "2020": 1538
+      },
+      "raw_path": "data/raw/openalex_aggregates/aggregates_20261019T030648Z/explainable_ai.json",
+      "sha256": "7409fc785ba1743c6d8bff37293a44fe2264a050aae08bf8d44885c7a03b05f4"
+    },
+    {
+      "name": "multimodal_machine_learning_applications",
+      "analytical_layer": "openalex_native",
+      "method": "overlapping_openalex_topics_within_population_frame",
+      "query_parameters": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,topics.id:T11714",
+        "group_by": "publication_year"
+      },
+      "meta_count": 32541,
+      "counts_by_year": {
+        "2025": 12974,
+        "2024": 7977,
+        "2023": 4555,
+        "2022": 2892,
+        "2021": 2343,
+        "2020": 1800
+      },
+      "raw_path": "data/raw/openalex_aggregates/aggregates_20261019T030648Z/multimodal_machine_learning_applications.json",
+      "sha256": "d4a2e62b693200ab10c4413f69889458d7a4d9614599fc1407530dfb3ef3a9c1"
+    }
+  ]
+}

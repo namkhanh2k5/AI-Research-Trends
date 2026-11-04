@@ -1,0 +1,69 @@
+{
+  "protocol": "2020\u20132023 index; 2024 development only; 2025 sealed untouched",
+  "candidate_min_support": 2,
+  "training_works": 7002,
+  "indexed_works": 3156,
+  "development_queries": 1843,
+  "candidate_venues": 592,
+  "candidate_journals": 591,
+  "candidate_conferences": 1,
+  "oracle_candidate_coverage": 0.35431361909929465,
+  "route": {
+    "model_version": "topic_placement_v2",
+    "threshold": -0.22227267687798036,
+    "routed_queries": 806,
+    "model_manifest_sha256": "fb78307f219c933e35151a905ca327e00a058ec4cca3c99f294d41b0ab93907d"
+  },
+  "evaluation_seconds": 15.573,
+  "results": {
+    "v0_popularity": {
+      "queries": 1843,
+      "known_historical_venue": 1362,
+      "candidate_coverage": 0.35431361909929465,
+      "no_candidates": 0.0,
+      "recall_at_1": 0.021161150298426478,
+      "recall_at_3": 0.037438958220293,
+      "recall_at_5": 0.049376017362995114,
+      "recall_at_10": 0.074877916440586,
+      "mrr_at_10": 0.033748245183405245,
+      "conditional_recall_at_5": 0.13935681470137826
+    },
+    "v1_frozen_topic_frequency": {
+      "queries": 1843,
+      "known_historical_venue": 1362,
+      "candidate_coverage": 0.35431361909929465,
+      "no_candidates": 0.0,
+      "recall_at_1": 0.025501899077590883,
+      "recall_at_3": 0.04449267498643516,
+      "recall_at_5": 0.060227889310906134,
+      "recall_at_10": 0.08572978838849701,
+      "mrr_at_10": 0.040572866875091505,
+      "conditional_recall_at_5": 0.16998468606431852
+    },
+    "v2_tfidf_papers": {
+      "queries": 1843,
+      "known_historical_venue": 1362,
+      "candidate_coverage": 0.35431361909929465,
+      "no_candidates": 0.0,
+      "recall_at_1": 0.0385241454150841,
+      "recall_at_3": 0.08138903960933261,
+      "recall_at_5": 0.10743353228431904,
+      "recall_at_10": 0.14921323928377644,
+      "mrr_at_10": 0.06821844129223402,
+      "conditional_recall_at_5": 0.30321592649310875
+    },
+    "v3_venue_profiles": {
+      "queries": 1843,
+      "known_historical_venue": 1362,
+      "candidate_coverage": 0.35431361909929465,
+      "no_candidates": 0.0,
+      "recall_at_1": 0.0396093326098752,
+      "recall_at_3": 0.09169831795984808,
+      "recall_at_5": 0.12262615301139447,
+      "recall_at_10": 0.1540965816603364,
+      "mrr_at_10": 0.07282854903581978,
+      "conditional_recall_at_5": 0.3460949464012251
+    }
+  },
+  "caveat": "Historical venue retrieval, not manuscript acceptance prediction; 2024 reused for development"
+}

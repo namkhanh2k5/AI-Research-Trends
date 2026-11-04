@@ -1,0 +1,95 @@
+{
+  "topic_id": "T11307",
+  "official_name": "Domain Adaptation and Few-Shot Learning",
+  "official_description": "This cluster of papers focuses on the advances in transfer learning and domain adaptation, including topics such as few-shot learning, unsupervised learning, representation learning, deep networks, meta-learning, visual recognition, semi-supervised learning, and clustering analysis.",
+  "parent_subfield": "1702",
+  "scope_status": "in",
+  "sample_primary_topic_works": 212,
+  "sample_any_topic_works": 904,
+  "sample_year_counts": {
+    "2020": 17,
+    "2021": 22,
+    "2022": 35,
+    "2023": 34,
+    "2024": 51,
+    "2025": 53
+  },
+  "sample_citation_median": 2.0,
+  "sample_oa_counts": {
+    "green": 120,
+    "closed": 50,
+    "gold": 22,
+    "hybrid": 10,
+    "diamond": 6,
+    "bronze": 4
+  },
+  "related_native_topics": [
+    {
+      "topic_id": "https://openalex.org/T10036",
+      "shared_sample_works": 506
+    },
+    {
+      "topic_id": "https://openalex.org/T10028",
+      "shared_sample_works": 109
+    },
+    {
+      "topic_id": "https://openalex.org/T12535",
+      "shared_sample_works": 97
+    },
+    {
+      "topic_id": "https://openalex.org/T10462",
+      "shared_sample_works": 77
+    },
+    {
+      "topic_id": "https://openalex.org/T10627",
+      "shared_sample_works": 70
+    }
+  ],
+  "representative_papers": [
+    {
+      "work_id": "https://openalex.org/W7115730859",
+      "title": "Alignment-Oriented Self-Updating Memory for Small Language Models",
+      "publication_date": "2025-12-16",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W4417325809",
+      "title": "Enhancing Few-Shot Transfer Learning with Optimized Multi-Task Prompt Tuning through Modular Prompt Composition",
+      "publication_date": "2025-12-15",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W4417448181",
+      "title": "MetaTPT: Meta Test-time Prompt Tuning for Vision-Language Models",
+      "publication_date": "2025-12-13",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W4417531290",
+      "title": "AdaGradSelect: An adaptive gradient-guided layer selection method for efficient fine-tuning of SLMs",
+      "publication_date": "2025-12-12",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7114821042",
+      "title": "Training-Free Dual Hyperbolic Adapters for Better Cross-Modal Reasoning",
+      "publication_date": "2025-12-09",
+      "cited_by_count": 0
+    }
+  ],
+  "representative_rule": "five most recent primary-topic sampled papers; citations break same-date ties",
+  "population_topic_year_counts": {
+    "2020": 1814,
+    "2021": 2382,
+    "2022": 2502,
+    "2023": 3117,
+    "2024": 3733,
+    "2025": 4445
+  },
+  "population_topic_snapshot_utc": "2026-11-01T07:10:39.786560+00:00",
+  "warnings": [
+    "Original 12,000-work sample is not a population estimate",
+    "OpenAlex primary topic is a machine-assigned label, not independently verified ground truth",
+    "Citation counts depend on publication age; representative does not mean best"
+  ]
+}

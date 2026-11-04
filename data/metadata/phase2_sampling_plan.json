@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-19T15:57:29Z",
+  "design": "proportional_publication_year_stratified_largest_remainder",
+  "population_query_name": "study_population_primary_non_retracted",
+  "population_query_parameters": {
+    "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false",
+    "group_by": "publication_year"
+  },
+  "population_total": 937493,
+  "target_sample_size": 12000,
+  "allocated_sample_size": 12000,
+  "probability_note": "Inclusion probabilities and weights are nominal n_h/N_h values. They require the unverified assumption that OpenAlex sample+seed is uniform within each stratum; deterministic repeatability alone does not establish that property.",
+  "strata": [
+    {
+      "publication_year": 2020,
+      "population_size": 125506,
+      "sample_size": 1607,
+      "inclusion_probability": 0.012804168725001196,
+      "sampling_weight": 78.09956440572495,
+      "remainder_numerator": 458242
+    },
+    {
+      "publication_year": 2021,
+      "population_size": 128893,
+      "sample_size": 1650,
+      "inclusion_probability": 0.012801315820098842,
+      "sampling_weight": 78.11696969696969,
+      "remainder_numerator": 790043
+    },
+    {
+      "publication_year": 2022,
+      "population_size": 126189,
+      "sample_size": 1615,
+      "inclusion_probability": 0.012798262923075704,
+      "sampling_weight": 78.13560371517028,
+      "remainder_numerator": 216805
+    },
+    {
+      "publication_year": 2023,
+      "population_size": 145735,
+      "sample_size": 1865,
+      "inclusion_probability": 0.01279720039798264,
+      "sampling_weight": 78.14209115281501,
+      "remainder_numerator": 395555
+    },
+    {
+      "publication_year": 2024,
+      "population_size": 178694,
+      "sample_size": 2287,
+      "inclusion_probability": 0.012798415167828802,
+      "sampling_weight": 78.13467424573678,
+      "remainder_numerator": 281509
+    },
+    {
+      "publication_year": 2025,
+      "population_size": 232476,
+      "sample_size": 2976,
+      "inclusion_probability": 0.01280132142672792,
+      "sampling_weight": 78.11693548387096,
+      "remainder_numerator": 670325
+    }
+  ],
+  "population_counts_source": "data/metadata/population_counts_pre_phase2.json",
+  "population_counts_sha256": "e84015be2e14756301130dc982b437097449986ae45c9ece4ed8007bb87e36d3"
+}

@@ -1,0 +1,25 @@
+{
+  "recorded_at_utc": "2026-11-04T04:51:36Z",
+  "offline_tests": {
+    "command": ".venv/bin/python -m pytest -q -ra -o addopts=''",
+    "passed": 270,
+    "skipped": 9,
+    "failed": 0,
+    "exit_code": 0,
+    "skips": "8 browser E2E opt-in, 1 live OpenAlex opt-in"
+  },
+  "pip_check": {
+    "command": ".venv/bin/python -m pip check",
+    "result": "No broken requirements found",
+    "exit_code": 0
+  },
+  "verifiers": {
+    "rq7_pilot": {"result": "PASS", "artifacts": 1427, "exit_code": 0},
+    "rq7_1": {"result": "PASS", "source_files": 14, "sample": 100, "conflicts": 2597, "exit_code": 0},
+    "phase2_raw": {"result": "PASS", "pages": 123, "unique_works": 12000, "exit_code": 0},
+    "phase3_processed": {"result": "PASS", "checks": 29, "tables": 8, "exit_code": 0},
+    "phase4_analysis": {"result": "PASS", "checks": 18, "output_files": 64, "exit_code": 0},
+    "venue_experiment": {"result": "PASS", "output_hashes": 654, "figures": 7, "exit_code": 0},
+    "final_ml": {"result": "PASS", "files": 14, "final_2025_test": "SEALED", "exit_code": 0}
+  }
+}

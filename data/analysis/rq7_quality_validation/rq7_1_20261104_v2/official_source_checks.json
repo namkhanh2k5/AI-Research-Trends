@@ -1,0 +1,24 @@
+{
+  "created_at_utc": "2026-11-04T04:48:46Z",
+  "method": "Bounded web search of exact DOI plus authoritative article page and publisher directory; AI source-backed check, not independent human adjudication",
+  "web_search_queries": 11,
+  "direct_doi_open_attempts": 3,
+  "direct_doi_open_result": "DOI proxy pages were unavailable to the browser tool; official article and directory pages were located through search",
+  "checks": [
+    {
+      "work_id": "https://openalex.org/W4200268925",
+      "doi": "https://doi.org/10.20982/tqmp.17.4.s013",
+      "field": "publisher",
+      "recovered_value": "The Quantitative Methods for Psychology",
+      "status": "SOURCE_BACKED_CORRECT",
+      "human_adjudicated": false,
+      "evidence_retrieved_at_utc": "2026-11-04T04:48:46Z",
+      "evidence_urls": [
+        "https://www.tqmp.org/SpecialIssues/vol17-4/S013/index.html",
+        "https://www.oaspa.org/membership/current-members/the-quantitative-methods-for-psychology/"
+      ],
+      "rationale": "Official journal article page identifies the exact DOI/title; OASPA membership directory names The Quantitative Methods for Psychology as the scholarly publisher. This supports the recovered publisher identity for this one work only."
+    }
+  ],
+  "not_reviewed": "The other 29 selected recovered publisher values remain pending official-source or human review."
+}

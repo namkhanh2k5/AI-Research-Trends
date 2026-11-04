@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "profiled_at_utc": "2026-10-19T02:41:56Z",
+  "source_jsonl": "data/raw/openalex/pilot_20261019T024131Z/works.jsonl",
+  "source_sha256": "a759e7d54121a4126e7087523a7469c8b9c99b0269b1efcdde5da1354d37b5f4",
+  "records": 1000,
+  "unique_canonical_work_ids": 1000,
+  "duplicate_canonical_work_ids": 0,
+  "publication_year": {
+    "2020": 151,
+    "2021": 128,
+    "2022": 131,
+    "2023": 147,
+    "2024": 175,
+    "2025": 268
+  },
+  "work_type": {
+    "preprint": 234,
+    "article": 765,
+    "review": 1
+  },
+  "language_available_count": 948,
+  "language_missing_count": 52,
+  "language_count": {
+    "en": 879,
+    "id": 16,
+    "es": 7,
+    "ru": 7,
+    "ja": 6,
+    "ar": 6,
+    "pt": 4,
+    "tr": 4,
+    "de": 4,
+    "ko": 3,
+    "uk": 3,
+    "zh": 2,
+    "sl": 1,
+    "fr": 1,
+    "ua": 1,
+    "fa": 1,
+    "pl": 1,
+    "el": 1,
+    "nl": 1
+  },
+  "citation_distribution": {
+    "available_count": 1000,
+    "missing_count": 0,
+    "zero_count": 377,
+    "minimum": 0,
+    "median": 1.0,
+    "mean": 9.633,
+    "p90_linear": 20.0,
+    "maximum": 894
+  },
+  "primary_subfield": {
+    "1702": 645,
+    "1707": 355
+  },
+  "missing_count": {
+    "doi": 90,
+    "title": 0,
+    "abstract_inverted_index": 194,
+    "primary_topic": 0,
+    "topics": 0,
+    "fwci": 234,
+    "cited_by_count": 0,
+    "language": 52,
+    "open_access": 0,
+    "authorships": 5
+  },
+  "missing_authorship_institution_count": 252,
+  "missing_authorship_country_count": 253,
+  "oa_status": {
+    "green": 306,
+    "diamond": 149,
+    "gold": 165,
+    "closed": 272,
+    "bronze": 40,
+    "hybrid": 68
+  },
+  "is_retracted_count": 6,
+  "category_match_count": {
+    "nlp_llm": {
+      "topic": 108,
+      "text": 71,
+      "union": 131
+    },
+    "computer_vision": {
+      "topic": 135,
+      "text": 41,
+      "union": 142
+    },
+    "reinforcement_learning": {
+      "topic": 47,
+      "text": 48,
+      "union": 57
+    },
+    "explainable_ai": {
+      "topic": 28,
+      "text": 9,
+      "union": 30
+    },
+    "multimodal_ai": {
+      "topic": 39,
+      "text": 9,
+      "union": 43
+    },
+    "retrieval_augmented_generation": {
+      "topic": 0,
+      "text": 4,
+      "union": 4
+    }
+  },
+  "research_category_memberships_per_work": {
+    "0": 650,
+    "1": 301,
+    "2": 41,
+    "3": 8
+  },
+  "notes": [
+    "Category union counts overlap and must not be summed.",
+    "Text-rule counts are feasibility diagnostics, not validated classifier metrics.",
+    "Missing institution/country means no usable value in nested authorships."
+  ]
+}

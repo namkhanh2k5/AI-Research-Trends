@@ -1,0 +1,681 @@
+{
+  "status": "complete",
+  "run_at_utc": "2026-10-28T13:07:33.684228+00:00",
+  "protocol_commit": "dd437f837dc27ae9a622fe29cf8053f974d24c00",
+  "source_manifest_sha256": "5d21e6187f0cf569b284ea399ffff02cb02d29d1e936a5fa716c7c96758de19c",
+  "source_work_sha256": "9318c456d916b8c9a35b0a3c86a829a92347083357693593e743abb0253264d4",
+  "source_topic_sha256": "e65356b899f3c9dec4d9d47ec9dae54557b23dc1709a1b3ea1d4c5f746acf6d5",
+  "catalogue_sha256": "e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9",
+  "metadata_sha256": "024f9f13db713534fcc662ff95f477299c8cf939ca200565b2e88e13371ddd86",
+  "source_manifest_status": "complete",
+  "development_works": 9024,
+  "eligible_development": 7058,
+  "train_eligible": 5185,
+  "validation_eligible": 1873,
+  "duplicate_audit": {
+    "exact_text_cross_period_groups": 0,
+    "exact_title_cross_period_groups": 0,
+    "exact_abstract_cross_period_groups": 3,
+    "canonical_doi_cross_period_groups": 0,
+    "blocked_candidate_pairs": 37456,
+    "near_duplicate_pairs": 0,
+    "near_duplicate_validation_works": 0,
+    "blocking_limit": "four rare non-stop title tokens, frequency <=100; may miss reworded titles"
+  },
+  "near_duplicate_sensitivity": {
+    "A": {
+      "removed_validation_works": 0,
+      "svm_macro_f1_after_removal": 0.9526208470034137
+    },
+    "B": {
+      "removed_validation_works": 0,
+      "svm_macro_f1_after_removal": 0.8573802211204724
+    }
+  },
+  "catalogues": {
+    "A": {
+      "selected_topics": [
+        "https://openalex.org/T10028",
+        "https://openalex.org/T10036",
+        "https://openalex.org/T10052",
+        "https://openalex.org/T10462",
+        "https://openalex.org/T10664"
+      ],
+      "train_rows": 955,
+      "validation_rows": 379,
+      "validation_eligible_denominator": 1873,
+      "coverage_validation": 0.20234917245061398,
+      "metrics": {
+        "majority": {
+          "accuracy": 0.38522427440633245,
+          "macro_f1": 0.11123809523809525,
+          "weighted_f1": 0.2142580726221887
+        },
+        "description_match": {
+          "accuracy": 0.6253298153034301,
+          "macro_f1": 0.5771501423477708,
+          "weighted_f1": 0.6251635119602101
+        },
+        "complement_nb": {
+          "accuracy": 0.8337730870712401,
+          "macro_f1": 0.8265833909097667,
+          "weighted_f1": 0.8291739852022829
+        },
+        "logistic_regression": {
+          "accuracy": 0.8601583113456465,
+          "macro_f1": 0.8488538353194386,
+          "weighted_f1": 0.8563927203187524
+        },
+        "linear_svm": {
+          "accuracy": 0.9498680738786279,
+          "macro_f1": 0.9526208470034137,
+          "weighted_f1": 0.9498748082602624
+        }
+      },
+      "fit_info": {
+        "complement_nb": {
+          "fixed_parameter": 1.0,
+          "fit_seconds": 0.4968869129988889,
+          "validation_predict_seconds_including_vectorization": 0.1256756779985153,
+          "validation_predict_ms_per_paper": 0.33159809498289,
+          "top3_accuracy": 0.9973614775725593
+        },
+        "logistic_regression": {
+          "fixed_parameter": 1.0,
+          "fit_seconds": 5.213668727999902,
+          "validation_predict_seconds_including_vectorization": 0.21359814099923824,
+          "validation_predict_ms_per_paper": 0.5635834854861167,
+          "top3_accuracy": 1.0
+        },
+        "linear_svm": {
+          "fixed_parameter": 1.0,
+          "fit_seconds": 0.8038469270031783,
+          "validation_predict_seconds_including_vectorization": 0.14114075799807324,
+          "validation_predict_ms_per_paper": 0.3724030554038872,
+          "top3_accuracy": 1.0
+        }
+      },
+      "strongest_baseline": "description_match",
+      "bootstrap": {
+        "per_model": {
+          "majority": {
+            "accuracy": [
+              0.33509234828496043,
+              0.43937994722955137
+            ],
+            "macro_f1": [
+              0.10039525691699605,
+              0.12210232886379675
+            ]
+          },
+          "description_match": {
+            "accuracy": [
+              0.5738126649076517,
+              0.6768469656992083
+            ],
+            "macro_f1": [
+              0.518753751189811,
+              0.6310152341244115
+            ]
+          },
+          "complement_nb": {
+            "accuracy": [
+              0.7993403693931398,
+              0.8720976253298152
+            ],
+            "macro_f1": [
+              0.7863300682180077,
+              0.8679243477713573
+            ]
+          },
+          "logistic_regression": {
+            "accuracy": [
+              0.8271108179419525,
+              0.899736147757256
+            ],
+            "macro_f1": [
+              0.8050076914888402,
+              0.889828173516675
+            ]
+          },
+          "linear_svm": {
+            "accuracy": [
+              0.9300131926121372,
+              0.9709762532981531
+            ],
+            "macro_f1": [
+              0.9336532241716723,
+              0.9726881814497031
+            ]
+          }
+        },
+        "paired_macro_f1_difference": {
+          "linear_svm_minus_logistic_regression": [
+            0.06370902751717249,
+            0.1456856586409258
+          ]
+        },
+        "draws": 300
+      },
+      "train_class_counts": {
+        "https://openalex.org/T10028": 149,
+        "https://openalex.org/T10036": 369,
+        "https://openalex.org/T10052": 127,
+        "https://openalex.org/T10462": 120,
+        "https://openalex.org/T10664": 190
+      },
+      "validation_class_counts": {
+        "https://openalex.org/T10028": 85,
+        "https://openalex.org/T10036": 146,
+        "https://openalex.org/T10052": 45,
+        "https://openalex.org/T10462": 45,
+        "https://openalex.org/T10664": 58
+      },
+      "vocabulary_sizes": {
+        "complement_nb": 24559,
+        "logistic_regression": 24559,
+        "linear_svm": 24559
+      },
+      "coverage_training": 0.18418514946962392
+    },
+    "B": {
+      "selected_topics": [
+        "https://openalex.org/T10028",
+        "https://openalex.org/T10036",
+        "https://openalex.org/T10052",
+        "https://openalex.org/T10100",
+        "https://openalex.org/T10181",
+        "https://openalex.org/T10201",
+        "https://openalex.org/T10331",
+        "https://openalex.org/T10462",
+        "https://openalex.org/T10664",
+        "https://openalex.org/T10775",
+        "https://openalex.org/T10812",
+        "https://openalex.org/T11307",
+        "https://openalex.org/T11689",
+        "https://openalex.org/T12026"
+      ],
+      "train_rows": 1746,
+      "validation_rows": 689,
+      "validation_eligible_denominator": 1873,
+      "coverage_validation": 0.3678590496529632,
+      "metrics": {
+        "majority": {
+          "accuracy": 0.21190130624092887,
+          "macro_f1": 0.024978614200171088,
+          "weighted_f1": 0.07410201367946256
+        },
+        "description_match": {
+          "accuracy": 0.5718432510885341,
+          "macro_f1": 0.5500266262884929,
+          "weighted_f1": 0.5748497898794759
+        },
+        "complement_nb": {
+          "accuracy": 0.7924528301886793,
+          "macro_f1": 0.7745312906946535,
+          "weighted_f1": 0.7837496987785969
+        },
+        "logistic_regression": {
+          "accuracy": 0.7880986937590712,
+          "macro_f1": 0.7729101768256612,
+          "weighted_f1": 0.7808677842833036
+        },
+        "linear_svm": {
+          "accuracy": 0.8621190130624092,
+          "macro_f1": 0.8573802211204724,
+          "weighted_f1": 0.8595184190643435
+        }
+      },
+      "fit_info": {
+        "complement_nb": {
+          "options": [
+            0.5,
+            1.0,
+            2.0
+          ],
+          "best_params": {
+            "model__alpha": 0.5
+          },
+          "best_training_cv_macro_f1": 0.7454671350832892,
+          "cv_fold_scores": [
+            0.7454671350832892,
+            0.64041067602417,
+            0.5038385544529033
+          ],
+          "fit_search_seconds": 8.315825671001221,
+          "validation_predict_seconds_including_vectorization": 0.22363569600202027,
+          "validation_predict_ms_per_paper": 0.3245801103077217,
+          "top3_accuracy": 0.969521044992743
+        },
+        "logistic_regression": {
+          "options": [
+            0.3,
+            1.0,
+            3.0
+          ],
+          "best_params": {
+            "model__C": 3.0
+          },
+          "best_training_cv_macro_f1": 0.7183119276853939,
+          "cv_fold_scores": [
+            0.10752813234971853,
+            0.5114907552666156,
+            0.7183119276853939
+          ],
+          "fit_search_seconds": 69.34705850500177,
+          "validation_predict_seconds_including_vectorization": 0.24472058199899038,
+          "validation_predict_ms_per_paper": 0.35518226705223566,
+          "top3_accuracy": 0.9680696661828737
+        },
+        "linear_svm": {
+          "options": [
+            0.3,
+            1.0,
+            3.0
+          ],
+          "best_params": {
+            "model__C": 3.0
+          },
+          "best_training_cv_macro_f1": 0.8466088666131008,
+          "cv_fold_scores": [
+            0.8005349100872631,
+            0.8397143291515929,
+            0.8466088666131008
+          ],
+          "fit_search_seconds": 10.283726028003002,
+          "validation_predict_seconds_including_vectorization": 0.20640255000034813,
+          "validation_predict_ms_per_paper": 0.2995682873735096,
+          "top3_accuracy": 0.9724238026124818
+        }
+      },
+      "strongest_baseline": "description_match",
+      "bootstrap": {
+        "per_model": {
+          "majority": {
+            "accuracy": [
+              0.17851959361393324,
+              0.24383164005805516
+            ],
+            "macro_f1": [
+              0.021639690358902182,
+              0.028004667444574093
+            ]
+          },
+          "description_match": {
+            "accuracy": [
+              0.537699564586357,
+              0.6081277213352685
+            ],
+            "macro_f1": [
+              0.5098774993307968,
+              0.5846560055888713
+            ]
+          },
+          "complement_nb": {
+            "accuracy": [
+              0.7583091436865022,
+              0.8200290275761973
+            ],
+            "macro_f1": [
+              0.732363048407086,
+              0.8033124930446225
+            ]
+          },
+          "logistic_regression": {
+            "accuracy": [
+              0.7554063860667635,
+              0.8156748911465893
+            ],
+            "macro_f1": [
+              0.7331813986439376,
+              0.8027012711008928
+            ]
+          },
+          "linear_svm": {
+            "accuracy": [
+              0.8345428156748912,
+              0.8853410740203193
+            ],
+            "macro_f1": [
+              0.8298874801463848,
+              0.8784042191148708
+            ]
+          }
+        },
+        "paired_macro_f1_difference": {
+          "linear_svm_minus_logistic_regression": [
+            0.06008608266705205,
+            0.11712807035205662
+          ]
+        },
+        "draws": 300
+      },
+      "train_class_counts": {
+        "https://openalex.org/T10028": 149,
+        "https://openalex.org/T10036": 369,
+        "https://openalex.org/T10052": 127,
+        "https://openalex.org/T10100": 104,
+        "https://openalex.org/T10181": 94,
+        "https://openalex.org/T10201": 86,
+        "https://openalex.org/T10331": 103,
+        "https://openalex.org/T10462": 120,
+        "https://openalex.org/T10664": 190,
+        "https://openalex.org/T10775": 104,
+        "https://openalex.org/T10812": 73,
+        "https://openalex.org/T11307": 84,
+        "https://openalex.org/T11689": 73,
+        "https://openalex.org/T12026": 70
+      },
+      "validation_class_counts": {
+        "https://openalex.org/T10028": 85,
+        "https://openalex.org/T10036": 146,
+        "https://openalex.org/T10052": 45,
+        "https://openalex.org/T10100": 36,
+        "https://openalex.org/T10181": 36,
+        "https://openalex.org/T10201": 24,
+        "https://openalex.org/T10331": 22,
+        "https://openalex.org/T10462": 45,
+        "https://openalex.org/T10664": 58,
+        "https://openalex.org/T10775": 53,
+        "https://openalex.org/T10812": 21,
+        "https://openalex.org/T11307": 42,
+        "https://openalex.org/T11689": 39,
+        "https://openalex.org/T12026": 37
+      },
+      "vocabulary_sizes": {
+        "complement_nb": 39812,
+        "logistic_regression": 39812,
+        "linear_svm": 39812
+      },
+      "coverage_training": 0.33674059787849564
+    }
+  },
+  "open_set": {
+    "svm_max_decision": {
+      "calibration": {
+        "total": 749,
+        "in_catalogue": 275,
+        "outside_catalogue": 474,
+        "threshold": -0.14025548277181898,
+        "in_acceptance_rate": 0.7418181818181818,
+        "out_false_acceptance_rate": 0.19831223628691982,
+        "in_false_rejection_rate": 0.2581818181818182,
+        "auroc_in_vs_out": 0.8587495205216725,
+        "accepted_precision_in_catalogue": 0.6845637583892618,
+        "accuracy_among_accepted_in": 0.9411764705882353,
+        "selective_risk": 0.05882352941176472,
+        "selective_coverage_in": 0.7418181818181818,
+        "end_to_end_correct_placement": 0.25634178905206945,
+        "accepted_in": 204,
+        "accepted_out": 94,
+        "correct_accepted_in": 192
+      },
+      "evaluation": {
+        "total": 1124,
+        "in_catalogue": 414,
+        "outside_catalogue": 710,
+        "threshold": -0.14025548277181898,
+        "in_acceptance_rate": 0.7415458937198067,
+        "out_false_acceptance_rate": 0.19154929577464788,
+        "in_false_rejection_rate": 0.2584541062801932,
+        "auroc_in_vs_out": 0.8675239844866299,
+        "accepted_precision_in_catalogue": 0.6930022573363431,
+        "accuracy_among_accepted_in": 0.9348534201954397,
+        "selective_risk": 0.06514657980456029,
+        "selective_coverage_in": 0.7415458937198067,
+        "end_to_end_correct_placement": 0.25533807829181493,
+        "accepted_in": 307,
+        "accepted_out": 136,
+        "correct_accepted_in": 287
+      },
+      "threshold_source": "2024 calibration only; <=20% outside false acceptance constraint",
+      "score_interpretation": "raw SVM decision score, not probability"
+    },
+    "logistic_max_probability": {
+      "calibration": {
+        "total": 749,
+        "in_catalogue": 275,
+        "outside_catalogue": 474,
+        "threshold": 0.3275200216847886,
+        "in_acceptance_rate": 0.6072727272727273,
+        "out_false_acceptance_rate": 0.19831223628691982,
+        "in_false_rejection_rate": 0.3927272727272727,
+        "auroc_in_vs_out": 0.7871423091676256,
+        "accepted_precision_in_catalogue": 0.6398467432950191,
+        "accuracy_among_accepted_in": 0.9041916167664671,
+        "selective_risk": 0.09580838323353291,
+        "selective_coverage_in": 0.6072727272727273,
+        "end_to_end_correct_placement": 0.20160213618157544,
+        "accepted_in": 167,
+        "accepted_out": 94,
+        "correct_accepted_in": 151
+      },
+      "evaluation": {
+        "total": 1124,
+        "in_catalogue": 414,
+        "outside_catalogue": 710,
+        "threshold": 0.3275200216847886,
+        "in_acceptance_rate": 0.6521739130434783,
+        "out_false_acceptance_rate": 0.18732394366197183,
+        "in_false_rejection_rate": 0.34782608695652173,
+        "auroc_in_vs_out": 0.8116758522147378,
+        "accepted_precision_in_catalogue": 0.6699751861042184,
+        "accuracy_among_accepted_in": 0.9185185185185185,
+        "selective_risk": 0.08148148148148149,
+        "selective_coverage_in": 0.6521739130434783,
+        "end_to_end_correct_placement": 0.2206405693950178,
+        "accepted_in": 270,
+        "accepted_out": 133,
+        "correct_accepted_in": 248
+      },
+      "threshold_source": "2024 calibration only; <=20% outside false acceptance constraint",
+      "score_interpretation": "uncalibrated Logistic Regression maximum probability; diagnostic"
+    }
+  },
+  "human_semantic_validation": "pending",
+  "test_2025": "sealed_not_evaluated",
+  "outputs": {
+    "scope_review": {
+      "sha256": "23c433bbca98827cfd62471d3ead5d801d020bbbac7fd86c575f59cf93d8608f",
+      "bytes": 11807,
+      "rows": 20,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/scope_review.csv"
+    },
+    "near_duplicate_pairs_private": {
+      "sha256": "a9aa8314a2e94aa9fd2c27abd118fc21b86fe4cd8f0a569a049afa7df4fd2261",
+      "bytes": 70,
+      "rows": 0,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/near_duplicate_pairs_private.csv"
+    },
+    "catalogue_a_complement_nb_per_class": {
+      "sha256": "cb5b36f334fff50a9239d7623bbbf63c3826b25a24d5edebaed0e315d10c4444",
+      "bytes": 478,
+      "rows": 5,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_a_complement_nb_per_class.csv"
+    },
+    "catalogue_a_logistic_regression_per_class": {
+      "sha256": "acf0c10007737ddf207f915da013c1b2941b7331f59f7b4eafeba3f9110cf028",
+      "bytes": 434,
+      "rows": 5,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_a_logistic_regression_per_class.csv"
+    },
+    "catalogue_a_linear_svm_per_class": {
+      "sha256": "eb5549f0b5af1f89eab343dec99f54dfe95772b2d2bee9231e32024c9c34692c",
+      "bytes": 478,
+      "rows": 5,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_a_linear_svm_per_class.csv"
+    },
+    "catalogue_a_complement_nb_confusion": {
+      "sha256": "076338a145fb705ef29589f5c469cd38ddd78245a9524b0ffb680f28054b69d9",
+      "bytes": 349,
+      "rows": 5,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_a_complement_nb_confusion.csv"
+    },
+    "catalogue_a_logistic_regression_confusion": {
+      "sha256": "baa3512c1b5ac22433f61f764ad395b21299dd7491fbd58e6e1892a3ce2587c7",
+      "bytes": 349,
+      "rows": 5,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_a_logistic_regression_confusion.csv"
+    },
+    "catalogue_a_linear_svm_confusion": {
+      "sha256": "b37338f35873fa8232603e44a0a4c9d7413a0d28df72971fb7bc9581fb62f574",
+      "bytes": 347,
+      "rows": 5,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_a_linear_svm_confusion.csv"
+    },
+    "catalogue_a_validation_predictions": {
+      "sha256": "3c7d1497773a7e8ff56ef54c0b7b714b0f15de2995ef63b52024656539720a72",
+      "bytes": 76295,
+      "rows": 379,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_a_validation_predictions.csv"
+    },
+    "catalogue_a_coverage_year": {
+      "sha256": "bfd6dd1ea9e2a7d11e3e65eb6311e1fbdc2b2248529629683405318c17eeedf5",
+      "bytes": 229,
+      "rows": 5,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_a_coverage_year.csv"
+    },
+    "catalogue_a_coverage_subfield": {
+      "sha256": "3bab7b884506e2588aafc02f9e38887d0d49826b54abf3522cf3d7f4344d0ae9",
+      "bytes": 123,
+      "rows": 2,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_a_coverage_subfield.csv"
+    },
+    "catalogue_a_coverage_work_type": {
+      "sha256": "244dddf05002e2f39d1ddb3f08182b5b82b7c5f4604dc0b08ed028d23a0e08eb",
+      "bytes": 160,
+      "rows": 3,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_a_coverage_work_type.csv"
+    },
+    "catalogue_a_coverage_language": {
+      "sha256": "c9882f7add2b4d44f296a85a89f7a05a039d99ad5947dc5493a8695f26e95416",
+      "bytes": 168,
+      "rows": 3,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_a_coverage_language.csv"
+    },
+    "catalogue_b_complement_nb_per_class": {
+      "sha256": "fdce90000d00ec677379fd6948777b37f5916ee8dac4f42d068ca1e9c2ce813e",
+      "bytes": 1172,
+      "rows": 14,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_b_complement_nb_per_class.csv"
+    },
+    "catalogue_b_logistic_regression_per_class": {
+      "sha256": "4a025998e6491774dee309b8a9cb89826c22fe1a25bd3b430aefee3de83f3864",
+      "bytes": 1162,
+      "rows": 14,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_b_logistic_regression_per_class.csv"
+    },
+    "catalogue_b_linear_svm_per_class": {
+      "sha256": "7bd5242b79fcfc5ee445b7e1d0f91021b52fed22c63715c9bf36c1c5cac49ee3",
+      "bytes": 1166,
+      "rows": 14,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_b_linear_svm_per_class.csv"
+    },
+    "catalogue_b_complement_nb_confusion": {
+      "sha256": "35ed304f433222438475fadb9d91b2a7f441180b203dfaac1b107a1e665a7f02",
+      "bytes": 1204,
+      "rows": 14,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_b_complement_nb_confusion.csv"
+    },
+    "catalogue_b_logistic_regression_confusion": {
+      "sha256": "6db5aceab56d7939a665bc534aadf464b436db017ac3fd3c8e6fd2ca59c88bbc",
+      "bytes": 1205,
+      "rows": 14,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_b_logistic_regression_confusion.csv"
+    },
+    "catalogue_b_linear_svm_confusion": {
+      "sha256": "59bdb2e8f8cebb44b21b57ab023e2344e317be9356331f1323d00f9c770a5688",
+      "bytes": 1203,
+      "rows": 14,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_b_linear_svm_confusion.csv"
+    },
+    "catalogue_b_validation_predictions": {
+      "sha256": "c75e50bf22f9522bff3001123fbfc7bcb4a53023922b42b1fbaf75baa9731328",
+      "bytes": 138605,
+      "rows": 689,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_b_validation_predictions.csv"
+    },
+    "catalogue_b_coverage_year": {
+      "sha256": "ca68d3b9167312cf1d302975ec497d184c68674c5440b96ab0e5d0dc8c364436",
+      "bytes": 228,
+      "rows": 5,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_b_coverage_year.csv"
+    },
+    "catalogue_b_coverage_subfield": {
+      "sha256": "d860a6638607faf3d476da7c3ae0af6587b8e3e775b19470f691e69e4aa225b9",
+      "bytes": 125,
+      "rows": 2,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_b_coverage_subfield.csv"
+    },
+    "catalogue_b_coverage_work_type": {
+      "sha256": "4c3c571ce9aeeebb92415ab759b5568f3585e6e392463fd7952dd091b206ff7c",
+      "bytes": 162,
+      "rows": 3,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_b_coverage_work_type.csv"
+    },
+    "catalogue_b_coverage_language": {
+      "sha256": "08f5fddc9697071cce10eb3e19d32f8a38ab51922f608f8ac2189bc0af6f7123",
+      "bytes": 169,
+      "rows": 3,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_b_coverage_language.csv"
+    },
+    "catalogue_a_svm_ablation": {
+      "sha256": "192b9541177c03bb99967f54180e554930acd22dd34b42b4b605e1934647ed80",
+      "bytes": 215,
+      "rows": 3,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_a_svm_ablation.csv"
+    },
+    "catalogue_a_svm_top_terms": {
+      "sha256": "3445a723efb23fd56964c1f481727a46e8693e6fb6a14957471d908b0b2ece7f",
+      "bytes": 4411,
+      "rows": 75,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_a_svm_top_terms.csv"
+    },
+    "svm_max_decision_evaluation_predictions": {
+      "sha256": "08d87ec152dbb939f23581d79939eacb13a7ba2e3d8149f630079b042d593dd4",
+      "bytes": 128963,
+      "rows": 1124,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/svm_max_decision_evaluation_predictions.csv"
+    },
+    "logistic_max_probability_evaluation_predictions": {
+      "sha256": "c091ddc51572865004d205fed7f3d592c56775824786064d685e4e0d67ab053c",
+      "bytes": 128288,
+      "rows": 1124,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/logistic_max_probability_evaluation_predictions.csv"
+    },
+    "blind_calibration": {
+      "sha256": "bd803f2b2c69120ff07d442c874a77a6968691ec54f28926b50b20614990a05a",
+      "bytes": 290871,
+      "rows": 40,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/blind_calibration.csv"
+    },
+    "restricted_key_calibration": {
+      "sha256": "376295d4eab962154d7ad88b21fbcb32c3973080021cc5513dd9086bcb129857",
+      "bytes": 2962,
+      "rows": 40,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/restricted_key_calibration.csv"
+    },
+    "blind_evaluation": {
+      "sha256": "23a7aba6674cb1edfaf5fc8bb75400f0593de2197020fb6fc33dbf3dde66bd29",
+      "bytes": 716467,
+      "rows": 100,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/blind_evaluation.csv"
+    },
+    "restricted_key_evaluation": {
+      "sha256": "7aa7cb0646a711e9ec60d3c7e95a5042c899f3fb19f5b55f39b0dff52d5d8b8a",
+      "bytes": 7342,
+      "rows": 100,
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/restricted_key_evaluation.csv"
+    },
+    "catalogue_b_linear_svm": {
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/catalogue_b_linear_svm.joblib",
+      "sha256": "68bcc8186ba253c0057efacc7d978e18083250565fb72ee909d8113d0033c72a",
+      "bytes": 6110008
+    },
+    "topic_briefs": {
+      "path": "data/analysis/phase6b_topic_validation_20261028_v2/topic_briefs.json",
+      "sha256": "56758271d9cf2c0c33f3a80583ce943fdf434738dbd3dc1a1f8daceb4d6f2599",
+      "bytes": 23301
+    }
+  }
+}

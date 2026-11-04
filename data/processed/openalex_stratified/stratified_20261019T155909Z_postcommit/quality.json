@@ -1,0 +1,164 @@
+{
+  "records": 12000,
+  "missing": {
+    "title": 2,
+    "doi": 1019,
+    "abstract": 2558,
+    "fwci": 2678,
+    "institution": 2902,
+    "country": 2949,
+    "language": 586,
+    "open_access": 0
+  },
+  "phase2_missing": {
+    "title": 2,
+    "doi": 1019,
+    "abstract": 2558,
+    "fwci": 2678,
+    "institution": 2902,
+    "country": 2949,
+    "language": 586,
+    "open_access": 0
+  },
+  "missing_difference_vs_phase2": {
+    "title": 0,
+    "doi": 0,
+    "abstract": 0,
+    "fwci": 0,
+    "institution": 0,
+    "country": 0,
+    "language": 0,
+    "open_access": 0
+  },
+  "by": {
+    "publication_year": {
+      "2020": {
+        "records": 1607,
+        "missing": {
+          "title": 0,
+          "doi": 390,
+          "abstract": 478,
+          "fwci": 278,
+          "institution": 547,
+          "country": 549,
+          "language": 5,
+          "open_access": 0
+        }
+      },
+      "2021": {
+        "records": 1650,
+        "missing": {
+          "title": 0,
+          "doi": 262,
+          "abstract": 396,
+          "fwci": 355,
+          "institution": 425,
+          "country": 429,
+          "language": 15,
+          "open_access": 0
+        }
+      },
+      "2022": {
+        "records": 1615,
+        "missing": {
+          "title": 1,
+          "doi": 44,
+          "abstract": 328,
+          "fwci": 323,
+          "institution": 277,
+          "country": 281,
+          "language": 16,
+          "open_access": 0
+        }
+      },
+      "2023": {
+        "records": 1865,
+        "missing": {
+          "title": 1,
+          "doi": 61,
+          "abstract": 344,
+          "fwci": 403,
+          "institution": 294,
+          "country": 299,
+          "language": 23,
+          "open_access": 0
+        }
+      },
+      "2024": {
+        "records": 2287,
+        "missing": {
+          "title": 0,
+          "doi": 97,
+          "abstract": 412,
+          "fwci": 533,
+          "institution": 419,
+          "country": 429,
+          "language": 29,
+          "open_access": 0
+        }
+      },
+      "2025": {
+        "records": 2976,
+        "missing": {
+          "title": 0,
+          "doi": 165,
+          "abstract": 600,
+          "fwci": 786,
+          "institution": 940,
+          "country": 962,
+          "language": 498,
+          "open_access": 0
+        }
+      }
+    },
+    "work_type": {
+      "article": {
+        "records": 9265,
+        "missing": {
+          "title": 2,
+          "doi": 845,
+          "abstract": 2199,
+          "fwci": 0,
+          "institution": 1906,
+          "country": 1946,
+          "language": 338,
+          "open_access": 0
+        }
+      },
+      "preprint": {
+        "records": 2678,
+        "missing": {
+          "title": 0,
+          "doi": 170,
+          "abstract": 355,
+          "fwci": 2678,
+          "institution": 985,
+          "country": 992,
+          "language": 244,
+          "open_access": 0
+        }
+      },
+      "review": {
+        "records": 57,
+        "missing": {
+          "title": 0,
+          "doi": 4,
+          "abstract": 4,
+          "fwci": 0,
+          "institution": 11,
+          "country": 11,
+          "language": 4,
+          "open_access": 0
+        }
+      }
+    }
+  },
+  "issues": [],
+  "issue_counts": {},
+  "unknown_international_collaboration": 4030,
+  "unknown_institutional_collaboration": 3573,
+  "reference_list_status": {
+    "present": 7529,
+    "empty": 4471
+  }
+}

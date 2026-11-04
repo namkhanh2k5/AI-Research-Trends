@@ -1,0 +1,11 @@
+{
+  "status": "prepared_human_review_pending",
+  "created_at_utc": "2026-11-04T06:45:22+00:00",
+  "topic_package_unchanged": true,
+  "publisher_cases": 30,
+  "ai_decisions_not_human": true,
+  "files": {
+    "data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/reviews/topic_human_handoff/INSTRUCTIONS.md": "82adfa5cba415afd8ca8a6e45a6aa4f72064a819bcce2c2687fb00f9d6eaddb8",
+    "data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/reviews/publisher_human_handoff/publisher_proposals_for_human_check.csv": "47dd74cf9855ec4243a88c79a29cd4b4c917cf1f381c8a6a280ae3defa0a40fa"
+  }
+}

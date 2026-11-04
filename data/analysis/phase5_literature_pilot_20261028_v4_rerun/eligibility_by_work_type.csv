@@ -1,0 +1,4 @@
+work_type,sample_works,valid_title,usable_abstract,reference_list_present,reference_list_empty,reference_list_missing,refs_ge_5,refs_ge_10,refs_ge_15,eligible_5,eligible_10,eligible_15,eligible_percent
+article,9265,9263,6966,6703,2562,0,6434,6072,5674,4861,4549,4204,49.0987587696
+preprint,2678,2678,2319,782,1896,0,736,689,607,581,551,490,20.5750560119
+review,57,57,53,44,13,0,43,42,42,42,41,41,71.9298245614

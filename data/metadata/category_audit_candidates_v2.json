@@ -1,0 +1,522 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-19T07:39:32Z",
+  "seed": 20251019,
+  "records_in_audit_frame": 1000,
+  "interpretation": "Candidates include rule-positive and random rule-negative records. Manual labels are required; a small random-negative audit cannot establish recall.",
+  "quarantined_malformed_text_records": [],
+  "categories": {
+    "large_language_models": {
+      "population_positive": 55,
+      "population_negative": 945,
+      "positive_candidates": 10,
+      "negative_candidates": 10,
+      "candidates": [
+        {
+          "work_id": "https://openalex.org/W4389713872",
+          "title": "Building Trustworthy NeuroSymbolic AI Systems: Consistency, Reliability, Explainability, and Safety",
+          "publication_year": 2023,
+          "rule_match": true,
+          "text_excerpt": "Building Trustworthy NeuroSymbolic AI Systems: Consistency, Reliability, Explainability, and Safety Explainability and Safety engender Trust. These require a model to exhibit consistency and reliability. To achieve these, it is necessary to use and analyze data and knowledge with statistical and symbolic AI methods relevant to the AI application - neither alone will do. Consequently, we argue and seek to demonstrate that the NeuroSymbolic AI approach is better suited for making AI a trusted AI system. We present the CREST framework that shows how Consistency, Reliability, user-level Explainabi",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4414068472",
+          "title": "Ai-Driven Personalization of Power System Learning Modules Using Student Personas based on Behavioral Analysis of Grid Performance",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "Ai-Driven Personalization of Power System Learning Modules Using Student Personas based on Behavioral Analysis of Grid Performance The current advancement of artificial intelligence in educational applications has led to the emergence of previously unexplored possibilities in personalised learning experiences, specifically due to Large Language Models (LLMs). Most uses of LLMs in education have not been rigorously tested with statistical models to establish the extent to which they have been effective in making learners more adaptable. This work examines the use of statistical models of studen",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4414791342",
+          "title": "SAGE: A Realistic Benchmark for Semantic Understanding",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "SAGE: A Realistic Benchmark for Semantic Understanding As large language models (LLMs) achieve strong performance on traditional benchmarks, there is an urgent need for more challenging evaluation frameworks that probe deeper aspects of semantic understanding. We introduce SAGE (Semantic Alignment & Generalization Evaluation), a rigorous benchmark designed to assess both embedding models and similarity metrics across five categories: Human Preference Alignment, Transformation Robustness, Information Sensitivity, Clustering Performance, and Retrieval Robustness. Unlike existing benchmarks that ",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4403935957",
+          "title": "GlobeSumm: A Challenging Benchmark Towards Unifying Multi-lingual, Cross-lingual and Multi-document News Summarization",
+          "publication_year": 2024,
+          "rule_match": true,
+          "text_excerpt": "GlobeSumm: A Challenging Benchmark Towards Unifying Multi-lingual, Cross-lingual and Multi-document News Summarization News summarization in today's global scene can be daunting with its flood of multilingual content and varied viewpoints from different sources. However, current studies often neglect such real-world scenarios as they tend to focus solely on either single-language or single-document tasks. To bridge this gap, we aim to unify Multi-lingual, Cross-lingual and Multi-document Summarization into a novel task, i.e., MCMS, which encapsulates the real-world requirements all-in-one. Nev",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4386556985",
+          "title": "What are Public Concerns about ChatGPT? A Novel Self-Supervised Neural Topic Model Tells You",
+          "publication_year": 2023,
+          "rule_match": true,
+          "text_excerpt": "What are Public Concerns about ChatGPT? A Novel Self-Supervised Neural Topic Model Tells You The recently released artificial intelligence conversational agent, ChatGPT, has gained significant attention in academia and real life. A multitude of early ChatGPT users eagerly explore its capabilities and share their opinions on it via social media. Both user queries and social media posts express public concerns regarding this advanced dialogue system. To mine public concerns about ChatGPT, a novel Self-Supervised neural Topic Model (SSTM), which formalizes topic modeling as a representation learn",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W7131349486",
+          "title": "Synonym Based Hierarchical Probability Transformer For Predicting Disease Intensity And Relationships Between Icd Codes",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "Synonym Based Hierarchical Probability Transformer For Predicting Disease Intensity And Relationships Between Icd Codes Predicting disease intensity levels and identifying relationships between the International Classification of Disease codes utilizing Large Language Models (LLMs) and Transformer Learning investigate and classify immense amounts of clinical data to acquire awareness into disease advancement and possible associations between conditions. Precisely, LLMs explore route of care for a specific patient population on a specific condition represented as series of medical codes paving ",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4396781220",
+          "title": "Geosystems risk and uncertainty: The application of ChatGPT with targeted prompting",
+          "publication_year": 2024,
+          "rule_match": true,
+          "text_excerpt": "Geosystems risk and uncertainty: The application of ChatGPT with targeted prompting ChatGPT, a prominent large language model (LLM), is being increasingly used across a wide range of scientific fields. Geosystem engineers and researchers are also posed to leverage ChatGPT to find solutions to challenges encountered in various topics. This study evaluates the accuracy and reproducibility of ChatGPT in responding to different qualitative and quantitative questions, with a particular focus on risk and uncertainty (R&U) in both the Greenfield and Brownfield domains as an important area of interest",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4416529199",
+          "title": "Separator Injection Attack: Uncovering Dialogue Biases in Large Language Models Caused by Role Separators",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "Separator Injection Attack: Uncovering Dialogue Biases in Large Language Models Caused by Role Separators Conversational large language models (LLMs) have gained widespread attention due to their instruction-following capabilities. To ensure conversational LLMs follow instructions, role separators are employed to distinguish between different participants in a conversation. However, incorporating role separators introduces potential vulnerabilities. Misusing roles can lead to prompt injection attacks, which can easily misalign the model's behavior with the user's intentions, raising significan",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W7207638579",
+          "title": "\u5bfe\u8c61\u5225\u30d7\u30ed\u30f3\u30d7\u30c8\u306b\u3088\u308bChatGPT \u30c1\u30e3\u30c3\u30c8\u30dc\u30c3\u30c8\u306e\u8a66\u4f5c\u3068\u6027\u80fd\u8a55\u4fa1",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "\u5bfe\u8c61\u5225\u30d7\u30ed\u30f3\u30d7\u30c8\u306b\u3088\u308bChatGPT \u30c1\u30e3\u30c3\u30c8\u30dc\u30c3\u30c8\u306e\u8a66\u4f5c\u3068\u6027\u80fd\u8a55\u4fa1 This study aims to develop a LINE chatbot utilizing ChatGPT by designing prompts tailored to specific user groups. The developed chatbots were then used by experimenters for each target group, and their interaction logs were recorded. Additionally, a method to evaluate the validity of the proposed prompts was presented. Using the proposed evaluation method, the interaction logs were analyzed to quantitatively assess the appropriateness of the chatbot\u2019s responses to each target group. As a result, the chatbots created with the proposed prompts showed high cons",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4406505516",
+          "title": "LLM360 K2: Building a 65B 360-Open-Source Large Language Model from Scratch",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "LLM360 K2: Building a 65B 360-Open-Source Large Language Model from Scratch We detail the training of the LLM360 K2-65B model, scaling up our 360-degree OPEN SOURCE approach to the largest and most powerful models under project LLM360. While open-source LLMs continue to advance, the answer to \"How are the largest LLMs trained?\" remains unclear within the community. The implementation details for such high-capacity models are often protected due to business considerations associated with their high cost. This lack of transparency prevents LLM researchers from leveraging valuable insights from p",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W7130483395",
+          "title": "\u0645\u06a9\u0627\u0646\u06cc\u0627\u0628\u06cc \u0628\u0647\u06cc\u0646\u0647 \u0627\u0633\u062a\u0642\u0631\u0627\u0631 \u06a9\u0644\u06a9\u062a\u0648\u0631\u0647\u0627\u06cc \u062e\u0648\u0631\u0634\u06cc\u062f\u06cc \u0628\u0627 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0631\u0648\u0634 GIS - AHP \u062f\u0631 \u0627\u0633\u062a\u0627\u0646 \u062e\u0631\u0627\u0633\u0627\u0646 \u0631\u0636\u0648\u06cc",
+          "publication_year": 2025,
+          "rule_match": false,
+          "text_excerpt": "\u0645\u06a9\u0627\u0646\u06cc\u0627\u0628\u06cc \u0628\u0647\u06cc\u0646\u0647 \u0627\u0633\u062a\u0642\u0631\u0627\u0631 \u06a9\u0644\u06a9\u062a\u0648\u0631\u0647\u0627\u06cc \u062e\u0648\u0631\u0634\u06cc\u062f\u06cc \u0628\u0627 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0631\u0648\u0634 GIS - AHP \u062f\u0631 \u0627\u0633\u062a\u0627\u0646 \u062e\u0631\u0627\u0633\u0627\u0646 \u0631\u0636\u0648\u06cc \u0628\u0627 \u062a\u0648\u062c\u0647 \u0628\u0647 \u0627\u0641\u0632\u0627\u06cc\u0634 \u0646\u0631\u062e \u0631\u0634\u062f \u062c\u0645\u0639\u06cc\u062a\u060c \u06a9\u0627\u0647\u0634 \u0645\u06cc\u0632\u0627\u0646 \u0628\u0627\u0631\u0646\u062f\u06af\u06cc\u060c \u0646\u06cc\u0627\u0632 \u0631\u0648\u0632\u0627\u0641\u0632\u0648\u0646 \u062c\u0648\u0627\u0645\u0639 \u0627\u0646\u0633\u0627\u0646\u06cc \u0628\u0647 \u0622\u0628 \u0648 \u0646\u0642\u0634 \u062d\u06cc\u0627\u062a\u06cc \u0622\u0646 \u062f\u0631 \u062f\u0646\u06cc\u0627 \u0648 \u0628\u0647\u200c\u0648\u06cc\u0698\u0647 \u0645\u0646\u0627\u0637\u0642 \u062f\u0627\u0631\u0627\u06cc \u0627\u0642\u0644\u06cc\u0645 \u0646\u06cc\u0645\u0647\u200c\u062e\u0634\u06a9 \u0648 \u062e\u0634\u06a9 \u062f\u0631 \u06a9\u0634\u0648\u0631\u060c \u0644\u0630\u0627 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0645\u0646\u0627\u0628\u0639 \u0627\u0646\u0631\u0698\u06cc\u200c\u0647\u0627\u06cc \u062a\u062c\u062f\u06cc\u062f \u067e\u0630\u06cc\u0631 \u0628\u0647\u200c\u0648\u06cc\u0698\u0647 \u0627\u0646\u0631\u0698\u06cc \u062e\u0648\u0631\u0634\u06cc\u062f\u06cc \u062f\u0631 \u0631\u0627\u0633\u062a\u0627\u06cc \u062a\u0635\u0641\u06cc\u0647 \u0648 \u062a\u0623\u0645\u06cc\u0646 \u0622\u0628 \u0648 \u062f\u0631\u0646\u062a\u06cc\u062c\u0647 \u06a9\u0645\u06a9 \u0628\u0647 \u0627\u0641\u0632\u0627\u06cc\u0634 \u0646\u0631\u062e \u062a\u0648\u0644\u06cc\u062f \u0622\u0628 \u0634\u06cc\u0631\u06cc\u0646 \u0627\u0645\u0631\u06cc \u0636\u0631\u0648\u0631\u06cc \u0627\u0633\u062a. \u0647\u062f\u0641 \u0627\u0632 \u0627\u06cc\u0646 \u067e\u0698\u0648\u0647\u0634 \u067e\u062a\u0627\u0646\u0633\u06cc\u0644\u200c\u0633\u0646\u062c\u06cc \u0627\u0633\u062a\u0627\u0646 \u062e\u0631\u0627\u0633\u0627\u0646 \u0631\u0636\u0648\u06cc \u0627\u0632 \u0646\u0638\u0631 \u0645\u0639\u06cc\u0627\u0631\u0647\u0627\u06cc \u0645\u062d\u06cc\u0637\u06cc \u0645\u0624\u062b\u0631 \u0628\u0631\u0627\u06cc \u0627\u0633\u062a\u0642\u0631\u0627\u0631 \u06a9\u0644\u06a9\u062a\u0648\u0631\u0647\u0627\u06cc \u062e\u0648\u0631\u0634\u06cc\u062f\u06cc \u0628\u0627 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u062f\u0627\u062f\u0647\u200c\u0647\u0627\u06cc \u062f\u0648\u0631\u0633\u0646\u062c\u06cc \u0648 \u0633\u0627\u0645\u0627\u0646\u0647 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u062c\u063a\u0631\u0627\u0641\u06cc\u0627\u06cc\u06cc GIS \u0628\u0647 \u0631\u0648\u0634 AHP \u0627\u0633\u062a. \u062f\u0631 \u0627\u06cc\u0646 \u0631\u0627\u0633\u062a\u0627 \u0627\u0628",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4200352914",
+          "title": "Revamping Fashion E-Commerce in India using Artificial Intelligence",
+          "publication_year": 2020,
+          "rule_match": false,
+          "text_excerpt": "Revamping Fashion E-Commerce in India using Artificial Intelligence Fashion Technology & Textile Engineering introduces pioneering technologies, and improved understanding of textile materials, processes, chemistry and systems. It will encourage interdisciplinary research which will share newly developed technology, theory and techniques in the fashion and textile",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4402592285",
+          "title": "Adoption Challenges for Cryptographic Protocols",
+          "publication_year": 2024,
+          "rule_match": false,
+          "text_excerpt": "Adoption Challenges for Cryptographic Protocols We interviewed cryptography experts from academia and industry to learn from their experiences with the design and deployment of cryptographic protocols. We present adoption challenges, including misaligned incentives in academia and standardization, mismatched assumptions, low-quality reference implementations, and usability issues.",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4392271561",
+          "title": "Deterministic Cache-Oblivious Funnelselect",
+          "publication_year": 2024,
+          "rule_match": false,
+          "text_excerpt": "Deterministic Cache-Oblivious Funnelselect In the multiple-selection problem one is given an unsorted array $S$ of $N$ elements and an array of $q$ query ranks $r_1<\\cdots0$, and $\u0394_i = r_{i} - r_{i-1}$ (assuming $r_0=0$ and $r_{q+1}=N + 1$).",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4391362137",
+          "title": "Application of optical imaging equipment based on deep neural network in basketball training game simulation",
+          "publication_year": 2024,
+          "rule_match": false,
+          "text_excerpt": "Application of optical imaging equipment based on deep neural network in basketball training game simulation",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4221160653",
+          "title": "Representations learnt by SGD and Adaptive learning rules: Conditions that vary sparsity and selectivity in neural networks",
+          "publication_year": 2022,
+          "rule_match": false,
+          "text_excerpt": "Representations learnt by SGD and Adaptive learning rules: Conditions that vary sparsity and selectivity in neural networks From the point of view of the human brain, continual learning can perform various tasks without mutual interference. An effective way to reduce mutual interference can be found in sparsity and selectivity of neurons. According to Aljundi et al. and Hadsell et al., imposing sparsity at the representational level is advantageous for continual learning because sparse neuronal activations encourage less overlap between parameters, resulting in less interference. Similarly, hi",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W3129678898",
+          "title": "IoTDevID: A Behaviour-Based Fingerprinting Method for Device Identification in the IoT.",
+          "publication_year": 2021,
+          "rule_match": false,
+          "text_excerpt": "IoTDevID: A Behaviour-Based Fingerprinting Method for Device Identification in the IoT. Device identification is one way to secure a network of IoT devices, whereby devices identified as suspicious can subsequently be isolated from a network. We introduce a novel fingerprinting method, IoTDevID, for device identification that uses machine learning to model the behaviour of IoT devices based on network packets. Our method uses an enhanced combination of features from previous work and includes an approach for dealing with unbalanced device data via data augmentation. We further demonstrate how ",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W3214761341",
+          "title": "Displaying triple provenance with extensions to the Fresnel vocabulary for semantic browsers",
+          "publication_year": 2021,
+          "rule_match": false,
+          "text_excerpt": "Displaying triple provenance with extensions to the Fresnel vocabulary for semantic browsers We propose extensions to the Fresnel semantic browser vocabulary that displays data about triples instead of just about resources. This facilitates broadly applicable rapid prototyping of information systems that include displaying the provenance of triples. This provenance can include a triple\u2019s role in logical conclusions, how it can be edited and its documented sources. Our contribution\u2019s technical focus is the addition of a box for reification to Fresnel\u2019s display model. We also propose extensions ",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4301180655",
+          "title": "Enhancement of non-Gaussianity and nonclassicality of photon added displaced Fock state: A quantitative approach",
+          "publication_year": 2021,
+          "rule_match": false,
+          "text_excerpt": "Enhancement of non-Gaussianity and nonclassicality of photon added displaced Fock state: A quantitative approach Non-Gaussian and nonclassical states and processes are already found to be important resources for performing various tasks related to quantum gravity and quantum information processing. The effect of non-Gaussianity inducing operators on the nonclassicality of quantum states has also been studied rigorously. Considering these facts, a quantitative analysis of the nonclassical and non-Gaussian features is performed here for photon added displaced Fock state, as a test case, using a ",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W3025803976",
+          "title": "Simulation of performance differences between offshore and land\u2010based photovoltaic systems",
+          "publication_year": 2020,
+          "rule_match": false,
+          "text_excerpt": "Simulation of performance differences between offshore and land\u2010based photovoltaic systems Abstract The purpose of this study is to model, simulate, and compare the performance of a photovoltaics system on land and at sea. To be able to have a fair comparison the effect of sea waves, wind speed and relative humidity are considered in this model. The sea waves are modeled in the frequency domain, using a wave spectrum. The irradiation on a tilted surface for a floating system is calculated considering the tilt angle that is affected by the sea waves. Moreover, the temperature is estimated based",
+          "manual_judgment": null,
+          "manual_notes": null
+        }
+      ]
+    },
+    "multimodal_ai": {
+      "population_positive": 22,
+      "population_negative": 978,
+      "positive_candidates": 10,
+      "negative_candidates": 10,
+      "candidates": [
+        {
+          "work_id": "https://openalex.org/W4415275289",
+          "title": "What \"Not\" to Detect: Negation-Aware VLMs via Structured Reasoning and Token Merging",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "What \"Not\" to Detect: Negation-Aware VLMs via Structured Reasoning and Token Merging State-of-the-art vision-language models (VLMs) suffer from a critical failure in understanding negation, often referred to as affirmative bias. This limitation is particularly severe in described object detection (DOD) tasks. To address this, we propose two primary contributions: (1) a new dataset pipeline and (2) a novel, lightweight adaptation recipe. First, we introduce CoVAND, a dataset constructed with a systematic chain-of-thought (CoT) and VQA-based pipeline to generate high-quality, instance-grounded n",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4401203092",
+          "title": "Autonomous Improvement of Instruction Following Skills via Foundation Models",
+          "publication_year": 2024,
+          "rule_match": true,
+          "text_excerpt": "Autonomous Improvement of Instruction Following Skills via Foundation Models Intelligent instruction-following robots capable of improving from autonomously collected experience have the potential to transform robot learning: instead of collecting costly teleoperated demonstration data, large-scale deployment of fleets of robots can quickly collect larger quantities of autonomous data that can collectively improve their performance. However, autonomous improvement requires solving two key problems: (i) fully automating a scalable data collection procedure that can collect diverse and semantica",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W3086639859",
+          "title": "A novel detection fusion network for solid waste sorting",
+          "publication_year": 2020,
+          "rule_match": true,
+          "text_excerpt": "A novel detection fusion network for solid waste sorting Vision-based object detection technology plays a very important role in the field of computer vision. It is widely used in many machine vision applications. However, in the specific application scenarios, like a solid waste sorting system, it is very difficult to obtain good accuracy due to the color information of objects that is badly damaged. In this work, we propose a novel multimodal convolutional neural network method for RGB-D solid waste object detection. The depth information is introduced as the new modal to improve the object ",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W3188932427",
+          "title": "Deep Neural Network Based Student Response Modeling With Uncertainty, Multimodality and Attention",
+          "publication_year": 2020,
+          "rule_match": true,
+          "text_excerpt": "Deep Neural Network Based Student Response Modeling With Uncertainty, Multimodality and Attention In this thesis, I investigate deep neural network based student response modeling, more specifically Knowledge Tracing (KT). Knowledge Tracing allows Intelligent Tutoring Systems to infer which topics or skills a student has mastered, thus adjusting curriculum accordingly. Deep neural network based knowledge tracing models like Deep Knowledge Tracing (DKT) and Dynamic Key-Value Memory Network (DKVMN) have achieved significant improvements compared with conventional probabilistic models. There are ",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4417230512",
+          "title": "A Review of Cross-Modal Image\u2013Text Retrieval in Remote Sensing",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "A Review of Cross-Modal Image\u2013Text Retrieval in Remote Sensing With the emergence of large-scale vision-language pre-training (VLP) models, remote sensing (RS) image\u2013text retrieval is shifting from global representation learning to fine-grained semantic alignment. This review systematically examines two mainstream representation paradigms\u2014real-valued embedding and deep hashing\u2014and analyzes how the evolution of RS datasets influences model capability, including multi-scale robustness, small object discriminability, and temporal semantic understanding. We further dissect three core challenges sp",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4407043279",
+          "title": "A Review: Word Embedding Models with Machine Learning Based Context Depend and Context Independent Techniques",
+          "publication_year": 2024,
+          "rule_match": true,
+          "text_excerpt": "A Review: Word Embedding Models with Machine Learning Based Context Depend and Context Independent Techniques Natural language processing (NLP) has been transformed by word embedding models, which convert text into meaningful numerical representations. These models fall into two general categories: context-dependent methods like ELMo, BERT, and GPT, and context-independent methods like Word2Vec, GloVe, and FastText. Although static word representations are provided by context-independent models, polysemy and contextual subtleties are difficult for them to capture. These issues are addressed by",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4415068609",
+          "title": "Dynamic Double Space Tower",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "Dynamic Double Space Tower The Visual Question Answering (VQA) task requires the simultaneous understanding of image content and question semantics. However, existing methods often have difficulty handling complex reasoning scenarios due to insufficient cross-modal interaction and capturing the entity spatial relationships in the image.\\cite{huang2023adaptive}\\cite{liu2021comparing}\\cite{guibas2021adaptive}\\cite{zhang2022vsa}We studied a brand-new approach to replace the attention mechanism in order to enhance the reasoning ability of the model and its understanding of spatial relationships.Sp",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4416190503",
+          "title": "Boomda: Balanced Multi-objective Optimization for Multimodal Domain Adaptation",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "Boomda: Balanced Multi-objective Optimization for Multimodal Domain Adaptation Multimodal learning, while contributing to numerous success stories across various fields, faces the challenge of prohibitively expensive manual annotation. To address the scarcity of annotated data, a popular solution is unsupervised domain adaptation, which has been extensively studied in unimodal settings yet remains less explored in multimodal settings. In this paper, we investigate heterogeneous multimodal domain adaptation, where the primary challenge is the varying domain shifts of different modalities from t",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4416975453",
+          "title": "MoE3D: Mixture of Experts meets Multi-Modal 3D Understanding",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "MoE3D: Mixture of Experts meets Multi-Modal 3D Understanding Multi-modal 3D understanding is a fundamental task in computer vision. Previous multi-modal fusion methods typically employ a single, dense fusion network, struggling to handle the significant heterogeneity and complexity across modalities, leading to suboptimal performance. In this paper, we propose MoE3D, which integrates Mixture of Experts (MoE) into the multi-modal learning framework. The core is that we deploy a set of specialized \"expert\" networks, each adept at processing a specific modality or a mode of cross-modal interactio",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4413958554",
+          "title": "Cross-Modal Adaptive Fusion and Enhancement Model for Noise-Robust Scenarios",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "Cross-Modal Adaptive Fusion and Enhancement Model for Noise-Robust Scenarios With the rapid advancement of computer technology, multi-modality has emerged as a critical area of research. The fusion and alignment of multi-modal data not only enhance the intelligence level of Internet of Things (IoT) devices but also provide users with enriched and precise service experiences. However, most existing studies primarily focus on managing two to three modalities, which often proves inadequate in real-world complex and dynamic scenarios. To address this limitation, this paper conducts an in-depth inv",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W3085008178",
+          "title": "System for monitoring road slippery based on CCTV cameras and convolutional neural networks",
+          "publication_year": 2020,
+          "rule_match": false,
+          "text_excerpt": "System for monitoring road slippery based on CCTV cameras and convolutional neural networks Abstract The slipperiness of the surface is essential for road safety. The growing number of CCTV cameras opens the possibility of using them to automatically detect the slippery surface and inform road users about it. This paper presents a system of developed intelligent road signs, including a detector based on convolutional neural networks (CNNs) and the transfer-learning method employed to the processing of images acquired with video cameras. Based on photos taken in different light conditions by CC",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4412624427",
+          "title": "Within 3DMM Space: Exploring Inherent 3D Artifact for Video Forgery Detection",
+          "publication_year": 2025,
+          "rule_match": false,
+          "text_excerpt": "Within 3DMM Space: Exploring Inherent 3D Artifact for Video Forgery Detection Recently, the breathtaking development and potential misuse of deepfake technology has raised numerous privacy and security concerns, triggering widespread apprehension. Existing deepfake detection methods focus on the analysis of local regions for faces, such as mouth movement, eye blinking frequency, etc., which, however, are limited in their ability to capture the global inconsistencies present in forged faces. Some researchers attempt to seize 3D artifacts related to facial global information, but typically treat",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4406321315",
+          "title": "SemSI-GAT: Semantic Similarity-Based Interaction Graph Attention Network for Knowledge Graph Completion",
+          "publication_year": 2025,
+          "rule_match": false,
+          "text_excerpt": "SemSI-GAT: Semantic Similarity-Based Interaction Graph Attention Network for Knowledge Graph Completion Graph Neural Networks (GNNs) show great power in Knowledge Graph Completion (KGC) as they can handle non-Euclidean graph structures and do not depend on the specific shape or topology of the graph. However, many current GNN-based KGC models have difficulty in effectively capturing and utilizing the substantial structure and global semantic information in Knowledge Graphs (KGs). For more effective use of GNN for KGC, we innovatively propose the Semantic Similarity-based Interaction Graph Atte",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W7200700723",
+          "title": "Methodology for resolving legal conflicts when reusing software artifacts generated by artificial intelligence",
+          "publication_year": 2023,
+          "rule_match": false,
+          "text_excerpt": "Methodology for resolving legal conflicts when reusing software artifacts generated by artificial intelligence \u0420\u043e\u0431\u043e\u0442\u0430 \u043f\u0443\u0431\u043b\u0456\u043a\u0443\u0454\u0442\u044c\u0441\u044f \u0437\u0433\u0456\u0434\u043d\u043e \u043d\u0430\u043a\u0430\u0437\u0443 \u0420\u0435\u043a\u0442\u043e\u0440\u0430 \u041d\u0410\u0423 \u0432\u0456\u0434 27.05.2021 \u0440. \u2116311/\u043e\u0434 \u00ab\u041f\u0440\u043e \u0440\u043e\u0437\u043c\u0456\u0449\u0435\u043d\u043d\u044f \u043a\u0432\u0430\u043b\u0456\u0444\u0456\u043a\u0430\u0446\u0456\u0439\u043d\u0438\u0445 \u0440\u043e\u0431\u0456\u0442 \u0437\u0434\u043e\u0431\u0443\u0432\u0430\u0447\u0456\u0432 \u0432\u0438\u0449\u043e\u0457 \u043e\u0441\u0432\u0456\u0442\u0438 \u0432 \u0440\u0435\u043f\u043e\u0437\u0438\u0442\u043e\u0440\u0456\u0457 \u0443\u043d\u0456\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u0443\u00bb. \u043a.\u0442.\u043d. \u0425\u043e\u0434\u0430\u043a\u043e\u0432 \u0414\u0430\u043d\u0456\u0456\u043b \u0412\u0456\u043a\u0442\u043e\u0440\u043e\u0432\u0438\u0447",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4404350805",
+          "title": "CleaR: Towards Robust and Generalized Parameter-Efficient Fine-Tuning for Noisy Label Learning",
+          "publication_year": 2024,
+          "rule_match": false,
+          "text_excerpt": "CleaR: Towards Robust and Generalized Parameter-Efficient Fine-Tuning for Noisy Label Learning Parameter-efficient fine-tuning (PEFT) has enabled the efficient optimization of cumbersome language models in real-world settings. However, as datasets in such environments often contain noisy labels that adversely affect performance, PEFT methods are inevitably exposed to noisy labels. Despite this challenge, the adaptability of PEFT to noisy environments remains underexplored. To bridge this gap, we investigate various PEFT methods under noisy labels. Interestingly, our findings reveal that PEFT h",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4385775261",
+          "title": "Testing GPT-4 with Wolfram Alpha and Code Interpreter plug-ins on math and science problems",
+          "publication_year": 2023,
+          "rule_match": false,
+          "text_excerpt": "Testing GPT-4 with Wolfram Alpha and Code Interpreter plug-ins on math and science problems This report describes a test of the large language model GPT-4 with the Wolfram Alpha and the Code Interpreter plug-ins on 105 original problems in science and math, at the high school and college levels, carried out in June-August 2023. Our tests suggest that the plug-ins significantly enhance GPT's ability to solve these problems. Having said that, there are still often \"interface\" failures; that is, GPT often has trouble formulating problems in a way that elicits useful answers from the plug-ins. Fix",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4361302950",
+          "title": "One-shot learning Batak Toba character recognition using siamese neural network",
+          "publication_year": 2023,
+          "rule_match": false,
+          "text_excerpt": "One-shot learning Batak Toba character recognition using siamese neural network Siamese neural network (SINN) is an image processing model that compares the scores of two patterns. The SINN algorithm is a combination of the use of the double convolutional neural network (CNN) algorithm. By combined SINN with a one-shot learning algorithm, we can build an image model without requiring thousands of images for training. The test results from the SINN algorithm and one-shot learning show that this process was successful in matching the two data but was unable to produce labels from the data being ",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4414068472",
+          "title": "Ai-Driven Personalization of Power System Learning Modules Using Student Personas based on Behavioral Analysis of Grid Performance",
+          "publication_year": 2025,
+          "rule_match": false,
+          "text_excerpt": "Ai-Driven Personalization of Power System Learning Modules Using Student Personas based on Behavioral Analysis of Grid Performance The current advancement of artificial intelligence in educational applications has led to the emergence of previously unexplored possibilities in personalised learning experiences, specifically due to Large Language Models (LLMs). Most uses of LLMs in education have not been rigorously tested with statistical models to establish the extent to which they have been effective in making learners more adaptable. This work examines the use of statistical models of studen",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4403295581",
+          "title": "A Novel Prediction Technique for Federated Learning",
+          "publication_year": 2024,
+          "rule_match": false,
+          "text_excerpt": "A Novel Prediction Technique for Federated Learning Researchers have studied how to improve Federated Learning (FL) in various areas, such as statistical and system heterogeneity, communication cost, and privacy. So far, most of the proposed solutions are either very tied to the application context or complex to be broadly reproduced in real-life applications involving humans. Developing modular solutions that can be leveraged by the vast majority of FL structures and are independent of the application people use is the new research direction opened by this paper. In this work, we propose a pl",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4403985278",
+          "title": "Pioneering Granularity: Advancing Native Language Identification in Ultra-Short EAP Texts",
+          "publication_year": 2024,
+          "rule_match": false,
+          "text_excerpt": "Pioneering Granularity: Advancing Native Language Identification in Ultra-Short EAP Texts This study addresses the challenge of Native Language Identification (NLI) in ultra-short English for Academic Purposes (EAP) texts by proposing an innovative two-stage recognition method. Conventional views suggest that ultra-short texts lack sufficient linguistic features for effective NLI. However, we have found that even in such brief texts, subtle linguistic cues\u2014such as syntactic structures, lexical choices, and grammatical errors\u2014can still reveal the author\u2019s native language background. Our approac",
+          "manual_judgment": null,
+          "manual_notes": null
+        }
+      ]
+    },
+    "retrieval_augmented_generation": {
+      "population_positive": 4,
+      "population_negative": 996,
+      "positive_candidates": 4,
+      "negative_candidates": 10,
+      "candidates": [
+        {
+          "work_id": "https://openalex.org/W7117899060",
+          "title": "Unifying Knowledge in Agentic LLMs: Concepts, Methods, and Recent Advancements",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "Unifying Knowledge in Agentic LLMs: Concepts, Methods, and Recent Advancements Large language models have demonstrated remarkable capabilities in text generation and problem solving, yet they continue to face fundamental challenges such as hallucination, lack of factual grounding, and limited reasoning reliability. The core of these issues lies the question of how LLMs acquire and use knowledge. While internal knowledge embedded in model parameters enables impressive generalization, it is often insu!cient for up-to-date or domain-speci''c tasks. External knowledge integration, such as retrieva",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4415008298",
+          "title": "LLM-Enhanced Semantic Text Segmentation",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "LLM-Enhanced Semantic Text Segmentation This study investigates semantic text segmentation enhanced by large language model (LLM) embeddings. We assess how effectively embeddings capture semantic coherence and topic closure by integrating them into both classical clustering algorithms and a modified graph-based methods. In addition, we propose a simple magnetic clustering algorithm as a lightweight baseline. Experiments are conducted across multiple datasets and embedding models, with segmentation quality evaluated using the boundary segmentation metric. Results demonstrate that LLM embeddings",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4414855245",
+          "title": "Spa-VLM: Stealthy Poisoning Attacks on RAG-based VLM",
+          "publication_year": 2025,
+          "rule_match": true,
+          "text_excerpt": "Spa-VLM: Stealthy Poisoning Attacks on RAG-based VLM With the rapid development of the Vision-Language Model (VLM), significant progress has been made in Visual Question Answering (VQA) tasks. However, existing VLM often generate inaccurate answers due to a lack of up-to-date knowledge. To address this issue, recent research has introduced Retrieval-Augmented Generation (RAG) techniques, commonly used in Large Language Models (LLM), into VLM, incorporating external multi-modal knowledge to enhance the accuracy and practicality of VLM systems. Nevertheless, the RAG in LLM may be susceptible to ",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4403752879",
+          "title": "SMART-RAG: Selection using Determinantal Matrices for Augmented Retrieval",
+          "publication_year": 2024,
+          "rule_match": true,
+          "text_excerpt": "SMART-RAG: Selection using Determinantal Matrices for Augmented Retrieval Retrieval-Augmented Generation (RAG) has greatly improved large language models (LLMs) by enabling them to generate accurate, contextually grounded responses through the integration of external information. However, conventional RAG approaches, which prioritize top-ranked documents based solely on query-context relevance, often introduce redundancy and conflicting information. This issue is particularly evident in unsupervised retrieval settings, where there are no mechanisms to effectively mitigate these problems, leadi",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4310074172",
+          "title": "Parallel Multiobjective Multiverse Optimizer for Path Planning of Unmanned Aerial Vehicles in a Dynamic Environment with Moving Obstacles",
+          "publication_year": 2022,
+          "rule_match": false,
+          "text_excerpt": "Parallel Multiobjective Multiverse Optimizer for Path Planning of Unmanned Aerial Vehicles in a Dynamic Environment with Moving Obstacles Path planning with collision avoidance for unmanned aerial vehicles (UAVs) in environments with moving obstacles is a complex process of navigation, often considered a hard optimization problem. Ordinary resolution algorithms may fail to provide flyable and collision-free paths under the time-consumption constraints required by the dynamic 3D environment. In this paper, a new parallel multiobjective multiverse optimizer (PMOMVO) is proposed and successfully ",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4407933256",
+          "title": "Predicting Microvascular Invasion and Early Recurrence in Hepatocellular Carcinoma Using DeepLab V3+ Segmentation of Multiregional MR Habitat Images",
+          "publication_year": 2025,
+          "rule_match": false,
+          "text_excerpt": "Predicting Microvascular Invasion and Early Recurrence in Hepatocellular Carcinoma Using DeepLab V3+ Segmentation of Multiregional MR Habitat Images RATIONALE AND OBJECTIVES: Accurate identification of microvascular invasion (MVI) in hepatocellular carcinoma (HCC) is crucial for treatment and prognosis. Single-modality and feature fusion models using manual segmentation fail to provide insights into MVI. This study aims to develop a DeepLab V3+ model for automated segmentation of HCC magnetic resonance (MR) images and a decision fusion model to predict MVI and early recurrence (ER). MATERIALS ",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W7117741813",
+          "title": "Multi-Track Multimodal Learning on iMiGUE: Micro-Gesture and Emotion Recognition",
+          "publication_year": 2025,
+          "rule_match": false,
+          "text_excerpt": "Multi-Track Multimodal Learning on iMiGUE: Micro-Gesture and Emotion Recognition Micro-gesture recognition and behavior-based emotion prediction are both highly challenging tasks that require modeling subtle, fine-grained human behaviors, primarily leveraging video and skeletal pose data. In this work, we present two multimodal frameworks designed to tackle both problems on the iMiGUE dataset. For micro-gesture classification, we explore the complementary strengths of RGB and 3D pose-based representations to capture nuanced spatio-temporal patterns. To comprehensively represent gestures, video",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4226140864",
+          "title": "Natural Language Processing for Improved COVID-19 Characterization: Evidence from More than 350,000 Patients in a Large Integrated Health Care System",
+          "publication_year": 2022,
+          "rule_match": false,
+          "text_excerpt": "Natural Language Processing for Improved COVID-19 Characterization: Evidence from More than 350,000 Patients in a Large Integrated Health Care System",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4417525336",
+          "title": "From precision to perception: Human-in-the-loop evaluation of keyword extraction for internet-scale contextual advertising",
+          "publication_year": 2025,
+          "rule_match": false,
+          "text_excerpt": "From precision to perception: Human-in-the-loop evaluation of keyword extraction for internet-scale contextual advertising Keyword extraction is a foundational task in natural language processing, underpinning countless real-world applications. One of these is contextual advertising, where keywords help predict the topical congruence between ads and their surrounding media contexts to enhance advertising effectiveness. Recent advances in artificial intelligence have improved keyword extraction capabilities but also introduced concerns about computational cost. Moreover, although the end-user e",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4382559927",
+          "title": "Deep Learning-Based Clinical Wound Image Analysis Using a Mask R-CNN Architecture",
+          "publication_year": 2023,
+          "rule_match": false,
+          "text_excerpt": "Deep Learning-Based Clinical Wound Image Analysis Using a Mask R-CNN Architecture",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4410112307",
+          "title": "Flexible Moment-Invariant Bases from Irreducible Tensors",
+          "publication_year": 2025,
+          "rule_match": false,
+          "text_excerpt": "Flexible Moment-Invariant Bases from Irreducible Tensors",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4411249118",
+          "title": "Differentially private synthetic data generation for robust information fusion",
+          "publication_year": 2025,
+          "rule_match": false,
+          "text_excerpt": "Differentially private synthetic data generation for robust information fusion",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W4414141620",
+          "title": "Improved YOLOv8s-Based Detection for Lifting Hooks and Safety Latches",
+          "publication_year": 2025,
+          "rule_match": false,
+          "text_excerpt": "Improved YOLOv8s-Based Detection for Lifting Hooks and Safety Latches Lifting hooks equipped with safety latches are critical terminal components of lifting machinery. The safety condition of this component is a crucial factor in preventing load dislodgement during lifting operations. To achieve intelligent monitoring of the hook and the safety latch, precise identification of these components is a crucial initial step. In this study, we propose an improved YOLOv8s detection model called YOLO-HOOK. To reduce computational complexity while simultaneously maintaining precision, the model incorpo",
+          "manual_judgment": null,
+          "manual_notes": null
+        },
+        {
+          "work_id": "https://openalex.org/W3016654709",
+          "title": "Computation of grey level co-occurrence matrix (GLCM) attributes in single and multiple directions",
+          "publication_year": 2020,
+          "rule_match": false,
+          "text_excerpt": "Computation of grey level co-occurrence matrix (GLCM) attributes in single and multiple directions Preview this article: Computation of grey level co-occurrence matrix (GLCM) attributes in single and multiple directions, Page 1 of 1 < Previous page | Next page > /docserver/preview/fulltext/fb/38/3/fb2020019-1.gif",
+          "manual_judgment": null,
+          "manual_notes": null
+        }
+      ]
+    }
+  },
+  "source_jsonl": "data/interim/pilot_20261019T024131Z/works.jsonl",
+  "source_sha256": "a759e7d54121a4126e7087523a7469c8b9c99b0269b1efcdde5da1354d37b5f4"
+}

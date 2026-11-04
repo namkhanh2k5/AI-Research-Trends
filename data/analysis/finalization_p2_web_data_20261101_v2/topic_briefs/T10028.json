@@ -1,0 +1,95 @@
+{
+  "topic_id": "T10028",
+  "official_name": "Topic Modeling",
+  "official_description": "This cluster of papers covers a wide range of advancements in natural language processing, including neural network architectures, word representation models, machine translation techniques, text classification algorithms, semantic similarity measures, named entity recognition methods, pretrained language models, sequence-to-sequence learning approaches, topic modeling strategies, and information retrieval systems.",
+  "parent_subfield": "1702",
+  "scope_status": "in",
+  "sample_primary_topic_works": 442,
+  "sample_any_topic_works": 1040,
+  "sample_year_counts": {
+    "2020": 41,
+    "2021": 48,
+    "2022": 40,
+    "2023": 61,
+    "2024": 98,
+    "2025": 154
+  },
+  "sample_citation_median": 1.0,
+  "sample_oa_counts": {
+    "green": 244,
+    "closed": 71,
+    "gold": 50,
+    "diamond": 47,
+    "hybrid": 18,
+    "bronze": 12
+  },
+  "related_native_topics": [
+    {
+      "topic_id": "https://openalex.org/T10181",
+      "shared_sample_works": 496
+    },
+    {
+      "topic_id": "https://openalex.org/T10664",
+      "shared_sample_works": 178
+    },
+    {
+      "topic_id": "https://openalex.org/T11714",
+      "shared_sample_works": 125
+    },
+    {
+      "topic_id": "https://openalex.org/T11307",
+      "shared_sample_works": 109
+    },
+    {
+      "topic_id": "https://openalex.org/T13083",
+      "shared_sample_works": 75
+    }
+  ],
+  "representative_papers": [
+    {
+      "work_id": "https://openalex.org/W7140125810",
+      "title": "A Systematic Literature Review on Application of Text Embedding Techniques in NLP",
+      "publication_date": "2025-12-31",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7220116069",
+      "title": "Research on Knowledge Representation and Reasoning Mechanism of Neural Networks in Medical Question-Answering Systems",
+      "publication_date": "2025-12-31",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7127979424",
+      "title": "METHODS FOR GENERATING PERSONALIZED MARKETING CONTENT USING LARGE LANGUAGE MODELS (LLM)",
+      "publication_date": "2025-12-28",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7117413628",
+      "title": "Building Domain-Specific LLMs Entirely Inside Snowflake",
+      "publication_date": "2025-12-27",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7117851164",
+      "title": "Scaling Unverifiable Rewards: A Case Study on Visual Insights",
+      "publication_date": "2025-12-27",
+      "cited_by_count": 0
+    }
+  ],
+  "representative_rule": "five most recent primary-topic sampled papers; citations break same-date ties",
+  "population_topic_year_counts": {
+    "2020": 2901,
+    "2021": 3242,
+    "2022": 3148,
+    "2023": 4757,
+    "2024": 8419,
+    "2025": 11683
+  },
+  "population_topic_snapshot_utc": "2026-11-01T07:10:37.149293+00:00",
+  "warnings": [
+    "Original 12,000-work sample is not a population estimate",
+    "OpenAlex primary topic is a machine-assigned label, not independently verified ground truth",
+    "Citation counts depend on publication age; representative does not mean best"
+  ]
+}

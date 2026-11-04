@@ -1,0 +1,4 @@
+work_type,sample_works,mean_matched_references,median_matched_references,p90_matched_references,max_matched_references,present_lists,empty_lists,missing_lists
+article,9265,27.9791689153,24,61,440,6703,2562,0
+preprint,2678,9.84540702016,0,38,361,782,1896,0
+review,57,61.701754386,50,119.2,345,44,13,0

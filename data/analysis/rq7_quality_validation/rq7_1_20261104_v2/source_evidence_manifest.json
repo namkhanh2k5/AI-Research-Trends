@@ -1,0 +1,30 @@
+{
+  "source_run": "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1",
+  "captured_at_utc": "2026-11-04T04:38:13+00:00",
+  "baseline_verifier": {
+    "status": "PASS",
+    "selected": 1500,
+    "canonical": 1500,
+    "openalex_batches": 30,
+    "crossref_tasks": 1387,
+    "parquet_tables": 9,
+    "sha256_verified": 1427
+  },
+  "source_sha256": {
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/plan.json": "70a9f8438b0a72c54190d6fad560e5bae04b5eadcb8df0f51d3203f006c9a5e8",
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/cohort.parquet": "4e8e4f59b0ef8c2327d7e4ceaa6daa2434c99d3d2b21ea2856ba469cf602bc89",
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/collection_manifest.json": "4d412d2367187706a90e725ad636b1a9b338bdef64ec8daf950550cf1e11e3b4",
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/processing_manifest.json": "2749bdada242583062bab8c5d9819de333ed1bf0fbce8e7eddddbb2a0372e165",
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/evaluation.json": "2557f114f7b2c174c8658e874ae888f3680f160f0fe2c189e6964fe24d6dafd6",
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/processed/canonical_works.parquet": "eacc05b0bbbc8a88df11665d7444654860430e0e77f9cc73caea323a29afaab9",
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/processed/data_quality_summary.parquet": "a92f1bda81e74baf08ddec5f90033ab44575b998867217dff44d99affc65c0fa",
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/processed/duplicate_audit.parquet": "03b096696e2120643dd1d8e9f03c3e83da42cd4438a2f400ca0d34a8065339ce",
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/processed/field_provenance.parquet": "4bbf5e74c167fc3bc812321a44cf58df93d3b5edcacf7f2c987b462770fb51bf",
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/processed/metadata_conflicts.parquet": "7310cb43dfb6bb803d171af5cb55135c4df9bbb8a16ac500cee7ee9c75b5b05f",
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/processed/missingness_report.parquet": "95a378bdfbea03aa8c9845c710d70740f1a69efcce18598f2453b2deeb6217d0",
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/processed/provider_links.parquet": "c5bd0678ce66f18cc998bdf683fb2b29f10c6b94967e82368ccc98f7b1723689",
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/processed/provider_records.parquet": "e346d185420c3eba2df3f7a8e89886bf47e611eab2d323a5f252c8ae703ab3a9",
+    "data/analysis/dual_source_etl_pilot/dual_source_rq7_20261104_v1/processed/retraction_status_audit.parquet": "3aa1c63300cb44eca9b342fe98ecfd15f3031421a26310038c6df5290ca7cbb5"
+  },
+  "read_only_source": true
+}

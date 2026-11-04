@@ -1,0 +1,38 @@
+{
+  "selected_cohort": 502,
+  "crossref_successful_distinct_dois": 289,
+  "openalex_sources_fetched": 30,
+  "before": {
+    "records": 502,
+    "resolved_identifier": 250,
+    "rankable_journal_or_conference": 250,
+    "missing_name": 252,
+    "missing_publisher_both_providers": 280,
+    "missing_issn": 252,
+    "ambiguous_or_conflict": 0
+  },
+  "after": {
+    "records": 502,
+    "resolved_identifier": 251,
+    "rankable_journal_or_conference": 251,
+    "missing_name": 248,
+    "missing_publisher_both_providers": 211,
+    "missing_issn": 249,
+    "ambiguous_or_conflict": 0
+  },
+  "source_api_publisher_recovered": 0,
+  "crossref_publisher_available_where_local_missing": 69,
+  "identity_conflicts": 0,
+  "issn_conflicts": 0,
+  "type_conflicts": 0,
+  "publication_year_conflicts": 39,
+  "duplicate_work_id_records_resolved": 33,
+  "all_historical_links": 11506,
+  "canonical_venues": 3230,
+  "venue_types": {
+    "journal": 3220,
+    "ambiguous": 1,
+    "conference": 9
+  },
+  "correctness_status": "NOT VERIFIED: no independent manual venue review"
+}

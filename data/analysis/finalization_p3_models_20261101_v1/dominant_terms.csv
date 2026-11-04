@@ -1,0 +1,141 @@
+topic_id,rank,term,coefficient
+https://openalex.org/T10028,1,bert,2.0359649415051813
+https://openalex.org/T10028,2,entity,1.776320372103313
+https://openalex.org/T10028,3,text,1.3565843150897952
+https://openalex.org/T10028,4,language models,1.3411203990495384
+https://openalex.org/T10028,5,language,1.31818447890505
+https://openalex.org/T10028,6,ner,1.1982894039916259
+https://openalex.org/T10028,7,summarization,1.1891001739520801
+https://openalex.org/T10028,8,gpt,1.1453645960286434
+https://openalex.org/T10028,9,sentence,1.0531412569070835
+https://openalex.org/T10028,10,models,1.0393672558977485
+https://openalex.org/T10036,1,object detection,1.9577600368740329
+https://openalex.org/T10036,2,object,1.9517490777856226
+https://openalex.org/T10036,3,detection,1.6814127378988981
+https://openalex.org/T10036,4,accuracy,1.5071559879095249
+https://openalex.org/T10036,5,cnn,1.2573345827779199
+https://openalex.org/T10036,6,vision,1.1868989679276951
+https://openalex.org/T10036,7,semantic segmentation,1.1760435922090176
+https://openalex.org/T10036,8,quantization,1.151153503290274
+https://openalex.org/T10036,9,yolo,1.130557467455663
+https://openalex.org/T10036,10,species,1.1022072328538488
+https://openalex.org/T10052,1,segmentation,3.4315616819657584
+https://openalex.org/T10052,2,segmentation of,1.4179886880675445
+https://openalex.org/T10052,3,image segmentation,1.3249146033478743
+https://openalex.org/T10052,4,mri,1.3065709465579394
+https://openalex.org/T10052,5,brain,1.2487527370854596
+https://openalex.org/T10052,6,net,1.1993489960530315
+https://openalex.org/T10052,7,dice,1.1599765749806639
+https://openalex.org/T10052,8,medical,1.1458524732847757
+https://openalex.org/T10052,9,ultrasound,1.1288618302227869
+https://openalex.org/T10052,10,ct,1.1075841964997424
+https://openalex.org/T10100,1,optimization,2.809248968273038
+https://openalex.org/T10100,2,algorithm,1.933907541704529
+https://openalex.org/T10100,3,search,1.4164068735524522
+https://openalex.org/T10100,4,genetic,1.3337758050646704
+https://openalex.org/T10100,5,evolutionary,1.2319372559915518
+https://openalex.org/T10100,6,algorithms,1.2147353565595964
+https://openalex.org/T10100,7,swarm,1.2103255368966601
+https://openalex.org/T10100,8,optimisation,1.2102423281826888
+https://openalex.org/T10100,9,pso,1.13486855284731
+https://openalex.org/T10100,10,population,1.0449921138463965
+https://openalex.org/T10181,1,translation,2.384931401120585
+https://openalex.org/T10181,2,machine translation,1.9152231637440291
+https://openalex.org/T10181,3,language,1.9106485386833554
+https://openalex.org/T10181,4,corpus,1.66330248433478
+https://openalex.org/T10181,5,linguistic,1.2798156071890257
+https://openalex.org/T10181,6,tagging,1.1129140098090067
+https://openalex.org/T10181,7,neural machine,1.0691138218583525
+https://openalex.org/T10181,8,grammar,1.0329196531440878
+https://openalex.org/T10181,9,word,1.0111590266888721
+https://openalex.org/T10181,10,parsing,0.9754539754256913
+https://openalex.org/T10201,1,speech,5.049167517442382
+https://openalex.org/T10201,2,speaker,2.3889087991645357
+https://openalex.org/T10201,3,speech recognition,2.334193531931119
+https://openalex.org/T10201,4,voice,2.3047186033084435
+https://openalex.org/T10201,5,recognition,1.5592714168526467
+https://openalex.org/T10201,6,audio,1.396287525065171
+https://openalex.org/T10201,7,asr,1.3700889530583884
+https://openalex.org/T10201,8,acoustic,1.3506490477660054
+https://openalex.org/T10201,9,speakers,1.0141953082710191
+https://openalex.org/T10201,10,tts,0.9593150389997346
+https://openalex.org/T10331,1,tracking,4.001195988465912
+https://openalex.org/T10331,2,surveillance,1.6905589162599273
+https://openalex.org/T10331,3,object tracking,1.6200278153805843
+https://openalex.org/T10331,4,person,1.570741434949419
+https://openalex.org/T10331,5,camera,1.4948830608984174
+https://openalex.org/T10331,6,moving,1.494686432425658
+https://openalex.org/T10331,7,re,1.4273181138384885
+https://openalex.org/T10331,8,video,1.4193287064466
+https://openalex.org/T10331,9,cameras,1.2810207747315676
+https://openalex.org/T10331,10,re identification,1.278964971249557
+https://openalex.org/T10462,1,reinforcement learning,3.0630169540688192
+https://openalex.org/T10462,2,reinforcement,3.05009502087944
+https://openalex.org/T10462,3,policy,2.10662924836283
+https://openalex.org/T10462,4,rl,1.9970690910282964
+https://openalex.org/T10462,5,agent,1.5329945687718673
+https://openalex.org/T10462,6,robot,1.4274488585050835
+https://openalex.org/T10462,7,learning,1.3182433848610031
+https://openalex.org/T10462,8,reward,1.2949975725220721
+https://openalex.org/T10462,9,environment,1.1964174590153542
+https://openalex.org/T10462,10,robots,1.1268925163082255
+https://openalex.org/T10664,1,sentiment,4.0294456081989285
+https://openalex.org/T10664,2,sentiment analysis,2.4921794420950336
+https://openalex.org/T10664,3,twitter,1.6623392852935117
+https://openalex.org/T10664,4,analysis,1.5025043785021601
+https://openalex.org/T10664,5,opinion,1.3604125899412374
+https://openalex.org/T10664,6,reviews,1.2911091656189477
+https://openalex.org/T10664,7,tweets,1.2064733745487377
+https://openalex.org/T10664,8,emotional,1.1322099790060323
+https://openalex.org/T10664,9,media,1.1108203070311395
+https://openalex.org/T10664,10,emotion,1.1041895047573884
+https://openalex.org/T10775,1,generative,2.573236719768241
+https://openalex.org/T10775,2,gan,2.14823234424205
+https://openalex.org/T10775,3,image,1.9770076595352044
+https://openalex.org/T10775,4,style,1.7659224622883842
+https://openalex.org/T10775,5,generative adversarial,1.6846176113031766
+https://openalex.org/T10775,6,generation,1.650233083907013
+https://openalex.org/T10775,7,inpainting,1.6132108384475565
+https://openalex.org/T10775,8,gans,1.5901064375915082
+https://openalex.org/T10775,9,diffusion,1.587286597236486
+https://openalex.org/T10775,10,diffusion models,1.35670166204338
+https://openalex.org/T10812,1,action,3.6111834116030317
+https://openalex.org/T10812,2,pose,2.441308972703793
+https://openalex.org/T10812,3,action recognition,2.2387774703549352
+https://openalex.org/T10812,4,human,1.9453056286904677
+https://openalex.org/T10812,5,pose estimation,1.907364856668802
+https://openalex.org/T10812,6,video,1.6833659456508014
+https://openalex.org/T10812,7,recognition,1.5643046556154268
+https://openalex.org/T10812,8,temporal,1.3441721526095074
+https://openalex.org/T10812,9,videos,1.2983451511011392
+https://openalex.org/T10812,10,human pose,1.2243267606272867
+https://openalex.org/T11307,1,shot,1.9905925322752323
+https://openalex.org/T11307,2,few shot,1.9803174202421459
+https://openalex.org/T11307,3,domain,1.951743856511315
+https://openalex.org/T11307,4,adaptation,1.9337298085010952
+https://openalex.org/T11307,5,few,1.7124410501053196
+https://openalex.org/T11307,6,domain adaptation,1.527789756498442
+https://openalex.org/T11307,7,shot learning,1.4519979622036723
+https://openalex.org/T11307,8,learning,1.319594951763394
+https://openalex.org/T11307,9,generalization,1.2955105271961354
+https://openalex.org/T11307,10,forgetting,1.124707822000026
+https://openalex.org/T11689,1,attacks,3.4774316489932025
+https://openalex.org/T11689,2,adversarial,3.4072740852660233
+https://openalex.org/T11689,3,attack,2.7618922170481723
+https://openalex.org/T11689,4,robustness,1.8623275563085229
+https://openalex.org/T11689,5,uncertainty,1.5846751469145544
+https://openalex.org/T11689,6,adversarial attacks,1.4459046432629963
+https://openalex.org/T11689,7,adversarial examples,1.3833720477994094
+https://openalex.org/T11689,8,against,1.2926239500505583
+https://openalex.org/T11689,9,examples,1.2616488542723638
+https://openalex.org/T11689,10,perturbations,1.2263192519047512
+https://openalex.org/T12026,1,explanations,2.811524559846595
+https://openalex.org/T12026,2,explainable,2.605256632036611
+https://openalex.org/T12026,3,explanation,2.402694470319727
+https://openalex.org/T12026,4,interpretability,2.401842671742157
+https://openalex.org/T12026,5,interpretable,1.724725378611579
+https://openalex.org/T12026,6,explainability,1.7099114384691396
+https://openalex.org/T12026,7,xai,1.467145885952867
+https://openalex.org/T12026,8,ai,1.339957909059756
+https://openalex.org/T12026,9,explaining,1.2160161000878695
+https://openalex.org/T12026,10,decision,1.1814513800734632

@@ -1,0 +1,95 @@
+{
+  "topic_id": "T10775",
+  "official_name": "Generative Adversarial Networks and Image Synthesis",
+  "official_description": "This cluster of papers focuses on the application of Generative Adversarial Networks (GANs) in image processing, including image synthesis, style transfer, representation learning, and unsupervised learning. The papers cover various techniques such as image inpainting, texture synthesis, and conditional generative models using deep learning and neural networks.",
+  "parent_subfield": "1707",
+  "scope_status": "in",
+  "sample_primary_topic_works": 263,
+  "sample_any_topic_works": 447,
+  "sample_year_counts": {
+    "2020": 27,
+    "2021": 23,
+    "2022": 31,
+    "2023": 42,
+    "2024": 64,
+    "2025": 76
+  },
+  "sample_citation_median": 1.0,
+  "sample_oa_counts": {
+    "green": 152,
+    "closed": 43,
+    "gold": 34,
+    "diamond": 15,
+    "hybrid": 10,
+    "bronze": 9
+  },
+  "related_native_topics": [
+    {
+      "topic_id": "https://openalex.org/T10036",
+      "shared_sample_works": 123
+    },
+    {
+      "topic_id": "https://openalex.org/T12357",
+      "shared_sample_works": 82
+    },
+    {
+      "topic_id": "https://openalex.org/T11714",
+      "shared_sample_works": 76
+    },
+    {
+      "topic_id": "https://openalex.org/T11105",
+      "shared_sample_works": 68
+    },
+    {
+      "topic_id": "https://openalex.org/T11307",
+      "shared_sample_works": 56
+    }
+  ],
+  "representative_papers": [
+    {
+      "work_id": "https://openalex.org/W7215306924",
+      "title": "Создание персонализированного новогоднего контента с сохранением черт лица в Perplexity AI",
+      "publication_date": "2025-12-29",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7117112295",
+      "title": "OraGAN: a deep learning based model for restoring Oracle Bone Script Images",
+      "publication_date": "2025-12-24",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7128490449",
+      "title": "Research on the Application of Artificial Intelligence Algorithms in Image Content Creation in the Environment of Digital Transformation of Film Industry",
+      "publication_date": "2025-12-24",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W4417297113",
+      "title": "OmniView: An All-Seeing Diffusion Model for 3D and 4D View Synthesis",
+      "publication_date": "2025-12-11",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W4417035289",
+      "title": "Highly Efficient Test-Time Scaling for T2I Diffusion Models with Text Embedding Perturbation",
+      "publication_date": "2025-12-03",
+      "cited_by_count": 0
+    }
+  ],
+  "representative_rule": "five most recent primary-topic sampled papers; citations break same-date ties",
+  "population_topic_year_counts": {
+    "2020": 1526,
+    "2021": 1785,
+    "2022": 1842,
+    "2023": 2824,
+    "2024": 3986,
+    "2025": 5693
+  },
+  "population_topic_snapshot_utc": "2026-11-01T07:10:38.894275+00:00",
+  "warnings": [
+    "Original 12,000-work sample is not a population estimate",
+    "OpenAlex primary topic is a machine-assigned label, not independently verified ground truth",
+    "Citation counts depend on publication age; representative does not mean best"
+  ]
+}

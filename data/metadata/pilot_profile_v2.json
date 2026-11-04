@@ -1,0 +1,507 @@
+{
+  "schema_version": 2,
+  "profiled_at_utc": "2026-10-19T03:05:51Z",
+  "source_jsonl": "data/interim/pilot_20261019T024131Z/works.jsonl",
+  "source_sha256": "a759e7d54121a4126e7087523a7469c8b9c99b0269b1efcdde5da1354d37b5f4",
+  "records": 1000,
+  "unique_canonical_work_ids": 1000,
+  "duplicate_canonical_work_ids": 0,
+  "primary_corpus_membership": {
+    "matching_records": 1000,
+    "violating_records": 0,
+    "definition": "publication years 2020-2025; types article/review/preprint; primary subfield 1702/1707"
+  },
+  "publication_year": {
+    "2020": 151,
+    "2021": 128,
+    "2022": 131,
+    "2023": 147,
+    "2024": 175,
+    "2025": 268
+  },
+  "work_type": {
+    "preprint": 234,
+    "article": 765,
+    "review": 1
+  },
+  "language_available_count": 948,
+  "language_missing_count": 52,
+  "language_count": {
+    "en": 879,
+    "id": 16,
+    "es": 7,
+    "ru": 7,
+    "ja": 6,
+    "ar": 6,
+    "pt": 4,
+    "tr": 4,
+    "de": 4,
+    "ko": 3,
+    "uk": 3,
+    "zh": 2,
+    "sl": 1,
+    "fr": 1,
+    "ua": 1,
+    "fa": 1,
+    "pl": 1,
+    "el": 1,
+    "nl": 1
+  },
+  "citation_distribution": {
+    "available_count": 1000,
+    "missing_count": 0,
+    "zero_count": 377,
+    "minimum": 0,
+    "median": 1.0,
+    "mean": 9.633,
+    "p90_linear": 20.0,
+    "maximum": 894
+  },
+  "primary_subfield": {
+    "1702": 645,
+    "1707": 355
+  },
+  "missing_count": {
+    "doi": 90,
+    "title": 0,
+    "abstract_inverted_index": 194,
+    "primary_topic": 0,
+    "topics": 0,
+    "fwci": 234,
+    "cited_by_count": 0,
+    "language": 52,
+    "open_access": 0,
+    "authorships": 5
+  },
+  "missing_authorship_institution_count": 252,
+  "missing_authorship_country_count": 253,
+  "missingness_by_publication_year": {
+    "2020": {
+      "records": 151,
+      "missing": {
+        "abstract": {
+          "count": 39,
+          "rate": 0.2582781456953642
+        },
+        "fwci": {
+          "count": 25,
+          "rate": 0.16556291390728478
+        },
+        "institution": {
+          "count": 50,
+          "rate": 0.33112582781456956
+        },
+        "country": {
+          "count": 50,
+          "rate": 0.33112582781456956
+        }
+      },
+      "retracted_count": 0
+    },
+    "2021": {
+      "records": 128,
+      "missing": {
+        "abstract": {
+          "count": 29,
+          "rate": 0.2265625
+        },
+        "fwci": {
+          "count": 34,
+          "rate": 0.265625
+        },
+        "institution": {
+          "count": 34,
+          "rate": 0.265625
+        },
+        "country": {
+          "count": 34,
+          "rate": 0.265625
+        }
+      },
+      "retracted_count": 1
+    },
+    "2022": {
+      "records": 131,
+      "missing": {
+        "abstract": {
+          "count": 25,
+          "rate": 0.19083969465648856
+        },
+        "fwci": {
+          "count": 24,
+          "rate": 0.183206106870229
+        },
+        "institution": {
+          "count": 28,
+          "rate": 0.21374045801526717
+        },
+        "country": {
+          "count": 28,
+          "rate": 0.21374045801526717
+        }
+      },
+      "retracted_count": 2
+    },
+    "2023": {
+      "records": 147,
+      "missing": {
+        "abstract": {
+          "count": 35,
+          "rate": 0.23809523809523808
+        },
+        "fwci": {
+          "count": 40,
+          "rate": 0.272108843537415
+        },
+        "institution": {
+          "count": 36,
+          "rate": 0.24489795918367346
+        },
+        "country": {
+          "count": 36,
+          "rate": 0.24489795918367346
+        }
+      },
+      "retracted_count": 2
+    },
+    "2024": {
+      "records": 175,
+      "missing": {
+        "abstract": {
+          "count": 20,
+          "rate": 0.11428571428571428
+        },
+        "fwci": {
+          "count": 39,
+          "rate": 0.22285714285714286
+        },
+        "institution": {
+          "count": 28,
+          "rate": 0.16
+        },
+        "country": {
+          "count": 28,
+          "rate": 0.16
+        }
+      },
+      "retracted_count": 1
+    },
+    "2025": {
+      "records": 268,
+      "missing": {
+        "abstract": {
+          "count": 46,
+          "rate": 0.17164179104477612
+        },
+        "fwci": {
+          "count": 72,
+          "rate": 0.26865671641791045
+        },
+        "institution": {
+          "count": 76,
+          "rate": 0.2835820895522388
+        },
+        "country": {
+          "count": 77,
+          "rate": 0.2873134328358209
+        }
+      },
+      "retracted_count": 0
+    }
+  },
+  "missingness_by_work_type": {
+    "article": {
+      "records": 765,
+      "missing": {
+        "abstract": {
+          "count": 164,
+          "rate": 0.21437908496732025
+        },
+        "fwci": {
+          "count": 0,
+          "rate": 0.0
+        },
+        "institution": {
+          "count": 162,
+          "rate": 0.21176470588235294
+        },
+        "country": {
+          "count": 162,
+          "rate": 0.21176470588235294
+        }
+      },
+      "retracted_count": 6
+    },
+    "preprint": {
+      "records": 234,
+      "missing": {
+        "abstract": {
+          "count": 30,
+          "rate": 0.1282051282051282
+        },
+        "fwci": {
+          "count": 234,
+          "rate": 1.0
+        },
+        "institution": {
+          "count": 89,
+          "rate": 0.3803418803418803
+        },
+        "country": {
+          "count": 90,
+          "rate": 0.38461538461538464
+        }
+      },
+      "retracted_count": 0
+    },
+    "review": {
+      "records": 1,
+      "missing": {
+        "abstract": {
+          "count": 0,
+          "rate": 0.0
+        },
+        "fwci": {
+          "count": 0,
+          "rate": 0.0
+        },
+        "institution": {
+          "count": 1,
+          "rate": 1.0
+        },
+        "country": {
+          "count": 1,
+          "rate": 1.0
+        }
+      },
+      "retracted_count": 0
+    }
+  },
+  "missingness_by_research_category": {
+    "custom_emerging:large_language_models": {
+      "records": 53,
+      "missing": {
+        "abstract": {
+          "count": 3,
+          "rate": 0.05660377358490566
+        },
+        "fwci": {
+          "count": 33,
+          "rate": 0.6226415094339622
+        },
+        "institution": {
+          "count": 22,
+          "rate": 0.41509433962264153
+        },
+        "country": {
+          "count": 22,
+          "rate": 0.41509433962264153
+        }
+      },
+      "retracted_count": 0
+    },
+    "custom_emerging:multimodal_ai": {
+      "records": 15,
+      "missing": {
+        "abstract": {
+          "count": 0,
+          "rate": 0.0
+        },
+        "fwci": {
+          "count": 11,
+          "rate": 0.7333333333333333
+        },
+        "institution": {
+          "count": 7,
+          "rate": 0.4666666666666667
+        },
+        "country": {
+          "count": 7,
+          "rate": 0.4666666666666667
+        }
+      },
+      "retracted_count": 0
+    },
+    "custom_emerging:retrieval_augmented_generation": {
+      "records": 4,
+      "missing": {
+        "abstract": {
+          "count": 0,
+          "rate": 0.0
+        },
+        "fwci": {
+          "count": 2,
+          "rate": 0.5
+        },
+        "institution": {
+          "count": 1,
+          "rate": 0.25
+        },
+        "country": {
+          "count": 1,
+          "rate": 0.25
+        }
+      },
+      "retracted_count": 0
+    },
+    "openalex_native:computer_vision": {
+      "records": 135,
+      "missing": {
+        "abstract": {
+          "count": 37,
+          "rate": 0.2740740740740741
+        },
+        "fwci": {
+          "count": 33,
+          "rate": 0.24444444444444444
+        },
+        "institution": {
+          "count": 30,
+          "rate": 0.2222222222222222
+        },
+        "country": {
+          "count": 30,
+          "rate": 0.2222222222222222
+        }
+      },
+      "retracted_count": 1
+    },
+    "openalex_native:explainable_ai": {
+      "records": 28,
+      "missing": {
+        "abstract": {
+          "count": 3,
+          "rate": 0.10714285714285714
+        },
+        "fwci": {
+          "count": 13,
+          "rate": 0.4642857142857143
+        },
+        "institution": {
+          "count": 5,
+          "rate": 0.17857142857142858
+        },
+        "country": {
+          "count": 5,
+          "rate": 0.17857142857142858
+        }
+      },
+      "retracted_count": 0
+    },
+    "openalex_native:multimodal_machine_learning_applications": {
+      "records": 39,
+      "missing": {
+        "abstract": {
+          "count": 2,
+          "rate": 0.05128205128205128
+        },
+        "fwci": {
+          "count": 26,
+          "rate": 0.6666666666666666
+        },
+        "institution": {
+          "count": 17,
+          "rate": 0.4358974358974359
+        },
+        "country": {
+          "count": 17,
+          "rate": 0.4358974358974359
+        }
+      },
+      "retracted_count": 0
+    },
+    "openalex_native:natural_language_processing": {
+      "records": 108,
+      "missing": {
+        "abstract": {
+          "count": 13,
+          "rate": 0.12037037037037036
+        },
+        "fwci": {
+          "count": 48,
+          "rate": 0.4444444444444444
+        },
+        "institution": {
+          "count": 33,
+          "rate": 0.3055555555555556
+        },
+        "country": {
+          "count": 33,
+          "rate": 0.3055555555555556
+        }
+      },
+      "retracted_count": 1
+    },
+    "openalex_native:reinforcement_learning": {
+      "records": 47,
+      "missing": {
+        "abstract": {
+          "count": 3,
+          "rate": 0.06382978723404255
+        },
+        "fwci": {
+          "count": 27,
+          "rate": 0.574468085106383
+        },
+        "institution": {
+          "count": 7,
+          "rate": 0.14893617021276595
+        },
+        "country": {
+          "count": 7,
+          "rate": 0.14893617021276595
+        }
+      },
+      "retracted_count": 0
+    }
+  },
+  "oa_status": {
+    "green": 306,
+    "diamond": 149,
+    "gold": 165,
+    "closed": 272,
+    "bronze": 40,
+    "hybrid": 68
+  },
+  "retractions": {
+    "retracted_count": 6,
+    "not_retracted_count": 994,
+    "primary_analysis_included_count": 994,
+    "policy": "Retain and flag retracted works in the canonical analytical table for transparency. Exclude them from primary impact, trend, OA, and collaboration estimates; report their count and run an include-retracted sensitivity check."
+  },
+  "category_match_count": {
+    "openalex_native": {
+      "natural_language_processing": 108,
+      "explainable_ai": 28,
+      "reinforcement_learning": 47,
+      "computer_vision": 135,
+      "multimodal_machine_learning_applications": 39
+    },
+    "custom_emerging": {
+      "multimodal_ai": 15,
+      "large_language_models": 53,
+      "retrieval_augmented_generation": 4
+    }
+  },
+  "research_category_memberships_per_work": {
+    "openalex_native": {
+      "0": 680,
+      "1": 284,
+      "2": 35,
+      "3": 1
+    },
+    "custom_emerging": {
+      "0": 935,
+      "1": 59,
+      "2": 5,
+      "3": 1
+    }
+  },
+  "notes": [
+    "Native-topic and custom-text counts are separate, non-equivalent layers.",
+    "Counts overlap within each layer and must not be summed.",
+    "Custom text-rule counts are feasibility diagnostics, not classifier truth.",
+    "Missing institution/country means no usable value in nested authorships.",
+    "Retractions remain stored and flagged but are excluded from primary estimates."
+  ]
+}

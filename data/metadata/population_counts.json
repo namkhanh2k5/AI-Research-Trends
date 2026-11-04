@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "retrieved_at_utc": "2026-10-19T02:25:35Z",
+  "run_directory": "data/raw/openalex_aggregates/aggregates_20261019T022531Z",
+  "period_complete_calendar_years": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "category_counts_overlap": true,
+  "warning": "Do not sum category counts; a work can match several categories.",
+  "queries": [
+    {
+      "name": "study_population",
+      "method": "primary_subfield_frame",
+      "query_parameters": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint",
+        "group_by": "publication_year"
+      },
+      "meta_count": 942782,
+      "counts_by_year": {
+        "2025": 232589,
+        "2024": 179144,
+        "2023": 147631,
+        "2021": 129604,
+        "2022": 127946,
+        "2020": 125868
+      },
+      "raw_path": "data/raw/openalex_aggregates/aggregates_20261019T022531Z/study_population.json",
+      "sha256": "923a0db5323b3f908dfed6a7e9505a2e0b4be93f703fac75b99f93b999f8f842"
+    },
+    {
+      "name": "nlp_llm",
+      "method": "overlapping_openalex_topics_within_population_frame",
+      "query_parameters": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,topics.id:T10181|T10028",
+        "group_by": "publication_year"
+      },
+      "meta_count": 92799,
+      "counts_by_year": {
+        "2025": 28460,
+        "2024": 20269,
+        "2023": 13382,
+        "2021": 10512,
+        "2020": 10322,
+        "2022": 9854
+      },
+      "raw_path": "data/raw/openalex_aggregates/aggregates_20261019T022531Z/nlp_llm.json",
+      "sha256": "fd540a012806668d13cadc2c98d83b0ec535a2f887dda9bda09eb920ea9c3e28"
+    },
+    {
+      "name": "computer_vision",
+      "method": "overlapping_openalex_topics_within_population_frame",
+      "query_parameters": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,topics.id:T10036",
+        "group_by": "publication_year"
+      },
+      "meta_count": 142825,
+      "counts_by_year": {
+        "2025": 37249,
+        "2024": 29978,
+        "2023": 23829,
+        "2022": 19420,
+        "2021": 17600,
+        "2020": 14749
+      },
+      "raw_path": "data/raw/openalex_aggregates/aggregates_20261019T022531Z/computer_vision.json",
+      "sha256": "c0b6be579921dc716c067181e064fca171d1e165ab2b3df3789c1d7da2207e59"
+    },
+    {
+      "name": "reinforcement_learning",
+      "method": "overlapping_openalex_topics_within_population_frame",
+      "query_parameters": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,topics.id:T10462",
+        "group_by": "publication_year"
+      },
+      "meta_count": 30594,
+      "counts_by_year": {
+        "2025": 8223,
+        "2024": 5822,
+        "2023": 4697,
+        "2021": 4193,
+        "2022": 3989,
+        "2020": 3670
+      },
+      "raw_path": "data/raw/openalex_aggregates/aggregates_20261019T022531Z/reinforcement_learning.json",
+      "sha256": "95415edbeca69c302f5d84d93fc3f24f88edbea20247489f6e2a06a716f7861b"
+    },
+    {
+      "name": "explainable_ai",
+      "method": "overlapping_openalex_topics_within_population_frame",
+      "query_parameters": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,topics.id:T12026",
+        "group_by": "publication_year"
+      },
+      "meta_count": 18726,
+      "counts_by_year": {
+        "2025": 6341,
+        "2024": 3860,
+        "2023": 2735,
+        "2022": 2208,
+        "2021": 2044,
+        "2020": 1538
+      },
+      "raw_path": "data/raw/openalex_aggregates/aggregates_20261019T022531Z/explainable_ai.json",
+      "sha256": "fd94cf7be04f07e51530d8737cdc5ba38c8114ee02c97753549cb28879f11b88"
+    },
+    {
+      "name": "multimodal_ai",
+      "method": "overlapping_openalex_topics_within_population_frame",
+      "query_parameters": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,topics.id:T11714",
+        "group_by": "publication_year"
+      },
+      "meta_count": 32541,
+      "counts_by_year": {
+        "2025": 12974,
+        "2024": 7977,
+        "2023": 4555,
+        "2022": 2892,
+        "2021": 2343,
+        "2020": 1800
+      },
+      "raw_path": "data/raw/openalex_aggregates/aggregates_20261019T022531Z/multimodal_ai.json",
+      "sha256": "416e3ad3f0848c6c5cb4676c43e7504e57b4fb436c7cb23aed827dd44c74459e"
+    },
+    {
+      "name": "retrieval_augmented_generation",
+      "method": "exact_phrase_title_abstract_within_population_frame",
+      "query_parameters": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint",
+        "search.title_and_abstract": "\"retrieval augmented generation\"",
+        "group_by": "publication_year"
+      },
+      "meta_count": 3013,
+      "counts_by_year": {
+        "2025": 2116,
+        "2024": 813,
+        "2023": 65,
+        "2022": 10,
+        "2021": 8,
+        "2020": 1
+      },
+      "raw_path": "data/raw/openalex_aggregates/aggregates_20261019T022531Z/retrieval_augmented_generation.json",
+      "sha256": "f8de74ed1e44b631d1295ebf0b96a1e9ad37fad85e66973c9aac7b3b7b44580f"
+    }
+  ]
+}

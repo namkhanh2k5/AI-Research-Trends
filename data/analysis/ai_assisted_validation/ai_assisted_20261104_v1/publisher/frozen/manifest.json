@@ -1,0 +1,24 @@
+{
+  "status": "frozen_ai_publisher_assessment_human_pending",
+  "frozen_at_utc": "2026-11-04T06:32:01+00:00",
+  "input_hashes": {
+    "data/analysis/rq7_quality_validation/rq7_1_20261104_v2/review_sheet_s1_publisher.csv": "0c078c617ced7c0d58969aae212e639c83a4885d428bd2d2ddee1fa35f3df943"
+  },
+  "official_page_evidence_sha256": "6bc553176a649b462522d85ca57d1e4b9413f0c92fa21b867ff4e0b10fa08067",
+  "artifacts": {
+    "publisher_ai_assessments": {
+      "path": "data/analysis/ai_assisted_validation/ai_assisted_20261104_v1/publisher/frozen/publisher_ai_assessments.parquet",
+      "rows": 30,
+      "bytes": 16841,
+      "sha256": "77d658cc0c4ce6cce96f5f1d235ce913250cf17245ef84621a7b81f57d1280df"
+    },
+    "publisher_metrics": {
+      "path": "data/analysis/ai_assisted_validation/ai_assisted_20261104_v1/publisher/frozen/publisher_metrics.json",
+      "sha256": "8461540e4e426d27ef356b537f613dcf0b69834dfafbd40abba9fd81db3c7067"
+    }
+  },
+  "direct_get_attempts": 30,
+  "observed_http_transactions": 74,
+  "budget": 120,
+  "human_publisher_adjudication": "PENDING"
+}

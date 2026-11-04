@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "validated_at_utc": "2026-10-19T03:06:48Z",
+  "all_valid": true,
+  "checks": [
+    {
+      "category": "natural_language_processing",
+      "expected": {
+        "id": "T10181",
+        "display_name": "Natural Language Processing Techniques",
+        "description": "This cluster of papers focuses on statistical machine translation, neural machine translation, dependency parsing, word sense disambiguation, and part-of-speech tagging. It also covers topics such as corpus linguistics, syntax-based translation models, multilingual neural machine translation, and language modeling.",
+        "hierarchy": {
+          "subfield": {
+            "id": "1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "3",
+            "display_name": "Physical Sciences"
+          }
+        },
+        "api_evidence": "https://api.openalex.org/topics/T10181"
+      },
+      "actual": {
+        "id": "https://openalex.org/T10181",
+        "display_name": "Natural Language Processing Techniques",
+        "description": "This cluster of papers focuses on statistical machine translation, neural machine translation, dependency parsing, word sense disambiguation, and part-of-speech tagging. It also covers topics such as corpus linguistics, syntax-based translation models, multilingual neural machine translation, and language modeling.",
+        "subfield": {
+          "id": "https://openalex.org/subfields/1702",
+          "display_name": "Artificial Intelligence"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        },
+        "updated_date": "2026-10-18T03:01:31"
+      },
+      "matches": {
+        "id": true,
+        "display_name": true,
+        "subfield_id": true,
+        "description": true,
+        "subfield_hierarchy": true,
+        "field_hierarchy": true,
+        "domain_hierarchy": true
+      },
+      "valid": true
+    },
+    {
+      "category": "natural_language_processing",
+      "expected": {
+        "id": "T10028",
+        "display_name": "Topic Modeling",
+        "description": "This cluster of papers covers a wide range of advancements in natural language processing, including neural network architectures, word representation models, machine translation techniques, text classification algorithms, semantic similarity measures, named entity recognition methods, pretrained language models, sequence-to-sequence learning approaches, topic modeling strategies, and information retrieval systems.",
+        "hierarchy": {
+          "subfield": {
+            "id": "1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "3",
+            "display_name": "Physical Sciences"
+          }
+        },
+        "api_evidence": "https://api.openalex.org/topics/T10028"
+      },
+      "actual": {
+        "id": "https://openalex.org/T10028",
+        "display_name": "Topic Modeling",
+        "description": "This cluster of papers covers a wide range of advancements in natural language processing, including neural network architectures, word representation models, machine translation techniques, text classification algorithms, semantic similarity measures, named entity recognition methods, pretrained language models, sequence-to-sequence learning approaches, topic modeling strategies, and information retrieval systems.",
+        "subfield": {
+          "id": "https://openalex.org/subfields/1702",
+          "display_name": "Artificial Intelligence"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        },
+        "updated_date": "2026-10-18T03:01:31"
+      },
+      "matches": {
+        "id": true,
+        "display_name": true,
+        "subfield_id": true,
+        "description": true,
+        "subfield_hierarchy": true,
+        "field_hierarchy": true,
+        "domain_hierarchy": true
+      },
+      "valid": true
+    },
+    {
+      "category": "computer_vision",
+      "expected": {
+        "id": "T10036",
+        "display_name": "Advanced Neural Network Applications",
+        "description": "This cluster of papers focuses on the application of deep learning, particularly convolutional neural networks, in computer vision tasks such as image recognition, object detection, and semantic segmentation. It covers various neural network architectures, model compression techniques, and their applications in fields like autonomous driving.",
+        "hierarchy": {
+          "subfield": {
+            "id": "1707",
+            "display_name": "Computer Vision and Pattern Recognition"
+          },
+          "field": {
+            "id": "17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "3",
+            "display_name": "Physical Sciences"
+          }
+        },
+        "api_evidence": "https://api.openalex.org/topics/T10036"
+      },
+      "actual": {
+        "id": "https://openalex.org/T10036",
+        "display_name": "Advanced Neural Network Applications",
+        "description": "This cluster of papers focuses on the application of deep learning, particularly convolutional neural networks, in computer vision tasks such as image recognition, object detection, and semantic segmentation. It covers various neural network architectures, model compression techniques, and their applications in fields like autonomous driving.",
+        "subfield": {
+          "id": "https://openalex.org/subfields/1707",
+          "display_name": "Computer Vision and Pattern Recognition"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        },
+        "updated_date": "2026-10-18T03:01:31"
+      },
+      "matches": {
+        "id": true,
+        "display_name": true,
+        "subfield_id": true,
+        "description": true,
+        "subfield_hierarchy": true,
+        "field_hierarchy": true,
+        "domain_hierarchy": true
+      },
+      "valid": true
+    },
+    {
+      "category": "reinforcement_learning",
+      "expected": {
+        "id": "T10462",
+        "display_name": "Reinforcement Learning in Robotics",
+        "description": "This cluster of papers encompasses a wide range of advancements in reinforcement learning algorithms and their applications, including deep learning, neural networks, robotics, autonomous control, policy gradient methods, multi-agent systems, model-based learning, curiosity-driven exploration, and simulation to real-world transfer.",
+        "hierarchy": {
+          "subfield": {
+            "id": "1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "3",
+            "display_name": "Physical Sciences"
+          }
+        },
+        "api_evidence": "https://api.openalex.org/topics/T10462"
+      },
+      "actual": {
+        "id": "https://openalex.org/T10462",
+        "display_name": "Reinforcement Learning in Robotics",
+        "description": "This cluster of papers encompasses a wide range of advancements in reinforcement learning algorithms and their applications, including deep learning, neural networks, robotics, autonomous control, policy gradient methods, multi-agent systems, model-based learning, curiosity-driven exploration, and simulation to real-world transfer.",
+        "subfield": {
+          "id": "https://openalex.org/subfields/1702",
+          "display_name": "Artificial Intelligence"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        },
+        "updated_date": "2026-10-18T03:01:31"
+      },
+      "matches": {
+        "id": true,
+        "display_name": true,
+        "subfield_id": true,
+        "description": true,
+        "subfield_hierarchy": true,
+        "field_hierarchy": true,
+        "domain_hierarchy": true
+      },
+      "valid": true
+    },
+    {
+      "category": "explainable_ai",
+      "expected": {
+        "id": "T12026",
+        "display_name": "Explainable Artificial Intelligence (XAI)",
+        "description": "This cluster of papers focuses on Explainable Artificial Intelligence (XAI) and the development of interpretable models, visual explanations, and responsible machine learning interpretability. It explores concepts, challenges, and opportunities in XAI, including the use of gradient-based localization, understanding deep neural networks, feature importance, and addressing black box models. The papers also discuss the responsibility and ethical considerations in AI.",
+        "hierarchy": {
+          "subfield": {
+            "id": "1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "3",
+            "display_name": "Physical Sciences"
+          }
+        },
+        "api_evidence": "https://api.openalex.org/topics/T12026"
+      },
+      "actual": {
+        "id": "https://openalex.org/T12026",
+        "display_name": "Explainable Artificial Intelligence (XAI)",
+        "description": "This cluster of papers focuses on Explainable Artificial Intelligence (XAI) and the development of interpretable models, visual explanations, and responsible machine learning interpretability. It explores concepts, challenges, and opportunities in XAI, including the use of gradient-based localization, understanding deep neural networks, feature importance, and addressing black box models. The papers also discuss the responsibility and ethical considerations in AI.",
+        "subfield": {
+          "id": "https://openalex.org/subfields/1702",
+          "display_name": "Artificial Intelligence"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        },
+        "updated_date": "2026-10-18T03:01:31"
+      },
+      "matches": {
+        "id": true,
+        "display_name": true,
+        "subfield_id": true,
+        "description": true,
+        "subfield_hierarchy": true,
+        "field_hierarchy": true,
+        "domain_hierarchy": true
+      },
+      "valid": true
+    },
+    {
+      "category": "multimodal_machine_learning_applications",
+      "expected": {
+        "id": "T11714",
+        "display_name": "Multimodal Machine Learning Applications",
+        "description": "This cluster of papers focuses on the development and improvement of visual question answering systems, image captioning techniques, and neural networks for understanding and generating descriptions of images and videos. The research involves semantic reasoning, multimodal fusion, scene graph generation, attention mechanisms, and deep learning approaches to bridge the gap between vision and language.",
+        "hierarchy": {
+          "subfield": {
+            "id": "1707",
+            "display_name": "Computer Vision and Pattern Recognition"
+          },
+          "field": {
+            "id": "17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "3",
+            "display_name": "Physical Sciences"
+          }
+        },
+        "api_evidence": "https://api.openalex.org/topics/T11714"
+      },
+      "actual": {
+        "id": "https://openalex.org/T11714",
+        "display_name": "Multimodal Machine Learning Applications",
+        "description": "This cluster of papers focuses on the development and improvement of visual question answering systems, image captioning techniques, and neural networks for understanding and generating descriptions of images and videos. The research involves semantic reasoning, multimodal fusion, scene graph generation, attention mechanisms, and deep learning approaches to bridge the gap between vision and language.",
+        "subfield": {
+          "id": "https://openalex.org/subfields/1707",
+          "display_name": "Computer Vision and Pattern Recognition"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        },
+        "updated_date": "2026-10-18T03:01:31"
+      },
+      "matches": {
+        "id": true,
+        "display_name": true,
+        "subfield_id": true,
+        "description": true,
+        "subfield_hierarchy": true,
+        "field_hierarchy": true,
+        "domain_hierarchy": true
+      },
+      "valid": true
+    }
+  ]
+}

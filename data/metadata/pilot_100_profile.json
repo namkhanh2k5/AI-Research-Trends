@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "profiled_at_utc": "2026-10-19T02:41:24Z",
+  "source_jsonl": "data/raw/openalex/pilot_20261019T024117Z/works.jsonl",
+  "source_sha256": "29da8f61f47428c2dac88019c47b29b91796ac95002ea618abe266272ed0faac",
+  "records": 100,
+  "unique_canonical_work_ids": 100,
+  "duplicate_canonical_work_ids": 0,
+  "publication_year": {
+    "2020": 15,
+    "2021": 13,
+    "2022": 16,
+    "2023": 15,
+    "2024": 16,
+    "2025": 25
+  },
+  "work_type": {
+    "preprint": 32,
+    "article": 67,
+    "review": 1
+  },
+  "language_available_count": 94,
+  "language_missing_count": 6,
+  "language_count": {
+    "en": 88,
+    "es": 1,
+    "sl": 1,
+    "pt": 1,
+    "ko": 1,
+    "tr": 1,
+    "ru": 1
+  },
+  "citation_distribution": {
+    "available_count": 100,
+    "missing_count": 0,
+    "zero_count": 33,
+    "minimum": 0,
+    "median": 2.0,
+    "mean": 8.31,
+    "p90_linear": 15.300000000000026,
+    "maximum": 101
+  },
+  "primary_subfield": {
+    "1702": 67,
+    "1707": 33
+  },
+  "missing_count": {
+    "doi": 8,
+    "title": 0,
+    "abstract_inverted_index": 16,
+    "primary_topic": 0,
+    "topics": 0,
+    "fwci": 32,
+    "cited_by_count": 0,
+    "language": 6,
+    "open_access": 0,
+    "authorships": 0
+  },
+  "missing_authorship_institution_count": 26,
+  "missing_authorship_country_count": 26,
+  "oa_status": {
+    "green": 40,
+    "diamond": 12,
+    "gold": 17,
+    "closed": 25,
+    "bronze": 4,
+    "hybrid": 2
+  },
+  "is_retracted_count": 0,
+  "category_match_count": {
+    "nlp_llm": {
+      "topic": 12,
+      "text": 5,
+      "union": 15
+    },
+    "computer_vision": {
+      "topic": 19,
+      "text": 6,
+      "union": 19
+    },
+    "reinforcement_learning": {
+      "topic": 6,
+      "text": 9,
+      "union": 10
+    },
+    "explainable_ai": {
+      "topic": 4,
+      "text": 1,
+      "union": 4
+    },
+    "multimodal_ai": {
+      "topic": 2,
+      "text": 2,
+      "union": 3
+    },
+    "retrieval_augmented_generation": {
+      "topic": 0,
+      "text": 0,
+      "union": 0
+    }
+  },
+  "research_category_memberships_per_work": {
+    "0": 57,
+    "1": 36,
+    "2": 6,
+    "3": 1
+  },
+  "notes": [
+    "Category union counts overlap and must not be summed.",
+    "Text-rule counts are feasibility diagnostics, not validated classifier metrics.",
+    "Missing institution/country means no usable value in nested authorships."
+  ]
+}

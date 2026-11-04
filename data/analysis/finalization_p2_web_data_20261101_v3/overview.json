@@ -1,0 +1,10 @@
+{
+  "population_scope": "primary AI/CV subfields 1702/1707, article/review/preprint, 2020\u20132025, non-retracted",
+  "population_counts_source": "verified Phase 4 aggregate series",
+  "detailed_sample_works": 12000,
+  "selected_topics": 14,
+  "sample_citation_median": 2.0,
+  "sample_abstract_missing": 2558,
+  "sample_fwci_missing": 2678,
+  "sample_institution_missing": 2902
+}

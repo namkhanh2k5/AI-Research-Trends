@@ -1,0 +1,95 @@
+{
+  "topic_id": "T11689",
+  "official_name": "Adversarial Robustness in Machine Learning",
+  "official_description": "This cluster of papers focuses on the robustness of deep learning models against adversarial attacks, exploring topics such as adversarial examples, security, uncertainty estimation, defenses, and verification. It delves into the challenges and potential solutions for ensuring the resilience of neural networks in the face of malicious inputs.",
+  "parent_subfield": "1702",
+  "scope_status": "in",
+  "sample_primary_topic_works": 212,
+  "sample_any_topic_works": 382,
+  "sample_year_counts": {
+    "2020": 17,
+    "2021": 27,
+    "2022": 19,
+    "2023": 31,
+    "2024": 50,
+    "2025": 68
+  },
+  "sample_citation_median": 1.0,
+  "sample_oa_counts": {
+    "green": 125,
+    "closed": 44,
+    "gold": 19,
+    "diamond": 12,
+    "hybrid": 8,
+    "bronze": 4
+  },
+  "related_native_topics": [
+    {
+      "topic_id": "https://openalex.org/T10764",
+      "shared_sample_works": 75
+    },
+    {
+      "topic_id": "https://openalex.org/T11424",
+      "shared_sample_works": 74
+    },
+    {
+      "topic_id": "https://openalex.org/T12357",
+      "shared_sample_works": 72
+    },
+    {
+      "topic_id": "https://openalex.org/T10028",
+      "shared_sample_works": 53
+    },
+    {
+      "topic_id": "https://openalex.org/T10036",
+      "shared_sample_works": 45
+    }
+  ],
+  "representative_papers": [
+    {
+      "work_id": "https://openalex.org/W7117414964",
+      "title": "A Unified Taxonomy of High-Entropy Failure Modes in Commercial LLMs and Multimodal LVLMs",
+      "publication_date": "2025-12-27",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7118051499",
+      "title": "Generalized Regularized Evidential Deep Learning Models: Theory and Comprehensive Evaluation",
+      "publication_date": "2025-12-27",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7122412246",
+      "title": "Keamanan Pengenalan Wajah Berbasis Deep Learning: Tinjauan Sistematis Serangan Adversarial dan Strategi Pertahanan (Systematic Literature Review)",
+      "publication_date": "2025-12-27",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7115070224",
+      "title": "FedSelfPlay-Defense: A Federated Adversarial Self-Play Framework for LLM Safety",
+      "publication_date": "2025-12-13",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7108481825",
+      "title": "Adaptive Self-Healing Neural Networks: Dynamic Architecture Reconfiguration at Inference Time",
+      "publication_date": "2025-12-03",
+      "cited_by_count": 0
+    }
+  ],
+  "representative_rule": "five most recent primary-topic sampled papers; citations break same-date ties",
+  "population_topic_year_counts": {
+    "2020": 1568,
+    "2021": 1856,
+    "2022": 1910,
+    "2023": 2495,
+    "2024": 3612,
+    "2025": 5134
+  },
+  "population_topic_snapshot_utc": "2026-11-01T07:10:40.221684+00:00",
+  "warnings": [
+    "Original 12,000-work sample is not a population estimate",
+    "OpenAlex primary topic is a machine-assigned label, not independently verified ground truth",
+    "Citation counts depend on publication age; representative does not mean best"
+  ]
+}

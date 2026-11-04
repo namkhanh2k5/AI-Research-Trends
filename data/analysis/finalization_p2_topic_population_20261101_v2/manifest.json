@@ -1,0 +1,323 @@
+{
+  "status": "complete",
+  "complete": true,
+  "run_id": "finalization_p2_topic_population_20261101_v2",
+  "started_at_utc": "2026-11-01T07:10:35.031038+00:00",
+  "catalogue_sha256": "e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9",
+  "corpus_definition": {
+    "start_date": "2020-01-01",
+    "end_date": "2025-12-31",
+    "work_types": [
+      "article",
+      "review",
+      "preprint"
+    ],
+    "primary_subfield_ids": [
+      "1702",
+      "1707"
+    ],
+    "primary_retraction_scope": "non_retracted"
+  },
+  "maximum_api_requests": 14,
+  "requests": [
+    {
+      "topic_id": "T10036",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10036",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:36.024165+00:00",
+      "raw_path": "raw/T10036.json",
+      "raw_sha256": "da9b0db8a225cc77f95f0fe3b21ec78971953a22d826f8fa7c9ccc5a0a840e58",
+      "http_status": 200,
+      "meta_count": 62137,
+      "year_groups": {
+        "2020": 5882,
+        "2021": 7336,
+        "2022": 8304,
+        "2023": 10391,
+        "2024": 13492,
+        "2025": 16732
+      }
+    },
+    {
+      "topic_id": "T10664",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10664",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:36.620106+00:00",
+      "raw_path": "raw/T10664.json",
+      "raw_sha256": "f75aad8b6508688ddfdebf1039b4107e7f475f137a806ec27e7d23c95bd36ef9",
+      "http_status": 200,
+      "meta_count": 28653,
+      "year_groups": {
+        "2020": 3391,
+        "2021": 3519,
+        "2022": 3767,
+        "2023": 4718,
+        "2024": 6023,
+        "2025": 7235
+      }
+    },
+    {
+      "topic_id": "T10028",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10028",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:37.149293+00:00",
+      "raw_path": "raw/T10028.json",
+      "raw_sha256": "d3fb6d03a8802739f1f01e60d442ae1419dc3a0a8c7732b022a9f4a0c5ce392a",
+      "http_status": 200,
+      "meta_count": 34150,
+      "year_groups": {
+        "2020": 2901,
+        "2021": 3242,
+        "2022": 3148,
+        "2023": 4757,
+        "2024": 8419,
+        "2025": 11683
+      }
+    },
+    {
+      "topic_id": "T10052",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10052",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:37.954727+00:00",
+      "raw_path": "raw/T10052.json",
+      "raw_sha256": "20b5f01793a343d1a4e5ed1e616a3cc23659e76042618554380f8aa0df3abdd9",
+      "http_status": 200,
+      "meta_count": 26019,
+      "year_groups": {
+        "2020": 3521,
+        "2021": 3545,
+        "2022": 3837,
+        "2023": 4199,
+        "2024": 4888,
+        "2025": 6029
+      }
+    },
+    {
+      "topic_id": "T10462",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10462",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:38.436350+00:00",
+      "raw_path": "raw/T10462.json",
+      "raw_sha256": "26840bb9b437433f04a152f4089af9855ec79526e6d848c0edc48bc25b753189",
+      "http_status": 200,
+      "meta_count": 21345,
+      "year_groups": {
+        "2020": 2616,
+        "2021": 3062,
+        "2022": 2805,
+        "2023": 3271,
+        "2024": 4081,
+        "2025": 5510
+      }
+    },
+    {
+      "topic_id": "T10775",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10775",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:38.894275+00:00",
+      "raw_path": "raw/T10775.json",
+      "raw_sha256": "bd3286ce56730d6ca76bb9109753fed5631de43d5b23c7dee91d78b5ba335b94",
+      "http_status": 200,
+      "meta_count": 17656,
+      "year_groups": {
+        "2020": 1526,
+        "2021": 1785,
+        "2022": 1842,
+        "2023": 2824,
+        "2024": 3986,
+        "2025": 5693
+      }
+    },
+    {
+      "topic_id": "T10181",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10181",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:39.367147+00:00",
+      "raw_path": "raw/T10181.json",
+      "raw_sha256": "7dde1bcdb42ea7c00f2ffa4fea35518340e0dd55cbdd7ff919d9d76074f980eb",
+      "http_status": 200,
+      "meta_count": 15423,
+      "year_groups": {
+        "2020": 2812,
+        "2021": 2462,
+        "2022": 1901,
+        "2023": 2125,
+        "2024": 2704,
+        "2025": 3419
+      }
+    },
+    {
+      "topic_id": "T11307",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11307",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:39.786560+00:00",
+      "raw_path": "raw/T11307.json",
+      "raw_sha256": "1b29fcf98c58dc2e4f30497e5632950bdae5f815198eb1fdfa553dd765a8873c",
+      "http_status": 200,
+      "meta_count": 17993,
+      "year_groups": {
+        "2020": 1814,
+        "2021": 2382,
+        "2022": 2502,
+        "2023": 3117,
+        "2024": 3733,
+        "2025": 4445
+      }
+    },
+    {
+      "topic_id": "T11689",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11689",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:40.221684+00:00",
+      "raw_path": "raw/T11689.json",
+      "raw_sha256": "609ae04f9a7a4e2e4491eae7b1b1ed898d391bf7896016585fdb7962d90bafaa",
+      "http_status": 200,
+      "meta_count": 16575,
+      "year_groups": {
+        "2020": 1568,
+        "2021": 1856,
+        "2022": 1910,
+        "2023": 2495,
+        "2024": 3612,
+        "2025": 5134
+      }
+    },
+    {
+      "topic_id": "T12026",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T12026",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:40.688661+00:00",
+      "raw_path": "raw/T12026.json",
+      "raw_sha256": "a9b72cfaa56078ea2efec31b6debb2aa1f147a5c68ba6ba8e6c96200d435e553",
+      "http_status": 200,
+      "meta_count": 13795,
+      "year_groups": {
+        "2020": 1152,
+        "2021": 1577,
+        "2022": 1704,
+        "2023": 2080,
+        "2024": 2860,
+        "2025": 4422
+      }
+    },
+    {
+      "topic_id": "T10201",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10201",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:41.144341+00:00",
+      "raw_path": "raw/T10201.json",
+      "raw_sha256": "bb0aa5a197fb969b5a24830536a737763fde2b4796dd50f52bd573e84c441e28",
+      "http_status": 200,
+      "meta_count": 12369,
+      "year_groups": {
+        "2020": 1951,
+        "2021": 1960,
+        "2022": 1767,
+        "2023": 1814,
+        "2024": 2194,
+        "2025": 2683
+      }
+    },
+    {
+      "topic_id": "T10331",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10331",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:41.589120+00:00",
+      "raw_path": "raw/T10331.json",
+      "raw_sha256": "90a4561a9b583b7f34e1f3367d78b7073fbf313d5c57c129d663624df777e574",
+      "http_status": 200,
+      "meta_count": 15786,
+      "year_groups": {
+        "2020": 2553,
+        "2021": 2471,
+        "2022": 2515,
+        "2023": 2553,
+        "2024": 2717,
+        "2025": 2977
+      }
+    },
+    {
+      "topic_id": "T10812",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10812",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:42.061880+00:00",
+      "raw_path": "raw/T10812.json",
+      "raw_sha256": "8e9972dbcfff1b2500055caf0a48d5c74a3a917f0d5445ce6cb5bf302816c4da",
+      "http_status": 200,
+      "meta_count": 11646,
+      "year_groups": {
+        "2020": 1265,
+        "2021": 1511,
+        "2022": 1751,
+        "2023": 2027,
+        "2024": 2369,
+        "2025": 2723
+      }
+    },
+    {
+      "topic_id": "T10100",
+      "params": {
+        "filter": "from_publication_date:2020-01-01,to_publication_date:2025-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10100",
+        "group_by": "publication_year",
+        "per_page": 100
+      },
+      "retrieved_at_utc": "2026-11-01T07:10:42.460194+00:00",
+      "raw_path": "raw/T10100.json",
+      "raw_sha256": "ba0079d124b28478e7cde4e2719cd89ec0427b67d06990cdff5b57bc0937d1c8",
+      "http_status": 200,
+      "meta_count": 22876,
+      "year_groups": {
+        "2020": 3471,
+        "2021": 3505,
+        "2022": 3823,
+        "2023": 3668,
+        "2024": 3918,
+        "2025": 4491
+      }
+    }
+  ],
+  "api_requests": 14,
+  "source": "OpenAlex live primary_topic.id aggregate snapshot; not immutable historical truth",
+  "output_sha256": "3e85a85f32a8583d2b7afee984826199461bf12c4872ec4ace8adcb9eaa56da0",
+  "output_rows": 84,
+  "completed_at_utc": "2026-11-01T07:10:42.472683+00:00"
+}

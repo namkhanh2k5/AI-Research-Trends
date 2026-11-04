@@ -1,0 +1,87 @@
+{
+  "topic_id": "T10664",
+  "official_name": "Sentiment Analysis and Opinion Mining",
+  "official_description": "This cluster of papers focuses on sentiment analysis and opinion mining, particularly in the context of social media and text mining. It covers various techniques such as lexicon-based methods, deep learning, aspect-based sentiment analysis, and machine learning for analyzing emotions and opinions in textual data from platforms like Twitter. The research also delves into emotion recognition and the impact of sentiment analysis on public perception.",
+  "parent_subfield": "1702",
+  "scope_status": "in",
+  "sample_primary_topic_works": 388,
+  "sample_any_topic_works": 492,
+  "sample_year_counts": {
+    "2020": 53,
+    "2021": 61,
+    "2022": 46,
+    "2023": 70,
+    "2024": 63,
+    "2025": 95
+  },
+  "sample_citation_median": 1.0,
+  "sample_oa_counts": {
+    "diamond": 148,
+    "closed": 71,
+    "gold": 68,
+    "green": 51,
+    "hybrid": 31,
+    "bronze": 19
+  },
+  "related_native_topics": [
+    {
+      "topic_id": "https://openalex.org/T10028",
+      "shared_sample_works": 178
+    },
+    {
+      "topic_id": "https://openalex.org/T12262",
+      "shared_sample_works": 135
+    },
+    {
+      "topic_id": "https://openalex.org/T11550",
+      "shared_sample_works": 104
+    },
+    {
+      "topic_id": "https://openalex.org/T10667",
+      "shared_sample_works": 88
+    },
+    {
+      "topic_id": "https://openalex.org/T13910",
+      "shared_sample_works": 67
+    }
+  ],
+  "representative_papers": [
+    {
+      "work_id": "https://openalex.org/W7117548547",
+      "title": "Sentiment Analysis of Product Reviews in E-Commerce Using the Naive Bayes Method",
+      "publication_date": "2025-12-30",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7124571704",
+      "title": "A Language-Adaptive Ensemble Clustering Framework for Emotion Detection in Multilingual Social Media Text",
+      "publication_date": "2025-12-27",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7124436520",
+      "title": "Design and Implementation of a Public Sentiment Prediction Framework on Budget Efficiency Policy using Support Vector Machine, Naïve Bayes, and Random Forest",
+      "publication_date": "2025-12-25",
+      "cited_by_count": 1
+    },
+    {
+      "work_id": "https://openalex.org/W7124273053",
+      "title": "Analyzing Polish Public Opinion on Ukraine and the Russian Invasion Through social media in the Era of Polycrisis",
+      "publication_date": "2025-12-19",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7134264189",
+      "title": "Analisis Sentimen Masyarakat Terhadap Permasalahan Keracunan Program Makan Bergizi Gratis (MBG) pada Sosial Media ‘X’",
+      "publication_date": "2025-12-14",
+      "cited_by_count": 0
+    }
+  ],
+  "representative_rule": "five most recent primary-topic sampled papers; citations break same-date ties",
+  "population_topic_year_counts": null,
+  "warnings": [
+    "Original 12,000-work sample is not a population estimate",
+    "OpenAlex primary topic is a machine-assigned label, not independently verified ground truth",
+    "Citation counts depend on publication age; representative does not mean best"
+  ]
+}

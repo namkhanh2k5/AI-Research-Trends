@@ -1,0 +1,358 @@
+{
+  "status": "complete",
+  "run_id": "finalization_p3_open_set_20261101_v1",
+  "created_at_utc": "2026-11-01T10:54:19.370159+00:00",
+  "closed_run_manifest_sha256": "4f6c9e9a774cff17bed11b072baa2edb92614cd54a74705705ba15f6225a2d4e",
+  "source_manifest_sha256": "7feee5f38bb98a33ec3fbd936e9a197a5caa08b2a1559719c9e316201c44a2c5",
+  "catalogue_sha256": "e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9",
+  "code_sha256": "1c14cd4b44c48569edd02cdec3c15f88e2d34e070aa12c6aaba327cf95334a17",
+  "seed": 20251019,
+  "calibration_rows": 738,
+  "evaluation_rows": 1105,
+  "calibration_in": 273,
+  "evaluation_in": 408,
+  "threshold_selection": "2024 calibration only; lowest score with <=20% outside false acceptance",
+  "calibrated_lr_train_only_seconds": 37.5395956759985,
+  "explicit_other_training_seconds": 26.345102135999696,
+  "methods": {
+    "calibrated_lr": {
+      "threshold": 0.7218282224532414,
+      "confirmation_floor": 0.3997398207277518,
+      "calibration": {
+        "total": 738,
+        "in_catalogue": 273,
+        "outside_catalogue": 465,
+        "threshold": 0.7218282224532414,
+        "in_acceptance_rate": 0.6117216117216118,
+        "out_false_acceptance_rate": 0.2,
+        "in_false_rejection_rate": 0.3882783882783883,
+        "auroc_in_vs_out": 0.8117294891488439,
+        "accepted_precision_in_catalogue": 0.6423076923076924,
+        "accuracy_among_accepted_in": 0.9940119760479041,
+        "selective_risk": 0.005988023952095856,
+        "selective_coverage_in": 0.6117216117216118,
+        "end_to_end_correct_placement": 0.22493224932249323,
+        "accepted_in": 167,
+        "accepted_out": 93,
+        "correct_accepted_in": 166
+      },
+      "evaluation": {
+        "total": 1105,
+        "in_catalogue": 408,
+        "outside_catalogue": 697,
+        "threshold": 0.7218282224532414,
+        "in_acceptance_rate": 0.6225490196078431,
+        "out_false_acceptance_rate": 0.20229555236728838,
+        "in_false_rejection_rate": 0.37745098039215685,
+        "auroc_in_vs_out": 0.8023778377922188,
+        "accepted_precision_in_catalogue": 0.6430379746835443,
+        "accuracy_among_accepted_in": 0.9645669291338582,
+        "selective_risk": 0.03543307086614178,
+        "selective_coverage_in": 0.6225490196078431,
+        "end_to_end_correct_placement": 0.22171945701357465,
+        "accepted_in": 254,
+        "accepted_out": 141,
+        "correct_accepted_in": 245,
+        "accepted_correct_precision_all": 0.620253164556962,
+        "overall_acceptance_rate": 0.3574660633484163
+      },
+      "evaluation_bootstrap_95": {
+        "in_acceptance_rate": [
+          0.5781999684343434,
+          0.6691874677542196
+        ],
+        "out_false_acceptance_rate": [
+          0.16905212379401077,
+          0.23182219671437176
+        ],
+        "auroc_in_vs_out": [
+          0.7781912860905768,
+          0.8278065731323625
+        ],
+        "end_to_end_correct_placement": [
+          0.19909502262443438,
+          0.24572398190045247
+        ],
+        "accepted_precision_in_catalogue": [
+          0.5989769345238095,
+          0.6935349040139617
+        ]
+      },
+      "inference_ms_per_work": 2.120649495021621,
+      "score_interpretation": "train-CV sigmoid-calibrated multiclass maximum probability; not calibrated catalogue-membership probability"
+    },
+    "lr_raw_probability": {
+      "threshold": 0.3203719172717707,
+      "confirmation_floor": 0.170673871032465,
+      "calibration": {
+        "total": 738,
+        "in_catalogue": 273,
+        "outside_catalogue": 465,
+        "threshold": 0.3203719172717707,
+        "in_acceptance_rate": 0.7545787545787546,
+        "out_false_acceptance_rate": 0.2,
+        "in_false_rejection_rate": 0.2454212454212454,
+        "auroc_in_vs_out": 0.8849816849816848,
+        "accepted_precision_in_catalogue": 0.6889632107023411,
+        "accuracy_among_accepted_in": 0.9563106796116505,
+        "selective_risk": 0.043689320388349495,
+        "selective_coverage_in": 0.7545787545787546,
+        "end_to_end_correct_placement": 0.2669376693766938,
+        "accepted_in": 206,
+        "accepted_out": 93,
+        "correct_accepted_in": 197
+      },
+      "evaluation": {
+        "total": 1105,
+        "in_catalogue": 408,
+        "outside_catalogue": 697,
+        "threshold": 0.3203719172717707,
+        "in_acceptance_rate": 0.7941176470588235,
+        "out_false_acceptance_rate": 0.1793400286944046,
+        "in_false_rejection_rate": 0.20588235294117646,
+        "auroc_in_vs_out": 0.8877718232199623,
+        "accepted_precision_in_catalogue": 0.7216035634743875,
+        "accuracy_among_accepted_in": 0.9290123456790124,
+        "selective_risk": 0.07098765432098764,
+        "selective_coverage_in": 0.7941176470588235,
+        "end_to_end_correct_placement": 0.27239819004524884,
+        "accepted_in": 324,
+        "accepted_out": 125,
+        "correct_accepted_in": 301,
+        "accepted_correct_precision_all": 0.6703786191536748,
+        "overall_acceptance_rate": 0.4063348416289593
+      },
+      "evaluation_bootstrap_95": {
+        "in_acceptance_rate": [
+          0.7538650856915106,
+          0.8316963422883649
+        ],
+        "out_false_acceptance_rate": [
+          0.15263908701854492,
+          0.20746389625699968
+        ],
+        "auroc_in_vs_out": [
+          0.8672494176468486,
+          0.906267561986411
+        ],
+        "end_to_end_correct_placement": [
+          0.2447737556561086,
+          0.2973076923076923
+        ],
+        "accepted_precision_in_catalogue": [
+          0.6790940454893943,
+          0.7590618336886994
+        ]
+      },
+      "inference_ms_per_work": 0.7129494570141286,
+      "score_interpretation": "LogisticRegression raw maximum class probability estimate"
+    },
+    "svm_margin": {
+      "threshold": -0.22227267687798036,
+      "confirmation_floor": -0.516798309254057,
+      "calibration": {
+        "total": 738,
+        "in_catalogue": 273,
+        "outside_catalogue": 465,
+        "threshold": -0.22227267687798036,
+        "in_acceptance_rate": 0.8168498168498168,
+        "out_false_acceptance_rate": 0.2,
+        "in_false_rejection_rate": 0.18315018315018314,
+        "auroc_in_vs_out": 0.8897869155933672,
+        "accepted_precision_in_catalogue": 0.7056962025316456,
+        "accuracy_among_accepted_in": 0.9506726457399103,
+        "selective_risk": 0.04932735426008972,
+        "selective_coverage_in": 0.8168498168498168,
+        "end_to_end_correct_placement": 0.2872628726287263,
+        "accepted_in": 223,
+        "accepted_out": 93,
+        "correct_accepted_in": 212
+      },
+      "evaluation": {
+        "total": 1105,
+        "in_catalogue": 408,
+        "outside_catalogue": 697,
+        "threshold": -0.22227267687798036,
+        "in_acceptance_rate": 0.8308823529411765,
+        "out_false_acceptance_rate": 0.21664275466284075,
+        "in_false_rejection_rate": 0.16911764705882354,
+        "auroc_in_vs_out": 0.8918755450530284,
+        "accepted_precision_in_catalogue": 0.6918367346938775,
+        "accuracy_among_accepted_in": 0.9233038348082596,
+        "selective_risk": 0.07669616519174038,
+        "selective_coverage_in": 0.8308823529411765,
+        "end_to_end_correct_placement": 0.2832579185520362,
+        "accepted_in": 339,
+        "accepted_out": 151,
+        "correct_accepted_in": 313,
+        "accepted_correct_precision_all": 0.6387755102040816,
+        "overall_acceptance_rate": 0.4434389140271493
+      },
+      "evaluation_bootstrap_95": {
+        "in_acceptance_rate": [
+          0.7943625188790066,
+          0.8664357858708782
+        ],
+        "out_false_acceptance_rate": [
+          0.18792850041066875,
+          0.24601111637953743
+        ],
+        "auroc_in_vs_out": [
+          0.8729691245313044,
+          0.9100618989030645
+        ],
+        "end_to_end_correct_placement": [
+          0.2565384615384615,
+          0.3058823529411765
+        ],
+        "accepted_precision_in_catalogue": [
+          0.6506978293118585,
+          0.7286548866515992
+        ]
+      },
+      "inference_ms_per_work": 0.7025073085986241,
+      "score_interpretation": "raw LinearSVC maximum decision margin; not a probability"
+    },
+    "nb_probability": {
+      "threshold": 0.1494520346273152,
+      "confirmation_floor": 0.10518658093264754,
+      "calibration": {
+        "total": 738,
+        "in_catalogue": 273,
+        "outside_catalogue": 465,
+        "threshold": 0.1494520346273152,
+        "in_acceptance_rate": 0.6776556776556777,
+        "out_false_acceptance_rate": 0.2,
+        "in_false_rejection_rate": 0.32234432234432236,
+        "auroc_in_vs_out": 0.8216156603253377,
+        "accepted_precision_in_catalogue": 0.6654676258992805,
+        "accuracy_among_accepted_in": 0.9405405405405406,
+        "selective_risk": 0.05945945945945941,
+        "selective_coverage_in": 0.6776556776556777,
+        "end_to_end_correct_placement": 0.23577235772357724,
+        "accepted_in": 185,
+        "accepted_out": 93,
+        "correct_accepted_in": 174
+      },
+      "evaluation": {
+        "total": 1105,
+        "in_catalogue": 408,
+        "outside_catalogue": 697,
+        "threshold": 0.1494520346273152,
+        "in_acceptance_rate": 0.6617647058823529,
+        "out_false_acceptance_rate": 0.22812051649928264,
+        "in_false_rejection_rate": 0.3382352941176471,
+        "auroc_in_vs_out": 0.8091118800461361,
+        "accepted_precision_in_catalogue": 0.6293706293706294,
+        "accuracy_among_accepted_in": 0.937037037037037,
+        "selective_risk": 0.062962962962963,
+        "selective_coverage_in": 0.6617647058823529,
+        "end_to_end_correct_placement": 0.22895927601809954,
+        "accepted_in": 270,
+        "accepted_out": 159,
+        "correct_accepted_in": 253,
+        "accepted_correct_precision_all": 0.5897435897435898,
+        "overall_acceptance_rate": 0.38823529411764707
+      },
+      "evaluation_bootstrap_95": {
+        "in_acceptance_rate": [
+          0.6174005899805614,
+          0.7066837063645575
+        ],
+        "out_false_acceptance_rate": [
+          0.19616758153569594,
+          0.25781965768940346
+        ],
+        "auroc_in_vs_out": [
+          0.7840879145812666,
+          0.8349931207288921
+        ],
+        "end_to_end_correct_placement": [
+          0.20633484162895926,
+          0.2515837104072398
+        ],
+        "accepted_precision_in_catalogue": [
+          0.5865502633671238,
+          0.6728800442676589
+        ]
+      },
+      "inference_ms_per_work": 0.6783152470588121,
+      "score_interpretation": "ComplementNB maximum class probability estimate; not independently calibrated"
+    },
+    "explicit_other_lr": {
+      "threshold": 0.37207537649345024,
+      "confirmation_floor": 0.12651437245752498,
+      "calibration": {
+        "total": 738,
+        "in_catalogue": 273,
+        "outside_catalogue": 465,
+        "threshold": 0.37207537649345024,
+        "in_acceptance_rate": 0.945054945054945,
+        "out_false_acceptance_rate": 0.2,
+        "in_false_rejection_rate": 0.054945054945054944,
+        "auroc_in_vs_out": 0.9485761550277678,
+        "accepted_precision_in_catalogue": 0.7350427350427351,
+        "accuracy_among_accepted_in": 0.8914728682170543,
+        "selective_risk": 0.10852713178294571,
+        "selective_coverage_in": 0.945054945054945,
+        "end_to_end_correct_placement": 0.3116531165311653,
+        "accepted_in": 258,
+        "accepted_out": 93,
+        "correct_accepted_in": 230
+      },
+      "evaluation": {
+        "total": 1105,
+        "in_catalogue": 408,
+        "outside_catalogue": 697,
+        "threshold": 0.37207537649345024,
+        "in_acceptance_rate": 0.9264705882352942,
+        "out_false_acceptance_rate": 0.1750358680057389,
+        "in_false_rejection_rate": 0.07352941176470588,
+        "auroc_in_vs_out": 0.9473478774580133,
+        "accepted_precision_in_catalogue": 0.756,
+        "accuracy_among_accepted_in": 0.8835978835978836,
+        "selective_risk": 0.1164021164021164,
+        "selective_coverage_in": 0.9264705882352942,
+        "end_to_end_correct_placement": 0.302262443438914,
+        "accepted_in": 378,
+        "accepted_out": 122,
+        "correct_accepted_in": 334,
+        "accepted_correct_precision_all": 0.668,
+        "overall_acceptance_rate": 0.45248868778280543
+      },
+      "evaluation_bootstrap_95": {
+        "in_acceptance_rate": [
+          0.902467987804878,
+          0.9517571940771093
+        ],
+        "out_false_acceptance_rate": [
+          0.14478837820399307,
+          0.2011577424023155
+        ],
+        "auroc_in_vs_out": [
+          0.9353910544808006,
+          0.9592551017207657
+        ],
+        "end_to_end_correct_placement": [
+          0.27601809954751133,
+          0.3266968325791855
+        ],
+        "accepted_precision_in_catalogue": [
+          0.7205208333333333,
+          0.793949747687132
+        ]
+      },
+      "inference_ms_per_work": 0.3470366552025812,
+      "score_interpretation": "one minus 15-class OTHER probability; model-dependent score"
+    }
+  },
+  "thresholds": {
+    "calibrated_lr": 0.7218282224532414,
+    "lr_raw_probability": 0.3203719172717707,
+    "svm_margin": -0.22227267687798036,
+    "nb_probability": 0.1494520346273152,
+    "explicit_other_lr": 0.37207537649345024
+  },
+  "human_semantic_validation": "pending",
+  "final_2025_test": "SEALED"
+}

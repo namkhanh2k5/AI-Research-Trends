@@ -1,8 +1,8 @@
 # Project handoff (local research workspace)
 
 Start with [README.md](README.md) for the study and app. This file is the short
-map for the next coding agent; it is **not** permission to refresh results,
-unseal the 2025 test, or publish local artifacts.
+map for the next coding agent; it is **not** permission to refresh results or
+use the 2025 test labels for evaluation.
 
 ## What works now
 
@@ -20,15 +20,15 @@ unseal the 2025 test, or publish local artifacts.
   AI-assisted topic/publisher assessment
   (`src/ai_research_trends/experiments/dual_source/` and
   `experiments/ai_validation.py`).
-- Academic report and slides in `deliverables/`; aggregate-safe findings
-  and selected verified figures in `reports/`.
+- Academic report and slides in `deliverables/`; research outputs and figures
+  in `reports/` and `data/analysis/`.
 
 The Venue Discovery **recommendation** experiment is a historical NO-GO, not
 an app feature. Its inventory/provider code and local outputs remain because
 RQ7 uses its inventory and some experiments must be reproducible. Shared
 ISSN and atomic-storage helpers now live in `experiments/common.py`.
 
-## Local artifact map (Git-ignored)
+## Research artifact map
 
 | Purpose | Path |
 |---|---|
@@ -45,8 +45,26 @@ ISSN and atomic-storage helpers now live in `experiments/common.py`.
 The original analytical sample and the targeted RQ7/ML experiments have
 **different purposes and selection mechanisms**. Do not use targeted records
 for population prevalence or silently merge them into the 12,000-work sample.
-Do not open or upload restricted answer keys, blind reviewer packages, raw
-paper text, or the sealed 2025 labels as ordinary public artifacts.
+The repository is public and the complete workspace transfer includes
+restricted answer keys, blind reviewer packages, raw paper text and 2025
+labels. Their former blind/sealed status is **compromised by publication**.
+Do not claim a subsequent independent sealed-test evaluation on this copy,
+and do not expose the human reviewers to answer keys before their work.
+
+Large `*.jsonl`, `*.parquet`, `*.joblib` and `*.pkl` files use Git LFS.
+Install Git LFS before cloning, then fetch the full artifacts:
+
+```bash
+git lfs install
+git clone https://github.com/namkhanh2k5/AI-Research-Trends.git
+cd AI-Research-Trends
+git lfs pull
+```
+
+The clone contains datasets and the saved model, but **not** `.env` or a
+Python environment. Configure credentials locally only if making new API
+requests. Public availability does not establish redistribution rights for
+third-party metadata or model inputs.
 
 ## Setup and everyday commands
 
@@ -95,7 +113,6 @@ Neither command makes an AI judgment or counts as human validation.
   [RQ7.1 validation](reports/RQ7_1_INDEPENDENT_METADATA_VALIDATION_REPORT.md)
   and [AI assessment](reports/AI_ASSISTED_TOPIC_PUBLISHER_VALIDATION_FINAL_REPORT.md).
 - Human semantic validation and publisher adjudication remain **pending**.
-  The frozen 2025 final test remains **sealed**. Public deployment and
-  redistribution rights for ignored data/model artifacts are not established.
-  A separate, explicit artifact-publication task is required; this cleanup
-  intentionally does not upload them.
+  The 2025 final-test gate was historically sealed but is no longer
+  independently sealed after this public workspace transfer. Public
+  deployment and redistribution rights require separate review.

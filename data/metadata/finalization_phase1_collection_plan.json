@@ -1,0 +1,845 @@
+{
+  "schema_version": 1,
+  "status": "planned_not_executed",
+  "created_at_utc": "2026-11-01T05:20:06Z",
+  "corpus": "approved_ai_cv_primary_subfield_non_retracted",
+  "training_years": [
+    2020,
+    2021,
+    2022,
+    2023
+  ],
+  "selected_topics": [
+    "T10036",
+    "T10664",
+    "T10028",
+    "T10052",
+    "T10462",
+    "T10775",
+    "T10181",
+    "T11307",
+    "T11689",
+    "T12026",
+    "T10201",
+    "T10331",
+    "T10812",
+    "T10100"
+  ],
+  "target_usable_per_topic": 225,
+  "planned_raw_records": 2515,
+  "maximum_raw_records": 3000,
+  "maximum_api_credits": 180,
+  "maximum_api_requests": 180,
+  "per_page": 100,
+  "base_seed": 20261101,
+  "planned_api_pages": 80,
+  "selected_planned_records": 2015,
+  "outside_planned_records": 500,
+  "unfillable_source_shortfalls": {},
+  "strata": [
+    {
+      "source_group": "selected",
+      "topic_id": "T10664",
+      "year": 2020,
+      "source_population_count": 3391,
+      "planned_records": 9,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10664",
+      "seed": 2340799770,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10664",
+      "year": 2021,
+      "source_population_count": 3519,
+      "planned_records": 10,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10664",
+      "seed": 741292844,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10664",
+      "year": 2022,
+      "source_population_count": 3767,
+      "planned_records": 11,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10664",
+      "seed": 1952014490,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10664",
+      "year": 2023,
+      "source_population_count": 4718,
+      "planned_records": 13,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10664",
+      "seed": 105170158,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10028",
+      "year": 2020,
+      "source_population_count": 2901,
+      "planned_records": 20,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10028",
+      "seed": 1586629354,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10028",
+      "year": 2021,
+      "source_population_count": 3242,
+      "planned_records": 22,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10028",
+      "seed": 580542302,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10028",
+      "year": 2022,
+      "source_population_count": 3148,
+      "planned_records": 22,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10028",
+      "seed": 1022692778,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10028",
+      "year": 2023,
+      "source_population_count": 4757,
+      "planned_records": 33,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10028",
+      "seed": 1527913219,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10052",
+      "year": 2020,
+      "source_population_count": 3521,
+      "planned_records": 32,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10052",
+      "seed": 743667255,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10052",
+      "year": 2021,
+      "source_population_count": 3545,
+      "planned_records": 32,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10052",
+      "seed": 3188760939,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10052",
+      "year": 2022,
+      "source_population_count": 3837,
+      "planned_records": 35,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10052",
+      "seed": 1503850917,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10052",
+      "year": 2023,
+      "source_population_count": 4199,
+      "planned_records": 38,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10052",
+      "seed": 2442069105,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10462",
+      "year": 2020,
+      "source_population_count": 2616,
+      "planned_records": 28,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10462",
+      "seed": 2140171477,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10462",
+      "year": 2021,
+      "source_population_count": 3062,
+      "planned_records": 32,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10462",
+      "seed": 2262508629,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10462",
+      "year": 2022,
+      "source_population_count": 2805,
+      "planned_records": 30,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10462",
+      "seed": 4042283148,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10462",
+      "year": 2023,
+      "source_population_count": 3271,
+      "planned_records": 34,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10462",
+      "seed": 1530980641,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10775",
+      "year": 2020,
+      "source_population_count": 1526,
+      "planned_records": 28,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10775",
+      "seed": 1429163670,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10775",
+      "year": 2021,
+      "source_population_count": 1785,
+      "planned_records": 32,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10775",
+      "seed": 1209277349,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10775",
+      "year": 2022,
+      "source_population_count": 1842,
+      "planned_records": 33,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10775",
+      "seed": 2994863831,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10775",
+      "year": 2023,
+      "source_population_count": 2824,
+      "planned_records": 51,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10775",
+      "seed": 3214043072,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10181",
+      "year": 2020,
+      "source_population_count": 2812,
+      "planned_records": 47,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10181",
+      "seed": 780019881,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10181",
+      "year": 2021,
+      "source_population_count": 2462,
+      "planned_records": 42,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10181",
+      "seed": 2041424693,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10181",
+      "year": 2022,
+      "source_population_count": 1901,
+      "planned_records": 32,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10181",
+      "seed": 3498454154,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10181",
+      "year": 2023,
+      "source_population_count": 2125,
+      "planned_records": 36,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10181",
+      "seed": 1841709282,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T11307",
+      "year": 2020,
+      "source_population_count": 1814,
+      "planned_records": 34,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11307",
+      "seed": 1197110860,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T11307",
+      "year": 2021,
+      "source_population_count": 2382,
+      "planned_records": 44,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11307",
+      "seed": 1689515028,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T11307",
+      "year": 2022,
+      "source_population_count": 2502,
+      "planned_records": 46,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11307",
+      "seed": 4148615313,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T11307",
+      "year": 2023,
+      "source_population_count": 3117,
+      "planned_records": 58,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11307",
+      "seed": 1878544797,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T11689",
+      "year": 2020,
+      "source_population_count": 1568,
+      "planned_records": 39,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11689",
+      "seed": 768584507,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T11689",
+      "year": 2021,
+      "source_population_count": 1856,
+      "planned_records": 47,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11689",
+      "seed": 3350039641,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T11689",
+      "year": 2022,
+      "source_population_count": 1910,
+      "planned_records": 48,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11689",
+      "seed": 1459884818,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T11689",
+      "year": 2023,
+      "source_population_count": 2495,
+      "planned_records": 62,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11689",
+      "seed": 1190838223,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T12026",
+      "year": 2020,
+      "source_population_count": 1152,
+      "planned_records": 35,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T12026",
+      "seed": 1213229275,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T12026",
+      "year": 2021,
+      "source_population_count": 1577,
+      "planned_records": 48,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T12026",
+      "seed": 1778251916,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T12026",
+      "year": 2022,
+      "source_population_count": 1704,
+      "planned_records": 52,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T12026",
+      "seed": 3766656634,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T12026",
+      "year": 2023,
+      "source_population_count": 2080,
+      "planned_records": 63,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T12026",
+      "seed": 2292186922,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10201",
+      "year": 2020,
+      "source_population_count": 1951,
+      "planned_records": 44,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10201",
+      "seed": 3803269425,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10201",
+      "year": 2021,
+      "source_population_count": 1960,
+      "planned_records": 44,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10201",
+      "seed": 3078666494,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10201",
+      "year": 2022,
+      "source_population_count": 1767,
+      "planned_records": 39,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10201",
+      "seed": 3752990900,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10201",
+      "year": 2023,
+      "source_population_count": 1814,
+      "planned_records": 40,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10201",
+      "seed": 51857769,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10331",
+      "year": 2020,
+      "source_population_count": 2553,
+      "planned_records": 42,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10331",
+      "seed": 1952590000,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10331",
+      "year": 2021,
+      "source_population_count": 2471,
+      "planned_records": 40,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10331",
+      "seed": 1924439366,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10331",
+      "year": 2022,
+      "source_population_count": 2515,
+      "planned_records": 41,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10331",
+      "seed": 519265665,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10331",
+      "year": 2023,
+      "source_population_count": 2553,
+      "planned_records": 41,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10331",
+      "seed": 2481617866,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10812",
+      "year": 2020,
+      "source_population_count": 1265,
+      "planned_records": 40,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10812",
+      "seed": 1216670200,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10812",
+      "year": 2021,
+      "source_population_count": 1511,
+      "planned_records": 48,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10812",
+      "seed": 3604453638,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10812",
+      "year": 2022,
+      "source_population_count": 1751,
+      "planned_records": 56,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10812",
+      "seed": 1689079198,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10812",
+      "year": 2023,
+      "source_population_count": 2027,
+      "planned_records": 65,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10812",
+      "seed": 1667639769,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10100",
+      "year": 2020,
+      "source_population_count": 3471,
+      "planned_records": 47,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10100",
+      "seed": 78569846,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10100",
+      "year": 2021,
+      "source_population_count": 3505,
+      "planned_records": 48,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10100",
+      "seed": 3358765593,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10100",
+      "year": 2022,
+      "source_population_count": 3823,
+      "planned_records": 52,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10100",
+      "seed": 3648644148,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "selected",
+      "topic_id": "T10100",
+      "year": 2023,
+      "source_population_count": 3668,
+      "planned_records": 50,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10100",
+      "seed": 2860690102,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "neighboring_privacy",
+      "topic_id": "T10764",
+      "year": 2020,
+      "source_population_count": 2223,
+      "planned_records": 9,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10764",
+      "seed": 1006179829,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "neighboring_privacy",
+      "topic_id": "T10764",
+      "year": 2021,
+      "source_population_count": 2716,
+      "planned_records": 11,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10764",
+      "seed": 3354193487,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "neighboring_privacy",
+      "topic_id": "T10764",
+      "year": 2022,
+      "source_population_count": 3220,
+      "planned_records": 13,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10764",
+      "seed": 1177006866,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "neighboring_privacy",
+      "topic_id": "T10764",
+      "year": 2023,
+      "source_population_count": 4064,
+      "planned_records": 17,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10764",
+      "seed": 365563178,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "neighboring_cancer_cv",
+      "topic_id": "T10862",
+      "year": 2020,
+      "source_population_count": 2535,
+      "planned_records": 9,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10862",
+      "seed": 347292576,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "neighboring_cancer_cv",
+      "topic_id": "T10862",
+      "year": 2021,
+      "source_population_count": 2964,
+      "planned_records": 11,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10862",
+      "seed": 1132078960,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "neighboring_cancer_cv",
+      "topic_id": "T10862",
+      "year": 2022,
+      "source_population_count": 3719,
+      "planned_records": 14,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10862",
+      "seed": 1915678223,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "neighboring_cancer_cv",
+      "topic_id": "T10862",
+      "year": 2023,
+      "source_population_count": 4432,
+      "planned_records": 16,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10862",
+      "seed": 2002800315,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "neighboring_augmented_reality",
+      "topic_id": "T10888",
+      "year": 2020,
+      "source_population_count": 2615,
+      "planned_records": 12,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10888",
+      "seed": 513282441,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "neighboring_augmented_reality",
+      "topic_id": "T10888",
+      "year": 2021,
+      "source_population_count": 2613,
+      "planned_records": 11,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10888",
+      "seed": 4247338174,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "neighboring_augmented_reality",
+      "topic_id": "T10888",
+      "year": 2022,
+      "source_population_count": 2655,
+      "planned_records": 12,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10888",
+      "seed": 1205334283,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "neighboring_augmented_reality",
+      "topic_id": "T10888",
+      "year": 2023,
+      "source_population_count": 3285,
+      "planned_records": 15,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10888",
+      "seed": 3745651884,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "distant_quantum_information",
+      "topic_id": "T10020",
+      "year": 2020,
+      "source_population_count": 4299,
+      "planned_records": 6,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10020",
+      "seed": 2472391079,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "distant_quantum_information",
+      "topic_id": "T10020",
+      "year": 2021,
+      "source_population_count": 4667,
+      "planned_records": 7,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10020",
+      "seed": 831794285,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "distant_quantum_information",
+      "topic_id": "T10020",
+      "year": 2022,
+      "source_population_count": 4061,
+      "planned_records": 6,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10020",
+      "seed": 2646808434,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "distant_quantum_information",
+      "topic_id": "T10020",
+      "year": 2023,
+      "source_population_count": 4289,
+      "planned_records": 6,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10020",
+      "seed": 2547374109,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "distant_quantum_architecture",
+      "topic_id": "T10682",
+      "year": 2020,
+      "source_population_count": 2536,
+      "planned_records": 5,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10682",
+      "seed": 3186341193,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "distant_quantum_architecture",
+      "topic_id": "T10682",
+      "year": 2021,
+      "source_population_count": 3222,
+      "planned_records": 6,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10682",
+      "seed": 833228776,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "distant_quantum_architecture",
+      "topic_id": "T10682",
+      "year": 2022,
+      "source_population_count": 3032,
+      "planned_records": 6,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10682",
+      "seed": 2541420208,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "distant_quantum_architecture",
+      "topic_id": "T10682",
+      "year": 2023,
+      "source_population_count": 3776,
+      "planned_records": 8,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T10682",
+      "seed": 4123997983,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "distant_solar_forecasting",
+      "topic_id": "T11276",
+      "year": 2020,
+      "source_population_count": 1408,
+      "planned_records": 6,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11276",
+      "seed": 3262497845,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "distant_solar_forecasting",
+      "topic_id": "T11276",
+      "year": 2021,
+      "source_population_count": 1457,
+      "planned_records": 6,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11276",
+      "seed": 1836122219,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "distant_solar_forecasting",
+      "topic_id": "T11276",
+      "year": 2022,
+      "source_population_count": 1565,
+      "planned_records": 6,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11276",
+      "seed": 1397811102,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "distant_solar_forecasting",
+      "topic_id": "T11276",
+      "year": 2023,
+      "source_population_count": 1764,
+      "planned_records": 7,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false,primary_topic.id:T11276",
+      "seed": 513667886,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "broader_ai_cv_sample",
+      "topic_id": null,
+      "year": 2020,
+      "source_population_count": 124907,
+      "planned_records": 66,
+      "filter": "from_publication_date:2020-01-01,to_publication_date:2020-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false",
+      "seed": 797653152,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "broader_ai_cv_sample",
+      "topic_id": null,
+      "year": 2021,
+      "source_population_count": 128393,
+      "planned_records": 67,
+      "filter": "from_publication_date:2021-01-01,to_publication_date:2021-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false",
+      "seed": 1113542397,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "broader_ai_cv_sample",
+      "topic_id": null,
+      "year": 2022,
+      "source_population_count": 126076,
+      "planned_records": 66,
+      "filter": "from_publication_date:2022-01-01,to_publication_date:2022-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false",
+      "seed": 3153804753,
+      "expected_pages": 1
+    },
+    {
+      "source_group": "broader_ai_cv_sample",
+      "topic_id": null,
+      "year": 2023,
+      "source_population_count": 145680,
+      "planned_records": 76,
+      "filter": "from_publication_date:2023-01-01,to_publication_date:2023-12-31,primary_topic.subfield.id:1702|1707,type:article|review|preprint,is_retracted:false",
+      "seed": 3518462617,
+      "expected_pages": 1
+    }
+  ],
+  "config_sha256": "b1392a55a3f66f1c233079159efc084903fdf369b4bafe1c2b60abc6491df086",
+  "catalogue_sha256": "e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9",
+  "gap_sha256": "f8f09c86edc1b510215c82f7614e02201c11bc58c53b22beb96b7e7e9feeb704",
+  "capacity_manifest_sha256": "49da5b173182bc462b8349b31c0251d9e5e4f46ac3f443531eaf9c4345843095"
+}

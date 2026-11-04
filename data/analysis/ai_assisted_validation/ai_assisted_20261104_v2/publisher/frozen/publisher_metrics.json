@@ -1,0 +1,22 @@
+{
+  "selected": 30,
+  "inspected": 30,
+  "status_counts": {
+    "AMBIGUOUS": 12,
+    "INSUFFICIENT_EVIDENCE": 4,
+    "SOURCE_ACCESS_BLOCKED": 5,
+    "SOURCE_BACKED_ACCEPTABLE_ALIAS": 3,
+    "SOURCE_BACKED_CORRECT": 6,
+    "SOURCE_BACKED_INCORRECT": 0
+  },
+  "source_verifiable": 9,
+  "source_consistent": 9,
+  "observed_consistency_among_verifiable": 1.0,
+  "wilson_95_selected_verifiable_only": [
+    0.7008549515804559,
+    1.0
+  ],
+  "independent_directory_cases": 1,
+  "human_adjudicated": 0,
+  "all_167_recoveries_verified": false
+}

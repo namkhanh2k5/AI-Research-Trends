@@ -1,0 +1,105 @@
+{
+  "status": "complete",
+  "run_id": "finalization_p3_open_set_20261101_v1",
+  "created_at_utc": "2026-11-01T10:54:19.370159+00:00",
+  "source_manifest_sha256": "7feee5f38bb98a33ec3fbd936e9a197a5caa08b2a1559719c9e316201c44a2c5",
+  "closed_run_manifest_sha256": "4f6c9e9a774cff17bed11b072baa2edb92614cd54a74705705ba15f6225a2d4e",
+  "catalogue_sha256": "e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9",
+  "code_sha256": "1c14cd4b44c48569edd02cdec3c15f88e2d34e070aa12c6aaba327cf95334a17",
+  "seed": 20251019,
+  "files": {
+    "calibrated_lr_per_topic.csv": {
+      "sha256": "ff6e6e86a5e25589b1933ab5773af161654cea9ae326d8ec79a1a23c05903439",
+      "bytes": 707
+    },
+    "calibrated_lr_predictions.parquet": {
+      "sha256": "72adf4ad3670d45e6f1befae50e3e9f2486fb113118a353663b279d93cd7ba6d",
+      "bytes": 27103
+    },
+    "calibrated_lr_risk_coverage.csv": {
+      "sha256": "b88c976dc8d543412afda619b29ad0a72dbb20ac5487b7d9304b73d66caa3882",
+      "bytes": 1532
+    },
+    "calibrated_lr_roc.csv": {
+      "sha256": "136eb24d935c67610b654d93ff60d3fc1a219a6c2eee435219882476aa68fcb5",
+      "bytes": 21300
+    },
+    "explicit_other_lr_per_topic.csv": {
+      "sha256": "3047638e19e7dfd14857cfc3950f99a11d3720bc28a5d44b8c25e9ea37adf876",
+      "bytes": 676
+    },
+    "explicit_other_lr_predictions.parquet": {
+      "sha256": "a8f6e9f9f3a5998340fca5c7e8cf15f1d73cfebbcc9df19c114325b87fc567a6",
+      "bytes": 27103
+    },
+    "explicit_other_lr_risk_coverage.csv": {
+      "sha256": "364109001e389b7d595b447c56b1efc5b3bb77f1f367db699c69f61efb8e5574",
+      "bytes": 1524
+    },
+    "explicit_other_lr_roc.csv": {
+      "sha256": "b62a97784e9f5e95c891cbdfe2575dd61afc4c85970aba1c71fc56d5ad71d18f",
+      "bytes": 10826
+    },
+    "lr_raw_probability_per_topic.csv": {
+      "sha256": "20365ff13c2afd18b10bff37ea0085ce02fe9483891f7c002252ebd188a3cec0",
+      "bytes": 722
+    },
+    "lr_raw_probability_predictions.parquet": {
+      "sha256": "8a463c69ae63fef02eb8da422e0188890cd5fe93f3f497b10db866922e93d30c",
+      "bytes": 27103
+    },
+    "lr_raw_probability_risk_coverage.csv": {
+      "sha256": "e097fe8597d9ba0013f02a2c82f8ddb2785dde03ec19aae6fb894d6e17c5c60a",
+      "bytes": 1592
+    },
+    "lr_raw_probability_roc.csv": {
+      "sha256": "8bcc57b202aea7dfd42b8c86e0e7fa3fa94c4e1b2a6b2412d5e25f45ee489281",
+      "bytes": 17265
+    },
+    "models/calibrated_lr.joblib": {
+      "sha256": "2edebfc71f55ffc3853e2a91c3bd9d08f5770aac2e4a5365d5c532bfd770ba57",
+      "bytes": 17531478
+    },
+    "models/explicit_other_lr.joblib": {
+      "sha256": "ff7e93ecfaf2d2e12987805c04efdda28213031b751bcfa855057688dc3e8273",
+      "bytes": 6352934
+    },
+    "nb_probability_per_topic.csv": {
+      "sha256": "b4fbe31b333ad7e639855a36bca07682dfd5b0a98703b8be2894176d0fa40386",
+      "bytes": 722
+    },
+    "nb_probability_predictions.parquet": {
+      "sha256": "17dec4cb7ba97805115b6a152f018c13c6b06eb5e9658772753691d73757fa26",
+      "bytes": 27101
+    },
+    "nb_probability_risk_coverage.csv": {
+      "sha256": "51b743bb2f8d5355d60db94dd34cc76a055295cef61aac32c73e83dffb8485e0",
+      "bytes": 1603
+    },
+    "nb_probability_roc.csv": {
+      "sha256": "ffe4a13b938f675c35e70e2e7d9d694a2913485c95f42cb256a4181b42f4c689",
+      "bytes": 21430
+    },
+    "results.json": {
+      "sha256": "d0aa2ecc37cc9ada3dce9f625c3f4b7e5b5fcad0af3267e7d438c54ecd0bcc1a",
+      "bytes": 13349
+    },
+    "svm_margin_per_topic.csv": {
+      "sha256": "0735045d7b75c19ec663241eb87cbe4dd5b60a0eaf482a6778ce54e008ba21e7",
+      "bytes": 707
+    },
+    "svm_margin_predictions.parquet": {
+      "sha256": "bf6a1e34ab2aab06260066fcc4e2a034a533c64ce578db5a0e354fa583b8b332",
+      "bytes": 27102
+    },
+    "svm_margin_risk_coverage.csv": {
+      "sha256": "a912e667964fe64520f0aaec7301baedd92567d6a343b1a197ecdb0ca7080d89",
+      "bytes": 1530
+    },
+    "svm_margin_roc.csv": {
+      "sha256": "8c77efb91314a5a02c22143d9c9cb75d08f18fbe61c65292330455b1145db7dc",
+      "bytes": 17365
+    }
+  },
+  "final_2025_test": "SEALED"
+}

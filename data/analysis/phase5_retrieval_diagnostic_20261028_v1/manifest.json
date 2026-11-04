@@ -1,0 +1,41 @@
+{
+  "status": "complete",
+  "complete": true,
+  "created_at_utc": "2026-10-28T03:20:52.542994+00:00",
+  "selection": "2020\u20132022 all historical citing-work frequency only; no evaluation reference IDs",
+  "historical_cutoff": "2020\u20132022 citing works only",
+  "evaluation_year": 2023,
+  "query_input": "title and abstract only; all observed references hidden",
+  "temporal": {
+    "evaluation_queries": 909,
+    "observed_reference_edges": 37980,
+    "enriched_candidates": 973,
+    "candidates_with_valid_exact_date": 972,
+    "candidates_with_missing_date": 1,
+    "candidates_with_invalid_or_inconsistent_date": 0,
+    "enriched_subset_overlap_edges": 2777,
+    "known_earlier_year_edges": 2670,
+    "same_year_nonfuture_edges": 38,
+    "known_future_edges": 64,
+    "unknown_date_overlap_edges": 5,
+    "outside_enriched_subset_edges": 35203,
+    "conservative_valid_overlap_edges": 2670,
+    "exact_date_valid_overlap_edges": 2708
+  },
+  "enrichment_manifest_sha256": "ec16f1693328c76ef269761a1f9dabbf2fef3f3b1078a09d81f3acf64827f7fd",
+  "source_phase3_manifest_sha256": "5d21e6187f0cf569b284ea399ffff02cb02d29d1e936a5fa716c7c96758de19c",
+  "outputs": {
+    "retrieval_queries.csv": {
+      "sha256": "c842046f13d4c5b2114fc24a4cc10af85f7b33307c540f81c9d79ed535598a28",
+      "bytes": 321792
+    },
+    "retrieval_summary.csv": {
+      "sha256": "d01ef44ee87916d56bcca4dfa27d445c918444a4b25027917720cc05c2311e73",
+      "bytes": 646
+    },
+    "temporal_overlap_edges.csv": {
+      "sha256": "d2d3a6b0985ba2353c8148cc74eb7e4314b0a8216bd5b9e680776d60d761009b",
+      "bytes": 3224708
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "status": "complete",
+  "complete": true,
+  "run_id": "finalization_p2_web_data_20261101_v1",
+  "created_at_utc": "2026-11-01T07:02:47.360998+00:00",
+  "source_scope": "original_12000_only; expansion excluded",
+  "phase4_verification": {
+    "valid": true,
+    "checks_passed": 18,
+    "output_files": 64,
+    "matching_all_outputs_rerun": false
+  },
+  "source_phase3_manifest_sha256": "5d21e6187f0cf569b284ea399ffff02cb02d29d1e936a5fa716c7c96758de19c",
+  "source_phase4_manifest_sha256": "b7062e9bef99a477a3cb457661378584c1be667d84e04cbc110cada9ddbb96aa",
+  "catalogue_sha256": "e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9",
+  "code_sha256": "ec6b1340baccda4f2705fda1671e1276a5c5fa68cd4bc69828e8825e24ac7b11",
+  "paper_rows": 12000,
+  "topic_briefs": 14,
+  "outputs": {
+    "citation_descriptives.csv": {
+      "sha256": "39d22d87320752d55ef78c80c45f345ece5984d408829a55d86d3d812ac363da",
+      "bytes": 4385
+    },
+    "collaboration_descriptives.csv": {
+      "sha256": "7960ec3063345ac1e45d9c27a6c26ddf535064a3bd762f1160bf80e071e2b450",
+      "bytes": 2153
+    },
+    "country_collaboration_edges.csv": {
+      "sha256": "e2e71df530061e1dd92264a8947424a524c31706a3f05152e209e3814df57d83",
+      "bytes": 12665
+    },
+    "institution_collaboration_edges.csv": {
+      "sha256": "71edfb11ef45f9429990ec2da2a53c7787cf870ce013b69f8fbf4a084e2e2789",
+      "bytes": 2732110
+    },
+    "oa_descriptives.csv": {
+      "sha256": "2fc01192015d8bf17d10cd3d67237fade5a9bc1505ba72a956adbc3b03fd1143",
+      "bytes": 762
+    },
+    "overview.json": {
+      "sha256": "7054ef15f8527a1c0759f4dc7f6472e33d4a1661aa7f310d2acc643effb49cdd",
+      "bytes": 381
+    },
+    "paper_index.parquet": {
+      "sha256": "d6be4f807dce124cf945430fdb6ea66b9abfe4970d3705990102f0b4fefda073",
+      "bytes": 845047
+    },
+    "publication_trends.csv": {
+      "sha256": "4e719c982c253ae1107b34f5c71c9a9f2b82a051cedf97425d38aa84935c77fd",
+      "bytes": 882
+    },
+    "topic_briefs/T10028.json": {
+      "sha256": "e867a4293ecfcf25f3825126f44c013c73ae9007ab06b4e3908d3a660bc97d1c",
+      "bytes": 3040
+    },
+    "topic_briefs/T10036.json": {
+      "sha256": "99e3b12f6820fdbd54a9337de5f2e2f81c589a0552b01c448a3092f1897a90e4",
+      "bytes": 3143
+    },
+    "topic_briefs/T10052.json": {
+      "sha256": "2e0a1ead0549034316ae2390e3c3f9489840df1e8601056207e7e33186c682a2",
+      "bytes": 3084
+    },
+    "topic_briefs/T10100.json": {
+      "sha256": "19f280e6a7c17c947aed18be5cb5621fd76ed3589d5d00ea7ca6fbdf4bf30a4a",
+      "bytes": 3055
+    },
+    "topic_briefs/T10181.json": {
+      "sha256": "579c858766bc2628e458fde76b648c8655671b3d4e33832bbb3ef2886cf9ccfd",
+      "bytes": 2888
+    },
+    "topic_briefs/T10201.json": {
+      "sha256": "b0964702c602cb9bc6af52310eea1854e61542c504ad72c1168f311dee382f41",
+      "bytes": 3059
+    },
+    "topic_briefs/T10331.json": {
+      "sha256": "21443d20696c582bd3a6ef16e76a2284a31f6da11269b11dbf97d50250f33c40",
+      "bytes": 2989
+    },
+    "topic_briefs/T10462.json": {
+      "sha256": "150d65ac8ff26c77767fbf8d850d6c59737c3607bd6293ddd1dbbb5f9bc6a9f1",
+      "bytes": 3030
+    },
+    "topic_briefs/T10664.json": {
+      "sha256": "3dffacd674a399a5b2ee5c475bfd393121bd78551067d835c20fd0f8d3555b92",
+      "bytes": 3270
+    },
+    "topic_briefs/T10775.json": {
+      "sha256": "5be382cffd06007d0d9d38776053fafcf57c40afc6b8c978ea3c0ae0667afb04",
+      "bytes": 3161
+    },
+    "topic_briefs/T10812.json": {
+      "sha256": "1d8e0d9099eea7afc8274e5546c904fcb4a65cb26a6ffb7041af38502e0bdb85",
+      "bytes": 3085
+    },
+    "topic_briefs/T11307.json": {
+      "sha256": "0c53375d021fa560b2ccf7924a7cbeb495f584cce56b6b3c2b2f2909ffb3639e",
+      "bytes": 2933
+    },
+    "topic_briefs/T11689.json": {
+      "sha256": "f8150f0ff5a3918ec71b453da99ffe52ac2ffed9298d2de5197f2095f1bf28b5",
+      "bytes": 3082
+    },
+    "topic_briefs/T12026.json": {
+      "sha256": "926e25e36a50756ceaf55ec77cee9569df0623db97d1aa2183f9ee58c74b4874",
+      "bytes": 3040
+    }
+  },
+  "api_requests": 0,
+  "population_topic_series": "unavailable; topic briefs deliberately sample-scoped"
+}

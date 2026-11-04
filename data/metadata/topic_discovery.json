@@ -1,0 +1,889 @@
+{
+  "schema_version": 1,
+  "discovered_at_utc": "2026-10-19T02:39:57Z",
+  "endpoint": "https://api.openalex.org/topics",
+  "run_directory": "data/raw/topic_discovery/topic_discovery_20261019T023954Z",
+  "categories": {
+    "nlp_llm": {
+      "mapping_status": "verified_composite",
+      "selected_topic_ids": [
+        "T10028",
+        "T10181"
+      ],
+      "search_evidence": [
+        {
+          "query": "natural language processing",
+          "request_url": "https://api.openalex.org/topics?search=natural+language+processing&per_page=10&select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cfield%2Cdomain%2Cworks_count%2Cupdated_date",
+          "raw_path": "data/raw/topic_discovery/topic_discovery_20261019T023954Z/nlp_llm_01.json",
+          "sha256": "4f83f01f1e103302e6f38c42d66f1c072549ee2479932c8db9dd263c73fff90d",
+          "api_result_count": 13,
+          "returned_count": 10
+        },
+        {
+          "query": "large language models",
+          "request_url": "https://api.openalex.org/topics?search=large+language+models&per_page=10&select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cfield%2Cdomain%2Cworks_count%2Cupdated_date",
+          "raw_path": "data/raw/topic_discovery/topic_discovery_20261019T023954Z/nlp_llm_02.json",
+          "sha256": "59892054aa2d92f0ae6e19e2224728f070d746d492e5155c472f8dfb2606dda4",
+          "api_result_count": 3,
+          "returned_count": 3
+        }
+      ],
+      "candidates": [
+        {
+          "id": "https://openalex.org/T10181",
+          "short_id": "T10181",
+          "display_name": "Natural Language Processing Techniques",
+          "description": "This cluster of papers focuses on statistical machine translation, neural machine translation, dependency parsing, word sense disambiguation, and part-of-speech tagging. It also covers topics such as corpus linguistics, syntax-based translation models, multilingual neural machine translation, and language modeling.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 213139,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T10181",
+          "search_hits": [
+            {
+              "query": "natural language processing",
+              "rank": 1
+            }
+          ],
+          "selected_in_config": true
+        },
+        {
+          "id": "https://openalex.org/T10028",
+          "short_id": "T10028",
+          "display_name": "Topic Modeling",
+          "description": "This cluster of papers covers a wide range of advancements in natural language processing, including neural network architectures, word representation models, machine translation techniques, text classification algorithms, semantic similarity measures, named entity recognition methods, pretrained language models, sequence-to-sequence learning approaches, topic modeling strategies, and information retrieval systems.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 175635,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T10028",
+          "search_hits": [
+            {
+              "query": "natural language processing",
+              "rank": 2
+            }
+          ],
+          "selected_in_config": true
+        },
+        {
+          "id": "https://openalex.org/T11710",
+          "short_id": "T11710",
+          "display_name": "Biomedical Text Mining and Ontologies",
+          "description": "This cluster of papers focuses on the development and application of biomedical ontologies, text mining, and natural language processing techniques to extract and integrate knowledge from biomedical literature. It encompasses topics such as gene annotation, disease integration, phenotype ontology, data integration, and the use of semantic web technologies in knowledge management.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1312",
+            "display_name": "Molecular Biology"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/13",
+            "display_name": "Biochemistry, Genetics and Molecular Biology"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/1",
+            "display_name": "Life Sciences"
+          },
+          "works_count_at_discovery": 44684,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T11710",
+          "search_hits": [
+            {
+              "query": "natural language processing",
+              "rank": 3
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T11550",
+          "short_id": "T11550",
+          "display_name": "Text and Document Classification Technologies",
+          "description": "This cluster of papers focuses on the application of machine learning algorithms for multi-label text classification, with an emphasis on techniques such as feature selection, Naive Bayes classifier, K-nearest Neighbor (KNN), hierarchical classification, and support vector machines (SVM). The research covers various aspects of document categorization and information retrieval in the context of text mining and natural language processing.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 39429,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T11550",
+          "search_hits": [
+            {
+              "query": "natural language processing",
+              "rank": 4
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T12488",
+          "short_id": "T12488",
+          "display_name": "Mental Health via Writing",
+          "description": "This cluster of papers focuses on the analysis of psychological language in social media, particularly related to emotional disclosure, mental health, and expressive writing. It involves the use of natural language processing and machine learning techniques to detect and understand patterns of depression, suicidal ideation, and other mental health indicators in online communication.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/3207",
+            "display_name": "Social Psychology"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/32",
+            "display_name": "Psychology"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/2",
+            "display_name": "Social Sciences"
+          },
+          "works_count_at_discovery": 18911,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T12488",
+          "search_hits": [
+            {
+              "query": "natural language processing",
+              "rank": 5
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T13910",
+          "short_id": "T13910",
+          "display_name": "Computational and Text Analysis Methods",
+          "description": "This cluster of papers focuses on the application of computational text analysis methods, such as topic modeling, machine learning, and natural language processing, in social science research. It explores the use of these methods for quantitative analysis of textual data, automated content classification, and uncovering patterns and trends in large text corpora.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/3300",
+            "display_name": "General Social Sciences"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/33",
+            "display_name": "Social Sciences"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/2",
+            "display_name": "Social Sciences"
+          },
+          "works_count_at_discovery": 27236,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T13910",
+          "search_hits": [
+            {
+              "query": "natural language processing",
+              "rank": 6
+            },
+            {
+              "query": "large language models",
+              "rank": 1
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T12262",
+          "short_id": "T12262",
+          "display_name": "Hate Speech and Cyberbullying Detection",
+          "description": "This cluster of papers focuses on the automated detection of hate speech, offensive language, and cyberbullying in social media platforms such as Twitter. It explores various techniques including machine learning, natural language processing, and deep learning to identify and categorize abusive content, with a specific emphasis on mitigating online harassment and promoting online safety.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 23653,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T12262",
+          "search_hits": [
+            {
+              "query": "natural language processing",
+              "rank": 7
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T13643",
+          "short_id": "T13643",
+          "display_name": "Artificial Intelligence in Law",
+          "description": "This cluster of papers focuses on the application of predictive legal technology, including machine learning, natural language processing, and artificial intelligence, to forecast judicial decisions in various courts. The topics also cover the use of big data and behavior control in legal contexts, as well as the ethical implications of integrating technology into the legal profession.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/3320",
+            "display_name": "Political Science and International Relations"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/33",
+            "display_name": "Social Sciences"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/2",
+            "display_name": "Social Sciences"
+          },
+          "works_count_at_discovery": 36027,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T13643",
+          "search_hits": [
+            {
+              "query": "natural language processing",
+              "rank": 8
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T13629",
+          "short_id": "T13629",
+          "display_name": "Text Readability and Simplification",
+          "description": "This cluster of papers focuses on automatic text simplification and readability assessment using machine learning, statistical language models, neural networks, and natural language processing techniques. The research covers areas such as sentence simplification, lexical simplification, complex word identification, and semantic simplification to improve the accessibility and comprehension of written text.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 11492,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T13629",
+          "search_hits": [
+            {
+              "query": "natural language processing",
+              "rank": 9
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T12031",
+          "short_id": "T12031",
+          "display_name": "Speech and dialogue systems",
+          "description": "This cluster of papers focuses on the modeling and optimization of dialogue acts in spoken language systems, utilizing techniques such as Markov decision processes, user simulation, multimodal interaction, reinforcement learning, natural language generation, and the hidden information state model. The research also delves into semantic processing, referring expressions, and the management of dialogues in various contexts.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 54089,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T12031",
+          "search_hits": [
+            {
+              "query": "natural language processing",
+              "rank": 10
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T11714",
+          "short_id": "T11714",
+          "display_name": "Multimodal Machine Learning Applications",
+          "description": "This cluster of papers focuses on the development and improvement of visual question answering systems, image captioning techniques, and neural networks for understanding and generating descriptions of images and videos. The research involves semantic reasoning, multimodal fusion, scene graph generation, attention mechanisms, and deep learning approaches to bridge the gap between vision and language.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1707",
+            "display_name": "Computer Vision and Pattern Recognition"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 66333,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T11714",
+          "search_hits": [
+            {
+              "query": "large language models",
+              "rank": 2
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T10201",
+          "short_id": "T10201",
+          "display_name": "Speech Recognition and Synthesis",
+          "description": "This cluster of papers focuses on the advances in speech recognition technology, covering topics such as acoustic modeling using deep neural networks, speaker verification, convolutional neural networks for speech recognition, end-to-end speech recognition systems, hidden Markov models, sequence-to-sequence models, automatic speech recognition, speaker diarization, and statistical language modeling.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 150273,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T10201",
+          "search_hits": [
+            {
+              "query": "large language models",
+              "rank": 3
+            }
+          ],
+          "selected_in_config": false
+        }
+      ],
+      "warning": "Text search returns candidates ranked by matching names/descriptions; it is not proof of exhaustive category membership."
+    },
+    "computer_vision": {
+      "mapping_status": "verified_partial",
+      "selected_topic_ids": [
+        "T10036"
+      ],
+      "search_evidence": [
+        {
+          "query": "computer vision",
+          "request_url": "https://api.openalex.org/topics?search=computer+vision&per_page=10&select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cfield%2Cdomain%2Cworks_count%2Cupdated_date",
+          "raw_path": "data/raw/topic_discovery/topic_discovery_20261019T023954Z/computer_vision_01.json",
+          "sha256": "2db5795325aeca16485c85c538703506002d0bc05fb84e01737ae9b33797f37e",
+          "api_result_count": 6,
+          "returned_count": 6
+        }
+      ],
+      "candidates": [
+        {
+          "id": "https://openalex.org/T10036",
+          "short_id": "T10036",
+          "display_name": "Advanced Neural Network Applications",
+          "description": "This cluster of papers focuses on the application of deep learning, particularly convolutional neural networks, in computer vision tasks such as image recognition, object detection, and semantic segmentation. It covers various neural network architectures, model compression techniques, and their applications in fields like autonomous driving.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1707",
+            "display_name": "Computer Vision and Pattern Recognition"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 210362,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T10036",
+          "search_hits": [
+            {
+              "query": "computer vision",
+              "rank": 1
+            }
+          ],
+          "selected_in_config": true
+        },
+        {
+          "id": "https://openalex.org/T12006",
+          "short_id": "T12006",
+          "display_name": "Ergonomics and Musculoskeletal Disorders",
+          "description": "This cluster of papers explores the impact of technology use on human health and comfort, with a focus on ergonomics, musculoskeletal symptoms, visual fatigue, and the relationship between technology design and human factors. It covers topics such as computer vision syndrome, seating comfort, digital eye strain, smartphone use, and ergonomic interventions in work environments.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/3207",
+            "display_name": "Social Psychology"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/32",
+            "display_name": "Psychology"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/2",
+            "display_name": "Social Sciences"
+          },
+          "works_count_at_discovery": 102596,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T12006",
+          "search_hits": [
+            {
+              "query": "computer vision",
+              "rank": 2
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T12549",
+          "short_id": "T12549",
+          "display_name": "Image and Object Detection Techniques",
+          "description": "This cluster of papers focuses on robust line and curve detection using the Hough Transform, including techniques for line detection, circle and ellipse fitting, randomized algorithms, computer vision applications, edge detection, geometric fitting, and statistical optimization.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1707",
+            "display_name": "Computer Vision and Pattern Recognition"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 24613,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T12549",
+          "search_hits": [
+            {
+              "query": "computer vision",
+              "rank": 3
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T13674",
+          "short_id": "T13674",
+          "display_name": "Computer Science and Engineering",
+          "description": "This cluster of papers covers topics related to digital image processing, artificial neural networks, and their applications in various fields such as cryptography, machine learning, computer vision, and data security. The use of MATLAB for digital image processing and the application of artificial neural networks for tasks like face recognition and traffic sign recognition are also prominent in this cluster.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 16638,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T13674",
+          "search_hits": [
+            {
+              "query": "computer vision",
+              "rank": 4
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T12697",
+          "short_id": "T12697",
+          "display_name": "Water Quality Monitoring Technologies",
+          "description": "This cluster of papers focuses on real-time monitoring of water quality, aquaculture management, and environmental sensing using advanced technologies such as sensor networks, IoT, and computer vision. The research covers topics including smart sensors, wireless monitoring, fish behavior analysis, and remote sensing for environmental monitoring.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/2312",
+            "display_name": "Water Science and Technology"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/23",
+            "display_name": "Environmental Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 29996,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T12697",
+          "search_hits": [
+            {
+              "query": "computer vision",
+              "rank": 5
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T12597",
+          "short_id": "T12597",
+          "display_name": "Fire Detection and Safety Systems",
+          "description": "This cluster of papers focuses on the development and application of computer vision, deep learning, and image processing techniques for real-time fire and smoke detection, particularly in the context of video surveillance, forest fire monitoring, and unmanned aerial vehicle (UAV) based systems. The research covers a wide range of methods including convolutional neural networks, statistical color models, multi-feature fusion, and IoT-based intelligent modeling for fire prevention and safety.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/2213",
+            "display_name": "Safety, Risk, Reliability and Quality"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/22",
+            "display_name": "Engineering"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 25340,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T12597",
+          "search_hits": [
+            {
+              "query": "computer vision",
+              "rank": 6
+            }
+          ],
+          "selected_in_config": false
+        }
+      ],
+      "warning": "Text search returns candidates ranked by matching names/descriptions; it is not proof of exhaustive category membership."
+    },
+    "reinforcement_learning": {
+      "mapping_status": "verified_partial",
+      "selected_topic_ids": [
+        "T10462"
+      ],
+      "search_evidence": [
+        {
+          "query": "reinforcement learning",
+          "request_url": "https://api.openalex.org/topics?search=reinforcement+learning&per_page=10&select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cfield%2Cdomain%2Cworks_count%2Cupdated_date",
+          "raw_path": "data/raw/topic_discovery/topic_discovery_20261019T023954Z/reinforcement_learning_01.json",
+          "sha256": "68970bfc889b2c7acdf12ab722082c4087cc41ad22b0b926c6e40815bfe272f9",
+          "api_result_count": 5,
+          "returned_count": 5
+        }
+      ],
+      "candidates": [
+        {
+          "id": "https://openalex.org/T10462",
+          "short_id": "T10462",
+          "display_name": "Reinforcement Learning in Robotics",
+          "description": "This cluster of papers encompasses a wide range of advancements in reinforcement learning algorithms and their applications, including deep learning, neural networks, robotics, autonomous control, policy gradient methods, multi-agent systems, model-based learning, curiosity-driven exploration, and simulation to real-world transfer.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 93726,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T10462",
+          "search_hits": [
+            {
+              "query": "reinforcement learning",
+              "rank": 1
+            }
+          ],
+          "selected_in_config": true
+        },
+        {
+          "id": "https://openalex.org/T10524",
+          "short_id": "T10524",
+          "display_name": "Traffic control and management",
+          "description": "This cluster of papers focuses on the modeling and control of traffic flow systems, including microscopic simulation, cooperative adaptive cruise control, connected vehicles, traffic signal control, platooning, macroscopic fundamental diagram, intelligent transportation systems, vehicle dynamics model, and reinforcement learning.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/2207",
+            "display_name": "Control and Systems Engineering"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/22",
+            "display_name": "Engineering"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 135985,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T10524",
+          "search_hits": [
+            {
+              "query": "reinforcement learning",
+              "rank": 2
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T12031",
+          "short_id": "T12031",
+          "display_name": "Speech and dialogue systems",
+          "description": "This cluster of papers focuses on the modeling and optimization of dialogue acts in spoken language systems, utilizing techniques such as Markov decision processes, user simulation, multimodal interaction, reinforcement learning, natural language generation, and the hidden information state model. The research also delves into semantic processing, referring expressions, and the management of dialogues in various contexts.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 54089,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T12031",
+          "search_hits": [
+            {
+              "query": "reinforcement learning",
+              "rank": 3
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T12794",
+          "short_id": "T12794",
+          "display_name": "Adaptive Dynamic Programming Control",
+          "description": "This cluster of papers focuses on the application of Adaptive Dynamic Programming and Reinforcement Learning techniques to solve optimal control problems in continuous-time nonlinear systems. It explores the use of neural networks, policy iteration, actor-critic algorithms, and $H_{infty}$ control for online learning and feedback control in various domains such as robotics, energy management, and multi-agent systems.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1703",
+            "display_name": "Computational Theory and Mathematics"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 13276,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T12794",
+          "search_hits": [
+            {
+              "query": "reinforcement learning",
+              "rank": 4
+            }
+          ],
+          "selected_in_config": false
+        },
+        {
+          "id": "https://openalex.org/T13553",
+          "short_id": "T13553",
+          "display_name": "Age of Information Optimization",
+          "description": "This cluster of papers focuses on optimizing the freshness of information in communication networks, particularly in the context of real-time status updates, wireless networks, energy harvesting, and scheduling policies. The research explores age of information metrics, multi-hop networks, IoT monitoring systems, and queue management to minimize the age of information and improve network performance.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1705",
+            "display_name": "Computer Networks and Communications"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 4728,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T13553",
+          "search_hits": [
+            {
+              "query": "reinforcement learning",
+              "rank": 5
+            }
+          ],
+          "selected_in_config": false
+        }
+      ],
+      "warning": "Text search returns candidates ranked by matching names/descriptions; it is not proof of exhaustive category membership."
+    },
+    "explainable_ai": {
+      "mapping_status": "verified_close_match",
+      "selected_topic_ids": [
+        "T12026"
+      ],
+      "search_evidence": [
+        {
+          "query": "explainable artificial intelligence",
+          "request_url": "https://api.openalex.org/topics?search=explainable+artificial+intelligence&per_page=10&select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cfield%2Cdomain%2Cworks_count%2Cupdated_date",
+          "raw_path": "data/raw/topic_discovery/topic_discovery_20261019T023954Z/explainable_ai_01.json",
+          "sha256": "bb2dc824a8ad6be2bf2f31945509f46401ead8c7b58afd62efa5190327756c37",
+          "api_result_count": 1,
+          "returned_count": 1
+        }
+      ],
+      "candidates": [
+        {
+          "id": "https://openalex.org/T12026",
+          "short_id": "T12026",
+          "display_name": "Explainable Artificial Intelligence (XAI)",
+          "description": "This cluster of papers focuses on Explainable Artificial Intelligence (XAI) and the development of interpretable models, visual explanations, and responsible machine learning interpretability. It explores concepts, challenges, and opportunities in XAI, including the use of gradient-based localization, understanding deep neural networks, feature importance, and addressing black box models. The papers also discuss the responsibility and ethical considerations in AI.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 51333,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T12026",
+          "search_hits": [
+            {
+              "query": "explainable artificial intelligence",
+              "rank": 1
+            }
+          ],
+          "selected_in_config": true
+        }
+      ],
+      "warning": "Text search returns candidates ranked by matching names/descriptions; it is not proof of exhaustive category membership."
+    },
+    "multimodal_ai": {
+      "mapping_status": "verified_partial",
+      "selected_topic_ids": [
+        "T11714"
+      ],
+      "search_evidence": [
+        {
+          "query": "multimodal machine learning",
+          "request_url": "https://api.openalex.org/topics?search=multimodal+machine+learning&per_page=10&select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cfield%2Cdomain%2Cworks_count%2Cupdated_date",
+          "raw_path": "data/raw/topic_discovery/topic_discovery_20261019T023954Z/multimodal_ai_01.json",
+          "sha256": "48839511114822431171c55ec6eac7d7fea9d73448ab36e6cc196cbdfb49246a",
+          "api_result_count": 2,
+          "returned_count": 2
+        }
+      ],
+      "candidates": [
+        {
+          "id": "https://openalex.org/T11714",
+          "short_id": "T11714",
+          "display_name": "Multimodal Machine Learning Applications",
+          "description": "This cluster of papers focuses on the development and improvement of visual question answering systems, image captioning techniques, and neural networks for understanding and generating descriptions of images and videos. The research involves semantic reasoning, multimodal fusion, scene graph generation, attention mechanisms, and deep learning approaches to bridge the gap between vision and language.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1707",
+            "display_name": "Computer Vision and Pattern Recognition"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 66333,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T11714",
+          "search_hits": [
+            {
+              "query": "multimodal machine learning",
+              "rank": 1
+            }
+          ],
+          "selected_in_config": true
+        },
+        {
+          "id": "https://openalex.org/T11122",
+          "short_id": "T11122",
+          "display_name": "Online Learning and Analytics",
+          "description": "This cluster of papers focuses on the application of educational data mining and learning analytics in the context of online education, particularly Massive Open Online Courses (MOOCs). It explores topics such as predictive analysis of student performance, machine learning techniques for student engagement, and the impact of data-driven education on online learning. The cluster also delves into the challenges and opportunities associated with implementing learning analytics in higher education.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1706",
+            "display_name": "Computer Science Applications"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 76697,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T11122",
+          "search_hits": [
+            {
+              "query": "multimodal machine learning",
+              "rank": 2
+            }
+          ],
+          "selected_in_config": false
+        }
+      ],
+      "warning": "Text search returns candidates ranked by matching names/descriptions; it is not proof of exhaustive category membership."
+    },
+    "retrieval_augmented_generation": {
+      "mapping_status": "unresolved_no_dedicated_topic",
+      "selected_topic_ids": [],
+      "search_evidence": [
+        {
+          "query": "retrieval augmented generation",
+          "request_url": "https://api.openalex.org/topics?search=retrieval+augmented+generation&per_page=10&select=id%2Cdisplay_name%2Cdescription%2Csubfield%2Cfield%2Cdomain%2Cworks_count%2Cupdated_date",
+          "raw_path": "data/raw/topic_discovery/topic_discovery_20261019T023954Z/retrieval_augmented_generation_01.json",
+          "sha256": "982089d791a3e46db21cc9a740d2f64a8a23a1a9c3e26ce237f7e1a1a1d767c8",
+          "api_result_count": 1,
+          "returned_count": 1
+        }
+      ],
+      "candidates": [
+        {
+          "id": "https://openalex.org/T10028",
+          "short_id": "T10028",
+          "display_name": "Topic Modeling",
+          "description": "This cluster of papers covers a wide range of advancements in natural language processing, including neural network architectures, word representation models, machine translation techniques, text classification algorithms, semantic similarity measures, named entity recognition methods, pretrained language models, sequence-to-sequence learning approaches, topic modeling strategies, and information retrieval systems.",
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          },
+          "works_count_at_discovery": 175635,
+          "topic_updated_date": "2026-10-18T03:01:31",
+          "singleton_api_url": "https://api.openalex.org/topics/T10028",
+          "search_hits": [
+            {
+              "query": "retrieval augmented generation",
+              "rank": 1
+            }
+          ],
+          "selected_in_config": false
+        }
+      ],
+      "warning": "Text search returns candidates ranked by matching names/descriptions; it is not proof of exhaustive category membership."
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "status": "complete",
+  "run_id": "finalization_p2_rq6_20261101_v2",
+  "source_scope": "original 2020-2024 sample and enriched 2020-2023 training; no 2025 labels",
+  "integration_validation": {
+    "valid": true,
+    "read_only": true,
+    "source_rows": 14515,
+    "canonical_groups": 14470,
+    "train": 7002,
+    "validation_2024": 1843,
+    "test_2025_sealed_total_only": 2318,
+    "output_files_verified": 8,
+    "deterministic_compare": null
+  },
+  "inputs": {
+    "original_works": {
+      "path": "data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet",
+      "sha256": "9318c456d916b8c9a35b0a3c86a829a92347083357693593e743abb0253264d4"
+    },
+    "original_topics": {
+      "path": "data/processed/openalex_stratified/stratified_20261019T155909Z/work_topics.parquet",
+      "sha256": "e65356b899f3c9dec4d9d47ec9dae54557b23dc1709a1b3ea1d4c5f746acf6d5"
+    },
+    "integrated_train": {
+      "path": "data/processed/ml_topic_classification/finalization_p2_20261101_v2/train.parquet",
+      "sha256": "249ac4fe7768483559bfd5a20373d40ec594f140aae0cdfdaa6ff9a1bb7dfd3b"
+    },
+    "integrated_validation": {
+      "path": "data/processed/ml_topic_classification/finalization_p2_20261101_v2/validation_2024.parquet",
+      "sha256": "afc459fdab3c53e9fe31bec3781e98e736a2e8406b096c88acfd4bbd2ba93dfa"
+    },
+    "integrated_groups": {
+      "path": "data/processed/ml_topic_classification/finalization_p2_20261101_v2/version_groups.parquet",
+      "sha256": "f3a806e03be394c2a1b081d90fa33242192934216b0ce90216bda05e2b592b7d"
+    },
+    "catalogue": {
+      "path": "config/phase6b_catalogue.yaml",
+      "sha256": "e4b34974e2f8a6b563f29ab69ab86675de78ee9fcfbcb1f0258e7fcbd01fdda9"
+    },
+    "metadata": {
+      "path": "config/phase6b_topic_metadata.csv",
+      "sha256": "024f9f13db713534fcc662ff95f477299c8cf939ca200565b2e88e13371ddd86"
+    }
+  },
+  "outputs": {
+    "topic_support.csv": {
+      "rows": 14,
+      "sha256": "f925edb1ed4014e1889d094c8df77390b9a017fc5315abadf8de9a718659385a",
+      "bytes": 2312
+    },
+    "topic_year_train.csv": {
+      "rows": 112,
+      "sha256": "08cc3647fe7a74ddd72a264951de340d7498d501f9042a4552e7851463a3e231",
+      "bytes": 6838
+    },
+    "topic_scores.csv": {
+      "rows": 14,
+      "sha256": "620f25126466db965c7c65aeb5a4d921a817d102e5871d31255fd0d85fdd3404",
+      "bytes": 1656
+    },
+    "topic_cooccurrence.csv": {
+      "rows": 62,
+      "sha256": "485d960d2b38c67eebb3821ad810bee240af4d6578745e0d06bd3d32e547b21f",
+      "bytes": 6114
+    },
+    "description_similarity.csv": {
+      "rows": 91,
+      "sha256": "e1769e2502087709db07055890a49eed3de76132e509087677e3eebf98d67457",
+      "bytes": 6576
+    },
+    "abstract_missing_by_type.csv": {
+      "rows": 35,
+      "sha256": "76705cf987f070f53e3d1deaf9780f7f9d01c6f5c5b8a2fc330ff16410ba9baa",
+      "bytes": 1973
+    },
+    "duplicate_diagnostics.csv": {
+      "rows": 5,
+      "sha256": "f3238b0f6d1aab52453499c7fc6dba8dbc086e01830b37de37d5082469d7e37f",
+      "bytes": 240
+    },
+    "train_composition.csv": {
+      "rows": 62,
+      "sha256": "2be87482323bf776fb18017db00cb625c77dbcb657707a1c8e82ec82b0b7e8f1",
+      "bytes": 2422
+    },
+    "figures/rq6_training_support.png": {
+      "sha256": "c31eeb0127bf064dee2930d0528fff1c36b196bf8b99413b59885e5529789e27",
+      "bytes": 93295
+    },
+    "figures/rq6_train_year_heatmap.png": {
+      "sha256": "bcfe317f261fb67471278adaa2a3545333835b8210b467b0f6c18de7a4d96838",
+      "bytes": 124726
+    },
+    "figures/rq6_topic_cooccurrence.png": {
+      "sha256": "1a0fe48c6236818a3dca2950a9d4d55e3ef3fe558feae776dec78411a9f1dd55",
+      "bytes": 90909
+    },
+    "figures/rq6_score_gaps.png": {
+      "sha256": "d1b8686936724a218579b7de9093a675738a8a083b69d8038d4c7a88c6dba3b4",
+      "bytes": 78337
+    },
+    "figures/rq6_abstract_missingness.png": {
+      "sha256": "d0cd3695e152f6adc5749d342aacaa0cb7b3672658e5e6f1e456232493ae6dc5",
+      "bytes": 77040
+    }
+  }
+}

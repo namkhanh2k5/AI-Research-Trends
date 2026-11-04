@@ -1,0 +1,29 @@
+{
+  "status": "complete_ai_assessment_human_pending",
+  "sealed_at_utc": "2026-11-04T06:41:27+00:00",
+  "counts": {
+    "topics": 14,
+    "calibration": 40,
+    "evaluation": 100,
+    "publishers": 30
+  },
+  "input_hashes": {
+    "data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/topic/topic_scope_decisions.tsv": "0d0fc6d707cc597e722a5849f24bae0ab993e16ce9b827e880756b02d46f9e62",
+    "data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/topic/blind_ai_decisions.tsv": "10dc2d562807898f6c8054c376d505029b529cb6e0ab4a05bf72ea3e018957ba",
+    "data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/publisher/official_page_evidence.json": "2f7291633a9e7521c2e398075a56b5315e87d22461a725a7bbb26d09bd1d6486",
+    "data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/publisher/publisher_ai_decisions.tsv": "35aa1938f710233969547698186d85db5a16afe59e22fef715aa35b727ed7f70",
+    "data/analysis/ai_assisted_validation/ai_assisted_20261104_v2/revision_provenance.json": "5d3d729e1fc8e48f29a71f2c05809bd619270bdf6c0d0afe1c824403a8a056bf"
+  },
+  "topic_manifest_sha256": "5b9c8f786eeb0318b6b2b5bb9d07a423c639a87bfc7d26df09e258a6874cdd60",
+  "publisher_manifest_sha256": "4c899f4b15d4c2651ef477c3b5470c8fcc5a90c17e55b881d908cd6d59831950",
+  "direct_doi_get_attempts_recorded_in_collector": 30,
+  "observed_http_transactions_in_collector": 74,
+  "collector_budget": 120,
+  "browser_search_calls": 5,
+  "browser_search_queries": 20,
+  "browser_backend_http_request_count": "NOT_AVAILABLE",
+  "exploratory_direct_get_attempts_outside_collector": 4,
+  "human_topic_validation": "PENDING",
+  "human_publisher_adjudication": "PENDING",
+  "sealed_2025_final_test": "NOT_ACCESSED"
+}

@@ -1,0 +1,103 @@
+{
+  "status": "complete",
+  "complete": true,
+  "run_id": "finalization_p2_master_20261101_v1",
+  "created_at_utc": "2026-11-01T07:20:42.405819+00:00",
+  "repository_head_at_run": "708f804c8bcfd571783be7115b7ea108b8a3d293",
+  "code_sha256": {
+    "src/ai_research_trends/ml/integrate_topic_data.py": "6a8eaacefc49b3806015e19f23ede3c7f8a6aa59ab798129cf888fbda0964571",
+    "src/ai_research_trends/analysis/rq6_topic_labels.py": "f94d16afd94fdedb0718cccbda079c6b52bb60c61965efca0fdb41026e7ee69f",
+    "src/ai_research_trends/analysis/web_data.py": "795ebc5f1064dd5667a42e2a0e2660ebfebac79f1045bc01ca342b4034bfb80f",
+    "src/ai_research_trends/analysis/topic_population.py": "327b76b9c41b335d3775a7565c17b91c3c5d9fc93b65da1fbd19ccd9070f1351"
+  },
+  "source_collection_run_ids": [
+    "stratified_20261019T155909Z",
+    "ml_expansion_20261101T052506Z"
+  ],
+  "run_manifests": {
+    "integrated": {
+      "path": "data/processed/ml_topic_classification/finalization_p2_20261101_v3/split_manifest.json",
+      "sha256": "7feee5f38bb98a33ec3fbd936e9a197a5caa08b2a1559719c9e316201c44a2c5"
+    },
+    "integration_rerun": {
+      "path": "data/processed/ml_topic_classification/finalization_p2_20261101_v3_rerun/split_manifest.json",
+      "sha256": "9e9dd389c86ad15870089531f71ea12dd952b6b91063f730ed9a568c1899d9ba"
+    },
+    "rq6": {
+      "path": "data/analysis/finalization_p2_rq6_20261101_v3/manifest.json",
+      "sha256": "4588fc872581f91eccc713e86e845d0cf8a11bc79eeb0603631c825cf091c570"
+    },
+    "rq6_published": {
+      "path": "reports/finalization_p2/manifest.json",
+      "sha256": "3cea0a8d9e666296fdf5c3bc25fdee95b51c8a9d19dce9277de9370294d53e92"
+    },
+    "human": {
+      "path": "data/analysis/finalization_p2_human_review_20261101_v1/manifest.json",
+      "sha256": "b433069a1688145e02e52d3ddb3ef04b20b4660a1ca0c6697142f4426281cf95"
+    },
+    "topic_population": {
+      "path": "data/analysis/finalization_p2_topic_population_20261101_v2/manifest.json",
+      "sha256": "b0eb9867c3dae45ca1d3d3ed420a5fbee53c01b70757d2c2f47836d8c7b3be36"
+    },
+    "web": {
+      "path": "data/analysis/finalization_p2_web_data_20261101_v3/manifest.json",
+      "sha256": "a3378abf249b567cf34893cefa7d56d6291577a8e9c9ce5ec85a31640f13c15d"
+    }
+  },
+  "checks": {
+    "integration": {
+      "valid": true,
+      "read_only": true,
+      "source_rows": 14515,
+      "canonical_groups": 14470,
+      "train": 7002,
+      "validation_2024": 1843,
+      "test_2025_sealed_total_only": 2318,
+      "output_files_verified": 8,
+      "deterministic_compare": {
+        "source_record_audit.parquet": true,
+        "ml_papers.parquet": true,
+        "version_groups.parquet": true,
+        "near_duplicate_risks.parquet": true,
+        "train.parquet": true,
+        "validation_2024.parquet": true,
+        "test_2025_sealed.parquet": true,
+        "excluded.parquet": true
+      }
+    },
+    "rq6": {
+      "valid": true,
+      "read_only": true,
+      "topics": 14,
+      "csv_tables": 8,
+      "figures_png": 5,
+      "published_match": true
+    },
+    "human_package": {
+      "valid": true,
+      "reviewers": 2,
+      "calibration_examples": 40,
+      "evaluation_examples": 100,
+      "human_statistics": "pending"
+    },
+    "topic_population": {
+      "valid": true,
+      "queries": 14,
+      "rows": 84
+    },
+    "web": {
+      "valid": true,
+      "outputs_verified": 22,
+      "paper_rows": 12000,
+      "topic_briefs": 14
+    }
+  },
+  "source_rows": 14515,
+  "training_rows": 7002,
+  "validation_2024_rows": 1843,
+  "sealed_2025_rows_count_only": 2318,
+  "api_requests_new_topic_snapshot": 14,
+  "human_ratings_received": 0,
+  "non_destructive_processing": true,
+  "phase3_4_source_outputs_unchanged": "verified by child manifests"
+}

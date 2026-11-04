@@ -1,0 +1,112 @@
+[
+  {
+    "screenshot": "01_home_desktop.png",
+    "scroll_width": 1440,
+    "viewport_width": 1440,
+    "heading": [
+      "AI/CV Research",
+      "Explore AI & Computer Vision Research"
+    ]
+  },
+  {
+    "screenshot": "02_landscape_desktop.png",
+    "scroll_width": 1440,
+    "viewport_width": 1440,
+    "heading": [
+      "AI/CV Research",
+      "Research Landscape"
+    ]
+  },
+  {
+    "screenshot": "03_topic_explorer_desktop.png",
+    "scroll_width": 1440,
+    "viewport_width": 1440,
+    "heading": [
+      "AI/CV Research",
+      "Topic Explorer"
+    ]
+  },
+  {
+    "screenshot": "04_classify_initial_desktop.png",
+    "scroll_width": 1440,
+    "viewport_width": 1440,
+    "heading": [
+      "AI/CV Research",
+      "Classify My Research"
+    ]
+  },
+  {
+    "screenshot": "05_classify_prediction_desktop.png",
+    "scroll_width": 1440,
+    "viewport_width": 1440,
+    "heading": [
+      "AI/CV Research",
+      "Classify My Research"
+    ]
+  },
+  {
+    "classify_exception": [
+      "KeyError: 'topic_name'Traceback:File \"/home/khanh/Projects/AI-Research-Trends/dashboard/app.py\", line 195, in <module>\n    main()File \"/home/khanh/Projects/AI-Research-Trends/dashboard/app.py\", line 188, in main\n    {\"Home\": home, \"Research Landscape\": landscape, \"Topic Explorer\": topics,File \"/home/khanh/Projects/AI-Research-Trends/dashboard/app.py\", line 189, in <lambda>\n    \"Classify My Research\": lambda d: classify_page(d, web_path, model_path),\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^File \"/home/khanh/Projects/AI-Research-Trends/dashboard/app.py\", line 132, in classify_page\n    choices = {x[\"topic_id\"]: x[\"topic_name\"] for x in data.get_topics()}\n                              ~^^^^^^^^^^^^^^CopyAsk GoogleAsk ChatGPT"
+    ]
+  },
+  {
+    "06_classify_confirmed_desktop.png": "NOT CAPTURED: live KeyError blocks confirmation"
+  },
+  {
+    "stale_suggestion_after_input_change": true
+  },
+  {
+    "screenshot": "07_paper_explorer_desktop.png",
+    "scroll_width": 1440,
+    "viewport_width": 1440,
+    "heading": [
+      "AI/CV Research",
+      "Paper Explorer"
+    ]
+  },
+  {
+    "screenshot": "08_methodology_desktop.png",
+    "scroll_width": 1440,
+    "viewport_width": 1440,
+    "heading": [
+      "AI/CV Research",
+      "Methodology & Model Evaluation"
+    ]
+  },
+  {
+    "screenshot": "09_methodology_laptop.png",
+    "scroll_width": 1280,
+    "viewport_width": 1280,
+    "heading": [
+      "AI/CV Research",
+      "Methodology & Model Evaluation"
+    ]
+  },
+  {
+    "screenshot": "09_methodology_tablet.png",
+    "scroll_width": 768,
+    "viewport_width": 768,
+    "heading": [
+      "AI/CV Research",
+      "Methodology & Model Evaluation"
+    ]
+  },
+  {
+    "screenshot": "10_home_mobile.png",
+    "scroll_width": 390,
+    "viewport_width": 390,
+    "heading": [
+      "AI/CV Research",
+      "Explore AI & Computer Vision Research"
+    ]
+  },
+  {
+    "screenshot": "11_classify_mobile.png",
+    "scroll_width": 390,
+    "viewport_width": 390,
+    "heading": [
+      "AI/CV Research",
+      "Classify My Research"
+    ]
+  }
+]

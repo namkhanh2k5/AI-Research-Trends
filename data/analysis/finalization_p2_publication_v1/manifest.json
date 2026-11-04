@@ -1,0 +1,67 @@
+{
+  "status": "complete",
+  "source_manifest_sha256": "61cc845b7b4c8bfd8f354c960c5cf867a9f743265847d115e1ba0d919565fefb",
+  "files": {
+    "topic_support.csv": {
+      "rows": 14,
+      "sha256": "f925edb1ed4014e1889d094c8df77390b9a017fc5315abadf8de9a718659385a",
+      "bytes": 2312
+    },
+    "topic_year_train.csv": {
+      "rows": 112,
+      "sha256": "08cc3647fe7a74ddd72a264951de340d7498d501f9042a4552e7851463a3e231",
+      "bytes": 6838
+    },
+    "topic_scores.csv": {
+      "rows": 14,
+      "sha256": "620f25126466db965c7c65aeb5a4d921a817d102e5871d31255fd0d85fdd3404",
+      "bytes": 1656
+    },
+    "topic_cooccurrence.csv": {
+      "rows": 62,
+      "sha256": "485d960d2b38c67eebb3821ad810bee240af4d6578745e0d06bd3d32e547b21f",
+      "bytes": 6114
+    },
+    "description_similarity.csv": {
+      "rows": 91,
+      "sha256": "e1769e2502087709db07055890a49eed3de76132e509087677e3eebf98d67457",
+      "bytes": 6576
+    },
+    "abstract_missing_by_type.csv": {
+      "rows": 35,
+      "sha256": "76705cf987f070f53e3d1deaf9780f7f9d01c6f5c5b8a2fc330ff16410ba9baa",
+      "bytes": 1973
+    },
+    "duplicate_diagnostics.csv": {
+      "rows": 5,
+      "sha256": "f3238b0f6d1aab52453499c7fc6dba8dbc086e01830b37de37d5082469d7e37f",
+      "bytes": 240
+    },
+    "train_composition.csv": {
+      "rows": 62,
+      "sha256": "2be87482323bf776fb18017db00cb625c77dbcb657707a1c8e82ec82b0b7e8f1",
+      "bytes": 2422
+    },
+    "figures/rq6_training_support.png": {
+      "sha256": "c31eeb0127bf064dee2930d0528fff1c36b196bf8b99413b59885e5529789e27",
+      "bytes": 93295
+    },
+    "figures/rq6_train_year_heatmap.png": {
+      "sha256": "bcfe317f261fb67471278adaa2a3545333835b8210b467b0f6c18de7a4d96838",
+      "bytes": 124726
+    },
+    "figures/rq6_topic_cooccurrence.png": {
+      "sha256": "1a0fe48c6236818a3dca2950a9d4d55e3ef3fe558feae776dec78411a9f1dd55",
+      "bytes": 90909
+    },
+    "figures/rq6_score_gaps.png": {
+      "sha256": "d1b8686936724a218579b7de9093a675738a8a083b69d8038d4c7a88c6dba3b4",
+      "bytes": 78337
+    },
+    "figures/rq6_abstract_missingness.png": {
+      "sha256": "d0cd3695e152f6adc5749d342aacaa0cb7b3672658e5e6f1e456232493ae6dc5",
+      "bytes": 77040
+    }
+  },
+  "no_2025_label_distribution": true
+}

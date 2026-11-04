@@ -1,0 +1,87 @@
+{
+  "topic_id": "T10181",
+  "official_name": "Natural Language Processing Techniques",
+  "official_description": "This cluster of papers focuses on statistical machine translation, neural machine translation, dependency parsing, word sense disambiguation, and part-of-speech tagging. It also covers topics such as corpus linguistics, syntax-based translation models, multilingual neural machine translation, and language modeling.",
+  "parent_subfield": "1702",
+  "scope_status": "in",
+  "sample_primary_topic_works": 196,
+  "sample_any_topic_works": 621,
+  "sample_year_counts": {
+    "2020": 35,
+    "2021": 27,
+    "2022": 21,
+    "2023": 29,
+    "2024": 41,
+    "2025": 43
+  },
+  "sample_citation_median": 1.0,
+  "sample_oa_counts": {
+    "green": 69,
+    "diamond": 50,
+    "closed": 41,
+    "gold": 14,
+    "hybrid": 12,
+    "bronze": 10
+  },
+  "related_native_topics": [
+    {
+      "topic_id": "https://openalex.org/T10028",
+      "shared_sample_works": 496
+    },
+    {
+      "topic_id": "https://openalex.org/T10201",
+      "shared_sample_works": 72
+    },
+    {
+      "topic_id": "https://openalex.org/T11307",
+      "shared_sample_works": 58
+    },
+    {
+      "topic_id": "https://openalex.org/T11714",
+      "shared_sample_works": 58
+    },
+    {
+      "topic_id": "https://openalex.org/T12031",
+      "shared_sample_works": 56
+    }
+  ],
+  "representative_papers": [
+    {
+      "work_id": "https://openalex.org/W7217985131",
+      "title": "Statistical Approach-Based Machine Translation System",
+      "publication_date": "2025-12-31",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7117878282",
+      "title": "Designing Culturally Inclusive NLP Models for Low-Resource Languages and Communities",
+      "publication_date": "2025-12-30",
+      "cited_by_count": 1
+    },
+    {
+      "work_id": "https://openalex.org/W7117536737",
+      "title": "On the entropy of written Gedeo Language",
+      "publication_date": "2025-12-30",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W4417443682",
+      "title": "Contextual Embedding Comparison for Out-of-vocabulary Handling in Indonesian POS Tagging",
+      "publication_date": "2025-12-18",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7220107560",
+      "title": "ANTHROPOCENTRIC LINGUISTICS AND AI INTEGRATION: A MODERN PERSPECTIVE",
+      "publication_date": "2025-12-12",
+      "cited_by_count": 0
+    }
+  ],
+  "representative_rule": "five most recent primary-topic sampled papers; citations break same-date ties",
+  "population_topic_year_counts": null,
+  "warnings": [
+    "Original 12,000-work sample is not a population estimate",
+    "OpenAlex primary topic is a machine-assigned label, not independently verified ground truth",
+    "Citation counts depend on publication age; representative does not mean best"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "topic_id": "T10036",
+  "official_name": "Advanced Neural Network Applications",
+  "official_description": "This cluster of papers focuses on the application of deep learning, particularly convolutional neural networks, in computer vision tasks such as image recognition, object detection, and semantic segmentation. It covers various neural network architectures, model compression techniques, and their applications in fields like autonomous driving.",
+  "parent_subfield": "1707",
+  "scope_status": "in",
+  "sample_primary_topic_works": 844,
+  "sample_any_topic_works": 1838,
+  "sample_year_counts": {
+    "2020": 87,
+    "2021": 103,
+    "2022": 125,
+    "2023": 145,
+    "2024": 175,
+    "2025": 209
+  },
+  "sample_citation_median": 2.0,
+  "sample_oa_counts": {
+    "closed": 243,
+    "green": 230,
+    "gold": 178,
+    "diamond": 119,
+    "hybrid": 48,
+    "bronze": 26
+  },
+  "related_native_topics": [
+    {
+      "topic_id": "https://openalex.org/T11307",
+      "shared_sample_works": 506
+    },
+    {
+      "topic_id": "https://openalex.org/T10331",
+      "shared_sample_works": 227
+    },
+    {
+      "topic_id": "https://openalex.org/T10627",
+      "shared_sample_works": 196
+    },
+    {
+      "topic_id": "https://openalex.org/T11605",
+      "shared_sample_works": 182
+    },
+    {
+      "topic_id": "https://openalex.org/T10052",
+      "shared_sample_works": 170
+    }
+  ],
+  "representative_papers": [
+    {
+      "work_id": "https://openalex.org/W7117646295",
+      "title": "SSAtt-SolNet: An efficient model for dusty solar panel classification with Sparse Shuffle and Attention mechanisms",
+      "publication_date": "2025-12-31",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7118845933",
+      "title": "Penerapan Convolutional Neural Network Dengan Batch Normalization dan Nadam Optimization pada Klasifikasi Citra Fashion-Mnist",
+      "publication_date": "2025-12-31",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7122724399",
+      "title": "Visual Discovery in Retail: Operationalizing AI-Powered Visual Search at Boyner",
+      "publication_date": "2025-12-31",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7126424428",
+      "title": "Klasifikasi Citra Topeng Bali Berdasarkan Karakteristik Visual Menggunakan Arsitektur EfficientNetV2",
+      "publication_date": "2025-12-31",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7131317812",
+      "title": "A Dual-Stage Hybrid Vision Framework Using YOLOv8n-Canny Edge Detection for Real-Time Railway Trespassing and Intrusion Monitoring",
+      "publication_date": "2025-12-31",
+      "cited_by_count": 0
+    }
+  ],
+  "representative_rule": "five most recent primary-topic sampled papers; citations break same-date ties",
+  "population_topic_year_counts": null,
+  "warnings": [
+    "Original 12,000-work sample is not a population estimate",
+    "OpenAlex primary topic is a machine-assigned label, not independently verified ground truth",
+    "Citation counts depend on publication age; representative does not mean best"
+  ]
+}

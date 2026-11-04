@@ -1,0 +1,95 @@
+{
+  "topic_id": "T12026",
+  "official_name": "Explainable Artificial Intelligence (XAI)",
+  "official_description": "This cluster of papers focuses on Explainable Artificial Intelligence (XAI) and the development of interpretable models, visual explanations, and responsible machine learning interpretability. It explores concepts, challenges, and opportunities in XAI, including the use of gradient-based localization, understanding deep neural networks, feature importance, and addressing black box models. The papers also discuss the responsibility and ethical considerations in AI.",
+  "parent_subfield": "1702",
+  "scope_status": "in",
+  "sample_primary_topic_works": 180,
+  "sample_any_topic_works": 246,
+  "sample_year_counts": {
+    "2020": 19,
+    "2021": 16,
+    "2022": 26,
+    "2023": 28,
+    "2024": 44,
+    "2025": 47
+  },
+  "sample_citation_median": 2.0,
+  "sample_oa_counts": {
+    "green": 97,
+    "closed": 26,
+    "gold": 24,
+    "hybrid": 17,
+    "diamond": 8,
+    "bronze": 8
+  },
+  "related_native_topics": [
+    {
+      "topic_id": "https://openalex.org/T10883",
+      "shared_sample_works": 38
+    },
+    {
+      "topic_id": "https://openalex.org/T11689",
+      "shared_sample_works": 35
+    },
+    {
+      "topic_id": "https://openalex.org/T10036",
+      "shared_sample_works": 33
+    },
+    {
+      "topic_id": "https://openalex.org/T10028",
+      "shared_sample_works": 26
+    },
+    {
+      "topic_id": "https://openalex.org/T10743",
+      "shared_sample_works": 25
+    }
+  ],
+  "representative_papers": [
+    {
+      "work_id": "https://openalex.org/W7117663794",
+      "title": "GRExplainer: A Universal Explanation Method for Temporal Graph Neural Networks",
+      "publication_date": "2025-12-28",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7167842370",
+      "title": "Beyond Accuracy: Explainability of Transformer Models for Sentiment Analysis",
+      "publication_date": "2025-12-26",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W4417520203",
+      "title": "A fundamental white-box neural network Based on a Clustering Algorithm",
+      "publication_date": "2025-12-20",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7115909531",
+      "title": "Digital Mirror for LLMs: A Phenomenological Reflection of Language-Model Output",
+      "publication_date": "2025-12-17",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7119352139",
+      "title": "Conceptual Misalignment in XAI",
+      "publication_date": "2025-12-15",
+      "cited_by_count": 0
+    }
+  ],
+  "representative_rule": "five most recent primary-topic sampled papers; citations break same-date ties",
+  "population_topic_year_counts": {
+    "2020": 1152,
+    "2021": 1577,
+    "2022": 1704,
+    "2023": 2080,
+    "2024": 2860,
+    "2025": 4422
+  },
+  "population_topic_snapshot_utc": "2026-11-01T07:10:40.688661+00:00",
+  "warnings": [
+    "Original 12,000-work sample is not a population estimate",
+    "OpenAlex primary topic is a machine-assigned label, not independently verified ground truth",
+    "Citation counts depend on publication age; representative does not mean best"
+  ]
+}

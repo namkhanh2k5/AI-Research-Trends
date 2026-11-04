@@ -1,0 +1,87 @@
+{
+  "topic_id": "T10462",
+  "official_name": "Reinforcement Learning in Robotics",
+  "official_description": "This cluster of papers encompasses a wide range of advancements in reinforcement learning algorithms and their applications, including deep learning, neural networks, robotics, autonomous control, policy gradient methods, multi-agent systems, model-based learning, curiosity-driven exploration, and simulation to real-world transfer.",
+  "parent_subfield": "1702",
+  "scope_status": "in",
+  "sample_primary_topic_works": 273,
+  "sample_any_topic_works": 382,
+  "sample_year_counts": {
+    "2020": 31,
+    "2021": 37,
+    "2022": 35,
+    "2023": 38,
+    "2024": 50,
+    "2025": 82
+  },
+  "sample_citation_median": 1.0,
+  "sample_oa_counts": {
+    "green": 155,
+    "closed": 53,
+    "gold": 30,
+    "hybrid": 20,
+    "diamond": 10,
+    "bronze": 5
+  },
+  "related_native_topics": [
+    {
+      "topic_id": "https://openalex.org/T10586",
+      "shared_sample_works": 87
+    },
+    {
+      "topic_id": "https://openalex.org/T11307",
+      "shared_sample_works": 77
+    },
+    {
+      "topic_id": "https://openalex.org/T12794",
+      "shared_sample_works": 68
+    },
+    {
+      "topic_id": "https://openalex.org/T11574",
+      "shared_sample_works": 56
+    },
+    {
+      "topic_id": "https://openalex.org/T10906",
+      "shared_sample_works": 52
+    }
+  ],
+  "representative_papers": [
+    {
+      "work_id": "https://openalex.org/W7117123898",
+      "title": "Bottom-up Policy Optimization: Your Language Model Policy Secretly Contains Internal Policies",
+      "publication_date": "2025-12-22",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7116076707",
+      "title": "Can LLMs Guide Their Own Exploration? Gradient-Guided Reinforcement Learning for LLM Reasoning",
+      "publication_date": "2025-12-17",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7116222783",
+      "title": "Virtual Reality in Robotics Research: A Valid Substitute for Physical Robots?",
+      "publication_date": "2025-12-17",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W4417296033",
+      "title": "Symphony: A Heuristic Normalized Calibrated Advantage Actor and Critic Algorithm in application for Humanoid Robots",
+      "publication_date": "2025-12-11",
+      "cited_by_count": 0
+    },
+    {
+      "work_id": "https://openalex.org/W7110813983",
+      "title": "Experience-Evolving Multi-Turn Tool-Use Agent with Hybrid Episodic-Procedural Memory",
+      "publication_date": "2025-12-08",
+      "cited_by_count": 0
+    }
+  ],
+  "representative_rule": "five most recent primary-topic sampled papers; citations break same-date ties",
+  "population_topic_year_counts": null,
+  "warnings": [
+    "Original 12,000-work sample is not a population estimate",
+    "OpenAlex primary topic is a machine-assigned label, not independently verified ground truth",
+    "Citation counts depend on publication age; representative does not mean best"
+  ]
+}

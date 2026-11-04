@@ -1,0 +1,4 @@
+network,nodes,edges,connected_components,density,top_weighted_degree_node,top_weighted_degree,scope
+country_all_observed,126,1031,8,0.130920634921,CN,1029,observed sampled-work co-affiliation graph; not global influence
+country_complete_affiliation,118,945,6,0.136897001304,CN,888,observed sampled-work co-affiliation graph; not global influence
+institution_all_observed,5872,18179,1156,0.00105463421788,https://openalex.org/I19820366,519,observed sampled-work co-affiliation graph; not global influence

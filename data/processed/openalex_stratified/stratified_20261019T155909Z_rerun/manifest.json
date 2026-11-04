@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "pipeline_version": "phase3-v1",
+  "processed_at_utc": "2026-10-23T07:55:26Z",
+  "status": "complete",
+  "complete": true,
+  "source_run_id": "stratified_20261019T155909Z",
+  "observation_time_utc": "2026-10-19T16:03:40Z",
+  "source_code_sha256": "f26cab514d3fed2a418d775f27181617f877851df7fbf2405c210b1284e73d71",
+  "git_head_at_processing": "7b6dbb8c603f0a5f23277cf4774d70c2b418b406",
+  "sampling_weight_interpretation": "nominal N_h/n_h; uniform OpenAlex inclusion is unverified",
+  "inputs": {
+    "source_jsonl": {
+      "path": "/home/khanh/Projects/AI-Research-Trends/data/interim/openalex_stratified/stratified_20261019T155909Z/works.jsonl",
+      "sha256": "b8734cd3da2cba8c2c9ff8a9742d46d62585e55604f18630274f6bb8fbc178af"
+    },
+    "source_manifest": {
+      "path": "/home/khanh/Projects/AI-Research-Trends/data/raw/openalex_stratified/stratified_20261019T155909Z/manifest.json",
+      "sha256": "c6fc71e6eee2fc3131df3cdfe2f300dc719ed3b6196be1be852a45519a08aa6e"
+    },
+    "plan": {
+      "path": "/home/khanh/Projects/AI-Research-Trends/data/metadata/phase2_sampling_plan.json",
+      "sha256": "f18ecdc621e5e697ae0c3cbe277d5729f40592299f6c2af95cabeab96e9a7593"
+    },
+    "population": {
+      "path": "/home/khanh/Projects/AI-Research-Trends/data/metadata/population_counts_pre_phase2.json",
+      "sha256": "e84015be2e14756301130dc982b437097449986ae45c9ece4ed8007bb87e36d3"
+    },
+    "phase2_profile": {
+      "path": "/home/khanh/Projects/AI-Research-Trends/data/metadata/phase2_profile.json",
+      "sha256": "64c67f570000953b3486653ed18cb4c02a035dc94914b690871d69dd8b23f1be"
+    },
+    "config": {
+      "path": "/home/khanh/Projects/AI-Research-Trends/config/topics.yaml",
+      "sha256": "5a97ea16ced3746db9bfd4bf2316af8482be4f7c0efefe78cd6705e5ee32969a"
+    }
+  },
+  "tables": {
+    "works": {
+      "rows": 12000,
+      "columns": 49,
+      "unique_keys": 12000,
+      "bytes": 5762302,
+      "sha256": "9318c456d916b8c9a35b0a3c86a829a92347083357693593e743abb0253264d4",
+      "grain_key": [
+        "work_id"
+      ]
+    },
+    "work_topics": {
+      "rows": 36000,
+      "columns": 8,
+      "unique_keys": 36000,
+      "bytes": 342377,
+      "sha256": "e65356b899f3c9dec4d9d47ec9dae54557b23dc1709a1b3ea1d4c5f746acf6d5",
+      "grain_key": [
+        "work_id",
+        "topic_id"
+      ]
+    },
+    "authorships": {
+      "rows": 46249,
+      "columns": 6,
+      "unique_keys": 46249,
+      "bytes": 921766,
+      "sha256": "ba8bee6e7da8deb7a4063acc66bb78c8cab9551472a12965071874c2cb298782",
+      "grain_key": [
+        "work_id",
+        "authorship_index"
+      ]
+    },
+    "work_institutions": {
+      "rows": 18717,
+      "columns": 6,
+      "unique_keys": 18717,
+      "bytes": 264917,
+      "sha256": "d4fd9e1375b5d6369542a581b83aa9659497ee949bea7de146c2d74c872a1f4e",
+      "grain_key": [
+        "work_id",
+        "institution_id"
+      ]
+    },
+    "work_countries": {
+      "rows": 11786,
+      "columns": 3,
+      "unique_keys": 11786,
+      "bytes": 74681,
+      "sha256": "6e4c8b1bf27bf260a98468d6e171a0ef4685057b26a43f382e2d532c4e449ed4",
+      "grain_key": [
+        "work_id",
+        "country_code"
+      ]
+    },
+    "references": {
+      "rows": 289110,
+      "columns": 3,
+      "unique_keys": 289110,
+      "bytes": 1617252,
+      "sha256": "1c0f306225e6f7fd673b2972744c702d184b2e8f5c88e09569eea24d831d599d",
+      "grain_key": [
+        "citing_work_id",
+        "referenced_work_id"
+      ]
+    },
+    "category_membership": {
+      "rows": 4790,
+      "columns": 5,
+      "unique_keys": 4790,
+      "bytes": 33595,
+      "sha256": "438bf85a8858f135099e198ea552e93da59008f5677cc828694f9ee48ef50ae1",
+      "grain_key": [
+        "work_id",
+        "analytical_layer",
+        "category"
+      ]
+    },
+    "population_year_counts": {
+      "rows": 72,
+      "columns": 6,
+      "unique_keys": 72,
+      "bytes": 3675,
+      "sha256": "ae723a94efa06981097fa059a0592b70f8807555678e8bff58d8b088593534ba",
+      "grain_key": [
+        "series",
+        "year"
+      ]
+    }
+  },
+  "validation": {
+    "work_count": {
+      "status": "PASS",
+      "detail": "actual=12000, expected=12000"
+    },
+    "work_id_unique": {
+      "status": "PASS",
+      "detail": "unique=12000"
+    },
+    "work_id_canonical": {
+      "status": "PASS",
+      "detail": "all Work IDs must be canonical"
+    },
+    "no_retractions": {
+      "status": "PASS",
+      "detail": "primary sample"
+    },
+    "corpus_date_type_subfield": {
+      "status": "PASS",
+      "detail": "approved complete-year primary AI/CV frame"
+    },
+    "year_allocation": {
+      "status": "PASS",
+      "detail": "{2020: 1607, 2021: 1650, 2022: 1615, 2023: 1865, 2024: 2287, 2025: 2976}"
+    },
+    "nominal_weights": {
+      "status": "PASS",
+      "detail": "weight and stratum come from the validated plan"
+    },
+    "citation_fwci_features": {
+      "status": "PASS",
+      "detail": "raw citation outliers and nullable FWCI preserved"
+    },
+    "oa_consistency": {
+      "status": "PASS",
+      "detail": "binary and categorical OA values agree; missing is not closed"
+    },
+    "works_key_unique": {
+      "status": "PASS",
+      "detail": "rows=12000"
+    },
+    "work_topics_key_unique": {
+      "status": "PASS",
+      "detail": "rows=36000"
+    },
+    "work_topics_work_fk": {
+      "status": "PASS",
+      "detail": "all bridge Work IDs exist in works"
+    },
+    "authorships_key_unique": {
+      "status": "PASS",
+      "detail": "rows=46249"
+    },
+    "authorships_work_fk": {
+      "status": "PASS",
+      "detail": "all bridge Work IDs exist in works"
+    },
+    "work_institutions_key_unique": {
+      "status": "PASS",
+      "detail": "rows=18717"
+    },
+    "work_institutions_work_fk": {
+      "status": "PASS",
+      "detail": "all bridge Work IDs exist in works"
+    },
+    "work_countries_key_unique": {
+      "status": "PASS",
+      "detail": "rows=11786"
+    },
+    "work_countries_work_fk": {
+      "status": "PASS",
+      "detail": "all bridge Work IDs exist in works"
+    },
+    "references_key_unique": {
+      "status": "PASS",
+      "detail": "rows=289110"
+    },
+    "category_membership_key_unique": {
+      "status": "PASS",
+      "detail": "rows=4790"
+    },
+    "category_membership_work_fk": {
+      "status": "PASS",
+      "detail": "all bridge Work IDs exist in works"
+    },
+    "population_year_counts_key_unique": {
+      "status": "PASS",
+      "detail": "rows=72"
+    },
+    "references_fk_and_membership": {
+      "status": "PASS",
+      "detail": "external referenced works are retained with in-sample flag false"
+    },
+    "primary_topic_relationship": {
+      "status": "PASS",
+      "detail": "primary topic must appear in the work-topic bridge"
+    },
+    "collaboration_counts": {
+      "status": "PASS",
+      "detail": "work-level counts equal deduplicated bridges"
+    },
+    "unknown_collaboration_preserved": {
+      "status": "PASS",
+      "detail": "missing affiliations cannot produce a negative collaboration claim"
+    },
+    "category_layers": {
+      "status": "PASS",
+      "detail": "native topic and custom text layers remain distinct"
+    },
+    "category_provenance": {
+      "status": "PASS",
+      "detail": "each membership records matching IDs or rule names"
+    },
+    "population_aggregate_separation": {
+      "status": "PASS",
+      "detail": "population counts originate only from verified API aggregate artifact"
+    }
+  },
+  "quality_json_sha256": "288b457202090a44de17b156895b8e6f30c17aa3c0448dd6703b9317c6b16dc3"
+}
