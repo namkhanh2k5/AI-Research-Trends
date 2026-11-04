@@ -10,7 +10,8 @@ import plotly.express as px
 import streamlit as st
 
 from ai_research_trends.web.service import (
-    artifact_paths, classify, doi_url, draft_fingerprint, load_model, load_research, topic_brief,
+    artifact_paths, classify, discovery_path, doi_url, draft_fingerprint, load_discovery,
+    load_model, load_research, suggestion_message, topic_brief,
 )
 from ai_research_trends.web.evidence import ROOT, load_published_evidence
 
@@ -30,6 +31,11 @@ def research(path: str):
 @st.cache_resource(show_spinner="Verifying local model…")
 def model(model_path: str, web_path: str):
     return load_model(Path(model_path), Path(web_path))
+
+
+@st.cache_resource(show_spinner="Verifying local paper-discovery index…")
+def paper_discovery(path: str):
+    return load_discovery(Path(path))
 
 
 def caption(scope: str, detail: str = "") -> None:
@@ -194,17 +200,19 @@ def topics(data) -> None:
 
 
 def classify_page(data, web_path: Path, model_path: Path) -> None:
-    header("Classify My Research", "A tentative topic suggestion, never an automatic or validated assignment.")
+    header("Classify My Research", "Explore possible topics and similar papers from your research title and abstract.")
     def clear_draft_result() -> None:
-        for key in ("suggestion", "suggestion_fingerprint", "confirmed_topic", "manual_topic_choice"):
+        for key in ("suggestion", "suggestion_fingerprint", "confirmed_topic", "manual_topic_choice",
+                    "discovery_result", "discovery_fingerprint"):
             st.session_state.pop(key, None)
 
     title = st.text_input("Research title", max_chars=500, key="draft_title", on_change=clear_draft_result)
     abstract = st.text_area("Abstract", height=220, max_chars=20000, key="draft_abstract",
                             on_change=clear_draft_result)
     fingerprint = draft_fingerprint(title, abstract)
-    if st.session_state.get("suggestion_fingerprint") != fingerprint:
+    if st.session_state.get("active_draft_fingerprint") not in (None, fingerprint):
         clear_draft_result()
+    st.session_state["active_draft_fingerprint"] = fingerprint
     if st.button("Suggest topics", type="primary"):
         clear_draft_result()
         try:
@@ -216,24 +224,68 @@ def classify_page(data, web_path: Path, model_path: Path) -> None:
     result = (st.session_state.get("suggestion")
               if st.session_state.get("suggestion_fingerprint") == fingerprint else None)
     if result:
-        st.info(f"Status: {result['status'].replace('_', ' ')} · model {result['model_version']}")
+        st.info(suggestion_message(result["status"]))
+        st.caption(f"Model status: {result['status']} · version {result['model_version']}")
         for prediction in result["predictions"]:
-            st.write(f"{prediction['rank']}. {prediction['topic_name']} ({prediction['topic_id']})")
-        st.caption("SVM margins are ranking scores, not probabilities. Silver OpenAlex labels; human validation pending. Out-of-catalogue drafts may receive a false in-catalogue suggestion.")
-        choices = {x["topic_id"]: x["official_name"] for x in data.get_topics()}
-        choice = st.selectbox("Your own topic choice (you may select any catalogue topic)",
-                              [None, *choices], format_func=lambda x: "No selection" if x is None else choices[x],
-                              key="manual_topic_choice")
-        if st.button("Confirm my selection", disabled=choice is None):
-            st.session_state["confirmed_topic"] = choice
-        if st.session_state.get("confirmed_topic") and st.session_state.get("suggestion_fingerprint") == fingerprint:
-            st.success("Your manual selection is confirmed for this session only; no OpenAlex record is changed.")
-            try:
-                show_brief(topic_brief(data, st.session_state["confirmed_topic"]))
-            except KeyError:
-                st.error("The selected Topic Brief is unavailable in this verified data package.")
+            st.write(f"{prediction['rank']}. {prediction['topic_name']} ({prediction['topic_id']}) · margin {prediction['score']:.3f}")
+        st.caption("SVM margins rank model candidates; they are not probabilities. OpenAlex labels are silver labels, and outside-catalogue drafts may still receive a false suggestion.")
+    choices = {x["topic_id"]: x["official_name"] for x in data.get_topics()}
+    def clear_confirmed_topic() -> None:
+        st.session_state.pop("confirmed_topic", None)
+
+    choice = st.selectbox("Choose a topic yourself (optional, independent of model status)",
+                          [None, *choices], format_func=lambda x: "No selection" if x is None else choices[x],
+                          key="manual_topic_choice", on_change=clear_confirmed_topic)
+    if st.button("Confirm my topic choice", disabled=choice is None):
+        st.session_state["confirmed_topic"] = choice
+    if st.session_state.get("confirmed_topic"):
+        st.success("Your choice is confirmed for this session only; no OpenAlex record is changed.")
+        try:
+            show_brief(topic_brief(data, st.session_state["confirmed_topic"]))
+        except KeyError:
+            st.error("The selected Topic Brief is unavailable in this verified data package.")
     st.divider()
-    st.write("Prefer to browse without an ML suggestion? Open the Topic Explorer page.")
+    st.subheader("Discover papers with similar text")
+    st.write("This searches titles and abstracts in the original sampled OpenAlex corpus. It is not a comprehensive literature search, plagiarism check, or novelty detector. A high score does not verify relevance.")
+    st.caption("Paper discovery works independently of the classifier, including when it finds no confident topic match. Title-only indexed papers are marked explicitly.")
+    left, middle, right = st.columns(3)
+    top_k = left.selectbox("Results", [5, 10, 20], index=1)
+    years = middle.slider("Publication years", 2020, 2025, (2020, 2025))
+    work_type = right.selectbox("Work type", [None, "article", "review", "preprint"],
+                                format_func=lambda x: x or "All types")
+    topic_filter = st.selectbox("Primary OpenAlex topic filter", [None, *choices],
+                                format_func=lambda x: "All topics" if x is None else choices[x])
+    include_title_only = st.checkbox("Include title-only papers (scores are less comparable)", value=False)
+    search_fingerprint = draft_fingerprint(fingerprint, repr((top_k, years, work_type, topic_filter, include_title_only)))
+    if st.button("Find similar papers"):
+        st.session_state.pop("discovery_result", None)
+        try:
+            with st.spinner("Searching the verified local text index…"):
+                index = paper_discovery(str(discovery_path()))
+                st.session_state["discovery_result"] = index.search(
+                    title, abstract, top_k=top_k, year_min=years[0], year_max=years[1],
+                    topic_id=topic_filter, work_type=work_type,
+                    include_title_only=include_title_only)
+                st.session_state["discovery_fingerprint"] = search_fingerprint
+        except (FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            st.error(f"Paper discovery unavailable: {exc}")
+            st.caption("If the index has not been built, run `openalex-paper-discovery build` from the repository root after fetching the original works LFS file.")
+    found = (st.session_state.get("discovery_result")
+             if st.session_state.get("discovery_fingerprint") == search_fingerprint else None)
+    if found:
+        st.caption(f"{found['eligible_matches']:,} positive-score matches after filters · search {found['latency_ms']:.1f} ms · original sample only")
+        if not found["items"]:
+            st.info("No sampled papers match this text and filter combination. Try broader wording or remove a filter.")
+        for rank, paper in enumerate(found["items"], 1):
+            topic_name = choices.get(paper["primary_topic_id"].rsplit("/", 1)[-1], "Other native OpenAlex topic") if paper.get("primary_topic_id") else "Topic unavailable"
+            with st.container(border=True):
+                st.markdown(f"**{rank}. {paper['title']}**")
+                st.caption(f"{paper['publication_year']} · {paper['work_type']} · {topic_name} · textual cosine similarity {paper['similarity']:.3f} · {paper['text_status'].replace('_', ' ')}")
+                st.write(f"Observed citations: {paper['cited_by_count']:,} (descriptive, not a quality score)")
+                st.link_button("Open OpenAlex record", paper["work_id"], key=f"discovery_openalex_{rank}")
+                if url := doi_url(paper.get("doi")):
+                    st.link_button("Open DOI", url, key=f"discovery_doi_{rank}")
+    st.caption("For trend charts and manual catalogue browsing, use Research Landscape and Topic Explorer in the sidebar.")
 
 
 def papers(data) -> None:

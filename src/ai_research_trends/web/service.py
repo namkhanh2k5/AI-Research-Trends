@@ -10,11 +10,34 @@ from ai_research_trends.analysis.web_queries import ResearchData
 
 DEFAULT_WEB = Path("data/analysis/finalization_p2_web_data_20261101_v3")
 DEFAULT_MODEL = Path("models/finalization_p3/topic_placement_v2")
+DEFAULT_DISCOVERY = Path("data/analysis/paper_discovery_original_sample_v1")
 
 
 def artifact_paths() -> tuple[Path, Path]:
     return (Path(os.environ.get("AI_TRENDS_WEB_DATA", DEFAULT_WEB)),
             Path(os.environ.get("AI_TRENDS_MODEL", DEFAULT_MODEL)))
+
+
+def discovery_path() -> Path:
+    return Path(os.environ.get("AI_TRENDS_DISCOVERY_INDEX", DEFAULT_DISCOVERY))
+
+
+def load_discovery(path: Path | None = None):
+    from ai_research_trends.web.paper_discovery import PaperDiscovery
+
+    return PaperDiscovery(path or discovery_path())
+
+
+def suggestion_message(status: str) -> str:
+    """Three score-strength states; never assert an automatic topic assignment."""
+    messages = {
+        "confident_suggestion": "The model found a stronger candidate topic. Please review and confirm it yourself.",
+        "needs_user_confirmation": "Possible topics were found, but the score is insufficient for a strong suggestion. Please review the alternatives.",
+        "no_confident_match": "This idea may lie outside the fourteen supported topics. You can revise the description or browse topics manually.",
+    }
+    if status not in messages:
+        raise ValueError(f"Unknown suggestion status: {status}")
+    return messages[status]
 
 
 def load_research(path: Path | None = None) -> ResearchData:

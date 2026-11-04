@@ -58,33 +58,36 @@ def test_real_confirmation_stale_state_and_navigation(browser):
     page.get_by_label("Research title").fill(TITLE)
     page.get_by_label("Abstract").fill(ABSTRACT)
     page.get_by_role("button", name="Suggest topics").click()
-    playwright.expect(page.get_by_text("Status:", exact=False)).to_be_visible()
+    playwright.expect(page.get_by_text("Model status:", exact=False)).to_be_visible()
     rendered = page.locator("main").inner_text()
-    assert len(re.findall(r"(?m)^.+\(T\d+\)$", rendered)) == 3, rendered
+    assert len(re.findall(r"(?m)^.+\(T\d+\) · margin", rendered)) == 3, rendered
     assert not page.locator('[data-testid="stException"]').count()
 
-    choice = page.get_by_label("Your own topic choice (you may select any catalogue topic)")
+    choice = page.get_by_label("Choose a topic yourself (optional, independent of model status)")
     choice.click()
-    page.get_by_text("Topic Modeling", exact=True).last.click()
-    page.get_by_role("button", name="Confirm my selection").click()
-    playwright.expect(page.get_by_text("Your manual selection is confirmed", exact=False)).to_be_visible()
+    # Streamlit can remount the selectbox immediately after an inference rerun.
+    if not page.get_by_role("option", name="Topic Modeling", exact=True).count():
+        choice.click()
+    page.get_by_role("option", name="Topic Modeling", exact=True).click()
+    page.get_by_role("button", name="Confirm my topic choice").click()
+    playwright.expect(page.get_by_text("Your choice is confirmed", exact=False)).to_be_visible()
     playwright.expect(page.get_by_role("heading", name="Topic Modeling", exact=True)).to_be_visible()
 
     page.get_by_label("Research title").fill("Changed synthetic title")
     page.get_by_label("Research title").press("Enter")
-    playwright.expect(page.get_by_text("Status:", exact=False)).to_have_count(0)
-    playwright.expect(page.get_by_text("Your manual selection is confirmed", exact=False)).to_have_count(0)
+    playwright.expect(page.get_by_text("Model status:", exact=False)).to_have_count(0)
+    playwright.expect(page.get_by_text("Your choice is confirmed", exact=False)).to_have_count(0)
     page.get_by_label("Research title").fill(TITLE)
     page.get_by_label("Research title").press("Enter")
-    playwright.expect(page.get_by_text("Status:", exact=False)).to_have_count(0)
+    playwright.expect(page.get_by_text("Model status:", exact=False)).to_have_count(0)
     page.get_by_role("button", name="Suggest topics").click()
-    playwright.expect(page.get_by_text("Status:", exact=False)).to_be_visible()
+    playwright.expect(page.get_by_text("Model status:", exact=False)).to_be_visible()
     page.get_by_label("Abstract").fill(ABSTRACT + " An edited sentence.")
     page.get_by_label("Research title").click()
-    playwright.expect(page.get_by_text("Status:", exact=False)).to_have_count(0)
+    playwright.expect(page.get_by_text("Model status:", exact=False)).to_have_count(0)
     navigate(page, "Topic Explorer")
     navigate(page, "Classify My Research")
-    playwright.expect(page.get_by_text("Status:", exact=False)).to_have_count(0)
+    playwright.expect(page.get_by_text("Model status:", exact=False)).to_have_count(0)
     page.close()
 
 
@@ -120,8 +123,8 @@ def test_no_confident_match_on_desktop(browser):
         "and chemical composition of historical artifacts in distant settlement layers."
     )
     page.get_by_role("button", name="Suggest topics").click()
-    playwright.expect(page.get_by_text("Status: no confident match", exact=False)).to_be_visible()
-    playwright.expect(page.get_by_label("Your own topic choice (you may select any catalogue topic)")).to_be_visible()
+    playwright.expect(page.get_by_text("Model status: no_confident_match", exact=False)).to_be_visible()
+    playwright.expect(page.get_by_label("Choose a topic yourself (optional, independent of model status)")).to_be_visible()
     assert page.evaluate("document.documentElement.scrollWidth") <= 1440
     page.close()
 
@@ -170,6 +173,23 @@ def test_missing_model_reports_error_but_manual_topic_browsing_works(browser, tm
         except subprocess.TimeoutExpired:
             proc.kill()
             proc.wait(timeout=10)
+
+
+def test_text_discovery_without_classifier_and_stale_result_reset(browser):
+    page = browser.new_page(viewport={"width": 1440, "height": 900})
+    page.goto(URL)
+    navigate(page, "Classify My Research")
+    page.get_by_label("Research title").fill("Neural machine translation across multilingual languages")
+    page.get_by_label("Abstract").fill(ABSTRACT)
+    page.get_by_role("button", name="Find similar papers").click()
+    playwright.expect(page.get_by_text("positive-score matches", exact=False)).to_be_visible()
+    playwright.expect(page.get_by_text("textual cosine similarity", exact=False).first).to_be_visible()
+    playwright.expect(page.get_by_text("Open OpenAlex record", exact=True).first).to_be_visible()
+    page.get_by_label("Research title").fill("Satellite image segmentation and forest monitoring")
+    page.get_by_label("Research title").press("Enter")
+    playwright.expect(page.get_by_text("positive-score matches", exact=False)).to_have_count(0)
+    assert not page.locator('[data-testid="stException"]').count()
+    page.close()
 
 
 @pytest.mark.parametrize("width,height", [(1440, 900), (1280, 800)])

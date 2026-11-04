@@ -14,7 +14,8 @@ limitations and topic-label reliability. It does **not** cover all global AI res
   detailed sample. Raw citations are not measures of research quality.
 - RQ1–RQ6 analyses, research reports and figures, with separate data for bibliometrics and ML.
 - A local Streamlit explorer: research landscape, 14-topic briefs, assisted
-  topic suggestion, sampled-paper search and methodology/model evaluation.
+  topic suggestion with out-of-catalogue warning, literal sampled-paper search,
+  and a separate content-similarity paper-discovery index.
 - A frozen TF-IDF + Linear SVM topic-suggestion bundle. Its labels are
   OpenAlex-generated, suggestions require user confirmation, independent human
   validation is pending, and the historical 2025 test labels were made public in the uploaded workspace; that test is no longer independently sealed.
@@ -22,7 +23,7 @@ limitations and topic-label reliability. It does **not** cover all global AI res
   [presentation](deliverables/presentation/FINAL_PRESENTATION.pptx) and
   [demo script](deliverables/presentation/DEMO_SCRIPT.md).
 
-The earlier citation-aware literature recommender was rejected as the main ML task; see the [RQ5 decision](reports/PHASE5_FINAL_DECISION.md). The published application instead focuses on an assisted topic explorer.
+The earlier citation-aware literature recommender was rejected as the main ML task; see the [RQ5 decision](reports/PHASE5_FINAL_DECISION.md). The new TF-IDF discovery feature searches similar *text* in the original sample; it does not revive citation recommendation or certify relevance.
 
 **Stack:** Python 3.11+, requests, pandas/PyArrow, NumPy/SciPy,
 scikit-learn, Matplotlib/Seaborn, Streamlit/Plotly and pytest. The source
@@ -81,8 +82,8 @@ git lfs install
 # Minimal clone: do not download all research LFS objects by default.
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/namkhanh2k5/AI-Research-Trends.git
 cd AI-Research-Trends
-# Restore only the frozen app model and the compact website paper index:
-git lfs pull --include="models/finalization_p3/topic_placement_v2/model.joblib,data/analysis/finalization_p2_web_data_20261101_v3/paper_index.parquet"
+# Restore the model, web index and canonical works needed to build discovery:
+git lfs pull --include="models/finalization_p3/topic_placement_v2/model.joblib,data/analysis/finalization_p2_web_data_20261101_v3/paper_index.parquet,data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet"
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e ".[dev,web,deliverables]"
@@ -97,11 +98,25 @@ verified web-data package and trusted model bundle included in this workspace:
 
 ```bash
 openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
+openalex-paper-discovery build
+openalex-paper-discovery verify \
+  --works data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet \
+  --web-dir data/analysis/finalization_p2_web_data_20261101_v3
 streamlit run dashboard/app.py --server.address 127.0.0.1
 ```
 
-The Topic Explorer works without the model; classification needs
-`models/finalization_p3/topic_placement_v2/`. For direct inference on a new
+The Topic Explorer works without the model. The "Classify My Research" page
+offers both topic suggestions and independent text-similarity search; the latter
+also works after `no_confident_match` or if the model is unavailable. The
+build-once index is Git-ignored and independently checksum-verified; it is not
+rebuilt on every app launch. Its default results require title and abstract;
+optional title-only results carry a comparability warning. For CLI search:
+
+```bash
+openalex-paper-discovery search --title "Neural translation with multilingual attention models" --top-k 5
+```
+
+Classification needs `models/finalization_p3/topic_placement_v2/`. For direct inference on a new
 draft (a suggestion, not a human-validated topic label):
 
 ```bash
@@ -111,11 +126,11 @@ openalex-package-topic-model infer \
   --abstract "We study a neural network approach to segmenting images and compare its behavior across several visual datasets and evaluation settings."
 ```
 
-The [web user guide](docs/WEB_USER_GUIDE.md),
+The [paper-discovery method](docs/PAPER_DISCOVERY_METHOD.md), [technical evaluation](reports/PAPER_DISCOVERY_TECHNICAL_EVALUATION.md), [web user guide](docs/WEB_USER_GUIDE.md),
 [artifact contract](docs/MODEL_AND_DATA_ARTIFACTS.md) and
 [deployment guide](docs/DEPLOYMENT_GUIDE.md) explain the local-only demo and
 verified artifact restoration. The selective `git lfs pull` above suffices for
-the local demo; `git lfs pull` without a filter restores all 35 LFS paths
+the local demo after the discovery index is built; `git lfs pull` without a filter restores all 35 LFS paths
 needed for full research verification. The published snapshot intentionally
 omits historical reruns, pilots and superseded model/data versions; see
 [artifact retention policy](docs/REPOSITORY_CLEANUP.md). No public hosted URL exists.
@@ -146,6 +161,9 @@ Core commands expose `--help`: `openalex-collect-stratified`,
 `openalex-validate-processed`, `openalex-analyze-phase4`,
 `openalex-validate-phase4`, `openalex-analyze-rq6` and
 `openalex-package-topic-model`.
+The new `openalex-paper-discovery` command provides `build`, `verify` and
+`search` subcommands. The retrieval package is separate from the frozen SVM
+bundle and the original verified web-data package.
 New collection commands must use a **new versioned output directory**;
 do not rerun acquisition or training just to start the website.
 

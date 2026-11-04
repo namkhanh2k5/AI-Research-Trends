@@ -5,7 +5,8 @@ from pathlib import Path
 import pytest
 
 from ai_research_trends.web.service import (
-    artifact_paths, classify, doi_url, draft_fingerprint, load_research, topic_brief, validate_draft,
+    artifact_paths, classify, discovery_path, doi_url, draft_fingerprint, load_research,
+    topic_brief, validate_draft,
 )
 
 
@@ -117,4 +118,41 @@ def test_app_confirmation_and_stale_draft_state():
     assert app.session_state["confirmed_topic"] == expected_id
     app.text_input[0].set_value("A changed research title").run()
     assert "suggestion" not in app.session_state
+    assert "confirmed_topic" not in app.session_state
+
+
+def test_paper_discovery_works_without_topic_suggestion_and_resets_on_edit():
+    if not artifact_paths()[0].exists() or not discovery_path().exists():
+        pytest.skip("Verified local web/retrieval artifacts absent from clean clone")
+    from streamlit.testing.v1 import AppTest
+
+    app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "dashboard" / "app.py"),
+                            default_timeout=45).run()
+    app.sidebar.radio[0].set_value("Classify My Research").run()
+    app.text_input[0].set_value("Neural machine translation with attention models").run()
+    app.button[2].click().run()
+    assert not app.exception
+    assert "suggestion" not in app.session_state
+    assert app.session_state["discovery_result"]["items"]
+    assert all(item["work_id"].startswith("https://openalex.org/W")
+               for item in app.session_state["discovery_result"]["items"])
+    app.text_input[0].set_value("Satellite image segmentation and forest monitoring").run()
+    assert "discovery_result" not in app.session_state
+
+
+def test_manual_topic_confirmation_does_not_require_inference():
+    if not artifact_paths()[0].exists():
+        pytest.skip("Verified web package absent from clean clone")
+    from streamlit.testing.v1 import AppTest
+
+    app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "dashboard" / "app.py"),
+                            default_timeout=45).run()
+    app.sidebar.radio[0].set_value("Classify My Research").run()
+    selected = app.selectbox[0].options[1]
+    app.selectbox[0].set_value(selected).run()
+    app.button[1].click().run()
+    assert not app.exception
+    assert "suggestion" not in app.session_state
+    assert app.session_state["confirmed_topic"] is not None
+    app.text_input[0].set_value("A different draft research title").run()
     assert "confirmed_topic" not in app.session_state

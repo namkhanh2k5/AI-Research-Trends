@@ -4,6 +4,7 @@
 |---|---|---|---|
 | Phase 2 web package | `data/analysis/finalization_p2_web_data_20261101_v3/` | tracked; Parquet in LFS | `openalex-build-web-data verify ...` |
 | Frozen SVM bundle | `models/finalization_p3/topic_placement_v2/` | tracked; joblib in LFS | `TopicPlacementService` manifest/hash check |
+| Paper-discovery text index | `data/analysis/paper_discovery_original_sample_v1/` | Git-ignored, rebuildable; no duplicate abstracts committed | `openalex-paper-discovery verify --works ... --web-dir ...` |
 | Phase 3 experiment | `data/analysis/finalization_p3_models_20261101_v1/` | tracked; binary outputs in LFS | `openalex-verify-final-ml ...` |
 | Blind human package | `data/analysis/finalization_p2_human_review_20261101_v1/` | tracked in public repository | `openalex-prepare-human-review verify ...` |
 | Reviewer ratings | `data/analysis/finalization_p4_human_ratings/` | ignored/private | `openalex-prepare-human-review validate-ratings ...` |
@@ -12,6 +13,8 @@
 The paper index contains only original 12,000 sample works, not targeted expansion. The source manifest lists per-file SHA-256 and package creation time. The bundled SVM fits 2020–2023 integrated historical data and has no retraining on 2024 or 2025. Its margins and rejection threshold are frozen. A matching checksum proves byte integrity relative to the approved manifest; it does not grant rights to distribute abstracts or make untrusted pickle loading safe.
 
 Public GitHub clones can fetch retained artifacts with Git LFS. Verify their original manifests before use; do not load an arbitrary joblib. Publication does not establish rights to redistribute OpenAlex abstracts or run a public website. See `docs/FINALIZATION_P2_WEB_DATA_CONTRACT.md` and the Phase 3 inference report for complete schemas and source hashes.
+
+For content-similarity discovery, fetch the retained original `works.parquet` LFS file and run `openalex-paper-discovery build` once. The new package contains only display metadata, a sparse matrix, and a portable JSON vocabulary/IDF representation (no pickle); it records the canonical works and web-manifest SHA-256 values. It is separate from the frozen SVM and never changes its manifest. The index is not bundled on GitHub because the retained canonical works allow deterministic local reconstruction and avoids an extra binary copy of research text. See [the discovery method](PAPER_DISCOVERY_METHOD.md).
 
 ## Checksum-verified local restoration (authorized files only)
 

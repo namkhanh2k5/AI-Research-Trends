@@ -13,7 +13,8 @@ use the 2025 test labels for evaluation.
 - RQ5 reference-network feasibility and RQ6 topic-label analysis; the
   citation recommender was rejected as the main ML task.
 - Frozen TF-IDF/Linear SVM assisted topic placement, Topic Briefs and
-  `dashboard/app.py`. Topic suggestions use OpenAlex silver labels and
+  `dashboard/app.py`. A separate build-once TF-IDF/cosine index searches
+  textually similar original-sample papers. Topic suggestions use OpenAlex silver labels and
   require explicit user confirmation. `dashboard/reviewer.py` is a separate
   local human-review workflow.
 - Academic report and slides in `deliverables/`; research outputs and figures
@@ -29,6 +30,7 @@ use the 2025 test labels for evaluation.
 | Integrated ML development data | `data/processed/ml_topic_classification/finalization_p2_20261101_v3/` |
 | Website data package | `data/analysis/finalization_p2_web_data_20261101_v3/` |
 | Frozen topic model | `models/finalization_p3/topic_placement_v2/` |
+| Rebuildable original-sample paper-discovery index | `data/analysis/paper_discovery_original_sample_v1/` (ignored; build locally) |
 
 The original analytical sample and targeted ML development data have
 **different purposes and selection mechanisms**. Do not use targeted records
@@ -46,7 +48,7 @@ Prefer a shallow clone and fetch only runtime assets for website work:
 git lfs install
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/namkhanh2k5/AI-Research-Trends.git
 cd AI-Research-Trends
-git lfs pull --include="models/finalization_p3/topic_placement_v2/model.joblib,data/analysis/finalization_p2_web_data_20261101_v3/paper_index.parquet"
+git lfs pull --include="models/finalization_p3/topic_placement_v2/model.joblib,data/analysis/finalization_p2_web_data_20261101_v3/paper_index.parquet,data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet"
 ```
 
 Run plain `git lfs pull` to fetch the 35 retained LFS paths for full research
@@ -68,12 +70,14 @@ python -m pip install -e ".[dev,web,deliverables]"
 python -m pip check
 python -m pytest -q -ra -o addopts=''
 openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
+openalex-paper-discovery build
+openalex-paper-discovery verify
 streamlit run dashboard/app.py --server.address 127.0.0.1
 ```
 
 `OPENALEX_API_KEY` (local ignored `.env`) is needed only for new OpenAlex
-requests. `OPENALEX_CONTACT_EMAIL` is optional; `AI_TRENDS_WEB_DATA` and
-`AI_TRENDS_MODEL` can override local app artifact paths. Never print or
+requests. `OPENALEX_CONTACT_EMAIL` is optional; `AI_TRENDS_WEB_DATA`,
+`AI_TRENDS_MODEL`, and `AI_TRENDS_DISCOVERY_INDEX` can override local app artifact paths. Never print or
 commit credentials.
 
 Direct frozen-model inference:
