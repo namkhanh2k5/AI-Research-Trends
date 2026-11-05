@@ -11,7 +11,7 @@ import streamlit as st
 
 from ai_research_trends.web.service import (
     artifact_paths, classify, discovery_path, doi_url, draft_fingerprint, load_discovery,
-    load_model, load_research, suggestion_message, topic_brief,
+    load_model, load_research, suggestion_message, sync_status, topic_brief,
 )
 from ai_research_trends.web.evidence import ROOT, load_published_evidence
 
@@ -246,22 +246,30 @@ def classify_page(data, web_path: Path, model_path: Path) -> None:
             st.error("The selected Topic Brief is unavailable in this verified data package.")
     st.divider()
     st.subheader("Discover papers with similar text")
-    st.write("This searches titles and abstracts in the original sampled OpenAlex corpus. It is not a comprehensive literature search, plagiarism check, or novelty detector. A high score does not verify relevance.")
+    status = sync_status()
+    if status:
+        st.caption(f"Last successful application sync: {status['last_success_at_utc']} · publication-date window through {status['window_end']}. Publication dates and sync times differ; this is not complete change-data capture.")
+    else:
+        st.info("Recent application papers are not synchronized yet; discovery uses only the original sample.")
+    st.write("This searches titles and abstracts in the original sample and, when available, the validated application sync. It is not a comprehensive literature search, plagiarism check, or novelty detector. A high score does not verify relevance.")
     st.caption("Paper discovery works independently of the classifier, including when it finds no confident topic match. Title-only indexed papers are marked explicitly.")
     left, middle, right = st.columns(3)
     top_k = left.selectbox("Results", [5, 10, 20], index=1)
-    years = middle.slider("Publication years", 2020, 2025, (2020, 2025))
+    latest_year = max(2025, int(status["window_end"][:4])) if status else 2025
+    years = middle.slider("Publication years", 2020, latest_year, (2020, latest_year))
     work_type = right.selectbox("Work type", [None, "article", "review", "preprint"],
                                 format_func=lambda x: x or "All types")
     topic_filter = st.selectbox("Primary OpenAlex topic filter", [None, *choices],
                                 format_func=lambda x: "All topics" if x is None else choices[x])
     include_title_only = st.checkbox("Include title-only papers (scores are less comparable)", value=False)
-    search_fingerprint = draft_fingerprint(fingerprint, repr((top_k, years, work_type, topic_filter, include_title_only)))
+    active_index = discovery_path()
+    search_fingerprint = draft_fingerprint(fingerprint, repr((top_k, years, work_type, topic_filter,
+                                                           include_title_only, str(active_index))))
     if st.button("Find similar papers"):
         st.session_state.pop("discovery_result", None)
         try:
             with st.spinner("Searching the verified local text index…"):
-                index = paper_discovery(str(discovery_path()))
+                index = paper_discovery(str(active_index))
                 st.session_state["discovery_result"] = index.search(
                     title, abstract, top_k=top_k, year_min=years[0], year_max=years[1],
                     topic_id=topic_filter, work_type=work_type,
@@ -273,7 +281,7 @@ def classify_page(data, web_path: Path, model_path: Path) -> None:
     found = (st.session_state.get("discovery_result")
              if st.session_state.get("discovery_fingerprint") == search_fingerprint else None)
     if found:
-        st.caption(f"{found['eligible_matches']:,} positive-score matches after filters · search {found['latency_ms']:.1f} ms · original sample only")
+        st.caption(f"{found['eligible_matches']:,} positive-score matches after filters · search {found['latency_ms']:.1f} ms · {found['scope']}")
         if not found["items"]:
             st.info("No sampled papers match this text and filter combination. Try broader wording or remove a filter.")
         for rank, paper in enumerate(found["items"], 1):
@@ -391,7 +399,9 @@ def main() -> None:
         st.stop()
     st.sidebar.title("AI/CV Research")
     page = st.sidebar.radio("Navigate", ["Home", "Research Landscape", "Topic Explorer", "Classify My Research", "Paper Explorer", "Methodology & Model Evaluation"])
-    st.sidebar.caption("Local verified artifacts · No OpenAlex API request")
+    status = sync_status()
+    st.sidebar.caption("Local verified artifacts · No OpenAlex API request during browsing")
+    st.sidebar.caption(f"Application sync: {status['last_success_at_utc']}" if status else "Application sync: never completed")
     {"Home": home, "Research Landscape": landscape, "Topic Explorer": topics,
      "Classify My Research": lambda d: classify_page(d, web_path, model_path),
      "Paper Explorer": papers,

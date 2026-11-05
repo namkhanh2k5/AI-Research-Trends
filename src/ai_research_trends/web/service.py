@@ -21,7 +21,15 @@ def artifact_paths() -> tuple[Path, Path]:
 
 
 def discovery_path() -> Path:
-    return Path(os.environ.get("AI_TRENDS_DISCOVERY_INDEX", DEFAULT_DISCOVERY))
+    if override := os.environ.get("AI_TRENDS_DISCOVERY_INDEX"):
+        return Path(override)
+    status = sync_status()
+    return Path(status["index"]) if status else DEFAULT_DISCOVERY
+
+
+def sync_status() -> dict | None:
+    from ai_research_trends.web.sync import DEFAULT_ROOT, read_sync_status
+    return read_sync_status(Path(os.environ.get("AI_TRENDS_APPLICATION_SYNC_ROOT", DEFAULT_ROOT)))
 
 
 def load_discovery(path: Path | None = None):

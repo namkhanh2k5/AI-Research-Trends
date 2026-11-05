@@ -15,7 +15,9 @@ limitations and topic-label reliability. It does **not** cover all global AI res
 - RQ1–RQ6 analyses, research reports and figures, with separate data for bibliometrics and ML.
 - A local Streamlit explorer: research landscape, 14-topic briefs, assisted
   topic suggestion with out-of-catalogue warning, literal sampled-paper search,
-  and a separate content-similarity paper-discovery index.
+  and a separate content-similarity paper-discovery index. An optional bounded
+  OpenAlex sync adds recent papers to that similarity index without changing
+  the historical research snapshot.
 - A frozen TF-IDF + Linear SVM topic-suggestion bundle. Its labels are
   OpenAlex-generated, suggestions require user confirmation, independent human
   validation is pending, and the historical 2025 test labels were made public in the uploaded workspace; that test is no longer independently sealed.
@@ -116,6 +118,30 @@ optional title-only results carry a comparability warning. For CLI search:
 ```bash
 openalex-paper-discovery search --title "Neural translation with multilingual attention models" --top-k 5
 ```
+
+### Refresh recent application papers
+
+The original 2020–2025 research dataset, population counts, reports and frozen
+classifier never change. `openalex-sync-application` maintains a separate local
+`data/application/openalex_sync/` store and rebuilds the TF-IDF discovery index
+from the original sample plus validated recent application records. Publication
+dates are not synchronization dates. This is a **bounded publication-date
+fallback**, not complete OpenAlex change-data capture: older newly indexed
+works, retrospective metadata updates and deletions can be missed. See the
+[web sync guide](docs/WEB_APPLICATION.md#optional-openalex-application-sync).
+
+```bash
+# After installing the package, restoring LFS inputs and building the original index:
+openalex-sync-application --help
+openalex-sync-application --lookback-days 3 --max-records 3000  # dry run
+openalex-sync-application --lookback-days 3 --max-records 3000 --execute
+# On interruption, use the incomplete run ID printed in its manifest:
+openalex-sync-application --resume sync_YYYYMMDDTHHMMSSZ_XXXXXXXX --max-records 3000 --execute
+```
+
+Set `OPENALEX_API_KEY` in ignored `.env` before `--execute`. The web app only
+reads the last validated index and never calls OpenAlex. No daily model
+retraining or automatic changes to the research trend charts occur.
 
 Classification needs `models/topic_placement_v2/`. For direct inference on a new
 draft (a suggestion, not a human-validated topic label):
