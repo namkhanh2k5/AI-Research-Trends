@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 import hashlib
+from datetime import datetime, timezone
 from pathlib import Path
 
 from ai_research_trends.analysis.web_queries import ResearchData
@@ -13,6 +14,12 @@ _APPLICATION = application_artifacts()
 DEFAULT_WEB = _APPLICATION["web_data"]
 DEFAULT_MODEL = _APPLICATION["model_bundle"]
 DEFAULT_DISCOVERY = _APPLICATION["paper_discovery"]
+
+
+def current_2025_test_notice() -> str:
+    """Current disclosure status, separate from the historical frozen protocol."""
+    return ("The 2025 test labels were publicly exposed, so this set is no longer "
+            "an independently blind or sealed evaluation.")
 
 
 def artifact_paths() -> tuple[Path, Path]:
@@ -29,7 +36,33 @@ def discovery_path() -> Path:
 
 def sync_status() -> dict | None:
     from ai_research_trends.web.sync import DEFAULT_ROOT, read_sync_status
-    return read_sync_status(Path(os.environ.get("AI_TRENDS_APPLICATION_SYNC_ROOT", DEFAULT_ROOT)))
+    status = read_sync_status(Path(os.environ.get("AI_TRENDS_APPLICATION_SYNC_ROOT", DEFAULT_ROOT)))
+    if status is None:
+        return None
+    raw_threshold = os.environ.get("AI_TRENDS_SYNC_STALE_HOURS", "48")
+    try:
+        threshold = float(raw_threshold)
+        if not 1 <= threshold <= 8760:
+            raise ValueError("Out-of-range freshness threshold")
+    except ValueError:
+        threshold = 48.0
+    return with_freshness(status, stale_after_hours=threshold)
+
+
+def with_freshness(status: dict, *, stale_after_hours: float = 48,
+                   now: datetime | None = None) -> dict:
+    """Describe freshness without claiming complete OpenAlex change capture."""
+    if not 1 <= stale_after_hours <= 8760:
+        raise ValueError("Invalid freshness threshold")
+    observed = datetime.fromisoformat(status["last_success_at_utc"].replace("Z", "+00:00"))
+    if observed.tzinfo is None:
+        raise ValueError("Sync timestamp must be timezone-aware")
+    reference = now or datetime.now(timezone.utc)
+    if reference.tzinfo is None:
+        raise ValueError("Reference time must be timezone-aware")
+    hours = max(0.0, (reference.astimezone(timezone.utc) - observed.astimezone(timezone.utc)).total_seconds() / 3600)
+    return {**status, "hours_since_success": hours, "stale": hours > stale_after_hours,
+            "stale_after_hours": stale_after_hours}
 
 
 def load_discovery(path: Path | None = None):

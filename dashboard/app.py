@@ -10,7 +10,7 @@ import plotly.express as px
 import streamlit as st
 
 from ai_research_trends.web.service import (
-    artifact_paths, classify, discovery_path, doi_url, draft_fingerprint, load_discovery,
+    artifact_paths, classify, current_2025_test_notice, discovery_path, doi_url, draft_fingerprint, load_discovery,
     load_model, load_research, suggestion_message, sync_status, topic_brief,
 )
 from ai_research_trends.web.evidence import ROOT, load_published_evidence
@@ -70,7 +70,7 @@ def home(data) -> None:
     frame = pd.DataFrame(data.get_publication_trends())
     st.plotly_chart(px.line(frame, x="year", y="work_count", markers=True,
                             title="Annual publication counts — complete defined AI/CV corpus"), width="stretch")
-    st.info("OpenAlex labels are machine-assigned silver labels. Human semantic validation is pending; the 2025 ML test remains sealed. This corpus is not all global AI research.")
+    st.info(f"OpenAlex labels are machine-assigned silver labels. Human semantic validation is pending. {current_2025_test_notice()} This corpus is not all global AI research.")
 
 
 def landscape(data) -> None:
@@ -248,7 +248,9 @@ def classify_page(data, web_path: Path, model_path: Path) -> None:
     st.subheader("Discover papers with similar text")
     status = sync_status()
     if status:
-        st.caption(f"Last successful application sync: {status['last_success_at_utc']} · publication-date window through {status['window_end']}. Publication dates and sync times differ; this is not complete change-data capture.")
+        st.caption(f"Last successful sync: {status['last_success_at_utc']} · publication dates scanned through {status['window_end']} · {status['application_rows']:,} application papers observed · {status['indexed_application_works']:,} application papers in Paper Discovery. These dates differ; this is not complete change-data capture.")
+        if status["stale"]:
+            st.warning(f"Application sync is older than {status['stale_after_hours']:g} hours. Recent publications may be unavailable; the last verified index remains usable.")
     else:
         st.info("Recent application papers are not synchronized yet; discovery uses only the original sample.")
     st.write("This searches titles and abstracts in the original sample and, when available, the validated application sync. It is not a comprehensive literature search, plagiarism check, or novelty detector. A high score does not verify relevance.")
@@ -349,7 +351,7 @@ def methodology(data, model_path: Path) -> None:
     st.write("The approved population is non-retracted OpenAlex article/review/preprint works dated 2020–2025 with primary subfield 1702 or 1707. Complete OpenAlex aggregates answer publication-count questions. The separate 12,000-work year-stratified detailed sample supports bibliometric descriptions; its nominal weights are not certified inverse inclusion probabilities.")
     st.write("Nested work records were normalized into eight Parquet tables, preserving unique Work IDs, multi-valued topic/affiliation/reference relationships, missing metadata and source checksums. The targeted 2,515-work expansion contributes only to historical ML training, never to population prevalence or the original paper index.")
     st.subheader("Temporal split, features and fitted models")
-    st.write("The fourteen-topic supervised task predicts OpenAlex machine-assigned primary-topic silver labels from title and abstract only. Version groups are isolated: 2020–2023 historical train, original-sample 2024 development, 2025 final test sealed. TF-IDF is fit inside historical training folds. Candidate models are ComplementNB, Logistic Regression and Linear SVM; the selected saved model is TF-IDF plus LinearSVC(C=1).")
+    st.write(f"The fourteen-topic supervised task predicts OpenAlex machine-assigned primary-topic silver labels from title and abstract only. Version groups were isolated by the original protocol: 2020–2023 historical train, original-sample 2024 development, and a 2025 holdout. {current_2025_test_notice()} TF-IDF was fit inside historical training folds. Candidate models were ComplementNB, Logistic Regression and Linear SVM; the selected saved model is TF-IDF plus LinearSVC(C=1).")
     st.subheader("Closed-set model comparison · 2024 development")
     st.dataframe(pd.DataFrame(comparison["methods"]), hide_index=True)
     st.caption(f"Same {comparison['validation_in_catalogue']} original-sample 2024 in-catalogue works; macro-F1 and accuracy measure agreement with OpenAlex silver labels, not independent topic truth. Source SHA-256 {comparison['source_sha256']}.")
@@ -378,7 +380,7 @@ def methodology(data, model_path: Path) -> None:
         st.caption(f"Verified local model: {config.get('model_version')} · {config.get('model_family')} · {config.get('score_method')}")
     except OSError:
         st.warning("Local model bundle unavailable; research explorer remains usable.")
-    st.write("Human semantic validation is pending. The 2025 final test remains SEALED. Citation counts are age-dependent, FWCI is missing for every sampled preprint, affiliation coverage is incomplete, and OA comparisons are observational rather than causal. The app is a local research prototype; private artifacts and redistribution rights prevent a public deployment claim.")
+    st.write(f"Human semantic validation is pending. {current_2025_test_notice()} Citation counts are age-dependent, FWCI is missing for every sampled preprint, affiliation coverage is incomplete, and OA comparisons are observational rather than causal. The app is a local research prototype; private artifacts and redistribution rights prevent a public deployment claim.")
     reports = (
         ("Download academic report (PDF)", ROOT / "deliverables/report/FINAL_ACADEMIC_REPORT.pdf", "application/pdf"),
         ("Download Phase 3 ML report (Markdown)", ROOT / "reports/machine_learning/FINALIZATION_P3_FINAL_ML_REPORT.md", "text/markdown"),
@@ -401,7 +403,14 @@ def main() -> None:
     page = st.sidebar.radio("Navigate", ["Home", "Research Landscape", "Topic Explorer", "Classify My Research", "Paper Explorer", "Methodology & Model Evaluation"])
     status = sync_status()
     st.sidebar.caption("Local verified artifacts · No OpenAlex API request during browsing")
-    st.sidebar.caption(f"Application sync: {status['last_success_at_utc']}" if status else "Application sync: never completed")
+    if status:
+        st.sidebar.caption(f"Last sync: {status['last_success_at_utc']}")
+        st.sidebar.caption(f"Publication window through {status['window_end']} · app papers {status['application_rows']:,} · indexed {status['indexed_application_works']:,}")
+        st.sidebar.caption("Discovery: historical sample + application data" if status["indexed_application_works"] else "Discovery: historical sample only")
+        if status["stale"]:
+            st.sidebar.warning("Application sync is stale; displayed index is the last verified version.")
+    else:
+        st.sidebar.caption("Application sync: never completed · historical sample only")
     {"Home": home, "Research Landscape": landscape, "Topic Explorer": topics,
      "Classify My Research": lambda d: classify_page(d, web_path, model_path),
      "Paper Explorer": papers,
