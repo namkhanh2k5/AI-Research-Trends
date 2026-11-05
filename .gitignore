@@ -28,3 +28,4 @@ data/analysis/paper_discovery_original_sample_v1/
 data/artifacts/web/paper_discovery/
 # Mutable application sync runs and active pointers are local, not research evidence.
 data/application/openalex_sync/
+data/application/paper_discovery_evaluation/

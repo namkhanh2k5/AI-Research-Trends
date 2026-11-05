@@ -45,6 +45,9 @@ is retained but English-centric vocabulary can underperform. Search ranking
 is not a relevance, novelty or plagiarism judgement. No independent human
 Precision@K, Recall@K, MRR or nDCG has been established; see the
 [technical evaluation](../reports/application/PAPER_DISCOVERY_TECHNICAL_EVALUATION.md).
+The optional [human-evaluation workflow](PAPER_DISCOVERY_HUMAN_EVALUATION.md)
+prepares blank judgments for 20 illustrative research ideas; measured relevance
+remains pending until real annotators complete the sheet.
 
 ## Build and inspect
 
@@ -76,14 +79,21 @@ store. It does not alter the original 2020–2025 sample, population aggregates,
 Phase 3/4 outputs, evaluation splits, or the frozen SVM. Paper Explorer and
 research charts remain original-sample / original-snapshot views; only
 similarity-based Paper Discovery can include recent synced papers. The sidebar
-and discovery page show the last successful sync time (not publication time).
+and discovery page show the last successful sync time, latest covered
+publication date, cumulative application-paper count, eligible indexed
+application-paper count, and whether the active index includes synchronized
+data. These are local application counts, not complete OpenAlex population
+counts. If the sync is older than 48 hours, the app warns that it may be stale;
+set `AI_TRENDS_SYNC_STALE_HOURS` (1–8760) to adjust the warning threshold.
 If no valid sync exists, discovery falls back to the original index.
 
 The fallback queries OpenAlex works with publication dates in a bounded 2026+
 window, the same approved primary AI/CV subfields (1702/1707), article/review/
 preprint types, and explicit non-retracted status. By default it scans three
-days and caps the window at 3,000 works; an oversized window fails before
-publishing. Use explicit `--from-date` and `--to-date` for a bounded manual
+days as **separate daily windows**, each capped at 3,000 works. A failed or
+oversized day stops before any later date is processed; no incomplete day is
+published. At most 31 days are processed per invocation by default. Use
+explicit `--from-date` and `--to-date` for a bounded manual
 backfill. The 2020–2025 research corpus definition is not changed.
 
 OpenAlex [documents](https://help.openalex.org/api/filtering/) that
@@ -101,12 +111,12 @@ the original index, and set `OPENALEX_API_KEY` in ignored `.env`. No API key is
 needed for web browsing. Run from the repository root:
 
 ```bash
-openalex-sync-application --lookback-days 3 --max-records 3000
-openalex-sync-application --lookback-days 3 --max-records 3000 --execute
+openalex-sync-application --lookback-days 3 --max-records 3000 --max-days 31
+openalex-sync-application --lookback-days 3 --max-records 3000 --max-days 31 --execute
 openalex-sync-application --resume sync_YYYYMMDDTHHMMSSZ_XXXXXXXX --max-records 3000 --execute
 ```
 
-The default command only previews its window/filter. `--execute` uses the
+The default command previews every daily window/filter. `--execute` uses the
 existing retry/rate-limit client and cursor pagination (100 records per page).
 Each response body is persisted atomically under `runs/<run-id>/raw_pages/`
 with a SHA-256 checkpoint. On resume every prior page's ordered Work IDs,
@@ -120,6 +130,30 @@ pointer selects the last working index. If the API or index build fails, the
 web app keeps using the last validated index; inspect the incomplete manifest
 and resume or start a new run after a membership mismatch. Do not edit a
 completed run. A lock prevents concurrent local sync jobs.
+
+For an API failure, inspect the incomplete run manifest and resume that run
+with the **same** page size and cap, or retry the failed day as a fresh run if
+its checkpoint no longer matches the live API. Do not combine mismatched
+pages. An oversized *multi-day* backlog is automatically split into daily
+windows; an oversized **single day** cannot be split by this policy. Stop,
+inspect its `expected_count`/`last_error`, and increase `--max-records` only
+if the complete day fits the supported 10,000-record cap and available API
+quota. Otherwise leave the date incomplete and arrange a separately reviewed
+collection method; do not advance the checkpoint to a later date. For a
+backlog exceeding `--max-days`, invoke consecutive explicit date chunks in
+chronological order. A manually chosen range that starts after the next
+unprocessed date is rejected instead of silently creating a gap. A complete
+but empty day still advances coverage, while
+collecting zero application records.
+
+Each completed run retains raw pages, a manifest, a cumulative application
+Parquet snapshot and, when nonempty, a rebuilt TF-IDF index. The manifest
+records approximate per-run `storage_bytes` at completion. Disk use thus grows
+with both run count and cumulative index size; a three-day lookback also
+revisits already covered dates. Monitor `du -sh data/application/openalex_sync`
+and free disk space. **No automatic retention/deletion is implemented.** Any
+future cleanup needs a separately reviewed dry-run policy that protects the
+active index, last known working recovery state, raw evidence and checkpoints.
 
 On a persistent Ubuntu host, one simple daily schedule is cron (set the
 absolute checkout path and Python environment to match your installation):
@@ -135,3 +169,8 @@ store between executions. Current web-data and model artifacts also require
 rights review before any public deployment. Rebuilding the TF-IDF index updates
 corpus-wide IDF but does not retrain the 14-topic SVM; evaluate vocabulary and
 human-reviewed performance drift before any separately approved model update.
+The cron line is an example only and has **not** been activated. A reliable
+deployment also requires persistent storage, monitoring/alerting for failed
+jobs and disk/quota exhaustion, a single writer, backup/restore testing and
+manual resolution of API snapshot changes. A successful daily job does not
+prove complete OpenAlex change capture.

@@ -133,8 +133,8 @@ works, retrospective metadata updates and deletions can be missed. See the
 ```bash
 # After installing the package, restoring LFS inputs and building the original index:
 openalex-sync-application --help
-openalex-sync-application --lookback-days 3 --max-records 3000  # dry run
-openalex-sync-application --lookback-days 3 --max-records 3000 --execute
+openalex-sync-application --lookback-days 3 --max-records 3000 --max-days 31  # daily-window dry run
+openalex-sync-application --lookback-days 3 --max-records 3000 --max-days 31 --execute
 # On interruption, use the incomplete run ID printed in its manifest:
 openalex-sync-application --resume sync_YYYYMMDDTHHMMSSZ_XXXXXXXX --max-records 3000 --execute
 ```
@@ -142,6 +142,24 @@ openalex-sync-application --resume sync_YYYYMMDDTHHMMSSZ_XXXXXXXX --max-records 
 Set `OPENALEX_API_KEY` in ignored `.env` before `--execute`. The web app only
 reads the last validated index and never calls OpenAlex. No daily model
 retraining or automatic changes to the research trend charts occur.
+The app displays the last successful sync, latest covered publication date,
+application-paper count, and eligible indexed application-paper count. A stale
+warning defaults to 48 hours (`AI_TRENDS_SYNC_STALE_HOURS` overrides it).
+For missed runs, dates are processed one day at a time; an oversized or failed
+day stops before later dates. See the [recovery and storage notes](docs/WEB_APPLICATION.md#optional-openalex-application-sync).
+
+Paper Discovery has no human relevance score yet. To prepare a separate, blank
+20-query review sheet after building its index, run:
+
+```bash
+openalex-evaluate-discovery prepare
+# Once a real reviewer fills every relevance cell (0/1/2):
+openalex-evaluate-discovery score --annotator-id reviewer_1
+```
+
+The review files remain local and Git-ignored. See the
+[human-evaluation guide](docs/PAPER_DISCOVERY_HUMAN_EVALUATION.md); do not
+interpret technical similarity scores as relevance judgments.
 
 Classification needs `models/topic_placement_v2/`. For direct inference on a new
 draft (a suggestion, not a human-validated topic label):
