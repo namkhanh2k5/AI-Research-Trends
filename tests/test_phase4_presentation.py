@@ -21,9 +21,9 @@ ROOT = Path(__file__).resolve().parents[1]
 RUN = ROOT / "data/analysis/phase4_stratified_20261019T155909Z_v3"
 PUBLISHED = ROOT / "reports/figures/phase4"
 PUBLICATION = ROOT / "reports/PHASE4_FIGURE_PUBLICATION.json"
-REPORT = ROOT / "reports/PHASE4_ANALYSIS_REPORT.md"
+REPORT = ROOT / "reports/research/phase4/PHASE4_ANALYSIS_REPORT.md"
 README = ROOT / "README.md"
-BRIEF = ROOT / "docs/PHASE4_PRESENTATION_BRIEF.md"
+BRIEF = ROOT / "docs/presentation/PHASE4_PRESENTATION_BRIEF.md"
 IMAGE_LINK = re.compile(r"!?(?:\[[^\]]*\])\(([^)]+\.png)\)")
 
 
@@ -32,7 +32,7 @@ def _hash(path: Path) -> str:
 
 
 def _links(path: Path) -> list[Path]:
-    return [path.parent / relative for relative in IMAGE_LINK.findall(path.read_text(encoding="utf-8"))]
+    return [(path.parent / relative).resolve() for relative in IMAGE_LINK.findall(path.read_text(encoding="utf-8"))]
 
 
 def test_published_figure_manifest_and_decodable_images() -> None:

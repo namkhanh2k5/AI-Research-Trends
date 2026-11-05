@@ -56,7 +56,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--analysis-plan", type=Path, default=Path("docs/PHASE4_STATISTICAL_ANALYSIS_PLAN.md"))
     parser.add_argument("--seed", type=int, default=20261023)
     parser.add_argument("--publish", action="store_true", help="Also publish report and figures to reports/")
-    parser.add_argument("--report-path", type=Path, default=Path("reports/PHASE4_ANALYSIS_REPORT.md"))
+    parser.add_argument("--report-path", type=Path, default=Path("reports/research/phase4/PHASE4_ANALYSIS_REPORT.md"))
     parser.add_argument("--figure-dir", type=Path, default=Path("reports/figures/phase4"))
     return parser
 
@@ -64,7 +64,7 @@ def build_parser() -> argparse.ArgumentParser:
 def analyze(
     *, processed_dir: Path, output_dir: Path, plan_path: Path, population_path: Path,
     config_path: Path, analysis_plan_path: Path, seed: int, publish: bool = False,
-    report_path: Path = Path("reports/PHASE4_ANALYSIS_REPORT.md"),
+    report_path: Path = Path("reports/research/phase4/PHASE4_ANALYSIS_REPORT.md"),
     figure_dir: Path = Path("reports/figures/phase4"),
 ) -> dict:
     if output_dir.exists():

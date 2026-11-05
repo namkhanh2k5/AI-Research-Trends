@@ -3,7 +3,7 @@
 These are the implemented Parquet schemas for the verified Phase 2 sample. All
 identifiers are canonical OpenAlex URLs unless stated otherwise. Source JSONL is
 unchanged. Each table has a stable Arrow schema; `?` means nullable. An absent
-metadata value is `null`, never a guessed value. The [Phase 3 report](../reports/PHASE3_DATA_QUALITY_REPORT.md)
+metadata value is `null`, never a guessed value. The [Phase 3 report](../reports/research/phase3/PHASE3_DATA_QUALITY_REPORT.md)
 contains the observed row counts and checksums.
 
 ## `works.parquet`

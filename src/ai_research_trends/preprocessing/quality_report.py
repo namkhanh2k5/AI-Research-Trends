@@ -15,7 +15,7 @@ from ai_research_trends.preprocessing.validate_tables import file_sha256
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Render the verified Phase 3 quality report")
     parser.add_argument("processed_dir", type=Path)
-    parser.add_argument("--output", type=Path, default=Path("reports/PHASE3_DATA_QUALITY_REPORT.md"))
+    parser.add_argument("--output", type=Path, default=Path("reports/research/phase3/PHASE3_DATA_QUALITY_REPORT.md"))
     parser.add_argument("--compare-dir", type=Path, help="Independently processed rerun for SHA-256 comparison")
     return parser
 

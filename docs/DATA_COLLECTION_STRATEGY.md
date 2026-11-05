@@ -197,7 +197,7 @@ all-work sensitivity population was 942,825. A six-year proportional sample of
 both JSONL outputs passed `openalex-verify-collection`; the manifest is complete.
 The nominal weights and year allocations come from the refreshed aggregate
 artifact and are documented in
-[`reports/PHASE2_COLLECTION_REPORT.md`](../reports/PHASE2_COLLECTION_REPORT.md).
+[`reports/PHASE2_COLLECTION_REPORT.md`](../reports/research/phase2/PHASE2_COLLECTION_REPORT.md).
 These are observations at the recorded retrieval time, not stable OpenAlex totals.
 Raw and derived data remain outside Git and require separate backup.
 

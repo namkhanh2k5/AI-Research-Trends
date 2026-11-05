@@ -102,7 +102,7 @@ def test_published_phase6_figure_is_a_real_linked_png():
     assert figure.stat().st_size>1000
     assert figure.read_bytes().startswith(b"\x89PNG\r\n\x1a\n")
     assert "reports/phase6/figures/topic_support.png" in (root/"README.md").read_text()
-    assert "phase6/figures/topic_support.png" in (root/"reports/PHASE6A_TOPIC_CLASSIFICATION_FEASIBILITY.md").read_text()
+    assert "figures/topic_support.png" in (root/"reports/phase6/PHASE6A_TOPIC_CLASSIFICATION_FEASIBILITY.md").read_text()
 
 
 def test_published_audit_tables_are_small_aggregates_without_paper_text():

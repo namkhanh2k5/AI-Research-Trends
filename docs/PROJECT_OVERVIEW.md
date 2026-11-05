@@ -24,12 +24,12 @@ retractions included). The proportionally year-stratified detailed sample has
 12,000 unique works. Targeted historical ML expansion is a **third dataset**,
 used only for ML training. API sampling uniformity was not established, so
 nominal sample weights are not guaranteed inverse inclusion probabilities.
-Source values and exact timestamps are in the [collection report](../reports/PHASE2_COLLECTION_REPORT.md)
-and [sample quality report](../reports/PHASE3_DATA_QUALITY_REPORT.md); do not
+Source values and exact timestamps are in the [collection report](../reports/research/phase2/PHASE2_COLLECTION_REPORT.md)
+and [sample quality report](../reports/research/phase3/PHASE3_DATA_QUALITY_REPORT.md); do not
 hardcode these snapshot counts in processing logic.
 
-The [Phase 4 report](../reports/PHASE4_ANALYSIS_REPORT.md) covers RQ1–RQ4,
-the [Phase 5 decision](../reports/PHASE5_FINAL_DECISION.md) covers RQ5, and
+The [Phase 4 report](../reports/research/phase4/PHASE4_ANALYSIS_REPORT.md) covers RQ1–RQ4,
+the [Phase 5 decision](../reports/research/phase5/PHASE5_FINAL_DECISION.md) covers RQ5, and
 the [unified Phase 6 report](../reports/phase6/PHASE6_REPORT.md) covers RQ6.
 The project supplies a local Streamlit explorer and a frozen title/abstract
 TF-IDF + Linear SVM topic **suggestion** model. Model agreement with OpenAlex

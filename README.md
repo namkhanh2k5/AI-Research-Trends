@@ -23,7 +23,7 @@ limitations and topic-label reliability. It does **not** cover all global AI res
   [presentation](deliverables/presentation/FINAL_PRESENTATION.pptx) and
   [demo script](deliverables/presentation/DEMO_SCRIPT.md).
 
-The earlier citation-aware literature recommender was rejected as the main ML task; see the [RQ5 decision](reports/PHASE5_FINAL_DECISION.md). The new TF-IDF discovery feature searches similar *text* in the original sample; it does not revive citation recommendation or certify relevance.
+The earlier citation-aware literature recommender was rejected as the main ML task; see the [RQ5 decision](reports/research/phase5/PHASE5_FINAL_DECISION.md). The new TF-IDF discovery feature searches similar *text* in the original sample; it does not revive citation recommendation or certify relevance.
 
 **Stack:** Python 3.11+, requests, pandas/PyArrow, NumPy/SciPy,
 scikit-learn, Matplotlib/Seaborn, Streamlit/Plotly and pytest. The source
@@ -53,14 +53,14 @@ Targeted historical ML expansion is a third, separate dataset.
 The [project overview](docs/PROJECT_OVERVIEW.md),
 [research methodology](docs/RESEARCH_METHODOLOGY.md),
 [data dictionary](docs/DATA_DICTIONARY.md) and
-[Phase 4 research report](reports/PHASE4_ANALYSIS_REPORT.md) explain estimands,
+[Phase 4 research report](reports/research/phase4/PHASE4_ANALYSIS_REPORT.md) explain estimands,
 missingness and non-causal interpretation. Custom LLM/Multimodal/RAG text rules
 are not equivalent to OpenAlex-native topics or population counts.
 
 ## Phase 4 — Research Results & Visualizations
 
 These five GitHub-readable previews link to the verified
-[Phase 4 report](reports/PHASE4_ANALYSIS_REPORT.md):
+[Phase 4 report](reports/research/phase4/PHASE4_ANALYSIS_REPORT.md):
 
 - [Annual publications in the complete defined population](reports/figures/phase4/rq1_population_counts.png) — RQ1 population aggregate, not sample prevalence.
 - [Native-topic trends](reports/figures/phase4/rq1_native_topic_trends.png) — overlapping OpenAlex topic series within that defined population.
@@ -70,7 +70,7 @@ These five GitHub-readable previews link to the verified
 
 See the [unified Phase 6 report](reports/phase6/PHASE6_REPORT.md),
 [RQ6 topic-support chart](reports/phase6/figures/topic_support.png) and
-[ML development report](reports/FINALIZATION_P3_FINAL_ML_REPORT.md) for
+[ML development report](reports/machine_learning/FINALIZATION_P3_FINAL_ML_REPORT.md) for
 classification evidence. The 2024 development results are **not** final-test
 results or independent human semantic accuracy.
 
@@ -128,14 +128,16 @@ openalex-package-topic-model infer \
 ```
 
 The [web application guide](docs/WEB_APPLICATION.md),
-[technical discovery evaluation](reports/PAPER_DISCOVERY_TECHNICAL_EVALUATION.md),
+[technical discovery evaluation](reports/application/PAPER_DISCOVERY_TECHNICAL_EVALUATION.md),
 [reproducibility guide](docs/REPRODUCIBILITY.md) and
 [deployment guide](docs/DEPLOYMENT_GUIDE.md) explain the local-only demo and
 verified artifact restoration. The selective `git lfs pull` above suffices for
 the local demo after the discovery index is built; `git lfs pull` without a filter restores all 35 LFS paths
 needed for full research verification. The published snapshot intentionally
-omits historical reruns, pilots and superseded model/data versions; see
-[artifact retention policy](docs/REPOSITORY_CLEANUP.md). No public hosted URL exists.
+omits some retired reruns and superseded model/data versions; the retained
+Phase 6 pilot and reproduction are physically deduplicated under
+`data/analysis/phase6/`. Verify them with `openalex-verify-phase6`; see
+[artifact retention policy](docs/archive/REPOSITORY_CLEANUP.md). No public hosted URL exists.
 
 ## Data, ETL and reproducibility
 
@@ -154,8 +156,8 @@ tests/                       offline tests; optional live/browser checks
 ```
 
 The [report index](reports/README.md),
-[Phase 2 report](reports/PHASE2_COLLECTION_REPORT.md) and
-[Phase 3 quality report](reports/PHASE3_DATA_QUALITY_REPORT.md) identify the
+[Phase 2 report](reports/research/phase2/PHASE2_COLLECTION_REPORT.md) and
+[Phase 3 quality report](reports/research/phase3/PHASE3_DATA_QUALITY_REPORT.md) identify the
 original collection and preprocessing runs. Targeted ML development records
 must not be silently merged into the 12,000-work analytical sample.
 

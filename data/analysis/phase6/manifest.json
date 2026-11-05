@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "migration_status": "verified_original_bytes_not_reexecuted",
+  "source_commit": "c0677db68264a8d43a453eda58b057f4077ae710",
+  "stages": [
+    {
+      "identity": "pilot_v12",
+      "original_dir": "data/analysis/phase6_topic_pilot_20261028_v12",
+      "manifest": "data/analysis/phase6/pilot/manifest.json",
+      "manifest_sha256": "c5f8666dadff86a299b5a82de89b1eb16a1d16f1ab629b7247a743dce0f8b4f9",
+      "artifact_dir": "data/analysis/phase6/pilot",
+      "artifact_count": 16
+    },
+    {
+      "identity": "pilot_reproduction",
+      "original_dir": "data/analysis/phase6a_reproduction_20261028_phase6b",
+      "manifest": "data/analysis/phase6/provenance/pilot_reproduction_manifest.json",
+      "manifest_sha256": "b5768826802f8d33bad0aa130a74bbdbe24ac3bb659cc41fea94f955af2c1932",
+      "artifact_dir": "data/analysis/phase6/pilot",
+      "artifact_count": 16
+    },
+    {
+      "identity": "topic_metadata",
+      "original_dir": "data/analysis/phase6b_topic_metadata_20261028_v1",
+      "manifest": "data/analysis/phase6/metadata/manifest.json",
+      "manifest_sha256": "d0d6c48d5d9bd1b41f3a9648d94991565aff146eeb10943b4db007f3cbd1255f",
+      "artifact_dir": "data/analysis/phase6/metadata",
+      "artifact_count": 21
+    },
+    {
+      "identity": "validation_v3",
+      "original_dir": "data/analysis/phase6b_topic_validation_20261028_v3",
+      "manifest": "data/analysis/phase6/validation/manifest.json",
+      "manifest_sha256": "8adeee71c0b37d3e5b85d06360d2d471b72618daf1a4427b023570664bac9c79",
+      "artifact_dir": "data/analysis/phase6/validation",
+      "artifact_count": 34
+    },
+    {
+      "identity": "integrated_rq6",
+      "original_dir": "data/analysis/finalization_p2_rq6_20261101_v3",
+      "manifest": "data/analysis/phase6/topic_analysis/manifest.json",
+      "manifest_sha256": "4588fc872581f91eccc713e86e845d0cf8a11bc79eeb0603631c825cf091c570",
+      "artifact_dir": "data/analysis/phase6/topic_analysis",
+      "artifact_count": 13
+    },
+    {
+      "identity": "rq6_publication_v2",
+      "original_dir": "data/analysis/finalization_p2_publication_v2",
+      "manifest": "data/analysis/phase6/provenance/rq6_publication_v2_manifest.json",
+      "manifest_sha256": "52419882d18d6d56ebce020311e8b6cd7a4dccbbba0c83376980de7dbb4bf83d",
+      "artifact_dir": "data/analysis/phase6/topic_analysis",
+      "artifact_count": 13
+    }
+  ]
+}

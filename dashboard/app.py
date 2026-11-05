@@ -373,7 +373,7 @@ def methodology(data, model_path: Path) -> None:
     st.write("Human semantic validation is pending. The 2025 final test remains SEALED. Citation counts are age-dependent, FWCI is missing for every sampled preprint, affiliation coverage is incomplete, and OA comparisons are observational rather than causal. The app is a local research prototype; private artifacts and redistribution rights prevent a public deployment claim.")
     reports = (
         ("Download academic report (PDF)", ROOT / "deliverables/report/FINAL_ACADEMIC_REPORT.pdf", "application/pdf"),
-        ("Download Phase 3 ML report (Markdown)", ROOT / "reports/FINALIZATION_P3_FINAL_ML_REPORT.md", "text/markdown"),
+        ("Download Phase 3 ML report (Markdown)", ROOT / "reports/machine_learning/FINALIZATION_P3_FINAL_ML_REPORT.md", "text/markdown"),
     )
     for label, path, mime in reports:
         if path.is_file():

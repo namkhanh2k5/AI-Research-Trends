@@ -2,9 +2,9 @@
 
 This is the entry point for RQ6. Phase 6A (five-topic feasibility), Phase 6B
 (fourteen-topic validation) and the later integrated ML development are **separate
-experiments**, not successive versions of one result. Their original, hashed run
-directories remain in place; [artifact_map.json](artifact_map.json) records each
-role and path. The [pilot tables](pilot/README.md),
+experiments**, not successive versions of one result. Their original manifest
+bytes and output hashes are verified under the [canonical Phase 6 tree](../../data/analysis/phase6/manifest.json);
+[artifact_map.json](artifact_map.json) records old and new paths. The [pilot tables](pilot/README.md),
 [validation tables](validation/README.md), and
 [sample-topic figure](figures/topic_support.png) are together here for
 reading; the figure describes the original 12,000-work sample, not the OpenAlex
@@ -25,9 +25,9 @@ treated as full-population prevalence.
 
 | Stage | Distinct purpose | Measured evidence | Primary detail |
 | --- | --- | --- | --- |
-| 6A pilot | Pre-2025 support and five-class diagnostic after the 8–15-class gate failed | 955 historical training, 379 2024 validation; 20.2% of 1,873 text-eligible 2024 works in catalogue; SVM macro-F1 .953 on five silver labels | [Pilot report](../PHASE6A_TOPIC_CLASSIFICATION_FEASIBILITY.md), [selection protocol](../../docs/PHASE6_TOPIC_SELECTION_PROTOCOL.md) |
-| 6B expansion | Prospectively fixed 14-topic catalogue and separate open-set check | 1,746 training, 689 2024 validation; 36.8% catalogue coverage; closed-set SVM macro-F1 .857; 2024 open-set evaluation: 307/414 (74.2%) inside accepted, 136/710 (19.2%) outside falsely accepted, 287/1,124 (25.5%) end-to-end correct against silver labels | [Validation report](../PHASE6B_FINAL_TOPIC_VALIDATION_REPORT.md), [scope table](validation/scope_review.csv), [decision criteria](../../docs/PHASE6B_DECISION_CRITERIA.md) |
-| Integrated RQ6 and final ML development | Version-group isolation, targeted training expansion, frozen model and website assistance | 14-label SVM selected on 2024 development; open-set false acceptance in the later integrated development evaluation is 21.66%, **not** the 6B 19.2% result | [RQ6 analysis](../FINALIZATION_P2_RQ6_TOPIC_LABEL_ANALYSIS.md), [final ML report](../FINALIZATION_P3_FINAL_ML_REPORT.md) |
+| 6A pilot | Pre-2025 support and five-class diagnostic after the 8–15-class gate failed | 955 historical training, 379 2024 validation; 20.2% of 1,873 text-eligible 2024 works in catalogue; SVM macro-F1 .953 on five silver labels | [Pilot report](PHASE6A_TOPIC_CLASSIFICATION_FEASIBILITY.md), [selection protocol](../../docs/protocols/PHASE6_TOPIC_SELECTION_PROTOCOL.md) |
+| 6B expansion | Prospectively fixed 14-topic catalogue and separate open-set check | 1,746 training, 689 2024 validation; 36.8% catalogue coverage; closed-set SVM macro-F1 .857; 2024 open-set evaluation: 307/414 (74.2%) inside accepted, 136/710 (19.2%) outside falsely accepted, 287/1,124 (25.5%) end-to-end correct against silver labels | [Validation report](PHASE6B_FINAL_TOPIC_VALIDATION_REPORT.md), [scope table](validation/scope_review.csv), [decision criteria](../../docs/protocols/PHASE6B_DECISION_CRITERIA.md) |
+| Integrated RQ6 and final ML development | Version-group isolation, targeted training expansion, frozen model and website assistance | 14-label SVM selected on 2024 development; open-set false acceptance in the later integrated development evaluation is 21.66%, **not** the 6B 19.2% result | [RQ6 analysis](FINALIZATION_P2_RQ6_TOPIC_LABEL_ANALYSIS.md), [final ML report](../machine_learning/FINALIZATION_P3_FINAL_ML_REPORT.md) |
 
 The 6A and 6B macro-F1 values have **different class universes and evaluation
 denominators**. The 6B open-set result and final integrated model result also
@@ -42,7 +42,7 @@ added to RQ1–RQ4 population or original-sample estimands.
 
 The [frozen catalogue](../../config/phase6b_catalogue.yaml) has 14 selected
 OpenAlex IDs. It evolved from a five-topic pilot; the
-[expanded-catalogue protocol](../../docs/PHASE6B_EXPANDED_CATALOGUE_PROTOCOL.md)
+[expanded-catalogue protocol](../../docs/protocols/PHASE6B_EXPANDED_CATALOGUE_PROTOCOL.md)
 records the 2020–2024 support criteria and six excluded/uncertain topics. Broad
 labels such as T10036/T10028 and cross-domain T10100 can overlap narrower
 topics. The [6B aggregate confusion and classwise tables](validation/README.md)
@@ -50,9 +50,9 @@ show where the model disagrees with OpenAlex, not where OpenAlex is proved wrong
 Official descriptions were captured in a hashed metadata snapshot, but the
 catalogue is a single-researcher provisional scope decision.
 
-The [pilot blind protocol](../../docs/PHASE6_HUMAN_ANNOTATION_GUIDELINES.md),
-[6B human-review instructions](../../docs/PHASE6B_HUMAN_REVIEW_INSTRUCTIONS.md)
-and [later two-reviewer workflow](../../docs/FINALIZATION_P2_HUMAN_REVIEW.md)
+The [pilot blind protocol](../../docs/protocols/PHASE6_HUMAN_ANNOTATION_GUIDELINES.md),
+[6B human-review instructions](../../docs/protocols/PHASE6B_HUMAN_REVIEW_INSTRUCTIONS.md)
+and [later two-reviewer workflow](../../docs/protocols/FINALIZATION_P2_HUMAN_REVIEW.md)
 must be read as protocols, not completed human evidence. No genuine independent
 two-human semantic validation has been established. The repository subsequently
 published historical answer keys and 2025 labels; the 2025 test can no longer
@@ -62,18 +62,25 @@ older time-stamped reports correctly described its earlier sealed state.
 ## Reproduction and provenance
 
 The canonical 6B run is
-`data/analysis/phase6b_topic_validation_20261028_v3/` with manifest SHA-256
+`data/analysis/phase6/validation/` with original manifest SHA-256
 `8adeee71c0b37d3e5b85d06360d2d471b72618daf1a4427b023570664bac9c79`.
 The 6A pilot v12 and later reproduction have identical non-manifest outputs but
-**different** manifests and run identities, so both remain at original paths.
-The 6B metadata and integrated RQ6 runs are separate sources. The mapping file
-lists their hashes. To verify the 6B run without retraining:
+**different** manifests and run identities. The 16 identical files now occupy
+one physical pilot directory; the original reproduction manifest is preserved
+at `data/analysis/phase6/provenance/pilot_reproduction_manifest.json` without
+rewriting its bytes. The 6B metadata and integrated RQ6 runs remain distinct
+subdirectories. The duplicate RQ6 publication outputs also share the canonical
+`topic_analysis/` files, while their original publication manifest is retained
+under `provenance/`. To verify all six manifests and the canonical files without
+retraining:
 
 ```bash
-openalex-verify-topic-run --run-dir data/analysis/phase6b_topic_validation_20261028_v3
+openalex-verify-phase6
+openalex-verify-topic-run --run-dir data/analysis/phase6/validation
 ```
 
 Use the [repository reproducibility guide](../../docs/REPRODUCIBILITY.md) for
 the original sample, integrated model, web package and application. Preserve
-all run manifest paths, source hashes and numerical outputs. Future human
+all source hashes and numerical outputs. Historical manifest paths are resolved
+through the explicit migration map, never by filename alone. Future human
 ratings must be stored separately from the published research snapshot.

@@ -4,8 +4,8 @@ The [collection strategy](DATA_COLLECTION_STRATEGY.md) fixes the exact API
 corpus, retraction policy, aggregation logic, proportional year strata and
 provenance. The [data dictionary](DATA_DICTIONARY.md) fixes table grains,
 keys, missing values and feature definitions. The Phase 1 feasibility numbers
-are preserved in [the original feasibility report](../reports/data_feasibility.md)
-and [pre-Phase-2 gate](../reports/PRE_PHASE2_REVIEW.md). They are historical
+are preserved in [the original feasibility report](../reports/research/phase1/data_feasibility.md)
+and [pre-Phase-2 gate](../reports/research/phase1/PRE_PHASE2_REVIEW.md). They are historical
 snapshots, not the final Phase 2 population counts.
 
 ## Three evidence populations
@@ -33,13 +33,13 @@ memberships within each work and describes **sampled co-affiliation** networks,
 not worldwide collaboration or author nationality. Source methods, model
 specification and uncertainty are in the protected
 [Phase 4 statistical plan](PHASE4_STATISTICAL_ANALYSIS_PLAN.md) and
-[completed report](../reports/PHASE4_ANALYSIS_REPORT.md).
+[completed report](../reports/research/phase4/PHASE4_ANALYSIS_REPORT.md).
 
 RQ5's original candidate gate used eligible 2020–2022 citing works for 2023
 queries and a frequency ≥2 pool; a bounded follow-up also used all historical
 edge-bearing works and thresholds 1/2/3. The former plan and measured follow-up
-are documented in [the final NO-GO decision](../reports/PHASE5_FINAL_DECISION.md)
-and [coverage reassessment](../reports/PHASE5_COVERAGE_REASSESSMENT.md). ID
+are documented in [the final NO-GO decision](../reports/research/phase5/PHASE5_FINAL_DECISION.md)
+and [coverage reassessment](../reports/research/phase5/PHASE5_COVERAGE_REASSESSMENT.md). ID
 overlap is not retrieval relevance, and unknown candidate dates prevent a
 complete temporally valid coverage claim.
 

@@ -189,7 +189,7 @@ def test_published_development_figures_and_markdown_links():
         assert path.read_bytes()[:8] == b"\x89PNG\r\n\x1a\n"
         assert path.stat().st_size == record["bytes"] and record["bytes"] > 1000
         assert file_sha256(path) == record["sha256"]
-    for markdown in [root / "README.md", *root.glob("reports/FINALIZATION_P3_*.md")]:
+    for markdown in [root / "README.md", *root.glob("reports/machine_learning/FINALIZATION_P3_*.md")]:
         content = markdown.read_text()
         for relative in re.findall(r"\]\(([^)]+\.png)\)", content):
             assert (markdown.parent / relative).is_file(), f"Broken figure link: {markdown}: {relative}"

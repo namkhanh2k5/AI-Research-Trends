@@ -1,0 +1,7 @@
+# Frozen champion selection
+
+The pre-experiment rule was highest **expanded-training closed-set macro-F1** on the same 681 in-catalogue original-sample 2024 development works. Models within 0.01 of the maximum would be compared by lower 2024 open-set outside false acceptance and then lower inference latency. The tested expanded macro-F1 values were ComplementNB **0.8580**, Logistic Regression **0.8580**, and Linear SVM **0.8808**; SVM won without invoking the tie-break. Its selected training-only CV parameter was **C=1**.
+
+This choice does not assert that SVM is best at outside-catalogue rejection. On the disjoint 2024 open-set evaluation, its outside false-acceptance rate was **0.2166**, exceeding the calibration target of 0.20. The explicit-OTHER LR benchmark had **0.1750** on that measure and **0.3023** correct accepted placements/all eligible versus SVM **0.2833**. This tension is disclosed, not concealed: the champion is a **closed-set-first assisted-placement model**, requiring user confirmation for every recommendation. Automatic placement is disabled.
+
+Its local bundle is `models/finalization_p3/topic_placement_v2/`; model-binary SHA-256 is `b066ba80ab0768052f585fa1ed2e6b56c24f46c511508b3394580452e40bb788`. The binary is Git-ignored and must be reproduced from verified local data. Frozen configuration is [here](../../config/finalization_p3_frozen_evaluation.yaml). Human semantic validation is pending and 2025 remains sealed.

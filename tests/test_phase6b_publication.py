@@ -14,7 +14,7 @@ PUBLIC=ROOT/"reports"/"phase6"/"validation"
 
 def test_public_summary_matches_catalogue_and_decision_text():
     summary=json.loads((PUBLIC/"summary.json").read_text())
-    report=(ROOT/"reports"/"PHASE6B_FINAL_TOPIC_VALIDATION_REPORT.md").read_text()
+    report=(ROOT/"reports/phase6"/"PHASE6B_FINAL_TOPIC_VALIDATION_REPORT.md").read_text()
     assert summary["test_2025"]=="sealed_not_evaluated"
     assert summary["human_semantic_validation"]=="pending"
     assert summary["catalogue_sha256"]==file_sha256(ROOT/"config"/"phase6b_catalogue.yaml")

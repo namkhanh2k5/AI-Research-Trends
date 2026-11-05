@@ -1,0 +1,7 @@
+# Human topic-validation status
+
+**Status: prepared, not completed.** Two isolated reviewer packages were generated at `data/analysis/finalization_p2_human_review_20261101_v1/` from the verified Phase 6B blind sheets. Each package has 40 calibration examples, 100 evaluation examples, 14 randomized topic choices per example, and a 14-topic scope review form. The distinct option orders were verified (40 calibration, 100 evaluation). The local manifest records source and package checksums; restricted answer keys were **not copied**. The entire package remains Git-ignored.
+
+No reviewer has returned a real annotation. Human agreement, Cohen's kappa, label acceptance, independent precision/recall and dispute rates are therefore **not measured**. The existing single-researcher scope notes are provisional, not a substitute for two independent ratings. The [reviewer protocol](../../../docs/protocols/FINALIZATION_P2_HUMAN_REVIEW.md) explains distribution, rating validation, key isolation and the post-rating adjudication sequence. Do not populate this report with simulated ratings.
+
+Next action: recruit two independent reviewers, distribute separate private packages, collect and validate calibration sheets, freeze the review protocol, then collect independent evaluation sheets. Only after both evaluation files are complete should restricted keys be joined and human–human/OpenAlex comparisons reported. Catalogue scope changes require a versioned decision and cannot be retrofitted to the sealed 2025 test.

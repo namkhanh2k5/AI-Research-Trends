@@ -43,7 +43,7 @@ live API call or automatic app-start rebuild is performed. Non-English content
 is retained but English-centric vocabulary can underperform. Search ranking
 is not a relevance, novelty or plagiarism judgement. No independent human
 Precision@K, Recall@K, MRR or nDCG has been established; see the
-[technical evaluation](../reports/PAPER_DISCOVERY_TECHNICAL_EVALUATION.md).
+[technical evaluation](../reports/application/PAPER_DISCOVERY_TECHNICAL_EVALUATION.md).
 
 ## Build and inspect
 

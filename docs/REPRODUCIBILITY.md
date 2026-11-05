@@ -26,10 +26,12 @@ Phase 6 run, integrated ML tables, final model and web package have distinct
 manifests and verifiers. Their exact current paths are in
 [PROJECT_HANDOFF.md](../PROJECT_HANDOFF.md), the
 [Phase 6 map](../reports/phase6/artifact_map.json), and
-[artifact contract](MODEL_AND_DATA_ARTIFACTS.md). Preserve historical path
-identities; do not move them to a phase-themed directory if a manifest uses
-relative paths or hashes a source document. For full checks use the existing
-CLI `--help` and the relevant phase reports, not a rerun of collection.
+[artifact contract](MODEL_AND_DATA_ARTIFACTS.md). The five historical Phase 6
+experiment identities (plus the RQ6 publication manifest) have been migrated into `data/analysis/phase6/` with immutable
+original manifest bytes and an explicit old-to-new map; use
+`openalex-verify-phase6` to check both provenance and canonical artifacts.
+Other versioned analysis runs retain their original locations. For full checks
+use the existing CLI `--help` and relevant phase reports, not a rerun of collection.
 
 The original collection and preprocessing manifests contain historical
 absolute paths. Their read-only verifiers map each recorded project path into
@@ -45,7 +47,8 @@ interim file. A present but corrupted interim file fails, without fallback.
 openalex-verify-collection data/raw/openalex_stratified/stratified_20261019T155909Z/manifest.json
 openalex-validate-processed --output-dir data/processed/openalex_stratified/stratified_20261019T155909Z --plan data/metadata/phase2_sampling_plan.json --population data/metadata/population_counts_pre_phase2.json --config config/topics.yaml
 openalex-validate-phase4 data/analysis/phase4_stratified_20261019T155909Z_v3
-openalex-verify-topic-run --run-dir data/analysis/phase6b_topic_validation_20261028_v3
+openalex-verify-phase6
+openalex-verify-topic-run --run-dir data/analysis/phase6/validation
 openalex-verify-final-ml data/analysis/finalization_p3_models_20261101_v1
 openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
 ```
@@ -68,5 +71,5 @@ does not establish page-level or responsive UI correctness. Optional browser
 tests require the browser extra and `AI_TRENDS_RUN_BROWSER_TESTS=1`.
 
 `.env` is only for authorized new OpenAlex requests. Never print or commit API
-keys. The [retention policy](REPOSITORY_CLEANUP.md) explains which old runs
+keys. The [retention policy](archive/REPOSITORY_CLEANUP.md) explains which old runs
 were removed from the current tree; their commits still exist in history.

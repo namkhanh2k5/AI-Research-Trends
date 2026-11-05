@@ -7,9 +7,12 @@ import json
 from pathlib import Path
 
 from ai_research_trends.preprocessing.validate_tables import file_sha256
+from ai_research_trends.analysis.phase6_artifacts import resolve_historical_path
 
 
 def verify_run(run_dir: Path) -> dict:
+    if not run_dir.exists():
+        run_dir = resolve_historical_path(run_dir / "manifest.json").parent
     manifest_path=run_dir/"manifest.json"
     manifest=json.loads(manifest_path.read_text())
     if manifest.get("status")!="complete": raise ValueError("Run is incomplete")

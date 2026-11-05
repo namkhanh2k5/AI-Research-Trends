@@ -53,7 +53,7 @@ git lfs pull --include="models/finalization_p3/topic_placement_v2/model.joblib,d
 
 Run plain `git lfs pull` to fetch the 35 retained LFS paths for full research
 verification. Historical reruns and intermediate outputs were intentionally
-pruned from the current tree. Read [retention details](docs/REPOSITORY_CLEANUP.md).
+pruned from the current tree. Read [retention details](docs/archive/REPOSITORY_CLEANUP.md).
 
 
 The clone contains datasets and the saved model, but **not** `.env` or a
@@ -89,10 +89,10 @@ openalex-package-topic-model infer --help
 ## Where to read and what remains
 
 - [Project overview](docs/PROJECT_OVERVIEW.md), [research methodology](docs/RESEARCH_METHODOLOGY.md), [web guide](docs/WEB_APPLICATION.md), and [reproducibility](docs/REPRODUCIBILITY.md) are the current documentation entry points.
-- RQ1–RQ4: [Phase 4 research report](reports/PHASE4_ANALYSIS_REPORT.md).
-  RQ5: [reference-network decision](reports/PHASE5_FINAL_DECISION.md).
+- RQ1–RQ4: [Phase 4 research report](reports/research/phase4/PHASE4_ANALYSIS_REPORT.md).
+  RQ5: [reference-network decision](reports/research/phase5/PHASE5_FINAL_DECISION.md).
   RQ6/ML: [unified topic report](reports/phase6/PHASE6_REPORT.md)
-  and [model evaluation](reports/FINALIZATION_P3_FINAL_ML_REPORT.md).
+  and [model evaluation](reports/machine_learning/FINALIZATION_P3_FINAL_ML_REPORT.md).
 - Independent human semantic validation remains **pending**.
   The 2025 final-test gate was historically sealed but is no longer
   independently sealed after this public workspace transfer. Public

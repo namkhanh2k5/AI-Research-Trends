@@ -14,5 +14,5 @@ def test_all_baseline_issues_have_valid_status_and_evidence_paths():
         assert issue["status"] in tracker["status_terms"]
         assert issue["root_cause"] and issue["fix"] and issue["verification"]
         assert all((ROOT / path).exists() for path in issue["files"])
-    report = (ROOT / "reports/FINALIZATION_P4_REMEDIATION_REPORT.md").read_text()
+    report = (ROOT / "reports/application/FINALIZATION_P4_REMEDIATION_REPORT.md").read_text()
     assert all(issue["id"] in report for issue in tracker["issues"])

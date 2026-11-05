@@ -166,8 +166,8 @@ def test_published_phase5_report_figures_resolve() -> None:
             "reference_lorenz.png", "references_per_work.png"}.issubset(
                 {path.name for path in figure_dir.glob("*.png")})
     for name in ("PHASE5_FEASIBILITY_REPORT.md", "PHASE5_REFERENCE_EDA_REPORT.md"):
-        report = ROOT / "reports" / name
-        links = re.findall(r"!\[[^]]*\]\((figures/phase5/[^)]+\.png)\)", report.read_text())
+        report = ROOT / "reports/research/phase5" / name
+        links = re.findall(r"!\[[^]]*\]\((\.\./\.\./figures/phase5/[^)]+\.png)\)", report.read_text())
         assert len(links) == 2
         assert all((report.parent / link).is_file() for link in links)
 
@@ -191,10 +191,10 @@ def test_real_audit_checksums_and_published_outputs(tmp_path: Path) -> None:
                       "outputs_verified": 25, "published_reports_verified": 3,
                       "published_figures_verified": 4}
     report_dir = tmp_path / "reports"
-    report_dir.mkdir()
+    (report_dir / "research/phase5").mkdir(parents=True)
     for name in ("PHASE5_FEASIBILITY_REPORT.md", "PHASE5_REFERENCE_EDA_REPORT.md",
                  "PHASE5_ML_PILOT_REPORT.md"):
-        shutil.copyfile(ROOT / "reports" / name, report_dir / name)
-    (report_dir / "PHASE5_FEASIBILITY_REPORT.md").write_text("tampered", encoding="utf-8")
+        shutil.copyfile(ROOT / "reports/research/phase5" / name, report_dir / "research/phase5" / name)
+    (report_dir / "research/phase5/PHASE5_FEASIBILITY_REPORT.md").write_text("tampered", encoding="utf-8")
     with pytest.raises(ValueError, match="Published report differs"):
         verify_audit(LOCAL_AUDIT, PROCESSED, report_dir, ROOT / "reports/figures/phase5")

@@ -322,7 +322,7 @@ def main(argv: list[str]|None=None) -> int:
     parser.add_argument("--population",type=Path,default=POPULATION)
     parser.add_argument("--config",type=Path,default=CONFIG)
     parser.add_argument("--catalogue",type=Path,default=CATALOGUE)
-    parser.add_argument("--output-dir",type=Path,default=Path("data/analysis/phase6_topic_pilot_20261028_v2"))
+    parser.add_argument("--output-dir",type=Path,default=Path("data/analysis/phase6/pilot_new"))
     args=parser.parse_args(argv)
     if args.output_dir.exists():
         parser.error(f"Output already exists; choose a new versioned directory: {args.output_dir}")

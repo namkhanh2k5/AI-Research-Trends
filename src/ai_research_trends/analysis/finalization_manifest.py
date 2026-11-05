@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from ai_research_trends.analysis.topic_population import verify as verify_topic_population
+from ai_research_trends.analysis.phase6_artifacts import resolve_historical_path
 from ai_research_trends.analysis.validate_rq6 import verify as verify_rq6
 from ai_research_trends.analysis.web_data import verify as verify_web
 from ai_research_trends.ml.human_review_workflow import validate_package
@@ -56,7 +57,7 @@ def verify(path: Path) -> dict:
     if manifest.get("status")!="complete" or not manifest.get("complete"):
         raise ValueError("Master run is incomplete")
     for name,entry in manifest["run_manifests"].items():
-        if file_sha256(Path(entry["path"]))!=entry["sha256"]:
+        if file_sha256(resolve_historical_path(entry["path"]))!=entry["sha256"]:
             raise ValueError(f"Child manifest changed: {name}")
     for path_str,digest in manifest["code_sha256"].items():
         if file_sha256(Path(path_str))!=digest:

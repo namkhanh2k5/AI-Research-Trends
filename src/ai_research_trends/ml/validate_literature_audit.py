@@ -28,8 +28,15 @@ def verify_audit(directory: Path, processed_dir: Path, report_dir: Path,
         path = directory / name
         if file_sha256(path) != item["sha256"] or path.stat().st_size != item["bytes"]:
             raise ValueError(f"Audit output checksum/size mismatch: {name}")
-        if name in REPORT_NAMES and file_sha256(report_dir / name) != item["sha256"]:
-            raise ValueError(f"Published report differs from audit: {name}")
+        if name in REPORT_NAMES:
+            # The immutable run report keeps its original checksum. The
+            # published report was relocated two levels below reports/;
+            # only its figure links are rebased for GitHub presentation.
+            published = report_dir / "research/phase5" / name
+            expected_text = path.read_text(encoding="utf-8").replace(
+                "(figures/phase5/", "(../../figures/phase5/")
+            if published.read_text(encoding="utf-8") != expected_text:
+                raise ValueError(f"Published report differs beyond link rebasing: {name}")
         if name.startswith("figures/") and file_sha256(
             published_figure_dir / Path(name).name) != item["sha256"]:
             raise ValueError(f"Published figure differs from audit: {name}")

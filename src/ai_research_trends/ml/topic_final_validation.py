@@ -35,7 +35,7 @@ from ai_research_trends.preprocessing.validate_tables import file_sha256
 
 
 CATALOGUE = Path("config/phase6b_catalogue.yaml")
-RUN_DEFAULT = Path("data/analysis/phase6b_topic_validation_20261028_v1")
+RUN_DEFAULT = Path("data/analysis/phase6/validation_new")
 
 
 def load_catalogue(path: Path) -> tuple[dict, pd.DataFrame]:

@@ -173,7 +173,9 @@ def render_report(t: dict[str, pd.DataFrame], *, run_id: str, observed_at: str,
         "", "## 10. Phase 5 readiness", "",
         "The verified work grain, reconstructed text, category provenance, and deterministic output manifests support a later **leakage-aware** TF-IDF baseline or clustering experiment. Split by Work ID before vocabulary fitting; keep native-topic labels distinct from text-rule labels and quantify abstract missingness. No ML model or dashboard was built in Phase 4.", "",
     ]
-    return "\n".join(lines)
+    # The published report lives in reports/research/phase4/, while figures
+    # and the frozen protocol retain their original repository locations.
+    return "\n".join(lines).replace("(figures/phase4/", "(../../figures/phase4/").replace("(../docs/", "(../../../docs/")
 
 
 def publish_verified_report(analysis_dir: Path, output: Path) -> str:
@@ -215,7 +217,7 @@ def publish_verified_report(analysis_dir: Path, output: Path) -> str:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Publish Phase 4 report from verified immutable results")
     parser.add_argument("analysis_dir", type=Path)
-    parser.add_argument("--output", type=Path, default=Path("reports/PHASE4_ANALYSIS_REPORT.md"))
+    parser.add_argument("--output", type=Path, default=Path("reports/research/phase4/PHASE4_ANALYSIS_REPORT.md"))
     args = parser.parse_args(argv)
     publish_verified_report(args.analysis_dir, args.output)
     print(f"Published verified report: {args.output}")

@@ -9,9 +9,12 @@ from pathlib import Path
 import pandas as pd
 
 from ai_research_trends.preprocessing.validate_tables import file_sha256
+from ai_research_trends.analysis.phase6_artifacts import resolve_historical_path
 
 
 def verify(run_dir: Path, published_dir: Path|None=None) -> dict:
+    if not run_dir.exists():
+        run_dir = resolve_historical_path(run_dir / "manifest.json").parent
     manifest=json.loads((run_dir/"manifest.json").read_text())
     if manifest.get("status")!="complete" or "no 2025 labels" not in manifest.get("source_scope",""):
         raise ValueError("RQ6 run incomplete or test-label policy missing")

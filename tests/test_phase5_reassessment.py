@@ -202,9 +202,9 @@ def test_enrichment_failure_keeps_incomplete_manifest(tmp_path, monkeypatch) -> 
 
 
 def test_reassessment_report_figure_is_published_and_source_verified() -> None:
-    report = ROOT / "reports/PHASE5_COVERAGE_REASSESSMENT.md"
-    links = re.findall(r"!\[[^]]*\]\((figures/phase5/[^)]+\.png)\)", report.read_text())
-    assert links == ["figures/phase5/pool_saturation_2023.png"]
+    report = ROOT / "reports/research/phase5/PHASE5_COVERAGE_REASSESSMENT.md"
+    links = re.findall(r"!\[[^]]*\]\((\.\./\.\./figures/phase5/[^)]+\.png)\)", report.read_text())
+    assert links == ["../../figures/phase5/pool_saturation_2023.png"]
     published = report.parent / links[0]
     assert published.read_bytes().startswith(b"\x89PNG\r\n\x1a\n")
     local = ROOT / "data/analysis/phase5_reassessment_20261028_v1/pool_saturation_2023.png"
@@ -216,7 +216,7 @@ def test_phase5_final_report_links_resolve() -> None:
     for name in ("PHASE5_COVERAGE_REASSESSMENT.md",
                  "PHASE5_RETRIEVAL_DIAGNOSTIC.md",
                  "PHASE5_FINAL_DECISION.md"):
-        report = ROOT / "reports" / name
+        report = ROOT / "reports/research/phase5" / name
         links = re.findall(r"!?(?:\[[^]]*\])\(([^)]+)\)", report.read_text())
         for target in links:
             if target.startswith(("https://", "http://", "#")):

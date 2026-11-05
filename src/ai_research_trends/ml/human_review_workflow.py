@@ -142,7 +142,7 @@ def main(argv: list[str]|None=None) -> int:
     parser=argparse.ArgumentParser(description=__doc__)
     sub=parser.add_subparsers(dest="command",required=True)
     make=sub.add_parser("prepare")
-    make.add_argument("--source-dir",type=Path,default=Path("data/analysis/phase6b_topic_validation_20261028_v3"))
+    make.add_argument("--source-dir",type=Path,default=Path("data/analysis/phase6/validation"))
     make.add_argument("--catalogue",type=Path,default=Path("config/phase6b_catalogue.yaml"))
     make.add_argument("--output-dir",type=Path,required=True)
     check=sub.add_parser("verify");check.add_argument("package_dir",type=Path)
