@@ -104,6 +104,7 @@ openalex-final-ml-figures = "ai_research_trends.analysis.final_ml_figures:main"
 openalex-final-ml-diagnostics = "ai_research_trends.ml.final_diagnostics:main"
 openalex-restore-local-artifact = "ai_research_trends.web.restore_artifacts:main"
 openalex-paper-discovery = "ai_research_trends.web.paper_discovery:main"
+openalex-sync-application = "ai_research_trends.web.sync:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

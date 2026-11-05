@@ -121,7 +121,8 @@ def _load_vectorizer(path: Path) -> TfidfVectorizer:
     return vectorizer
 
 
-def build_index(works_path: Path, web_dir: Path, output_dir: Path, *, min_df: int = 2) -> dict:
+def build_index(works_path: Path, web_dir: Path, output_dir: Path, *, min_df: int = 2,
+                application_works_path: Path | None = None) -> dict:
     """Create a new immutable directory; never overwrite an existing index."""
     if output_dir.exists():
         raise FileExistsError(output_dir)
@@ -131,6 +132,24 @@ def build_index(works_path: Path, web_dir: Path, output_dir: Path, *, min_df: in
     works = pd.read_parquet(works_path)
     if len(works) != provenance["source_works_count"]:
         raise ValueError("Source row count differs from Phase 3 manifest")
+    if application_works_path is not None:
+        app_manifest_path = application_works_path.parent / "application_manifest.json"
+        app_manifest = json.loads(app_manifest_path.read_text(encoding="utf-8"))
+        app_hash = file_sha256(application_works_path)
+        application = pd.read_parquet(application_works_path)
+        if (app_manifest.get("status") != "complete" or app_manifest.get("sha256") != app_hash
+                or app_manifest.get("rows") != len(application)):
+            raise ValueError("Application works do not match their complete manifest")
+        if application.work_id.duplicated().any():
+            raise ValueError("Duplicate application Work IDs")
+        provenance["application_works_sha256"] = app_hash
+        provenance["application_manifest_sha256"] = file_sha256(app_manifest_path)
+        provenance["application_works_count"] = len(application)
+        # The original scientific snapshot wins an ID collision; mutable data
+        # never changes a historical paper's verified record.
+        works["publication_date"] = works["publication_date"].astype(str)
+        application["publication_date"] = application["publication_date"].astype(str)
+        works = pd.concat([works, application.loc[~application.work_id.isin(works.work_id)]], ignore_index=True)
     papers, stats = prepare_papers(works)
     if papers.empty:
         raise ValueError("No eligible paper text")
@@ -154,7 +173,8 @@ def build_index(works_path: Path, web_dir: Path, output_dir: Path, *, min_df: in
                  for path in sorted(stage.iterdir())}
         manifest = {"status": "complete", "version": 1,
                     "created_at_utc": datetime.now(timezone.utc).isoformat(),
-                    "scope": "original_12000_work_detailed_sample_only",
+                    "scope": ("historical_sample_plus_application_sync" if application_works_path is not None
+                              else "original_12000_work_detailed_sample_only"),
                     "source": provenance, "source_paths": {"works": str(works_path), "web": str(web_dir)},
                     "stats": stats, "matrix_shape": list(matrix.shape), "matrix_nnz": int(matrix.nnz),
                     "configuration": {"method": "tfidf_cosine", "min_df": min_df,
@@ -169,7 +189,9 @@ def build_index(works_path: Path, web_dir: Path, output_dir: Path, *, min_df: in
 
 def verify_index(directory: Path, *, works_path: Path | None = None, web_dir: Path | None = None) -> dict:
     manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
-    if manifest.get("status") != "complete" or manifest.get("version") != 1 or manifest.get("scope") != "original_12000_work_detailed_sample_only":
+    if (manifest.get("status") != "complete" or manifest.get("version") != 1
+            or manifest.get("scope") not in {"original_12000_work_detailed_sample_only",
+                                             "historical_sample_plus_application_sync"}):
         raise ValueError("Incomplete or unsupported paper-discovery manifest")
     if set(manifest.get("files", {})) != {"papers.parquet", "matrix.npz", "vectorizer.json"}:
         raise ValueError("Missing or unexpected index artifacts")
