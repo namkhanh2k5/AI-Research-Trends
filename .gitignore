@@ -25,3 +25,4 @@ data/analysis/final_audit_screenshots/
 data/analysis/finalization_p4_1_browser_evidence/
 # Rebuildable text index derived from the retained original works Parquet.
 data/analysis/paper_discovery_original_sample_v1/
+data/artifacts/web/paper_discovery/

@@ -9,8 +9,41 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import yaml
+
 
 _PROJECT_ROOTS = frozenset({"data", "config", "docs", "models"})
+_APPLICATION_CONFIG = Path(__file__).resolve().parents[2] / "config/application.yaml"
+_APPLICATION_KEYS = frozenset({"web_data", "model_bundle", "paper_discovery"})
+
+
+def application_artifacts(config_path: Path = _APPLICATION_CONFIG) -> dict[str, Path]:
+    """Resolve the three active application artifacts from one checked config.
+
+    Return absolute paths so the Streamlit app is independent of the launch
+    directory. Historical manifests are not rewritten or used as settings.
+    """
+    root = config_path.resolve().parent.parent
+    config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+    if not isinstance(config, dict) or config.get("schema_version") != 1:
+        raise ValueError("Unsupported application configuration")
+    entries = config.get("artifacts")
+    if not isinstance(entries, dict) or set(entries) != _APPLICATION_KEYS:
+        raise ValueError("Incomplete application artifact configuration")
+    resolved: dict[str, Path] = {}
+    for name, value in entries.items():
+        if not isinstance(value, str) or not value:
+            raise ValueError(f"Invalid application artifact path: {name}")
+        relative = Path(value)
+        expected_root = "models" if name == "model_bundle" else "data"
+        if (not relative.parts or relative.is_absolute() or ".." in relative.parts
+                or relative.parts[0] != expected_root):
+            raise ValueError(f"Unsafe application artifact path: {name}")
+        target = (root / relative).resolve()
+        if not target.is_relative_to(root):
+            raise ValueError(f"Application artifact escapes the project: {name}")
+        resolved[name] = target
+    return resolved
 
 
 def repository_root(run_dir: Path) -> Path:

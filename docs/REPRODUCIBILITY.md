@@ -8,13 +8,13 @@ must be built once. No collection or retraining is required to start the site.
 git lfs install
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/namkhanh2k5/AI-Research-Trends.git
 cd AI-Research-Trends
-git lfs pull --include="models/finalization_p3/topic_placement_v2/model.joblib,data/analysis/finalization_p2_web_data_20261101_v3/paper_index.parquet,data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet"
+git lfs pull --include="models/topic_placement_v2/model.joblib,data/artifacts/web/topic_explorer/paper_index.parquet,data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet"
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e ".[dev,web,deliverables]"
 python -m pip check
 python -m pytest -q -ra -o addopts=''
-openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
+openalex-build-web-data verify data/artifacts/web/topic_explorer
 openalex-paper-discovery build
 openalex-paper-discovery verify
 streamlit run dashboard/app.py --server.address 127.0.0.1
@@ -33,6 +33,14 @@ original manifest bytes and an explicit old-to-new map; use
 Other versioned analysis runs retain their original locations. For full checks
 use the existing CLI `--help` and relevant phase reports, not a rerun of collection.
 
+Active application paths are declared once in
+[`config/application.yaml`](../config/application.yaml). The old web/model
+run-named paths and three historical config names are symlinks to byte-identical
+canonical files, so historical manifest hashes remain valid. The symbolic
+links require a Git checkout with symlink support; Ubuntu/Linux is the tested
+environment. Do not copy just the link without its target. The Paper Discovery
+index remains rebuildable and ignored at `data/artifacts/web/paper_discovery/`.
+
 The original collection and preprocessing manifests contain historical
 absolute paths. Their read-only verifiers map each recorded project path into
 the **current checkout** and still require the original SHA-256. The original
@@ -50,7 +58,7 @@ openalex-validate-phase4 data/analysis/phase4_stratified_20261019T155909Z_v3
 openalex-verify-phase6
 openalex-verify-topic-run --run-dir data/analysis/phase6/validation
 openalex-verify-final-ml data/analysis/finalization_p3_models_20261101_v1
-openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
+openalex-build-web-data verify data/artifacts/web/topic_explorer
 ```
 
 The model service validates its manifest and inference-code compatibility

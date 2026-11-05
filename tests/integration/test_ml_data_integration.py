@@ -188,7 +188,7 @@ def test_web_topic_brief_rejects_path_traversal(tmp_path: Path,monkeypatch):
 
 
 def test_published_rq6_report_figure_links_resolve():
-    root=Path(__file__).resolve().parents[1]
+    root=Path(__file__).resolve().parents[2]
     report=root/"reports/phase6/FINALIZATION_P2_RQ6_TOPIC_LABEL_ANALYSIS.md"
     targets=re.findall(r"!\[[^]]*\]\((\.\./finalization_p2/figures/[^)]+\.png)\)",report.read_text())
     assert len(targets)==5

@@ -58,7 +58,7 @@ def test_app_loads_home():
         pytest.skip("Verified local web artifacts absent from clean clone")
     from streamlit.testing.v1 import AppTest
 
-    app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "dashboard" / "app.py"), default_timeout=30).run()
+    app = AppTest.from_file(str(Path(__file__).resolve().parents[2] / "dashboard" / "app.py"), default_timeout=30).run()
     assert not app.exception
     assert any("Explore AI" in x.value for x in app.title)
 
@@ -68,7 +68,7 @@ def test_every_public_page_renders_without_unwanted_inference():
         pytest.skip("Verified local web artifacts absent from clean clone")
     from streamlit.testing.v1 import AppTest
 
-    app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "dashboard" / "app.py"), default_timeout=40).run()
+    app = AppTest.from_file(str(Path(__file__).resolve().parents[2] / "dashboard" / "app.py"), default_timeout=40).run()
     for name in ("Research Landscape", "Topic Explorer", "Classify My Research", "Paper Explorer",
                  "Methodology & Model Evaluation", "Home"):
         app.sidebar.radio[0].set_value(name).run()
@@ -98,7 +98,7 @@ def test_app_confirmation_and_stale_draft_state():
         pytest.skip("Private model/web artifacts absent from clean clone")
     from streamlit.testing.v1 import AppTest
 
-    app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "dashboard" / "app.py"),
+    app = AppTest.from_file(str(Path(__file__).resolve().parents[2] / "dashboard" / "app.py"),
                             default_timeout=45).run()
     app.sidebar.radio[0].set_value("Classify My Research").run()
     app.text_input[0].set_value("Interpretable medical image segmentation").run()
@@ -126,7 +126,7 @@ def test_paper_discovery_works_without_topic_suggestion_and_resets_on_edit():
         pytest.skip("Verified local web/retrieval artifacts absent from clean clone")
     from streamlit.testing.v1 import AppTest
 
-    app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "dashboard" / "app.py"),
+    app = AppTest.from_file(str(Path(__file__).resolve().parents[2] / "dashboard" / "app.py"),
                             default_timeout=45).run()
     app.sidebar.radio[0].set_value("Classify My Research").run()
     app.text_input[0].set_value("Neural machine translation with attention models").run()
@@ -145,7 +145,7 @@ def test_manual_topic_confirmation_does_not_require_inference():
         pytest.skip("Verified web package absent from clean clone")
     from streamlit.testing.v1 import AppTest
 
-    app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "dashboard" / "app.py"),
+    app = AppTest.from_file(str(Path(__file__).resolve().parents[2] / "dashboard" / "app.py"),
                             default_timeout=45).run()
     app.sidebar.radio[0].set_value("Classify My Research").run()
     selected = app.selectbox[0].options[1]

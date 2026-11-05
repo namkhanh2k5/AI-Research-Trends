@@ -22,7 +22,7 @@ from ai_research_trends.ml.literature_audit import run_audit
 from ai_research_trends.ml.validate_literature_audit import verify_audit
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 LOCAL_AUDIT = ROOT / "data/analysis/phase5_literature_pilot_20261028_v4"
 PROCESSED = ROOT / "data/processed/openalex_stratified/stratified_20261019T155909Z"
 

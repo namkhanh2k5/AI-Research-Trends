@@ -84,7 +84,7 @@ git lfs install
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/namkhanh2k5/AI-Research-Trends.git
 cd AI-Research-Trends
 # Restore the model, web index and canonical works needed to build discovery:
-git lfs pull --include="models/finalization_p3/topic_placement_v2/model.joblib,data/analysis/finalization_p2_web_data_20261101_v3/paper_index.parquet,data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet"
+git lfs pull --include="models/topic_placement_v2/model.joblib,data/artifacts/web/topic_explorer/paper_index.parquet,data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet"
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e ".[dev,web,deliverables]"
@@ -98,11 +98,11 @@ normal browsing and inference make no OpenAlex calls. The app uses the
 verified web-data package and trusted model bundle included in this workspace:
 
 ```bash
-openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
+openalex-build-web-data verify data/artifacts/web/topic_explorer
 openalex-paper-discovery build
 openalex-paper-discovery verify \
   --works data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet \
-  --web-dir data/analysis/finalization_p2_web_data_20261101_v3
+  --web-dir data/artifacts/web/topic_explorer
 streamlit run dashboard/app.py --server.address 127.0.0.1
 ```
 
@@ -117,12 +117,12 @@ optional title-only results carry a comparability warning. For CLI search:
 openalex-paper-discovery search --title "Neural translation with multilingual attention models" --top-k 5
 ```
 
-Classification needs `models/finalization_p3/topic_placement_v2/`. For direct inference on a new
+Classification needs `models/topic_placement_v2/`. For direct inference on a new
 draft (a suggestion, not a human-validated topic label):
 
 ```bash
 openalex-package-topic-model infer \
-  --model-dir models/finalization_p3/topic_placement_v2 \
+  --model-dir models/topic_placement_v2 \
   --title "Image segmentation with neural networks" \
   --abstract "We study a neural network approach to segmenting images and compare its behavior across several visual datasets and evaluation settings."
 ```
@@ -142,18 +142,42 @@ Phase 6 pilot and reproduction are physically deduplicated under
 ## Data, ETL and reproducibility
 
 ```text
-config/                      frozen study and topic definitions
+config/                      active study/catalogue/application settings; historical/ has frozen protocols
 src/ai_research_trends/      crawling, preprocessing, analysis, ML, web
 dashboard/                   Streamlit research and separate reviewer apps
 data/raw/, interim/          original API responses and extracted records
 data/processed/              normalized Parquet and integrated ML tables
-data/analysis/, metadata/    versioned analyses, manifests and profiles
-models/                      frozen model bundles; large artifacts use Git LFS
+data/artifacts/web/           verified Topic Explorer package; rebuildable discovery index
+data/analysis/, metadata/    distinct historical analyses, manifests and profiles
+models/topic_placement_v2/   frozen model bundle; binary uses Git LFS
 notebooks/                   thin inspection notebooks
 reports/, docs/              findings, methodology and published figures
 deliverables/                academic report, presentation and demo
-tests/                       offline tests; optional live/browser checks
+tests/unit/, integration/, browser/   offline tests; optional live/browser checks
 ```
+
+The application reads its three active artifact locations from
+[`config/application.yaml`](config/application.yaml). The verified web package
+and frozen model retain their original bytes at the functional paths above;
+their old run-named paths are narrow symbolic links for immutable provenance
+and the hash-frozen inference CLI. Historical collection, pilot and proposed
+integration YAMLs are byte-preserved under `config/historical/` with old-path
+links. Seven repeated Phase 1 publication summaries and one repeated Phase 5
+eligibility table now link to byte-identical canonical files. The original
+sample, targeted expansion and integrated ML data remain separate datasets;
+the application never treats the expansion as population evidence.
+
+| Workstream | Canonical input/product | Main verification or user command |
+|---|---|---|
+| Data collection | `data/raw/openalex_stratified/` and population manifests | `openalex-verify-collection` |
+| Data processing | `data/processed/openalex_stratified/` and separate ML integration | `openalex-validate-processed` |
+| Research analysis | `data/analysis/phase4_*`, Phase 5 audit and `phase6/` | `openalex-validate-phase4`, `openalex-verify-phase6` |
+| Machine learning | integrated ML table and `models/topic_placement_v2/` | `openalex-verify-integrated-topics`, `openalex-verify-final-ml` |
+| Web application | `data/artifacts/web/topic_explorer/` and rebuildable discovery index | `openalex-build-web-data verify`, `streamlit run dashboard/app.py` |
+
+Historical experiment CLI entry points remain installed for exact reproduction;
+the commands above are the routine read-only checks. The frozen classifier
+does not run during manual Topic Explorer browsing.
 
 The [report index](reports/README.md),
 [Phase 2 report](reports/research/phase2/PHASE2_COLLECTION_REPORT.md) and

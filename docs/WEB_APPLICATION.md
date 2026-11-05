@@ -50,15 +50,15 @@ Precision@K, Recall@K, MRR or nDCG has been established; see the
 After the [LFS restoration and installation](REPRODUCIBILITY.md):
 
 ```bash
-openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
+openalex-build-web-data verify data/artifacts/web/topic_explorer
 openalex-paper-discovery build
-openalex-paper-discovery verify --works data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet --web-dir data/analysis/finalization_p2_web_data_20261101_v3
+openalex-paper-discovery verify --works data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet --web-dir data/artifacts/web/topic_explorer
 openalex-paper-discovery search --title "Neural translation with multilingual attention models" --top-k 5
 streamlit run dashboard/app.py --server.address 127.0.0.1
 ```
 
 `AI_TRENDS_WEB_DATA`, `AI_TRENDS_MODEL` and `AI_TRENDS_DISCOVERY_INDEX`
-override local paths. The reviewer UI requires a separate localhost process,
+override the checked defaults in `config/application.yaml`. The reviewer UI requires a separate localhost process,
 for example `AI_TRENDS_REVIEWER=reviewer_a streamlit run dashboard/reviewer.py
 --server.address 127.0.0.1`; give each real reviewer only their own package.
 The app needs no `.env` key. For deployment and rights cautions see the

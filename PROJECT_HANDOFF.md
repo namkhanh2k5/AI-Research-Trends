@@ -28,9 +28,9 @@ use the 2025 test labels for evaluation.
 | Original eight Parquet tables | `data/processed/openalex_stratified/stratified_20261019T155909Z/` |
 | Population counts and sampling plan | `data/metadata/population_counts_pre_phase2.json`, `data/metadata/phase2_sampling_plan.json` |
 | Integrated ML development data | `data/processed/ml_topic_classification/finalization_p2_20261101_v3/` |
-| Website data package | `data/analysis/finalization_p2_web_data_20261101_v3/` |
-| Frozen topic model | `models/finalization_p3/topic_placement_v2/` |
-| Rebuildable original-sample paper-discovery index | `data/analysis/paper_discovery_original_sample_v1/` (ignored; build locally) |
+| Website data package | `data/artifacts/web/topic_explorer/` |
+| Frozen topic model | `models/topic_placement_v2/` |
+| Rebuildable original-sample paper-discovery index | `data/artifacts/web/paper_discovery/` (ignored; build locally) |
 
 The original analytical sample and targeted ML development data have
 **different purposes and selection mechanisms**. Do not use targeted records
@@ -48,7 +48,7 @@ Prefer a shallow clone and fetch only runtime assets for website work:
 git lfs install
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/namkhanh2k5/AI-Research-Trends.git
 cd AI-Research-Trends
-git lfs pull --include="models/finalization_p3/topic_placement_v2/model.joblib,data/analysis/finalization_p2_web_data_20261101_v3/paper_index.parquet,data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet"
+git lfs pull --include="models/topic_placement_v2/model.joblib,data/artifacts/web/topic_explorer/paper_index.parquet,data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet"
 ```
 
 Run plain `git lfs pull` to fetch the 35 retained LFS paths for full research
@@ -69,7 +69,7 @@ source .venv/bin/activate
 python -m pip install -e ".[dev,web,deliverables]"
 python -m pip check
 python -m pytest -q -ra -o addopts=''
-openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
+openalex-build-web-data verify data/artifacts/web/topic_explorer
 openalex-paper-discovery build
 openalex-paper-discovery verify
 streamlit run dashboard/app.py --server.address 127.0.0.1

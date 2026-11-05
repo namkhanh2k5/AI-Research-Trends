@@ -1,0 +1,51 @@
+schema_version: 1
+purpose: "Provisional five-topic diagnostic catalogue; not the requested 8–15-topic final catalogue"
+review_status: "single-researcher provisional; independent human scope review pending"
+description_retrieved_at_utc_date: "2026-10-28"
+topics:
+  - id: "T10036"
+    name: "Advanced Neural Network Applications"
+    description: >-
+      This cluster of papers focuses on the application of deep learning, particularly
+      convolutional neural networks, in computer vision tasks such as image recognition,
+      object detection, and semantic segmentation. It covers various neural network
+      architectures, model compression techniques, and their applications in fields like
+      autonomous driving.
+    evidence: "https://api.openalex.org/topics/T10036"
+  - id: "T10664"
+    name: "Sentiment Analysis and Opinion Mining"
+    description: >-
+      This cluster of papers focuses on sentiment analysis and opinion mining, particularly
+      in the context of social media and text mining. It covers various techniques such as
+      lexicon-based methods, deep learning, aspect-based sentiment analysis, and machine
+      learning for analyzing emotions and opinions in textual data from platforms like Twitter.
+      The research also delves into emotion recognition and the impact of sentiment analysis
+      on public perception.
+    evidence: "https://api.openalex.org/topics/T10664"
+  - id: "T10028"
+    name: "Topic Modeling"
+    description: >-
+      This cluster of papers covers a wide range of advancements in natural language
+      processing, including neural network architectures, word representation models,
+      machine translation techniques, text classification algorithms, semantic similarity
+      measures, named entity recognition methods, pretrained language models,
+      sequence-to-sequence learning approaches, topic modeling strategies, and information
+      retrieval systems.
+    evidence: "https://api.openalex.org/topics/T10028"
+  - id: "T10052"
+    name: "Medical Image Segmentation Techniques"
+    description: >-
+      This cluster of papers covers advances in image segmentation techniques, particularly
+      focusing on medical image analysis, graph cuts, active contours, MRI segmentation,
+      deformable image registration, level set methods, statistical shape models, deep
+      learning, and texture analysis.
+    evidence: "https://api.openalex.org/topics/T10052"
+  - id: "T10462"
+    name: "Reinforcement Learning in Robotics"
+    description: >-
+      This cluster of papers encompasses a wide range of advancements in reinforcement
+      learning algorithms and their applications, including deep learning, neural networks,
+      robotics, autonomous control, policy gradient methods, multi-agent systems,
+      model-based learning, curiosity-driven exploration, and simulation to real-world
+      transfer.
+    evidence: "https://api.openalex.org/topics/T10462"

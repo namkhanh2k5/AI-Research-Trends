@@ -8,7 +8,7 @@ import pandas as pd
 from ai_research_trends.preprocessing.validate_tables import file_sha256
 
 
-ROOT=Path(__file__).resolve().parents[1]
+ROOT=Path(__file__).resolve().parents[2]
 PUBLIC=ROOT/"reports"/"phase6"/"validation"
 
 

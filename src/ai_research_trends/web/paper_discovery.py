@@ -20,11 +20,13 @@ from scipy import sparse
 from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
 
 from ai_research_trends.analysis.web_data import verify as verify_web_data
+from ai_research_trends.artifact_paths import application_artifacts
 from ai_research_trends.preprocessing.validate_tables import file_sha256
 
 DEFAULT_WORKS = Path("data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet")
-DEFAULT_WEB = Path("data/analysis/finalization_p2_web_data_20261101_v3")
-DEFAULT_INDEX = Path("data/analysis/paper_discovery_original_sample_v1")
+_APPLICATION = application_artifacts()
+DEFAULT_WEB = _APPLICATION["web_data"]
+DEFAULT_INDEX = _APPLICATION["paper_discovery"]
 WORK_ID = re.compile(r"https://openalex\.org/W[1-9][0-9]*\Z")
 TOPIC_ID = re.compile(r"(?:https://openalex\.org/)?T[1-9][0-9]*\Z")
 REQUIRED = ("work_id", "title", "abstract", "publication_date", "publication_year",

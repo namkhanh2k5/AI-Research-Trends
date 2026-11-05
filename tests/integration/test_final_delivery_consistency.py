@@ -3,7 +3,7 @@
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 REPORT = ROOT / "deliverables/report/FINAL_ACADEMIC_REPORT.md"
 
 

@@ -1,0 +1,7 @@
+schema_version: 1
+# Only active application locations live here. Historical run identities and
+# frozen scientific settings remain in their original, hash-verified manifests.
+artifacts:
+  web_data: data/artifacts/web/topic_explorer
+  model_bundle: models/topic_placement_v2
+  paper_discovery: data/artifacts/web/paper_discovery

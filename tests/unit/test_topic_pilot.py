@@ -97,7 +97,7 @@ def test_open_set_diagnostic_counts_unknowns_without_claiming_calibration():
 
 
 def test_published_phase6_figure_is_a_real_linked_png():
-    root=Path(__file__).resolve().parents[1]
+    root=Path(__file__).resolve().parents[2]
     figure=root/"reports/phase6/figures/topic_support.png"
     assert figure.stat().st_size>1000
     assert figure.read_bytes().startswith(b"\x89PNG\r\n\x1a\n")
@@ -106,7 +106,7 @@ def test_published_phase6_figure_is_a_real_linked_png():
 
 
 def test_published_audit_tables_are_small_aggregates_without_paper_text():
-    root=Path(__file__).resolve().parents[1]
+    root=Path(__file__).resolve().parents[2]
     names={"topic_summary","topic_by_year","topic_by_type","topic_by_language",
            "top3_cooccurrence","scope_review","per_class","confusion_matrix"}
     for name in names:

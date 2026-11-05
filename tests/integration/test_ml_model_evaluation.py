@@ -149,8 +149,8 @@ def test_local_verified_runs_and_inference_when_available():
     integrated = root / "data/processed/ml_topic_classification/finalization_p2_20261101_v3"
     closed = root / "data/analysis/finalization_p3_models_20261101_v1"
     opened = root / "data/analysis/finalization_p3_open_set_20261101_v1"
-    bundle = root / "models/finalization_p3/topic_placement_v2"
-    web = root / "data/analysis/finalization_p2_web_data_20261101_v3"
+    bundle = root / "models/topic_placement_v2"
+    web = root / "data/artifacts/web/topic_explorer"
     if not all(path.is_dir() for path in (integrated, closed, opened, bundle, web)):
         pytest.skip("Retained research artifacts unavailable")
     assert verify_experiment(closed, integrated)["valid"]
@@ -178,7 +178,7 @@ def test_local_verified_runs_and_inference_when_available():
 
 
 def test_published_development_figures_and_markdown_links():
-    root = Path(__file__).resolve().parents[1]
+    root = Path(__file__).resolve().parents[2]
     gallery = root / "reports/figures/finalization_p3"
     manifest = json.loads((gallery / "manifest.json").read_text())
     assert manifest["status"] == "complete"
@@ -196,7 +196,7 @@ def test_published_development_figures_and_markdown_links():
 
 
 def test_local_aggregate_diagnostic_manifest_when_available():
-    root = Path(__file__).resolve().parents[1]
+    root = Path(__file__).resolve().parents[2]
     run = root / "data/analysis/finalization_p3_diagnostics_20261101_v3"
     if not run.is_dir():
         pytest.skip("Git-ignored development diagnostics unavailable")

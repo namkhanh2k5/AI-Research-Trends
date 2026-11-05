@@ -1,0 +1,40 @@
+schema_version: 1
+status: proposed_for_phase2_not_applied
+table: ml_papers.parquet
+grain: one_canonical_openalex_work_id
+primary_key: work_id
+columns:
+  work_id: {type: string, nullable: false}
+  title: {type: string, nullable: true}
+  abstract: {type: string, nullable: true}
+  primary_topic_id: {type: string, nullable: false}
+  publication_date: {type: date32, nullable: false}
+  publication_year: {type: int16, nullable: false}
+  work_type: {type: string, nullable: false}
+  language: {type: string, nullable: true}
+  doi: {type: string, nullable: true}
+  version_group: {type: string, nullable: false}
+  collection_run_id: {type: string, nullable: true}
+  retrieved_at_utc: {type: timestamp_utc, nullable: false}
+  label_snapshot: {type: string, nullable: false}
+  dataset_origin: {type: string, nullable: false}
+  ml_role: {type: string, nullable: false}
+  text_quality_status: {type: string, nullable: false}
+  exclusion_reason: {type: string, nullable: false}
+policies:
+  original_phase3_tables: immutable
+  original_12k_sample: not_replaced_or_reweighted_by_expansion
+  population_statistics: never_estimated_from_targeted_expansion
+  duplicate_precedence: original_work_wins_over_new_work_on_id_doi_or_normalized_title
+  new_version_precedence: earliest_publication_date_then_canonical_work_id
+  label_source: OpenAlex_primary_topic_snapshot_provisional_not_human_truth
+  scope_review: independent_human_review_pending
+  split:
+    training_years: [2020, 2021, 2022, 2023]
+    validation_year: 2024
+    locked_test_year: 2025
+    new_records_allowed_in: training_only
+    heldout_identity_checks: Work_ID_DOI_and_normalized_title_only_no_heldout_labels
+    version_group_isolation: required_before_model_fitting
+  training_eligibility: original_pilot_rules_plus_explicit_new_text_quality_and_identity_exclusions
+  eda_use: expansion_not_eligible_for_population_trends_impact_or_OA_estimands

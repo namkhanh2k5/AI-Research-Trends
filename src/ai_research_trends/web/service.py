@@ -7,10 +7,12 @@ import hashlib
 from pathlib import Path
 
 from ai_research_trends.analysis.web_queries import ResearchData
+from ai_research_trends.artifact_paths import application_artifacts
 
-DEFAULT_WEB = Path("data/analysis/finalization_p2_web_data_20261101_v3")
-DEFAULT_MODEL = Path("models/finalization_p3/topic_placement_v2")
-DEFAULT_DISCOVERY = Path("data/analysis/paper_discovery_original_sample_v1")
+_APPLICATION = application_artifacts()
+DEFAULT_WEB = _APPLICATION["web_data"]
+DEFAULT_MODEL = _APPLICATION["model_bundle"]
+DEFAULT_DISCOVERY = _APPLICATION["paper_discovery"]
 
 
 def artifact_paths() -> tuple[Path, Path]:

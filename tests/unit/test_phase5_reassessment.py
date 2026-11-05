@@ -18,7 +18,7 @@ from ai_research_trends.ml.retrieval_baselines import temporal_coverage, tempora
 from ai_research_trends.preprocessing.validate_tables import file_sha256
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def _works() -> pd.DataFrame:

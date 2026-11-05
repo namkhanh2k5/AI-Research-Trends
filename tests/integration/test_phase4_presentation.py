@@ -17,7 +17,7 @@ from ai_research_trends.analysis.report import publish_verified_report, render_r
 from ai_research_trends.analysis.validation import verify_run
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 RUN = ROOT / "data/analysis/phase4_stratified_20261019T155909Z_v3"
 PUBLISHED = ROOT / "reports/figures/phase4"
 PUBLICATION = ROOT / "reports/PHASE4_FIGURE_PUBLICATION.json"

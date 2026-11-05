@@ -11,7 +11,7 @@ import pytest
 from ai_research_trends.analysis.phase6_artifacts import resolve_historical_path, verify_phase6
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 MAP = ROOT / "reports" / "phase6" / "artifact_map.json"
 CANONICAL_MARKDOWN = [
     ROOT / "README.md",
