@@ -11,7 +11,7 @@ import pytest
 from ai_research_trends.preprocessing.validate_tables import file_sha256
 from ai_research_trends.web.paper_discovery import PaperDiscovery, build_index, verify_index
 from ai_research_trends.web.sync import (
-    _merge_application, normalize_application_work, publication_filter, read_sync_status, sync,
+    daily_windows, normalize_application_work, publication_filter, read_sync_status, sync, sync_daily,
 )
 
 
@@ -90,6 +90,10 @@ def test_success_idempotence_and_index_contains_new_paper(tmp_path, source):
     assert first["changes"]["newly_observed_ids"] == 1
     state = read_sync_status(tmp_path / "app")
     assert state is not None
+    assert state["application_rows"] == 1
+    assert state["indexed_application_works"] == 1
+    assert state["index_scope"] == "historical_sample_plus_application_sync"
+    assert first["storage_bytes"] > 0
     index = PaperDiscovery(Path(state["index"]))
     assert index.manifest["scope"] == "historical_sample_plus_application_sync"
     assert "https://openalex.org/W2" in index.papers.work_id.tolist()
@@ -194,3 +198,114 @@ def test_web_falls_back_without_a_valid_sync(monkeypatch, tmp_path):
     monkeypatch.setattr("ai_research_trends.web.sync.read_sync_status", lambda *_: None)
     assert service.discovery_path() == service.DEFAULT_DISCOVERY
     assert service.sync_status() is None
+
+
+def test_daily_window_plan_is_contiguous_and_bounded():
+    days = daily_windows(date(2026, 1, 2), date(2026, 1, 5))
+    assert days == [date(2026, 1, 2), date(2026, 1, 3), date(2026, 1, 4), date(2026, 1, 5)]
+    with pytest.raises(ValueError, match="do not skip dates"):
+        daily_windows(date(2026, 1, 2), date(2026, 1, 5), max_days=3)
+
+
+class DailyClient:
+    def __init__(self, *, fail_day=None, oversized_day=None):
+        self.fail_day = fail_day
+        self.oversized_day = oversized_day
+        self.calls = []
+
+    def request(self, path, params):
+        day = params["filter"].split("from_publication_date:", 1)[1][:10]
+        self.calls.append(day)
+        if day == self.fail_day:
+            raise RuntimeError("API unavailable")
+        number = int(day[-2:]) + 100
+        return Response(page([work(number, f"Neural translation research on day {day}", day=day)],
+                             11 if day == self.oversized_day else 1, None))
+
+
+def _daily(tmp_path, source, client, start, end, **kwargs):
+    original, web, old_index, _ = source
+    return sync_daily(start=start, end=end, root=tmp_path / "app", original_works=original,
+                      web_dir=web, original_index=old_index, client=client,
+                      per_page=1, max_records=10,
+                      rebuild_index=lambda a, b, c, **kw: build_index(a, b, c, min_df=1, **kw),
+                      **kwargs)
+
+
+def test_missed_days_stop_at_failure_and_recover_without_skipping(tmp_path, source):
+    second = date(2026, 1, 3)
+    third = date(2026, 1, 4)
+    first = date(2026, 1, 2)
+    failed = DailyClient(fail_day=str(second))
+    with pytest.raises(RuntimeError, match="no later date was processed"):
+        _daily(tmp_path, source, failed, first, third)
+    assert failed.calls == [str(first), str(second)]
+    state = read_sync_status(tmp_path / "app")
+    assert state["window_end"] == str(first)
+    manifests = [json.loads(path.read_text()) for path in (tmp_path / "app/runs").glob("*/manifest.json")]
+    assert sorted(item["status"] for item in manifests) == ["complete", "incomplete"]
+    completed = _daily(tmp_path, source, DailyClient(), second, third)
+    assert [item["window_end"] for item in completed] == [str(second), str(third)]
+    state = read_sync_status(tmp_path / "app")
+    assert state["window_end"] == str(third)
+    assert state["application_rows"] == 3
+    assert file_sha256(source[0]) == source[3]
+
+
+def test_oversized_day_does_not_advance_past_gap(tmp_path, source):
+    first, second = date(2026, 1, 2), date(2026, 1, 3)
+    with pytest.raises(RuntimeError, match="no later date was processed") as error:
+        _daily(tmp_path, source, DailyClient(oversized_day=str(second)), first, second)
+    assert f"--from-date {second} --to-date {second}" in str(error.value)
+    state = read_sync_status(tmp_path / "app")
+    assert state["window_end"] == str(first)
+    manifests = [json.loads(path.read_text()) for path in (tmp_path / "app/runs").glob("*/manifest.json")]
+    assert any(item["status"] == "incomplete" and "exceeds max_records" in item["last_error"]
+               for item in manifests)
+    _daily(tmp_path, source, DailyClient(), second, second)
+    assert read_sync_status(tmp_path / "app")["window_end"] == str(second)
+
+
+def test_explicit_range_cannot_skip_unpublished_days(tmp_path, source):
+    first = date(2026, 1, 2)
+    _daily(tmp_path, source, DailyClient(), first, first)
+    with pytest.raises(RuntimeError, match="stopped at 2026-01-04") as error:
+        _daily(tmp_path, source, DailyClient(), date(2026, 1, 4), date(2026, 1, 4))
+    assert "skips unpublished dates" in str(error.value.__cause__)
+    assert read_sync_status(tmp_path / "app")["window_end"] == str(first)
+
+
+def test_resume_after_completed_index_before_state_commit(tmp_path, source):
+    pages = {"*": page([work(2, "Neural translation and attention in research")], 1, None)}
+    def built_then_interrupted(a, b, c, **kwargs):
+        build_index(a, b, c, min_df=1, **kwargs)
+        raise RuntimeError("interrupted after index build")
+    with pytest.raises(RuntimeError, match="interrupted"):
+        run(tmp_path, source, Client(pages), rebuild_index=built_then_interrupted)
+    root = tmp_path / "app"
+    run_dir = next((root / "runs").iterdir())
+    assert (run_dir / "index/manifest.json").is_file()
+    assert read_sync_status(root) is None
+    result = run(tmp_path, source, Client(pages), resume=run_dir.name)
+    assert result["status"] == "complete"
+    assert read_sync_status(root) is not None
+
+
+def test_empty_day_completes_without_inventing_application_papers(tmp_path, source):
+    result = run(tmp_path, source, Client({"*": page([], 0, None)}))
+    assert result["status"] == "complete"
+    assert result["retrieved"] == 0
+    assert result["application_rows"] == 0
+    assert result["changes"]["newly_observed_ids"] == 0
+
+
+def test_status_backfills_indexed_count_for_older_index_manifest(tmp_path, source):
+    result = run(tmp_path, source, Client({"*": page([work(2, "Neural translation and attention in research")], 1, None)}))
+    index_manifest = tmp_path / "app" / "runs" / result["run_id"] / "index" / "manifest.json"
+    old = json.loads(index_manifest.read_text())
+    old["stats"].pop("indexed_application_works")
+    old["stats"].pop("indexed_historical_works")
+    index_manifest.write_text(json.dumps(old))
+    status = read_sync_status(tmp_path / "app")
+    assert status["application_rows"] == 1
+    assert status["indexed_application_works"] == 1

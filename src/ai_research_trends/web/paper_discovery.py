@@ -132,6 +132,7 @@ def build_index(works_path: Path, web_dir: Path, output_dir: Path, *, min_df: in
     works = pd.read_parquet(works_path)
     if len(works) != provenance["source_works_count"]:
         raise ValueError("Source row count differs from Phase 3 manifest")
+    application_ids: set[str] = set()
     if application_works_path is not None:
         app_manifest_path = application_works_path.parent / "application_manifest.json"
         app_manifest = json.loads(app_manifest_path.read_text(encoding="utf-8"))
@@ -142,6 +143,7 @@ def build_index(works_path: Path, web_dir: Path, output_dir: Path, *, min_df: in
             raise ValueError("Application works do not match their complete manifest")
         if application.work_id.duplicated().any():
             raise ValueError("Duplicate application Work IDs")
+        application_ids = set(application.work_id) - set(works.work_id)
         provenance["application_works_sha256"] = app_hash
         provenance["application_manifest_sha256"] = file_sha256(app_manifest_path)
         provenance["application_works_count"] = len(application)
@@ -151,6 +153,9 @@ def build_index(works_path: Path, web_dir: Path, output_dir: Path, *, min_df: in
         application["publication_date"] = application["publication_date"].astype(str)
         works = pd.concat([works, application.loc[~application.work_id.isin(works.work_id)]], ignore_index=True)
     papers, stats = prepare_papers(works)
+    if application_works_path is not None:
+        stats["indexed_application_works"] = int(papers.work_id.isin(application_ids).sum())
+        stats["indexed_historical_works"] = int(len(papers) - stats["indexed_application_works"])
     if papers.empty:
         raise ValueError("No eligible paper text")
     vectorizer = TfidfVectorizer(lowercase=True, strip_accents=None, stop_words="english",

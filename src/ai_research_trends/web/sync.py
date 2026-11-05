@@ -149,7 +149,41 @@ def _window(state: dict[str, Any] | None, start: date | None, end: date | None,
         else:
             start = max(MIN_DATE, date.fromisoformat(state["window_end"]) - timedelta(days=lookback_days - 1))
     publication_filter(start, end)
+    if state is not None and start > date.fromisoformat(state["window_end"]) + timedelta(days=1):
+        raise ValueError("Requested window skips unpublished dates after the last successful checkpoint")
     return start, end
+
+
+def daily_windows(start: date, end: date, *, max_days: int = 31) -> list[date]:
+    """Plan every day explicitly so an oversized day cannot skip later dates."""
+    publication_filter(start, end)
+    if not 1 <= max_days <= 366:
+        raise ValueError("max_days must be between 1 and 366")
+    days = (end - start).days + 1
+    if days > max_days:
+        raise ValueError(
+            f"Unprocessed range {start}..{end} contains {days} days, above max_days={max_days}. "
+            "Run consecutive explicit --from-date/--to-date chunks; do not skip dates."
+        )
+    return [start + timedelta(days=offset) for offset in range(days)]
+
+
+def sync_daily(*, start: date, end: date, max_days: int = 31,
+               **kwargs: Any) -> list[dict[str, Any]]:
+    """Commit one complete day at a time; stop at the first incomplete day."""
+    completed: list[dict[str, Any]] = []
+    for day in daily_windows(start, end, max_days=max_days):
+        try:
+            completed.append(sync(start=day, end=day, **kwargs))
+        except Exception as exc:
+            raise RuntimeError(
+                f"Daily synchronization stopped at {day}; no later date was processed. "
+                f"The last published verified state remains available. "
+                f"Inspect that day's incomplete run manifest, then retry with "
+                f"--from-date {day} --to-date {day}; if its count exceeds max_records, "
+                "raise the cap only within the supported 10,000 limit or investigate the API."
+            ) from exc
+    return completed
 
 
 def _merge_application(previous: Path | None, new_rows: list[dict[str, Any]]) -> tuple[pd.DataFrame, dict[str, int]]:
@@ -262,7 +296,8 @@ def sync(*, root: Path, original_works: Path, web_dir: Path, original_index: Pat
                 ids, next_cursor, count = _validate_page(payload, expected=total, per_page=per_page, seen=seen)
                 total = count
                 if total > max_records:
-                    raise ValueError(f"Window has {total} records; exceeds max_records={max_records}. Split the date range")
+                    raise ValueError(f"Window has {total} records; exceeds max_records={max_records}. "
+                                     "For a single day, increase the cap only if the complete count fits 10,000")
                 if index < len(checkpoints):
                     if checkpoint["ids"] != ids or checkpoint["cursor_out"] != next_cursor:
                         raise ValueError("Checkpoint membership/cursor changed; start a fresh run")
@@ -312,24 +347,29 @@ def sync(*, root: Path, original_works: Path, web_dir: Path, original_index: Pat
             # Rebuild a full TF-IDF corpus; publish only the verified new index.
             index = run_dir / "index"
             if len(frame):
-                rebuild_index(original_works, web_dir, index, application_works_path=app_path)
-                verify_index(index, works_path=original_works, web_dir=web_dir)
+                if not index.exists():
+                    rebuild_index(original_works, web_dir, index, application_works_path=app_path)
+                built = verify_index(index, works_path=original_works, web_dir=web_dir)
+                if built["source"].get("application_works_sha256") != app_hash:
+                    raise ValueError("Existing index does not match the resumed application data")
             else:
                 index = Path(state["index"]) if state else original_index
-                verify_index(index, works_path=original_works, web_dir=web_dir)
+                built = verify_index(index, works_path=original_works, web_dir=web_dir)
             manifest.pop("last_error", None)
             manifest.pop("failed_at_utc", None)
             manifest.update({"status": "complete", "completed_at_utc": utc_now(),
                              "retrieved": len(rows), "unique_ids": len(seen), "application_rows": len(frame),
                              "changes": changes, "application_sha256": app_hash,
-                             "index": str(index.resolve())})
+                             "index": str(index.resolve()),
+                             "storage_bytes": sum(path.stat().st_size for path in run_dir.rglob("*") if path.is_file())})
             _atomic_json(manifest_path, manifest)
             # This single small pointer is the application transaction commit.
             _atomic_json(state_path, {"status": "complete", "run_id": manifest["run_id"],
                                       "last_success_at_utc": manifest["completed_at_utc"],
                                       "window_end": end.isoformat(),
                                       "application_works": str(app_path.resolve()),
-                                      "application_sha256": app_hash, "index": str(index.resolve())})
+                                      "application_sha256": app_hash, "index": str(index.resolve()),
+                                      "application_rows": len(frame)})
             return manifest
         except Exception as exc:
             manifest["status"] = "incomplete"
@@ -371,6 +411,20 @@ def read_sync_status(root: Path = DEFAULT_ROOT) -> dict[str, Any] | None:
                     or not artifact.is_file() or artifact.stat().st_size != evidence["bytes"]
                     or file_sha256(artifact) != evidence["sha256"]):
                 return None
+        indexed_app = index_manifest.get("stats", {}).get("indexed_application_works")
+        if indexed_app is None:
+            # Backward-compatible status for indexes built before this counter
+            # was recorded. Both source files were checksum-verified above.
+            app_ids = set(pd.read_parquet(application, columns=["work_id"]).work_id)
+            indexed = pd.read_parquet(path / "papers.parquet", columns=["work_id", "publication_year"])
+            # Historical research works win ID collisions and are dated no
+            # later than 2025; never count those rows as new application works.
+            indexed_app = int((indexed.work_id.isin(app_ids) & (indexed.publication_year >= 2026)).sum()) if app_ids else 0
+        if not isinstance(indexed_app, int) or indexed_app < 0:
+            return None
+        state["application_rows"] = int(manifest["application_rows"])
+        state["indexed_application_works"] = indexed_app
+        state["index_scope"] = index_manifest["scope"]
         return state
     except (OSError, ValueError, KeyError):
         return None
@@ -389,6 +443,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--lookback-days", type=int, default=3)
     parser.add_argument("--per-page", type=int, default=100)
     parser.add_argument("--max-records", type=int, default=3000)
+    parser.add_argument("--max-days", type=int, default=31,
+                        help="Maximum number of consecutive daily windows per invocation")
     parser.add_argument("--resume", metavar="RUN_ID")
     parser.add_argument("--execute", action="store_true", help="Perform bounded API collection; default is dry run")
     args = parser.parse_args(argv)
@@ -400,7 +456,10 @@ def main(argv: list[str] | None = None) -> int:
         start, end = _window(state, args.from_date, args.to_date, args.lookback_days)
     preview = {"mode": "publication_date_bounded_fallback_not_cdc", "from_date": str(start),
                "to_date": str(end), "filter": publication_filter(start, end),
-               "root": str(args.root), "max_records": args.max_records, "execute": args.execute}
+               "root": str(args.root), "max_records_per_day": args.max_records,
+               "execute": args.execute}
+    if not args.resume:
+        preview["daily_windows"] = [str(day) for day in daily_windows(start, end, max_days=args.max_days)]
     if not args.execute:
         print(json.dumps(preview, indent=2))
         return 0
@@ -409,12 +468,19 @@ def main(argv: list[str] | None = None) -> int:
     client = OpenAlexClient()
     if not client.api_key:
         parser.error("OPENALEX_API_KEY is required for cursor paging; key value is never logged")
-    result = sync(root=args.root.resolve(), original_works=args.original_works, web_dir=args.web_dir,
-                  original_index=args.original_index, client=client, start=start, end=end,
-                  lookback_days=args.lookback_days, per_page=args.per_page,
-                  max_records=args.max_records, resume=args.resume)
-    print(json.dumps({key: result[key] for key in ("status", "run_id", "retrieved", "unique_ids",
-                                                    "application_rows", "changes")}, indent=2))
+    options = {"root": args.root.resolve(), "original_works": args.original_works,
+               "web_dir": args.web_dir, "original_index": args.original_index,
+               "client": client, "lookback_days": args.lookback_days,
+               "per_page": args.per_page, "max_records": args.max_records}
+    if args.resume:
+        results = [sync(start=start, end=end, resume=args.resume, **options)]
+    else:
+        results = sync_daily(start=start, end=end, max_days=args.max_days, **options)
+    print(json.dumps([{"status": result["status"], "run_id": result["run_id"],
+                       "window_end": result["window_end"], "retrieved": result["retrieved"],
+                       "unique_ids": result["unique_ids"], "application_rows": result["application_rows"],
+                       "storage_bytes": result["storage_bytes"], "changes": result["changes"]}
+                      for result in results], indent=2))
     return 0
 
 
