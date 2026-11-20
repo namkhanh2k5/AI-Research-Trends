@@ -275,6 +275,36 @@ def test_explicit_range_cannot_skip_unpublished_days(tmp_path, source):
     assert read_sync_status(tmp_path / "app")["window_end"] == str(first)
 
 
+def test_failed_lookback_does_not_regress_covered_date(tmp_path, source):
+    first, covered, later = date(2026, 1, 2), date(2026, 1, 4), date(2026, 1, 5)
+    _daily(tmp_path, source, DailyClient(), first, covered)
+    initial = read_sync_status(tmp_path / "app")
+    assert initial["window_end"] == str(covered)
+    with pytest.raises(RuntimeError, match="stopped at 2026-01-03"):
+        _daily(tmp_path, source, DailyClient(fail_day="2026-01-03"), first, later)
+    after_failure = read_sync_status(tmp_path / "app")
+    assert after_failure["window_end"] == str(covered)
+    assert after_failure["application_rows"] == initial["application_rows"]
+    _daily(tmp_path, source, DailyClient(), first, later)
+    assert read_sync_status(tmp_path / "app")["window_end"] == str(later)
+
+
+def test_superseded_incomplete_run_cannot_resume_over_newer_state(tmp_path, source):
+    first, second = date(2026, 1, 2), date(2026, 1, 3)
+    with pytest.raises(RuntimeError, match="stopped at 2026-01-02"):
+        _daily(tmp_path, source, DailyClient(fail_day=str(first)), first, first)
+    root = tmp_path / "app"
+    incomplete = next((root / "runs").iterdir())
+    _daily(tmp_path, source, DailyClient(), first, second)
+    before = read_sync_status(root)
+    with pytest.raises(ValueError, match="superseded"):
+        sync(root=root, original_works=source[0], web_dir=source[1],
+             original_index=source[2], client=DailyClient(),
+             per_page=1, max_records=10, resume=incomplete.name)
+    assert read_sync_status(root) == before
+    assert json.loads((incomplete / "manifest.json").read_text())["status"] == "incomplete"
+
+
 def test_resume_after_completed_index_before_state_commit(tmp_path, source):
     pages = {"*": page([work(2, "Neural translation and attention in research")], 1, None)}
     def built_then_interrupted(a, b, c, **kwargs):
