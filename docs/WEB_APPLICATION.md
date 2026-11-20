@@ -134,7 +134,11 @@ completed run. A lock prevents concurrent local sync jobs.
 For an API failure, inspect the incomplete run manifest and resume that run
 with the **same** page size and cap, or retry the failed day as a fresh run if
 its checkpoint no longer matches the live API. Do not combine mismatched
-pages. An oversized *multi-day* backlog is automatically split into daily
+pages. If a newer successful run already covers the same or a later day, the
+older incomplete run is **superseded** and cannot be resumed; its raw evidence
+is preserved. A lookback re-scan may publish refreshed application metadata
+and a new index, but never moves the latest covered publication date backward.
+An oversized *multi-day* backlog is automatically split into daily
 windows; an oversized **single day** cannot be split by this policy. Stop,
 inspect its `expected_count`/`last_error`, and increase `--max-records` only
 if the complete day fits the supported 10,000-record cap and available API
