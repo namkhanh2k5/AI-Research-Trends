@@ -1,5 +1,5 @@
 {
-  "scope": "Published aggregate development evidence only; no work-level data or 2025 labels",
+  "scope": "Published aggregate evidence only; no work-level data or labels",
   "model_comparison": {
     "source": "data/analysis/finalization_p3_models_20261101_v1/results.json",
     "source_sha256": "f7faf2d88b7ee486f4fc751110ab6c3b9cdafc3a8dbec921ca01e5d90f9d5f7c",
@@ -31,8 +31,8 @@
     "auroc": 0.8918755450530284,
     "end_to_end_correct_placement": 0.2832579185520362,
     "threshold": -0.22227267687798036,
-    "human_validation": "PENDING",
-    "final_2025_test": "SEALED"
+    "human_validation": "NOT_PERFORMED",
+    "final_2025_test": "EVALUATED_ONCE"
   },
   "reference_context": {
     "source": "data/analysis/phase5_reassessment_20261028_v1/pool_comparison.csv",
@@ -55,6 +55,28 @@
     "source": "reports/finalization_p2/topic_support.csv",
     "source_sha256": "f925edb1ed4014e1889d094c8df77390b9a017fc5315abadf8de9a718659385a",
     "topic_count": 14,
-    "human_semantic_validation": "PENDING"
+    "human_semantic_validation": "NOT_PERFORMED"
+  },
+  "final_test_2025": {
+    "source": "data/analysis/finalization_p3_final_test_2025_v1/result.json",
+    "source_sha256": "fb580585d833fb6865053a1eae063966cfc38212372fc2d507b483ea5da4f7c1",
+    "authorization": "config/final_test_2025_amendment.yaml",
+    "year": 2025,
+    "evaluated_once_at_utc": "2026-11-20T07:35:12.968062+00:00",
+    "model_version": "topic_placement_v2",
+    "closed_set_in_catalogue": 831,
+    "closed_macro_f1": 0.8698008665874349,
+    "closed_accuracy": 0.8736462093862816,
+    "closed_macro_f1_bootstrap_95": [0.8439959610865749, 0.8930564622196038],
+    "open_set_total": 2318,
+    "open_set_outside_catalogue": 1487,
+    "in_catalogue_acceptance": 0.7954271961492179,
+    "outside_false_acceptance": 0.20981842636180228,
+    "outside_false_acceptance_bootstrap_95": [0.19273055647672213, 0.22913843674154039],
+    "auroc": 0.8780930924004832,
+    "end_to_end_correct_placement": 0.27049180327868855,
+    "accuracy_among_accepted_in": 0.9485627836611196,
+    "threshold": -0.22227267687798036,
+    "label_source": "OpenAlex primary-topic silver labels; not human semantic truth"
   }
 }

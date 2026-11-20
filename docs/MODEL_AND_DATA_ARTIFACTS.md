@@ -6,9 +6,9 @@
 | Frozen SVM bundle | `models/topic_placement_v2/` | tracked; joblib in LFS | `TopicPlacementService` manifest/hash check |
 | Paper-discovery text index | `data/artifacts/web/paper_discovery/` | Git-ignored, rebuildable; no duplicate abstracts committed | `openalex-paper-discovery verify --works ... --web-dir ...` |
 | Phase 3 experiment | `data/analysis/finalization_p3_models_20261101_v1/` | tracked; binary outputs in LFS | `openalex-verify-final-ml ...` |
-| Blind human package | `data/analysis/finalization_p2_human_review_20261101_v1/` | tracked in public repository | `openalex-prepare-human-review verify ...` |
-| Reviewer ratings | `data/analysis/finalization_p4_human_ratings/` | ignored/private | `openalex-prepare-human-review validate-ratings ...` |
-| 2025 test/registry | Historical data/analysis paths | published historical state | independent seal no longer valid after publication |
+| Archived blind-review package (never completed; review withdrawn) | `data/analysis/finalization_p2_human_review_20261101_v1/` | tracked historical record | checksum bound by `finalization_p2_master_20261101_v1.json` |
+| 2025 test table | `data/processed/ml_topic_classification/finalization_p2_20261101_v3/test_2025_sealed.parquet` | tracked; Parquet in LFS | split-manifest SHA-256 |
+| 2025 single-run result and registry | `data/analysis/finalization_p3_final_test_2025_v1/`, `data/analysis/finalization_p3_final_test_registry.json` | tracked | `result_sha256` in registry; authorized by `config/final_test_2025_amendment.yaml` |
 
 The paper index contains only original 12,000 sample works, not targeted expansion. The source manifest lists per-file SHA-256 and package creation time. The bundled SVM fits 2020–2023 integrated historical data and has no retraining on 2024 or 2025. Its margins and rejection threshold are frozen. A matching checksum proves byte integrity relative to the approved manifest; it does not grant rights to distribute abstracts or make untrusted pickle loading safe.
 

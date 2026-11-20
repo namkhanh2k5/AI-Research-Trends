@@ -1,7 +1,17 @@
 # Human semantic-validation status
 
-**Status: PENDING.** The Phase 2 blinded review package exists for two independent human reviewers (40 calibration and 100 evaluation items each), but no completed, authenticated real-human rating submissions were supplied during this Phase 3 execution. We did **not** create ratings, estimate inter-rater agreement, infer semantic accuracy, or certify catalogue coverage. OpenAlex labels remain *silver labels* throughout the reported development metrics.
+**Status: WITHDRAWN from project scope on 2026-11-20. Not performed.** A blinded package for
+two reviewers was prepared, with 40 calibration and 100 evaluation items each. No rating
+was ever submitted. The project owner withdrew the review instead of leaving it pending.
+The decision is recorded in the [protocol amendment](../../config/final_test_2025_amendment.yaml).
 
-The next owner should obtain two genuinely independent completed evaluation files, validate them against the blinded package with the existing `human_review_workflow` validator, report agreement and disagreements, and obtain an explicit catalogue/scope decision. The two reviewers must not see each other's labels before submission. Neither a model prediction nor synthetic/AI-generated ratings can substitute for this review.
+Consequences:
 
-Until then, the 2025 test gate stays disabled and the service must be presented only as an assisted suggestion prototype. This is a substantive scientific limitation, not a routine missing checkbox.
+- No inter-rater agreement, semantic accuracy or catalogue-adequacy claim is made. All model
+  metrics, including the [2025 hold-out result](FINALIZATION_P3_FINAL_TEST_STATUS.md),
+  measure agreement with OpenAlex primary-topic *silver labels*.
+- The rating interface, rating validators and agreement analysis were removed. The
+  blank package in `data/analysis/finalization_p2_human_review_20261101_v1/` and the Phase 6
+  blind sheets remain as checksum-bound historical records only.
+- The application continues to present topic placement as an assisted suggestion that the
+  user must confirm.

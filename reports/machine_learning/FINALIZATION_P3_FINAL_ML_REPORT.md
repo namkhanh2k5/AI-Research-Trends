@@ -1,8 +1,8 @@
-# Finalization Phase 3 — supervised topic placement (development results)
+# Finalization Phase 3 — supervised topic placement (development and 2025 hold-out results)
 
 ## 1. Executive summary
 
-The frozen 14-topic task is technically viable as **assisted** placement, but not as autonomous classification. On 681 original-sample, in-catalogue 2024 development works, the expanded-training Linear SVM attained macro-F1 **0.8808** against OpenAlex primary-topic silver labels. On a separate 2024 open-set evaluation (1,105 eligible works), its rejection rule accepted **21.66%** of out-of-catalogue works despite a ≤20% calibration target. Human semantic review has not been submitted, and the 2025 final test remains **sealed**. The decision is **CONDITIONAL GO** for a human-confirmed Phase 4 prototype, not a validated deployment.
+The frozen 14-topic task is technically viable as **assisted** placement, but not as autonomous classification. On 681 original-sample, in-catalogue 2024 development works, the expanded-training Linear SVM attained macro-F1 **0.8808** against OpenAlex primary-topic silver labels. On a separate 2024 open-set evaluation (1,105 eligible works), its rejection rule accepted **21.66%** of out-of-catalogue works despite a ≤20% calibration target. The unchanged frozen model was later evaluated **once** on the 2025 temporal hold-out: macro-F1 **0.8698** on 831 in-catalogue works and **20.98%** outside false acceptance on 2,318 eligible works ([result](FINALIZATION_P3_FINAL_TEST_STATUS.md)). Human semantic review was withdrawn from scope and not performed. The decision is **CONDITIONAL GO** for a human-confirmed prototype, not a validated deployment.
 
 ## 2. Research task
 
@@ -56,11 +56,11 @@ The 2024 original-sample development set was divided by version group into **738
 
 ## 12. Human semantic validation
 
-The Phase 2 human-review package exists, but no two independent real-rater submissions were available at execution. No inter-rater agreement, semantic accuracy, or catalogue-adequacy claim is made. See [human-validation status](FINALIZATION_P3_HUMAN_VALIDATION_STATUS.md).
+No real-rater submission was ever received. On 2026-11-20 the review was withdrawn from project scope and was not performed. No inter-rater agreement, semantic accuracy, or catalogue-adequacy claim is made. See [human-validation status](FINALIZATION_P3_HUMAN_VALIDATION_STATUS.md).
 
 ## 13. Final 2025 test
 
-**SEALED / not evaluated.** `config/finalization_p3_frozen_evaluation.yaml` explicitly has `allow_final_test_execution: false`. The one-time command checks a documented human-approval gate before opening the test table. There are no 2025 predictions or results in this branch. See [final-test status](FINALIZATION_P3_FINAL_TEST_STATUS.md).
+This section originally read **SEALED / not evaluated**. A recorded [amendment](../../config/final_test_2025_amendment.yaml) withdrew the human-approval requirement but left the frozen protocol byte-identical. The single permitted run then took place on 2026-11-20. Closed-set macro-F1 was 0.8698 (bootstrap 95% [0.8440, 0.8931]), against 0.8808 in 2024 development. Outside false acceptance was 20.98% ([19.27%, 22.91%]) and AUROC 0.8781. The closed-set result holds up across one year. The ≤20% open-set target is still not met as a point estimate. See [final-test result](FINALIZATION_P3_FINAL_TEST_STATUS.md).
 
 ## 14. Inference architecture
 
@@ -72,12 +72,12 @@ The trusted local bundle `models/finalization_p3/topic_placement_v2/` contains t
 
 ## 16. Scientific limitations
 
-OpenAlex primary-topic labels are generated silver labels, not human ground truth. Only fourteen topics are supported. The selected model's development false-acceptance rate exceeded the calibration target. All metrics are from one historical split and one original-sample 2024 development cohort, not a final independent 2025 test. Abstention scores are model margins or probabilities, not proof of true topic membership. Missing title/abstract records are outside the model-ready denominator. Human review and deployment security remain open.
+OpenAlex primary-topic labels are generated silver labels, not human ground truth. Only fourteen topics are supported. The selected model's development false-acceptance rate exceeded the calibration target. Development metrics come from one historical split and one original-sample 2024 cohort; the 2025 hold-out adds one further year, still scored against silver labels. Abstention scores are model margins or probabilities, not proof of true topic membership. Missing title/abstract records are outside the model-ready denominator. No human semantic review was performed, and deployment security remains open.
 
 ## 17. Technical decision
 
-**CONDITIONAL GO for a research-prototype Phase 4 website with assisted, confirmable suggestions only.** Do not label the system a validated autonomous topic classifier. A stronger open-set policy may be considered after independent human evaluation and a new, documented development decision; do not silently replace the frozen 2025 procedure.
+**CONDITIONAL GO for a research-prototype Phase 4 website with assisted, confirmable suggestions only.** Do not label the system a validated autonomous topic classifier. A stronger open-set policy would need a new, documented development decision and a fresh evaluation year; 2025 has now been used and cannot arbitrate further changes.
 
 ## 18. Phase 4 handoff
 
-Build the accessible interface around the service contract, display rank/margin and limitations, require explicit topic confirmation, show Topic Brief source scope, and keep the model binary local or distributed via a separately approved mechanism. Obtain genuine human ratings and an independent scope decision before enabling one-time 2025 evaluation. The later [web application guide](../../docs/WEB_APPLICATION.md) describes the delivered interface; this paragraph records the earlier development recommendation.
+Build the accessible interface around the service contract, display rank/margin and limitations, require explicit topic confirmation, show Topic Brief source scope, and keep the model binary local or distributed via a separately approved mechanism. The 2025 evaluation was later run once under the recorded amendment, without human ratings. The later [web application guide](../../docs/WEB_APPLICATION.md) describes the delivered interface; this paragraph records the earlier development recommendation.

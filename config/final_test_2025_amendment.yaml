@@ -1,0 +1,35 @@
+schema_version: 1
+amendment_id: finalization_p3_final_test_amendment_20261120
+decided_on: "2026-11-20"
+status: approved
+approved_by: project_owner
+# The frozen protocol stays byte-identical; this file records the only change.
+amends: config/finalization_p3_frozen_evaluation.yaml
+amends_sha256: b1277437a9f1428787978adc1139428a1210b1bd28750b5c0342dcee81cedd09
+decision: >-
+  Independent two-rater human review is withdrawn from project scope. No rating
+  was ever collected, and the 2025 temporal hold-out test no longer waits for
+  human sign-off. The test runs exactly once on the frozen model.
+withdrawn_requirements:
+  - "human_review: pending_two_independent_real_raters"
+  - two distinct human sign-offs and completed rating files before opening 2025
+  - human scope approval of the 14-topic catalogue
+unchanged_from_frozen_protocol:
+  - model bundle, classes, feature rule and hyperparameters
+  - rejection_threshold and confirmation_floor fitted on 2024 calibration only
+  - evaluation_denominators and required_metrics
+model_manifest_sha256: fb78307f219c933e35151a905ca327e00a058ec4cca3c99f294d41b0ab93907d
+model_binary_sha256: b066ba80ab0768052f585fa1ed2e6b56c24f46c511508b3394580452e40bb788
+allow_final_test_execution: true
+single_use: true
+freeze_evidence:
+  model_and_protocol_first_committed: {commit: 87ac7b5a05dd0a4ddbbb6b91bf65a47bd4bec417, at: "2026-11-01T18:10:53+07:00"}
+  test_2025_table_first_committed: {commit: 811e98f7b3db9fba9d7fd187dbecce963fa0a863, at: "2026-11-04T15:02:29+07:00"}
+  note: >-
+    The model hash and frozen protocol were committed before the 2025 table was
+    published. 2025 labels are OpenAlex silver labels that were always public
+    through the API; git history, not an external auditor, is the evidence that
+    they were not used for model, feature or threshold selection.
+interpretation_limits:
+  - Agreement with OpenAlex primary-topic silver labels, not human semantic accuracy.
+  - No model, threshold or catalogue change is permitted after viewing the results.

@@ -1,7 +1,7 @@
 """Opt-in real-browser E2E against verified local artifacts and a running Streamlit server.
 
 Run: AI_TRENDS_RUN_BROWSER_TESTS=1 pytest -q tests/browser/test_live_app.py
-This suite never reads the sealed 2025 test or sends an OpenAlex request.
+This suite never reads the 2025 test table or sends an OpenAlex request.
 """
 
 from __future__ import annotations

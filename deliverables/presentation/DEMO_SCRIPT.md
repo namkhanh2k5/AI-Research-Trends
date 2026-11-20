@@ -12,9 +12,9 @@
 | 3:40–4:20 | Topic Explorer chọn một trong 14 topic, đọc mô tả, xu hướng tổng thể, bối cảnh mẫu và bài đại diện. | Duyệt thủ công không cần mô hình; mỗi chỉ số có nguồn gốc. |
 | 4:20–5:00 | Paper Explorer tìm từ khóa, lọc năm/topic; xem một bản ghi và DOI/OpenAlex. | Chỉ tra 12.000 bài mẫu, không phải tìm kiếm toàn bộ OpenAlex. |
 | 5:00–6:10 | Classify My Research: nhập tiêu đề/tóm tắt ví dụ, xem top 3 và trạng thái; chọn chủ đề khác gợi ý nếu phù hợp rồi xác nhận Topic Brief. Sửa một từ trong bản thảo và chỉ ra gợi ý cũ bị xóa. | SVM margin không phải xác suất; không gán nhãn tự động và không giữ xác nhận cũ khi input đổi. |
-| 6:10–7:00 | Methodology & Model Evaluation: bảng so sánh, F1 theo lớp, ma trận nhầm lẫn, open-set. | Macro-F1 0,8808 trên 681 bài 2024; outside false acceptance 21,66%; 2025 vẫn SEALED. |
-| 7:00–7:40 | Mở báo cáo PDF từ nút tải trong app, nêu manifest/checksum và tình trạng người chấm. | Website là nguyên mẫu nghiên cứu cục bộ; chưa có đánh giá người dùng thực. |
+| 6:10–7:00 | Methodology & Model Evaluation: bảng so sánh, F1 theo lớp, ma trận nhầm lẫn, open-set. | Macro-F1 0,8808 trên 681 bài 2024; outside false acceptance 21,66%; kiểm thử 2025 chạy một lần: macro-F1 0,8698, chấp nhận nhầm 20,98%. |
+| 7:00–7:40 | Mở báo cáo PDF từ nút tải trong app, nêu manifest/checksum, việc chấm người đã rút khỏi phạm vi và kết quả kiểm thử 2025. | Website là nguyên mẫu nghiên cứu cục bộ; chưa có đánh giá người dùng thực. |
 
-**Dự phòng:** Nếu ứng dụng không khởi động do thiếu dữ liệu riêng tư, trình bày các hình và bảng đã xuất bản cùng log xác minh; không sử dụng dữ liệu giả hoặc tuyên bố đã demo trực tiếp. Không đưa thông tin API key hoặc tài liệu niêm phong lên màn hình.
+**Dự phòng:** Nếu ứng dụng không khởi động do thiếu dữ liệu riêng tư, trình bày các hình và bảng đã xuất bản cùng log xác minh; không sử dụng dữ liệu giả hoặc tuyên bố đã demo trực tiếp. Không đưa thông tin API key lên màn hình.
 
 **Lần diễn tập Phase 4.1 (lịch sử):** Chrome/Playwright cục bộ đã đi qua thao tác dự đoán → top ba → ghi đè thủ công → xác nhận → Topic Brief, thay input, RQ5/RQ6, Paper Explorer không có kết quả và tải báo cáo. Bộ ảnh kiểm thử tạm đã được dọn khỏi repository; hai ảnh Chrome không nhạy cảm dùng trong báo cáo và slide vẫn nằm trong `figures/`. Đây không phải khảo sát khả dụng với người dùng thật.
