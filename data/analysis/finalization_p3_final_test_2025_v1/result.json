@@ -1,0 +1,69 @@
+{
+  "status": "complete",
+  "evaluated_once_at_utc": "2026-11-20T07:35:12.968062+00:00",
+  "model_version": "topic_placement_v2",
+  "score_method": "svm_margin",
+  "threshold": -0.22227267687798036,
+  "test_sha256": "3f4d4a70f496ddf8674447cc93d95aae3bd1ddbeced49d1f5a8a027f14593f16",
+  "test_rows": 2318,
+  "amendment_sha256": "b8ea04dfebea20a48b3357de9bdc88acebd2053388ce93561b0a64ff5116870c",
+  "frozen_protocol_sha256": "b1277437a9f1428787978adc1139428a1210b1bd28750b5c0342dcee81cedd09",
+  "label_source": "OpenAlex primary-topic silver labels; not human semantic truth",
+  "closed_set": {
+    "n": 831,
+    "accuracy": 0.8736462093862816,
+    "macro_f1": 0.8698008665874349,
+    "weighted_f1": 0.8737437180015759,
+    "macro_f1_bootstrap_95": [
+      0.8439959610865749,
+      0.8930564622196038
+    ]
+  },
+  "open_set": {
+    "total": 2318,
+    "in_catalogue": 831,
+    "outside_catalogue": 1487,
+    "threshold": -0.22227267687798036,
+    "in_acceptance_rate": 0.7954271961492179,
+    "out_false_acceptance_rate": 0.20981842636180228,
+    "in_false_rejection_rate": 0.2045728038507822,
+    "auroc_in_vs_out": 0.8780930924004832,
+    "accepted_precision_in_catalogue": 0.6793422404933196,
+    "accuracy_among_accepted_in": 0.9485627836611196,
+    "selective_risk": 0.05143721633888043,
+    "selective_coverage_in": 0.7954271961492179,
+    "end_to_end_correct_placement": 0.27049180327868855,
+    "accepted_in": 661,
+    "accepted_out": 312,
+    "correct_accepted_in": 627,
+    "accepted_correct_precision_all": 0.644398766700925,
+    "overall_acceptance_rate": 0.4197584124245039,
+    "bootstrap_95": {
+      "in_acceptance_rate": [
+        0.7686062648691515,
+        0.8208097662141779
+      ],
+      "out_false_acceptance_rate": [
+        0.19273055647672213,
+        0.22913843674154039
+      ],
+      "auroc_in_vs_out": [
+        0.8639277863547845,
+        0.8927203395712319
+      ],
+      "end_to_end_correct_placement": [
+        0.253213977566868,
+        0.2884059534081104
+      ],
+      "accepted_precision_in_catalogue": [
+        0.6491772538278775,
+        0.7068385865206931
+      ]
+    }
+  },
+  "files_sha256": {
+    "predictions.parquet": "b9b1f076311bede8a2b5b2332d232e720c3687f1363587c70e99704b23b4893f",
+    "per_class.csv": "fa5c1e6163d0ee86f22163fa2596dc4b04f47a4deca23a103eec55957c4b79d0",
+    "confusion.csv": "0e05b5848998118a788f50404c3434335292a4aa5c64e7ad4973616eb688515c"
+  }
+}

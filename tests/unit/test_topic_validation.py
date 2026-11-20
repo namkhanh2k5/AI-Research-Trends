@@ -9,7 +9,6 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from ai_research_trends.ml.topic_annotation import analyze_ratings
 from ai_research_trends.ml.topic_brief import load_verified_brief_run, place_research_draft
 from ai_research_trends.ml.topic_catalogue import parse_verified_topic
 from ai_research_trends.ml.validate_topic_run import verify_run
@@ -127,24 +126,6 @@ def test_model_reload_inference_and_missing_brief(tmp_path):
     with pytest.raises(ValueError,match="title"): place_research_draft("","This is a sufficiently long abstract with several words for testing.",loaded,context,threshold)
     brief_path.write_text("{}")
     with pytest.raises(ValueError,match="Corrupted"): load_verified_brief_run(tmp_path)
-
-
-def test_real_rating_import_requires_two_complete_blinded_raters():
-    model=_tiny_model()
-    blind=pd.DataFrame([{"example_id":"E1","title":"Vision methods","abstract":"image segmentation"},
-                        {"example_id":"E2","title":"Language methods","abstract":"text sentiment"}])
-    key=pd.DataFrame([{"example_id":"E1","work_id":"W1","openalex_primary_topic":"T1"},
-                      {"example_id":"E2","work_id":"W2","openalex_primary_topic":"T2"}])
-    ratings=pd.DataFrame([("E1","r1","T1"),("E1","r2","T1"),
-                          ("E2","r1","T2"),("E2","r2","NONE")],
-                         columns=["example_id","rater_id","best_topic"])
-    result=analyze_ratings(ratings,blind,key,{"T1","T2"},model)
-    assert result["examples"]==2 and result["raw_agreement"]==.5
-    with pytest.raises(ValueError,match="both ratings"):
-        analyze_ratings(ratings.iloc[:-1],blind,key,{"T1","T2"},model)
-    full=ratings.replace({"T1":"https://openalex.org/T1","T2":"https://openalex.org/T2"})
-    full_key=key.replace({"T1":"https://openalex.org/T1","T2":"https://openalex.org/T2"})
-    assert analyze_ratings(ratings,blind,full_key,{"https://openalex.org/T1","https://openalex.org/T2"},model)["examples"]==2
 
 
 def test_read_only_run_verifier_rejects_changed_output_and_unsealed_test(tmp_path):

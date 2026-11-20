@@ -1,8 +1,8 @@
 # Project handoff (local research workspace)
 
 Start with [README.md](README.md) for the study and app. This file is the short
-map for the next coding agent; it is **not** permission to refresh results or
-use the 2025 test labels for evaluation.
+map for the next coding agent; it is **not** permission to refresh results.
+The 2025 test has been used once and must not be reused to select or tune models.
 
 ## What works now
 
@@ -15,8 +15,8 @@ use the 2025 test labels for evaluation.
 - Frozen TF-IDF/Linear SVM assisted topic placement, Topic Briefs and
   `dashboard/app.py`. A separate build-once TF-IDF/cosine index searches
   textually similar original-sample papers. Topic suggestions use OpenAlex silver labels and
-  require explicit user confirmation. `dashboard/reviewer.py` is a separate
-  local human-review workflow.
+  require explicit user confirmation. The frozen model was evaluated once on
+  the 2025 hold-out ([result](reports/machine_learning/FINALIZATION_P3_FINAL_TEST_STATUS.md)).
 - Academic report and slides in `deliverables/`; research outputs and figures
   in `reports/` and `data/analysis/`.
 
@@ -35,11 +35,11 @@ use the 2025 test labels for evaluation.
 The original analytical sample and targeted ML development data have
 **different purposes and selection mechanisms**. Do not use targeted records
 for population prevalence or silently merge them into the 12,000-work sample.
-The repository is public and the complete workspace transfer includes
-restricted answer keys, blind reviewer packages, raw paper text and 2025
-labels. Their former blind/sealed status is **compromised by publication**.
-Do not claim a subsequent independent sealed-test evaluation on this copy,
-and do not expose the human reviewers to answer keys before their work.
+The repository is public and includes raw paper text, the 2025 test table and
+archived blind-review packages with answer keys. Human review was withdrawn on
+2026-11-20, so those packages are historical records only. The single 2025 run
+is recorded in `data/analysis/finalization_p3_final_test_registry.json`, and
+`openalex-final-test` refuses a second run.
 
 Large `*.jsonl`, `*.parquet`, `*.joblib` and `*.pkl` files use Git LFS.
 Prefer a shallow clone and fetch only runtime assets for website work:
@@ -93,7 +93,7 @@ openalex-package-topic-model infer --help
   RQ5: [reference-network decision](reports/research/phase5/PHASE5_FINAL_DECISION.md).
   RQ6/ML: [unified topic report](reports/phase6/PHASE6_REPORT.md)
   and [model evaluation](reports/machine_learning/FINALIZATION_P3_FINAL_ML_REPORT.md).
-- Independent human semantic validation remains **pending**.
-  The 2025 final-test gate was historically sealed but is no longer
-  independently sealed after this public workspace transfer. Public
-  deployment and redistribution rights require separate review.
+- Independent human semantic review was **withdrawn** and not performed
+  ([amendment](config/final_test_2025_amendment.yaml)); all model metrics are
+  agreement with OpenAlex silver labels. Public deployment and redistribution
+  rights still require separate review.

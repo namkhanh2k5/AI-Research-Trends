@@ -108,7 +108,8 @@ def report_docx() -> None:
             first = matrix[0][0]
             caption_match = re.match(r"Bảng\s+\d+\.\s*(.*)", first)
             if caption_match:
-                doc.add_paragraph(f"Bảng {table_number}. {caption_match.group(1)}", style="Caption")
+                caption = doc.add_paragraph(f"Bảng {table_number}. {caption_match.group(1)}", style="Caption")
+                caption.paragraph_format.keep_with_next = True
                 matrix[0][0] = caption_match.group(1)
             table = doc.add_table(rows=0, cols=len(matrix[0]))
             table.style = "Table Grid"
@@ -139,14 +140,14 @@ def presentation() -> None:
         ("RQ3 · Open Access", ["β nhị phân chưa điều chỉnh = −0,330 trên ln(1 + trích dẫn)", "Gold vs closed, đã điều chỉnh: β = +0,463; HC3 CI [0,396; 0,531]", "Green vs closed: β = +0,178; HC3 CI [0,087; 0,269]", "Liên hệ có điều kiện, không phải hiệu ứng nhân quả"], "reports/figures/phase4/rq3_adjusted_coefficients.png"),
         ("RQ4 · Hợp tác", ["Đồng liên kết quốc gia trong mẫu, không phải quốc tịch", "1.979/7.970 bài đủ thông tin có hợp tác quốc tế", "2.949 bài thiếu quốc gia liên kết"], "reports/figures/phase4/rq4_country_network.png"),
         ("RQ5 · Tài liệu tham khảo", ["289.110 cạnh tham khảo trong mẫu 12.000", "Pool lịch sử ≥2 bài dẫn: median ID overlap 12,1%", "NO-GO cho hệ gợi ý tài liệu là ML chính"], "reports/figures/phase5/pool_saturation_2023.png"),
-        ("RQ6 · Nhãn chủ đề", ["14 chủ đề OpenAlex được chọn trước", "Nhãn bạc và chủ đề chồng lắp; chưa có đánh giá hai người chấm", "Mô hình học sự tương hợp với nhãn OpenAlex, không đo chân lý ngữ nghĩa"], "reports/finalization_p2/figures/rq6_topic_cooccurrence.png"),
-        ("Từ dữ liệu tới mô hình", ["12.000 bài gốc cho EDA; 2.515 bài bổ sung chỉ cho ML", "Title + abstract → TF-IDF → Linear SVM → top 3", "Train 2020–2023; dev 2024; test 2025 SEALED"], None),
-        ("So sánh mô hình", ["681 bài 2024 trong danh mục: SVM macro-F1 0,8808", "SVM chỉ mẫu gốc: 0,8506; NB/LR mở rộng: 0,8580", "2025 vẫn niêm phong; đây là kết quả phát triển"], "reports/figures/finalization_p3/model_comparison.png"),
-        ("Open-set & giới hạn", ["Chấp nhận nhầm ngoài danh mục: 21,66% (2024)", "Ngưỡng margin, không phải xác suất", "Top 3 + từ chối + xác nhận thủ công"], "reports/figures/finalization_p3/open_set_roc.png"),
+        ("RQ6 · Nhãn chủ đề", ["14 chủ đề OpenAlex được chọn trước", "Nhãn bạc và chủ đề chồng lắp; không chấm người (đã rút khỏi phạm vi)", "Mô hình học sự tương hợp với nhãn OpenAlex, không đo chân lý ngữ nghĩa"], "reports/finalization_p2/figures/rq6_topic_cooccurrence.png"),
+        ("Từ dữ liệu tới mô hình", ["12.000 bài gốc cho EDA; 2.515 bài bổ sung chỉ cho ML", "Title + abstract → TF-IDF → Linear SVM → top 3", "Train 2020–2023; dev 2024; test 2025 chạy đúng một lần"], None),
+        ("So sánh mô hình", ["681 bài 2024 trong danh mục: SVM macro-F1 0,8808", "SVM chỉ mẫu gốc: 0,8506; NB/LR mở rộng: 0,8580", "Kiểm thử 2025 (một lần): macro-F1 0,8698 trên 831 bài"], "reports/figures/finalization_p3/model_comparison.png"),
+        ("Open-set & giới hạn", ["Chấp nhận nhầm ngoài danh mục: 21,66% (2024), 20,98% (2025)", "Ngưỡng margin, không phải xác suất", "Top 3 + từ chối + xác nhận thủ công"], "reports/figures/finalization_p3/open_set_roc.png"),
         ("Giao diện thật · Home", ["Sáu trang nghiên cứu và khám phá", "Số liệu tổng thể tách khỏi mẫu", "Chrome cục bộ; không phải mockup"], "deliverables/presentation/figures/home_chrome.png"),
         ("Giao diện thật · Xác nhận", ["Đổi bản thảo xóa gợi ý cũ", "Người dùng chọn/ghi đè thủ công", "Topic Brief có nguồn gốc và giới hạn"], "deliverables/presentation/figures/classify_confirmed_chrome.png"),
-        ("Tái lập & giới hạn", ["Raw, manifest, checksum và kiểm tra số mẫu", "Dữ liệu/mô hình không có trên public GitHub", "Chưa có chấm người thật; không suy luận nhân quả OA"], None),
-        ("Kết luận", ["Nghiên cứu dữ liệu và giao diện khám phá có thể kiểm chứng", "Nguyên mẫu hỗ trợ, không gán nhãn tự động", "Bước tiếp: đánh giá người thật và rà soát phạm vi"], None),
+        ("Tái lập & giới hạn", ["Raw, manifest, checksum và kiểm tra số mẫu", "Dữ liệu/mô hình không có trên public GitHub", "Chỉ số = mức khớp nhãn bạc; không suy luận nhân quả OA"], None),
+        ("Kết luận", ["Nghiên cứu dữ liệu và giao diện khám phá có thể kiểm chứng", "Nguyên mẫu hỗ trợ, không gán nhãn tự động", "Bước tiếp: cải thiện từ chối ngoài danh mục, đánh giá trên năm mới"], None),
     ]
     for number, (title, bullets, figure) in enumerate(spec, 1):
         slide = prs.slides.add_slide(prs.slide_layouts[6])

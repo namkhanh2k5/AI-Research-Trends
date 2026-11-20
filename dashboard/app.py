@@ -70,7 +70,7 @@ def home(data) -> None:
     frame = pd.DataFrame(data.get_publication_trends())
     st.plotly_chart(px.line(frame, x="year", y="work_count", markers=True,
                             title="Annual publication counts — complete defined AI/CV corpus"), width="stretch")
-    st.info(f"OpenAlex labels are machine-assigned silver labels. Human semantic validation is pending. {current_2025_test_notice()} This corpus is not all global AI research.")
+    st.info(f"OpenAlex labels are machine-assigned silver labels; model scores measure agreement with them, not human-judged topic truth. {current_2025_test_notice()} This corpus is not all global AI research.")
 
 
 def landscape(data) -> None:
@@ -132,7 +132,7 @@ def landscape(data) -> None:
                          "Top-three OpenAlex topic memberships can overlap in the original sample; overlap is not label error.")
         published_figure("reports/finalization_p2/figures/rq6_score_gaps.png",
                          "OpenAlex top-one/top-two score gaps are model outputs, not calibrated probabilities or quality scores.")
-        st.warning("Independent human semantic validation has not been completed. Missing abstracts vary by topic; no website metric establishes the true accuracy of OpenAlex labels.")
+        st.warning("No independent human semantic review was performed. Missing abstracts vary by topic; no website metric establishes the true accuracy of OpenAlex labels.")
         caption("Verified RQ6 aggregate audit, original sample and integrated train", evidence["rq6"]["source"])
 
 
@@ -351,7 +351,7 @@ def methodology(data, model_path: Path) -> None:
     st.write("The approved population is non-retracted OpenAlex article/review/preprint works dated 2020–2025 with primary subfield 1702 or 1707. Complete OpenAlex aggregates answer publication-count questions. The separate 12,000-work year-stratified detailed sample supports bibliometric descriptions; its nominal weights are not certified inverse inclusion probabilities.")
     st.write("Nested work records were normalized into eight Parquet tables, preserving unique Work IDs, multi-valued topic/affiliation/reference relationships, missing metadata and source checksums. The targeted 2,515-work expansion contributes only to historical ML training, never to population prevalence or the original paper index.")
     st.subheader("Temporal split, features and fitted models")
-    st.write(f"The fourteen-topic supervised task predicts OpenAlex machine-assigned primary-topic silver labels from title and abstract only. Version groups were isolated by the original protocol: 2020–2023 historical train, original-sample 2024 development, and a 2025 holdout. {current_2025_test_notice()} TF-IDF was fit inside historical training folds. Candidate models were ComplementNB, Logistic Regression and Linear SVM; the selected saved model is TF-IDF plus LinearSVC(C=1).")
+    st.write(f"The fourteen-topic supervised task predicts OpenAlex machine-assigned primary-topic silver labels from title and abstract only. Version groups were isolated by the original protocol: 2020–2023 historical train, original-sample 2024 development, and a 2025 temporal hold-out. {current_2025_test_notice()} TF-IDF was fit inside historical training folds. Candidate models were ComplementNB, Logistic Regression and Linear SVM; the selected saved model is TF-IDF plus LinearSVC(C=1).")
     st.subheader("Closed-set model comparison · 2024 development")
     st.dataframe(pd.DataFrame(comparison["methods"]), hide_index=True)
     st.caption(f"Same {comparison['validation_in_catalogue']} original-sample 2024 in-catalogue works; macro-F1 and accuracy measure agreement with OpenAlex silver labels, not independent topic truth. Source SHA-256 {comparison['source_sha256']}.")
@@ -372,15 +372,26 @@ def methodology(data, model_path: Path) -> None:
     c.metric("AUROC", f"{open_set['auroc']:.3f}")
     st.write(f"Threshold calibration used {open_set['calibration_n']} works; a separate version-group evaluation used {open_set['evaluation_n']} works ({open_set['evaluation_in_catalogue']} in-catalogue, {open_set['evaluation_outside_catalogue']} outside). The frozen SVM-margin threshold is {open_set['threshold']:.6f}; margins are not probabilities. Correct accepted placement across all eligible evaluation works was {open_set['end_to_end_correct_placement']:.1%}.")
     published_figure("reports/figures/finalization_p3/open_set_roc.png",
-                     "Development open-set ROC; not a 2025 final-test or human-semantic validation result.")
+                     "2024 development open-set ROC; the 2025 hold-out result is reported below.")
     st.warning(f"The 20% outside false-acceptance calibration target was not met on the 2024 evaluation group (observed {open_set['outside_false_acceptance']:.2%}). Model selection also used 2024 development results; the 2024 open-set check is not fully external. Never place a topic automatically.")
+    final = evidence["final_test_2025"]
+    st.subheader("2025 temporal hold-out · evaluated once")
+    a, b, c, d = st.columns(4)
+    a.metric("Macro-F1 (in-catalogue)", f"{final['closed_macro_f1']:.4f}")
+    b.metric("In-catalogue acceptance", f"{final['in_catalogue_acceptance']:.1%}")
+    c.metric("Outside false acceptance", f"{final['outside_false_acceptance']:.1%}")
+    d.metric("AUROC", f"{final['auroc']:.3f}")
+    low, high = final["closed_macro_f1_bootstrap_95"]
+    far_low, far_high = final["outside_false_acceptance_bootstrap_95"]
+    st.write(f"The unchanged frozen model and 2024 threshold were applied once to {final['open_set_total']:,} eligible original-sample 2025 works ({final['closed_set_in_catalogue']} in-catalogue, {final['open_set_outside_catalogue']:,} outside). Macro-F1 {final['closed_macro_f1']:.4f} (bootstrap 95% [{low:.4f}, {high:.4f}]) is close to the 2024 development value {expanded_svm['macro_f1']:.4f}. Outside false acceptance was {final['outside_false_acceptance']:.2%} ([{far_low:.2%}, {far_high:.2%}]), again above the 20% target. Correct accepted placement across all eligible works was {final['end_to_end_correct_placement']:.1%}.")
+    st.caption(f"Authorized by {final['authorization']} after human review was withdrawn; agreement with OpenAlex silver labels only. Source SHA-256 {final['source_sha256']}.")
     st.subheader("Governance and research limits")
     try:
         config = json.loads((model_path / "frozen_config.json").read_text())
         st.caption(f"Verified local model: {config.get('model_version')} · {config.get('model_family')} · {config.get('score_method')}")
     except OSError:
         st.warning("Local model bundle unavailable; research explorer remains usable.")
-    st.write(f"Human semantic validation is pending. {current_2025_test_notice()} Citation counts are age-dependent, FWCI is missing for every sampled preprint, affiliation coverage is incomplete, and OA comparisons are observational rather than causal. The app is a local research prototype; private artifacts and redistribution rights prevent a public deployment claim.")
+    st.write(f"No independent human semantic review was performed; metrics measure agreement with OpenAlex silver labels. {current_2025_test_notice()} Citation counts are age-dependent, FWCI is missing for every sampled preprint, affiliation coverage is incomplete, and OA comparisons are observational rather than causal. The app is a local research prototype; private artifacts and redistribution rights prevent a public deployment claim.")
     reports = (
         ("Download academic report (PDF)", ROOT / "deliverables/report/FINAL_ACADEMIC_REPORT.pdf", "application/pdf"),
         ("Download Phase 3 ML report (Markdown)", ROOT / "reports/machine_learning/FINALIZATION_P3_FINAL_ML_REPORT.md", "text/markdown"),

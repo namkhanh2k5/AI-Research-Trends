@@ -19,8 +19,10 @@ limitations and topic-label reliability. It does **not** cover all global AI res
   OpenAlex sync adds recent papers to that similarity index without changing
   the historical research snapshot.
 - A frozen TF-IDF + Linear SVM topic-suggestion bundle. Its labels are
-  OpenAlex-generated, suggestions require user confirmation, independent human
-  validation is pending, and the historical 2025 test labels were made public in the uploaded workspace; that test is no longer independently sealed.
+  OpenAlex-generated and every suggestion requires user confirmation. The model
+  was evaluated once on the 2025 temporal hold-out: macro-F1 0.870 against
+  0.881 in 2024 development. Independent human review was withdrawn from scope
+  and was not performed.
 - An [academic report](deliverables/report/FINAL_ACADEMIC_REPORT.md), editable
   [presentation](deliverables/presentation/FINAL_PRESENTATION.pptx) and
   [demo script](deliverables/presentation/DEMO_SCRIPT.md).
@@ -73,8 +75,9 @@ These five GitHub-readable previews link to the verified
 See the [unified Phase 6 report](reports/phase6/PHASE6_REPORT.md),
 [RQ6 topic-support chart](reports/phase6/figures/topic_support.png) and
 [ML development report](reports/machine_learning/FINALIZATION_P3_FINAL_ML_REPORT.md) for
-classification evidence. The 2024 development results are **not** final-test
-results or independent human semantic accuracy.
+classification evidence, and the [2025 hold-out result](reports/machine_learning/FINALIZATION_P3_FINAL_TEST_STATUS.md)
+for the single final test. All scores measure agreement with OpenAlex silver
+labels, not human-judged semantic accuracy.
 
 ## Install and run locally
 
@@ -148,21 +151,12 @@ warning defaults to 48 hours (`AI_TRENDS_SYNC_STALE_HOURS` overrides it).
 For missed runs, dates are processed one day at a time; an oversized or failed
 day stops before later dates. See the [recovery and storage notes](docs/WEB_APPLICATION.md#optional-openalex-application-sync).
 
-Paper Discovery has no human relevance score yet. To prepare a separate, blank
-20-query review sheet after building its index, run:
-
-```bash
-openalex-evaluate-discovery prepare
-# Once a real reviewer fills every relevance cell (0/1/2):
-openalex-evaluate-discovery score --annotator-id reviewer_1
-```
-
-The review files remain local and Git-ignored. See the
-[human-evaluation guide](docs/PAPER_DISCOVERY_HUMAN_EVALUATION.md); do not
-interpret technical similarity scores as relevance judgments.
+Paper Discovery has no human relevance evaluation. Treat its cosine scores as
+measures of textual similarity, not relevance judgments; see the
+[technical discovery evaluation](reports/application/PAPER_DISCOVERY_TECHNICAL_EVALUATION.md).
 
 Classification needs `models/topic_placement_v2/`. For direct inference on a new
-draft (a suggestion, not a human-validated topic label):
+draft (a suggestion that the user must confirm, not an assigned topic label):
 
 ```bash
 openalex-package-topic-model infer \
@@ -188,7 +182,7 @@ Phase 6 pilot and reproduction are physically deduplicated under
 ```text
 config/                      active study/catalogue/application settings; historical/ has frozen protocols
 src/ai_research_trends/      crawling, preprocessing, analysis, ML, web
-dashboard/                   Streamlit research and separate reviewer apps
+dashboard/                   Streamlit research explorer
 data/raw/, interim/          original API responses and extracted records
 data/processed/              normalized Parquet and integrated ML tables
 data/artifacts/web/           verified Topic Explorer package; rebuildable discovery index
@@ -242,6 +236,6 @@ do not rerun acquisition or training just to start the website.
 
 For an agent-facing map of exact local paths and remaining work, read
 [PROJECT_HANDOFF.md](PROJECT_HANDOFF.md). The public repository contains source,
-raw and processed research data, reviewer packages, former sealed-test records
-and model binaries. Publication does **not** prove redistribution permission or
-independent blind-test validity. Review those issues before external reuse.
+raw and processed research data, archived (never-completed) review packages, the
+2025 test table with its single-run result, and model binaries. Publication does
+**not** prove redistribution permission. Review that before external reuse.

@@ -1,5 +1,7 @@
 # Phase 6B independent topic-label review
 
+> **Withdrawn 2026-11-20.** Independent human review was removed from project scope and was never performed; see `config/final_test_2025_amendment.yaml`. This protocol is kept as a historical record only.
+
 Status: **prepared; no ratings collected**. This procedure is for a later, real human study. Do not fill reviewer fields with model or LLM predictions and call them human annotations.
 
 The local run directory `data/analysis/phase6b_topic_validation_20261028_v3/` contains `blind_calibration.csv` (40 examples), `blind_evaluation.csv` (100 examples), and two separate `restricted_key_*.csv` files. These contain paper text/Work IDs and are Git-ignored. Do not publish answer keys, record-level predictions or unredacted reviewer sheets. Give each of **two independent, subject-aware reviewers** the same blind sheet without the keys, model predictions or OpenAlex primary labels. The topic options in each row are randomized; this order is not a ranking.

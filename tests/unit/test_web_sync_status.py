@@ -16,10 +16,10 @@ def test_web_freshness_and_current_test_disclosure():
     assert service.with_freshness(old, now=now)["stale"] is True
     assert service.with_freshness(old, now=now, stale_after_hours=96)["stale"] is False
     notice = service.current_2025_test_notice().lower()
-    assert "publicly exposed" in notice and "no longer" in notice and "sealed" in notice
+    assert "evaluated once" in notice and "frozen before" in notice
     active_app = Path("dashboard/app.py").read_text(encoding="utf-8").lower()
-    assert "2025 ml test remains sealed" not in active_app
-    assert "2025 final test remains sealed" not in active_app
+    for stale in ("remains sealed", "validation is pending", "has not been completed"):
+        assert stale not in active_app
 
 
 def test_sync_status_reads_configurable_freshness(monkeypatch):

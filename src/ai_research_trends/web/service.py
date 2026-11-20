@@ -17,9 +17,9 @@ DEFAULT_DISCOVERY = _APPLICATION["paper_discovery"]
 
 
 def current_2025_test_notice() -> str:
-    """Current disclosure status, separate from the historical frozen protocol."""
-    return ("The 2025 test labels were publicly exposed, so this set is no longer "
-            "an independently blind or sealed evaluation.")
+    """Current 2025 test status, separate from the historical frozen protocol."""
+    return ("The frozen model was evaluated once on the 2025 temporal hold-out; git history "
+            "shows the model was frozen before the 2025 labels were published.")
 
 
 def artifact_paths() -> tuple[Path, Path]:

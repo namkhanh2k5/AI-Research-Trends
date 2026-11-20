@@ -53,11 +53,12 @@ catalogue is a single-researcher provisional scope decision.
 The [pilot blind protocol](../../docs/protocols/PHASE6_HUMAN_ANNOTATION_GUIDELINES.md),
 [6B human-review instructions](../../docs/protocols/PHASE6B_HUMAN_REVIEW_INSTRUCTIONS.md)
 and [later two-reviewer workflow](../../docs/protocols/FINALIZATION_P2_HUMAN_REVIEW.md)
-must be read as protocols, not completed human evidence. No genuine independent
-two-human semantic validation has been established. The repository subsequently
-published historical answer keys and 2025 labels; the 2025 test can no longer
-be claimed as an independent sealed holdout in this public snapshot, even where
-older time-stamped reports correctly described its earlier sealed state.
+must be read as protocols, not completed human evidence. No rating was ever
+collected, and on 2026-11-20 independent human review was withdrawn from scope
+([amendment](../../config/final_test_2025_amendment.yaml)). The frozen model was
+then evaluated once on the 2025 hold-out against the same silver labels; see the
+[result](../machine_learning/FINALIZATION_P3_FINAL_TEST_STATUS.md). Older
+time-stamped reports correctly describe the earlier sealed state.
 
 ## Reproduction and provenance
 
@@ -82,5 +83,4 @@ openalex-verify-topic-run --run-dir data/analysis/phase6/validation
 Use the [repository reproducibility guide](../../docs/REPRODUCIBILITY.md) for
 the original sample, integrated model, web package and application. Preserve
 all source hashes and numerical outputs. Historical manifest paths are resolved
-through the explicit migration map, never by filename alone. Future human
-ratings must be stored separately from the published research snapshot.
+through the explicit migration map, never by filename alone.

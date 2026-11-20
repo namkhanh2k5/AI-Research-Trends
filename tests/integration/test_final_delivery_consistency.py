@@ -37,7 +37,7 @@ def test_report_development_metrics_and_test_status():
     text = REPORT.read_text()
     assert "0,8808" in text
     assert "21,66%" in text
-    assert "2025" in text and "SEALED" in text
+    assert "0,8698" in text and "20,98%" in text and "một lần" in text
     assert "người chấm" in text
     assert "không phải" in text
 

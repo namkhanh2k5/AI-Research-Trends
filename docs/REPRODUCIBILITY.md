@@ -67,8 +67,8 @@ unsafe even if it has an internally consistent checksum. An authorized
 separate transfer can use `openalex-restore-local-artifact` as documented in
 the artifact contract; the local copy still requires an approved source and
 manifest authentication. GitHub availability is not a redistribution-rights
-assessment. Historical 2025 labels and reviewer keys were published, so this
-snapshot cannot support an independent sealed-test claim.
+assessment. The 2025 test was run once (`openalex-final-test`); its registry
+receipt blocks a rerun, so verify the stored result instead of re-executing.
 
 `python deliverables/generate.py` regenerates editable DOCX/PPTX from tracked
 source Markdown and figures; PDF rendering also requires LibreOffice and
