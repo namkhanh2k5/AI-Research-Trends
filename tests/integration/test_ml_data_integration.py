@@ -1,4 +1,4 @@
-"""Focused regressions for finalization integration, review and web contracts."""
+"""Focused regressions for finalization integration, archived review package and web contracts."""
 
 from __future__ import annotations
 
@@ -11,8 +11,7 @@ import pytest
 
 from ai_research_trends.analysis.topic_population import collect as collect_topic_population, query_specs, verify as verify_topic_population
 from ai_research_trends.analysis.web_queries import ResearchData
-from ai_research_trends.ml.human_review_workflow import (human_agreement, validate_blind_sheet,
-                                                         validate_ratings)
+from ai_research_trends.ml.human_review_workflow import validate_blind_sheet
 from ai_research_trends.ml.integrate_topic_data import (build_integration, identity_groups,
                                                         split_for_year, validate_splits)
 
@@ -90,29 +89,6 @@ def test_blind_sheet_requires_varied_options():
                          "randomized_topic_options":options,"best_topic":None,
                          "second_plausible_topic":None,"reviewer_note":None} for i in (1,2)])
     with pytest.raises(ValueError,match="not varied"):validate_blind_sheet(frame,set(ids))
-
-
-def test_human_ratings_require_complete_independent_responses():
-    blind=pd.DataFrame({"example_id":["x","y"]})
-    ratings=pd.DataFrame({"example_id":["x"],"best_topic":["T10028"]})
-    with pytest.raises(ValueError,match="incomplete"):validate_ratings(ratings,blind,"reviewer_a",{"T10028"})
-
-
-def test_human_agreement_only_on_supplied_ratings():
-    a=pd.DataFrame({"example_id":["x","y"],"best_topic":["T10028","NONE"]})
-    b=pd.DataFrame({"example_id":["x","y"],"best_topic":["T10028","UNCLEAR"]})
-    result=human_agreement(a,b)
-    assert result["examples"]==2 and result["raw_agreement"]==0.5
-
-
-def test_human_agreement_normalizes_restricted_openalex_key():
-    a=pd.DataFrame({"example_id":["x","y"],"best_topic":["T10028","NONE"]})
-    b=pd.DataFrame({"example_id":["x","y"],"best_topic":["T10028","UNCLEAR"]})
-    key=pd.DataFrame({"example_id":["x","y"],"openalex_primary_topic":
-                      ["https://openalex.org/T10028","https://openalex.org/T10036"]})
-    result=human_agreement(a,b,key)
-    assert result["openalex_label_accepted_by_both"]==1
-    assert result["both_disagree_with_openalex"]==1
 
 
 def test_topic_aggregate_specs_are_fixed_and_primary():
@@ -196,3 +172,18 @@ def test_published_rq6_report_figure_links_resolve():
         image=report.parent/target
         assert image.is_file() and image.stat().st_size>1000
         assert image.read_bytes()[:8]==b"\x89PNG\r\n\x1a\n"
+
+
+def test_finalization_p2_master_manifest_still_verifies():
+    """Repository cleanups must not prune a child manifest the Phase 2 master binds."""
+    from ai_research_trends.analysis.finalization_manifest import verify as verify_master
+    from ai_research_trends.ml.validate_integrated_data import verify_run
+
+    root = Path(__file__).resolve().parents[2]
+    result = verify_master(root / "data/analysis/finalization_p2_master_20261101_v1.json")
+    assert result["valid"] and result["child_manifests"] == 7
+    integrated = root / "data/processed/ml_topic_classification/finalization_p2_20261101_v3"
+    if (integrated / "train.parquet").read_bytes()[:4] != b"PAR1":
+        pytest.skip("Integrated Parquet outputs not restored from Git LFS")
+    compared = verify_run(integrated, integrated.with_name(integrated.name + "_rerun"))
+    assert all(compared["deterministic_compare"].values())

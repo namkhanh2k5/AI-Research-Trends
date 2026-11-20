@@ -1,14 +1,14 @@
 # PHÂN TÍCH XU HƯỚNG NGHIÊN CỨU AI/CV VÀ HỆ THỐNG HỖ TRỢ KHÁM PHÁ CHỦ ĐỀ DỰA TRÊN OPENALEX
 
-**Báo cáo dự án Nhập môn Khoa học dữ liệu · Bản thảo có thể tái tạo · 01/11/2026**
+**Báo cáo dự án Nhập môn Khoa học dữ liệu · Bản thảo có thể tái tạo · cập nhật 20/11/2026**
 
-> Báo cáo này trình bày kết quả đã kiểm chứng, không phải bằng chứng một hệ thống phân loại chủ đề tự động đã được thẩm định bởi chuyên gia. Đánh giá ngữ nghĩa của hai người chấm còn thiếu; tập kiểm thử 2025 chưa được mở.
+> Báo cáo này trình bày kết quả đã kiểm chứng, không phải bằng chứng một hệ thống phân loại chủ đề tự động đã được thẩm định bởi chuyên gia. Đánh giá ngữ nghĩa bởi người chấm độc lập đã được rút khỏi phạm vi và không thực hiện. Tập kiểm thử 2025 đã được chạy đúng một lần trên mô hình đóng băng.
 
 ## Tóm tắt
 
 Dự án xây dựng quy trình thu thập, chuẩn hóa, phân tích thống kê và học máy trên dữ liệu học thuật OpenAlex. Khung nghiên cứu được định nghĩa chặt: công trình công bố từ 2020-01-01 đến 2025-12-31, thuộc loại article/review/preprint, có *primary subfield* 1702 (Artificial Intelligence) hoặc 1707 (Computer Vision and Pattern Recognition); ấn phẩm bị rút khỏi xuất bản được loại khỏi ước lượng chính. Tổng thể không đồng nghĩa với “mọi nghiên cứu AI trên thế giới”. Số liệu xu hướng được lấy từ tổng hợp trên toàn khung OpenAlex, tách biệt với mẫu chi tiết 12.000 công trình. Mẫu cho phép nghiên cứu trích dẫn, truy cập mở (OA), hợp tác và khám phá giấy tờ, nhưng xác suất chọn của API chưa được chứng minh, vì vậy trọng số mẫu chỉ mang tính danh nghĩa.
 
-Phân tích mô tả và hồi quy làm rõ tác động của tuổi bài báo, kiểu công trình và dữ liệu thiếu. Thành phần ML dự đoán nhãn chủ đề chính do OpenAlex gán cho 14 chủ đề chọn trước, dùng TF-IDF và Linear SVM; macro-F1 trên 681 công trình phát triển năm 2024 là 0,8808. Tỷ lệ chấp nhận nhầm ngoài danh mục đạt 21,66% trong đánh giá phát triển, lớn hơn mục tiêu hiệu chỉnh. Sản phẩm cuối là trang khám phá dữ liệu cục bộ và công cụ *gợi ý cần người dùng xác nhận*, không phải bộ phân loại được kiểm định trên 2025 hay một thước đo chất lượng khoa học.
+Phân tích mô tả và hồi quy làm rõ tác động của tuổi bài báo, kiểu công trình và dữ liệu thiếu. Thành phần ML dự đoán nhãn chủ đề chính do OpenAlex gán cho 14 chủ đề chọn trước, dùng TF-IDF và Linear SVM; macro-F1 trên 681 công trình phát triển năm 2024 là 0,8808. Tỷ lệ chấp nhận nhầm ngoài danh mục đạt 21,66% trong đánh giá phát triển, lớn hơn mục tiêu hiệu chỉnh. Khi chạy một lần trên tập kiểm thử thời gian 2025, mô hình đóng băng đạt macro-F1 0,8698 trên 831 công trình và tỷ lệ chấp nhận nhầm 20,98% trên 2.318 công trình. Sản phẩm cuối là trang khám phá dữ liệu cục bộ và công cụ *gợi ý cần người dùng xác nhận*, không phải bộ phân loại được chuyên gia kiểm định hay một thước đo chất lượng khoa học.
 
 **Từ khóa:** OpenAlex; thư mục học; trí tuệ nhân tạo; thị giác máy tính; truy cập mở; TF-IDF; Linear SVM; nhãn bạc.
 
@@ -89,7 +89,7 @@ Phản hồi OpenAlex là JSON lồng nhau: `primary_topic`, danh sách `topics`
 
 Tiêu đề, DOI và tóm tắt thiếu được giữ null; abstract chỉ được dựng lại khi chỉ mục đảo hợp lệ. Mẫu Phase 2 có 2.558 tóm tắt, 2.678 FWCI, 2.902 thông tin tổ chức và 2.949 thông tin quốc gia không sẵn có; không thay FWCI thiếu bằng 0 [8]. Toàn bộ 2.678 preprint trong mẫu thiếu FWCI, nên so sánh theo FWCI loại trừ một kiểu công trình có hệ thống. Trích dẫn 0 được giữ như giá trị thật; ngoại lệ trích dẫn cao không bị xóa. Quốc gia là nơi liên kết cơ quan, không phải quốc tịch tác giả.
 
-Phân tách ML theo thời gian: huấn luyện 2020–2023, phát triển 2024, kiểm thử 2025 giữ kín. Nhóm phiên bản ở cùng phía của phân tách để giảm rò rỉ do bài trùng/phiên bản. `TfidfVectorizer` được fit trong từng fold huấn luyện, không học từ 2024 hoặc 2025. Trước mỗi bước, manifest và checksum được đối chiếu; xuất bảng dùng định dạng Parquet có schema ổn định.
+Phân tách ML theo thời gian: huấn luyện 2020–2023, phát triển 2024, kiểm thử 2025 giữ kín đến khi mô hình đã đóng băng. Nhóm phiên bản ở cùng phía của phân tách để giảm rò rỉ do bài trùng/phiên bản. `TfidfVectorizer` được fit trong từng fold huấn luyện, không học từ 2024 hoặc 2025. Trước mỗi bước, manifest và checksum được đối chiếu; xuất bảng dùng định dạng Parquet có schema ổn định.
 
 ### 4.1 Từ bản ghi lồng nhau đến bảng có khóa rõ ràng
 
@@ -101,7 +101,7 @@ Với `references`, cạnh hướng đi từ bài dẫn đến bài được d�
 
 Một số biến dẫn xuất phục vụ EDA có công thức minh bạch. `log1p_citations = ln(1 + cited_by_count)` xác định cho số trích dẫn nguyên không âm, bao gồm 0. `zero_citation_flag` là `cited_by_count = 0`, không phải một mã thiếu dữ liệu. Tuổi công bố được tính tương đối với một ngày chốt quan sát chung nên không được trở thành số âm; ngày nguồn và ngày truy xuất cần được giữ trong manifest. `has_fwci` tách trường hợp không quan sát khỏi giá trị FWCI hợp lệ, không điền 0 cho chỗ trống. Số tác giả/cơ quan/quốc gia ở cấp Work ID được tính sau khi khử trùng khóa phù hợp; cờ hợp tác quốc tế chỉ xác định khi nguồn cung cấp đủ country affiliation. Các nhãn native và custom cùng được lưu nhưng có `analytical_layer` riêng, vì quy tắc lexical không có cùng độ bao phủ với taxonomy OpenAlex [10].
 
-Tập huấn luyện bổ sung được ghép theo quy tắc Work ID và nhóm phiên bản, rồi cách ly train/dev/test. Tập 2025 chỉ được kiểm tra trạng thái niêm phong và tính toàn vẹn cơ học; không dùng nhãn hay dự đoán để chọn đặc trưng, siêu tham số hoặc ngưỡng. Khi huấn luyện chéo, `Pipeline` khớp từ vựng và IDF trên fold train, sau đó biến đổi fold validation. Không được lấy mô tả topic, score chủ đề, Work ID, năm, OA hay trích dẫn làm đầu vào dự đoán. Tên lớp cuối cùng và ngưỡng open-set là cấu hình đóng băng; manifest model gắn checksum của bộ dữ liệu, catalogue và bundle [9].
+Tập huấn luyện bổ sung được ghép theo quy tắc Work ID và nhóm phiên bản, rồi cách ly train/dev/test. Trong suốt giai đoạn phát triển, tập 2025 chỉ được kiểm tra tính toàn vẹn cơ học; không dùng nhãn hay dự đoán để chọn đặc trưng, siêu tham số hoặc ngưỡng. Khi huấn luyện chéo, `Pipeline` khớp từ vựng và IDF trên fold train, sau đó biến đổi fold validation. Không được lấy mô tả topic, score chủ đề, Work ID, năm, OA hay trích dẫn làm đầu vào dự đoán. Tên lớp cuối cùng và ngưỡng open-set là cấu hình đóng băng; manifest model gắn checksum của bộ dữ liệu, catalogue và bundle [9].
 
 ## 5. Khám phá dữ liệu và phân tích thống kê
 
@@ -180,7 +180,7 @@ Bài toán: từ title và abstract, xếp hạng 14 primary-topic nhãn bạc O
 
 Baseline gồm lớp chiếm đa số và khớp TF-IDF với mô tả chủ đề. Ba mô hình có giám sát là ComplementNB, Logistic Regression, Linear SVM. Tối ưu tham số bằng `StratifiedGroupKFold` ba fold trên lịch sử, nhóm phiên bản không tách đôi. Macro-F1 trung bình đều theo lớp; accuracy và F1 theo lớp được báo cáo cùng mẫu số. SVM dùng từ đơn/cặp từ TF-IDF, `min_df=2`, tối đa 50.000 đặc trưng, `sublinear_tf=True`, C=1.
 
-Không có lớp OTHER chắc chắn trong danh mục chính. Điểm biên SVM cho phép từ chối/giảm mức tin tưởng dựa trên ngưỡng hiệu chỉnh 2024; điểm biên **không phải xác suất**. Mọi dự đoán đều yêu cầu xác nhận của người dùng. Đánh giá ngữ nghĩa thật cần phiếu mù của hai người chấm và thảo luận bất đồng; hiện chưa có phiếu hoàn tất.
+Không có lớp OTHER chắc chắn trong danh mục chính. Điểm biên SVM cho phép từ chối/giảm mức tin tưởng dựa trên ngưỡng hiệu chỉnh 2024; điểm biên **không phải xác suất**. Mọi dự đoán đều yêu cầu xác nhận của người dùng. Bộ phiếu mù cho hai người chấm đã được chuẩn bị nhưng không có phiếu nào được nộp. Việc chấm người được rút khỏi phạm vi dự án ngày 20/11/2026, nên mọi chỉ số chỉ đo mức khớp với nhãn bạc.
 
 ### 6.1 Mục tiêu và phép đo
 
@@ -207,7 +207,7 @@ Các giá trị thuộc cùng tập validation 681 bài trong danh mục, ngoạ
 
 ![Đối chiếu mô hình trên tập phát triển 2024; nhãn mục tiêu do OpenAlex gán.](../../reports/figures/finalization_p3/model_comparison.png)
 
-Đánh giá open-set phát triển chia theo nhóm phiên bản: 738 bài hiệu chỉnh và 1.105 bài kiểm tra nội bộ (408 trong danh mục, 697 ngoài). Ngưỡng biên cố định −0,22227267687798036 đặt để giới hạn chấp nhận nhầm ngoài danh mục ≤20% trên hiệu chỉnh. Trên nhóm kiểm tra nội bộ, chấp nhận đúng phạm vi 83,09%, chấp nhận nhầm ngoài danh mục **21,66%**, AUROC 0,8919, tỷ lệ chấp nhận đúng chủ đề / mọi bài đủ điều kiện **28,33%** [9]. Mục tiêu 20% không đạt trên đánh giá phát triển. Tập kiểm thử 2025 vẫn **SEALED**, không có metric cuối cùng.
+Đánh giá open-set phát triển chia theo nhóm phiên bản: 738 bài hiệu chỉnh và 1.105 bài kiểm tra nội bộ (408 trong danh mục, 697 ngoài). Ngưỡng biên cố định −0,22227267687798036 đặt để giới hạn chấp nhận nhầm ngoài danh mục ≤20% trên hiệu chỉnh. Trên nhóm kiểm tra nội bộ, chấp nhận đúng phạm vi 83,09%, chấp nhận nhầm ngoài danh mục **21,66%**, AUROC 0,8919, tỷ lệ chấp nhận đúng chủ đề / mọi bài đủ điều kiện **28,33%** [9]. Mục tiêu 20% không đạt trên đánh giá phát triển. Kết quả trên tập kiểm thử 2025 được trình bày ở mục 7.4.
 
 ### 7.1 Sai số theo lớp và ma trận nhầm lẫn
 
@@ -225,13 +225,32 @@ SVM chỉ mẫu lịch sử gốc đạt macro-F1 0,8506, SVM huấn luyện tr�
 
 Ngưỡng được chọn từ 738 bài calibration để nhắm tỷ lệ nhận nhầm ngoài danh mục không quá 20%. Khi áp dụng cố định cho 1.105 bài đánh giá nội bộ, kết quả 21,66% vượt mục tiêu; khoảng bootstrap xấp xỉ [18,8%; 24,6%] chứa cả vùng trên mức mục tiêu. AUROC 0,8919 mô tả khả năng xếp hạng trong/ngoài danh mục qua mọi ngưỡng, không bảo đảm ngưỡng thực tế an toàn. Tỷ lệ 28,33% là số bài được chấp nhận **và** gán đúng nhãn bạc chia cho toàn bộ 1.105 bài, không phải accuracy trên các bài đã chấp nhận. Bộ OTHER dùng Logistic Regression có một số chỉ số tốt hơn nhưng là phân tích thăm dò, không làm thay đổi bundle đã đóng băng. Mô hình được giữ ở chế độ hỗ trợ có xác nhận [9].
 
-![Đường ROC open-set trên dữ liệu phát triển 2024; hiệu quả không thay thế kiểm thử cuối 2025.](../../reports/figures/finalization_p3/open_set_roc.png)
+![Đường ROC open-set trên dữ liệu phát triển 2024; kết quả kiểm thử 2025 ở mục 7.4.](../../reports/figures/finalization_p3/open_set_roc.png)
+
+### 7.4 Kiểm thử thời gian 2025 (chạy một lần)
+
+Giao thức đóng băng ban đầu chỉ cho mở tập 2025 sau khi hai người chấm độc lập ký duyệt. Không có phiếu chấm nào được nộp, và việc chấm người đã được rút khỏi phạm vi dự án. Vì vậy, một văn bản sửa đổi giao thức (`config/final_test_2025_amendment.yaml`) ghi lại quyết định mở tập 2025 mà không cần chữ ký người chấm. Mô hình, danh sách lớp, ngưỡng, mẫu số và các chỉ số đều giữ nguyên. Lịch sử git cho thấy mô hình và giao thức đã được commit ngày 01/11/2026, trước khi bảng 2025 được đưa lên kho ngày 04/11/2026. Lệnh `openalex-final-test` kiểm tra mã băm và các cột không chứa nhãn, ghi biên nhận vào registry, rồi mới đọc nhãn. Registry chặn mọi lần chạy thứ hai [9].
+
+| Bảng 4. Chỉ số | Phát triển 2024 | Kiểm thử 2025 (một lần) |
+|---|---:|---:|
+| Số bài trong danh mục (closed-set) | 681 | 831 |
+| Macro-F1 | 0,8808 | 0,8698 [0,8440; 0,8931] |
+| Accuracy | 0,8796 | 0,8736 |
+| Số bài open-set (trong / ngoài) | 1.105 (408 / 697) | 2.318 (831 / 1.487) |
+| Chấp nhận đúng phạm vi | 83,09% | 79,54% |
+| Chấp nhận nhầm ngoài danh mục (mục tiêu ≤20%) | 21,66% | 20,98% [19,27%; 22,91%] |
+| AUROC trong/ngoài danh mục | 0,8919 | 0,8781 |
+| Chấp nhận và đúng / mọi bài đủ điều kiện | 28,33% | 27,05% |
+
+Khoảng trong ngoặc là bootstrap 500 lần. Macro-F1 năm 2024 nằm trong khoảng tin cậy của năm 2025. Như vậy không có bằng chứng suy giảm đáng kể sau một năm, và con số phát triển không chỉ là hệ quả của việc chọn mô hình. Mục tiêu open-set vẫn chưa đạt về ước lượng điểm, dù khoảng tin cậy có chứa mức 20%. Khoảng 64% bài 2025 đủ điều kiện nằm ngoài 14 chủ đề. Vì thế tỷ lệ đặt đúng trên toàn bộ chỉ đạt 27%, dù 94,86% gợi ý được chấp nhận trong danh mục là đúng nhãn bạc.
+
+Theo từng lớp, Domain Adaptation and Few-Shot Learning giảm mạnh nhất (F1 0,841 → 0,716), còn Speech Recognition and Synthesis tăng nhiều nhất (0,870 → 0,939). Nhiều lớp có dưới 40 bài, nên biến động theo lớp còn nhiễu. Các kết quả này vẫn là mức khớp với nhãn bạc OpenAlex, không phải độ đúng ngữ nghĩa do chuyên gia xác lập. Không được dùng tập 2025 để chỉnh mô hình hay ngưỡng rồi báo cáo lại.
 
 ## 8. Thiết kế và triển khai hệ thống
 
 Giao diện dùng Streamlit và Plotly trên dữ liệu cục bộ đã được xác minh. Lớp `ResearchData` cung cấp tổng quan, xu hướng, Topic Brief, tìm kiếm 12.000 giấy tờ và thống kê OA/trích dẫn/hợp tác. Sáu trang: Home, Research Landscape, Topic Explorer, Classify My Research, Paper Explorer, Methodology & Model Evaluation. Topic Explorer duyệt trực tiếp qua dữ liệu, không tải mô hình. Chỉ trang phân loại mới nạp bundle SVM có kiểm tra checksum, giới hạn input và trả top ba nhãn cùng trạng thái `confident_suggestion`, `needs_user_confirmation` hoặc `no_confident_match`. Chọn chủ đề là hành động riêng của người dùng, lưu trong phiên web chứ không sửa nguồn OpenAlex.
 
-Mô hình `joblib` chỉ được tải từ gói đáng tin cậy đã được đối chiếu manifest; checksum không biến một pickle không tin cậy thành an toàn. Tên bài từ OpenAlex được hiển thị dưới dạng văn bản, không chèn HTML thô. Ứng dụng không gửi API trong vận hành thông thường. Trang reviewer riêng chỉ cho localhost, tách reviewer A/B và không hiện nhãn thật/dự đoán. Khóa kiểm thử 2025 dùng cổng phê duyệt sẵn có cộng registry tạo độc quyền; registry chỉ là biện pháp kỹ thuật tại một máy, không thay thế quản trị dự án hoặc ngăn clone khác.
+Mô hình `joblib` chỉ được tải từ gói đáng tin cậy đã được đối chiếu manifest; checksum không biến một pickle không tin cậy thành an toàn. Tên bài từ OpenAlex được hiển thị dưới dạng văn bản, không chèn HTML thô. Ứng dụng không gửi API trong vận hành thông thường. Kiểm thử 2025 dùng cổng kiểm tra văn bản sửa đổi giao thức cộng một registry tạo độc quyền để chỉ chạy một lần; registry chỉ là biện pháp kỹ thuật tại một máy, không thay thế quản trị dự án hoặc ngăn clone khác.
 
 ### 8.1 Hợp đồng dữ liệu và đường đi của một yêu cầu
 
@@ -259,19 +278,19 @@ Kiểm toán độc lập đã phát hiện lỗi xác nhận chủ đề vì UI
 
 Thiết kế lấy mẫu qua API không bảo đảm xác suất chọn. Thiếu abstract làm giới hạn cả phân loại từ ngữ và phân tích nhãn; thiếu FWCI ở tất cả preprint làm so sánh chỉ dựa vào subset. DOI/affiliation thiếu, độ tuổi bài, thay đổi OpenAlex và chủ đề chồng lắp khiến kết luận chỉ mang tính mô tả. Mô hình mục tiêu là sự tương hợp với nhãn bạc, không phải tri thức chủ đề do chuyên gia xác lập. Tỷ lệ chấp nhận nhầm ngoài danh mục 21,66% là rủi ro sử dụng quan trọng; ứng dụng phải hiển thị sự dè dặt. Phân tích OA là quan sát, không nhận dạng tác động nhân quả. Website cục bộ có giá trị giáo dục và hỗ trợ khám phá, chưa có chứng cứ sử dụng thực tế rộng rãi hay khả năng vận hành công khai với gói dữ liệu/model Git-ignored.
 
-Tập 2025 được bảo vệ theo giao thức đóng băng và chỉ có thể mở một lần sau khi nhận hai đánh giá độc lập, quyết định phạm vi, xác nhận checksum và phê duyệt rõ ràng. Mô hình cuối hiện tại là bundle lịch sử 2020–2023; không âm thầm thay bằng mô hình được fit thêm 2024. Registry cục bộ không thể ngăn một clone trái phép mở tập khác; trách nhiệm quản trị và kiểm toán vẫn thiết yếu.
+Tập 2025 đã được dùng đúng một lần theo văn bản sửa đổi giao thức, sau khi việc chấm người được rút khỏi phạm vi. Bằng chứng rằng mô hình đã đóng băng từ trước đến từ lịch sử git, không từ một kiểm toán độc lập. Mô hình cuối hiện tại là bundle lịch sử 2020–2023; không âm thầm thay bằng mô hình được fit thêm 2024. Registry cục bộ không thể ngăn một clone khác chạy lại, và mọi thay đổi mô hình sau này cần một năm đánh giá mới.
 
 ### 10.1 Giá trị thực tiễn so với giới hạn chứng cứ
 
-Giá trị rõ nhất là cung cấp một chuỗi bằng chứng minh bạch: người dùng thấy số đếm tổng thể khác với bối cảnh mẫu, đọc các nghiên cứu có thật, nhận gợi ý chủ đề nhưng có quyền từ chối. Kết quả ML 2024 chứng minh khả năng tái tạo nhãn OpenAlex trong phạm vi 14 chủ đề ở một tập phát triển, không chứng minh bản thảo mới được đặt đúng theo chuyên gia. Chưa có đo lường thời gian người dùng tiết kiệm, mức hài lòng, sai lệch theo ngôn ngữ, hoặc mức phù hợp của Topic Brief với nhu cầu thật. Việc mở rộng sang triển khai công khai đòi xem xét quyền chia sẻ artifact, bảo mật lưu trữ bản thảo nhập, và quy trình phân phối model/dữ liệu; không nên suy ra các thuộc tính đó từ demo cục bộ.
+Giá trị rõ nhất là cung cấp một chuỗi bằng chứng minh bạch: người dùng thấy số đếm tổng thể khác với bối cảnh mẫu, đọc các nghiên cứu có thật, nhận gợi ý chủ đề nhưng có quyền từ chối. Kết quả ML năm 2024 và 2025 cho thấy khả năng tái tạo nhãn OpenAlex trong phạm vi 14 chủ đề ổn định qua một năm, không chứng minh bản thảo mới được đặt đúng theo chuyên gia. Chưa có đo lường thời gian người dùng tiết kiệm, mức hài lòng, sai lệch theo ngôn ngữ, hoặc mức phù hợp của Topic Brief với nhu cầu thật. Việc mở rộng sang triển khai công khai đòi xem xét quyền chia sẻ artifact, bảo mật lưu trữ bản thảo nhập, và quy trình phân phối model/dữ liệu; không nên suy ra các thuộc tính đó từ demo cục bộ.
 
 ### 10.2 Công việc khoa học còn mở
 
-Ưu tiên tiếp theo là hai người đánh giá độc lập chấm bộ ví dụ mù đã chuẩn bị, đối chiếu bất đồng và xác định tiêu chí chủ đề ngoài danh mục. Sau khi giao thức phạm vi và ngưỡng được phê duyệt, mới có thể xem xét cổng kiểm thử 2025 một lần; không mở tập chỉ để tối ưu thêm. Một phân tích nhạy cảm về thay đổi taxonomy, thiếu abstract và tách loại công trình sẽ làm rõ hơn độ bền của kết quả. Đối với OA, muốn suy luận nhân quả cần thiết kế bổ sung ngoài phạm vi dự án quan sát hiện tại.
+Đánh giá ngữ nghĩa bởi người chấm độc lập không thuộc phạm vi dự án; khẳng định độ đúng theo chuyên gia sẽ là một nghiên cứu riêng. Cải thiện chính sách từ chối ngoài danh mục, chẳng hạn bằng một lớp OTHER tường minh, cần giao thức mới và một năm đánh giá mới, vì tập 2025 đã được sử dụng. Một phân tích nhạy cảm về thay đổi taxonomy, thiếu abstract và tách loại công trình sẽ làm rõ hơn độ bền của kết quả. Đối với OA, muốn suy luận nhân quả cần thiết kế bổ sung ngoài phạm vi dự án quan sát hiện tại.
 
 ## 11. Kết luận
 
-Dự án hoàn tất một chuỗi nghiên cứu Khoa học dữ liệu có phân định dân số–mẫu, kiểm tra nguồn và báo cáo phương pháp. Dữ liệu OpenAlex cho thấy xu hướng tăng mạnh trong khung AI/CV đã định nghĩa; phân tích trích dẫn/OA/hợp tác đòi hỏi xét tuổi bài, thiếu dữ liệu và thành phần nhóm. Hệ ML SVM có độ khớp tốt với nhãn bạc trên phát triển 2024 nhưng chưa đủ căn cứ cho gán nhãn tự động. Kết quả phù hợp nhất là **nguyên mẫu hỗ trợ người dùng, có thể duyệt chủ đề thủ công và xác nhận gợi ý**, trong khi đánh giá người thật và bài kiểm thử 2025 vẫn là việc cần thực hiện trước khi tuyên bố khả năng tổng quát cuối cùng.
+Dự án hoàn tất một chuỗi nghiên cứu Khoa học dữ liệu có phân định dân số–mẫu, kiểm tra nguồn và báo cáo phương pháp. Dữ liệu OpenAlex cho thấy xu hướng tăng mạnh trong khung AI/CV đã định nghĩa; phân tích trích dẫn/OA/hợp tác đòi hỏi xét tuổi bài, thiếu dữ liệu và thành phần nhóm. Hệ ML SVM có độ khớp tốt với nhãn bạc, ổn định từ phát triển 2024 (macro-F1 0,8808) sang kiểm thử 2025 (0,8698). Tuy vậy, tỷ lệ chấp nhận nhầm ngoài danh mục khoảng 21% chưa đủ căn cứ cho gán nhãn tự động. Kết quả phù hợp nhất là **nguyên mẫu hỗ trợ người dùng, có thể duyệt chủ đề thủ công và xác nhận gợi ý**. Mọi chỉ số đo mức khớp với nhãn OpenAlex, không phải độ đúng do chuyên gia thẩm định.
 
 ## Phụ lục A — Lệnh tái tạo cục bộ
 
@@ -285,7 +304,7 @@ streamlit run dashboard/app.py --server.address 127.0.0.1
 pytest -q -ra
 ```
 
-Không tải dữ liệu/mô hình từ GitHub vì các artifact này được loại khỏi Git; xem manifest và hướng dẫn tái tạo riêng. Không chạy `openalex-final-test` khi chưa có xác nhận chính thức.
+Không tải dữ liệu/mô hình từ GitHub vì các artifact này được loại khỏi Git; xem manifest và hướng dẫn tái tạo riêng. `openalex-final-test` đã chạy một lần; registry chặn mọi lần chạy lại, nên chỉ cần kiểm tra kết quả đã lưu.
 
 ## Phụ lục B — Từ điển dữ liệu rút gọn
 
@@ -293,7 +312,7 @@ Không tải dữ liệu/mô hình từ GitHub vì các artifact này được l
 
 ## Phụ lục C — Ma trận nguồn dữ liệu và khả năng suy luận
 
-| Bảng 4. Thành phần | Nguồn quan sát | Đơn vị / mẫu số | Có thể suy luận | Không thể suy luận |
+| Bảng 5. Thành phần | Nguồn quan sát | Đơn vị / mẫu số | Có thể suy luận | Không thể suy luận |
 |---|---|---|---|---|
 | RQ1 tổng thể | Aggregate API đã xác minh | Work ID trong khung AI/CV | Số bản ghi theo năm tại snapshot | Tăng trưởng của mọi nghiên cứu AI toàn cầu |
 | RQ2 trích dẫn | Mẫu gốc 12.000 | Work ID có trường trích dẫn | Phân phối trong mẫu và phân nhóm quan sát | Chất lượng khoa học từng công trình |
@@ -301,7 +320,8 @@ Không tải dữ liệu/mô hình từ GitHub vì các artifact này được l
 | RQ4 hợp tác | Mẫu gốc, subset có affiliation | Work ID có quốc gia/tổ chức đủ dữ liệu | Đồng liên kết trong subset | Quốc tịch hay toàn mạng hợp tác |
 | RQ5 tham khảo | Cạnh quan sát từ mẫu gốc | Work ID và cạnh tham khảo | ID-overlap theo cutoff | Độ phù hợp của tài liệu chưa được dẫn |
 | RQ6 nhãn | OpenAlex + văn bản đủ điều kiện | Topic chính và bản thảo | Độ khớp với nhãn bạc | Độ đúng ngữ nghĩa do chuyên gia |
-| ML dev 2024 | Mẫu gốc, nhóm phiên bản tách | 681 closed-set; 1.105 open-set | Chỉ số phát triển có điều kiện | Hiệu quả cuối cùng trên 2025 |
+| ML dev 2024 | Mẫu gốc, nhóm phiên bản tách | 681 closed-set; 1.105 open-set | Chỉ số phát triển có điều kiện | Hiệu quả trên năm mô hình chưa thấy |
+| Kiểm thử 2025 | Mẫu gốc 2025, chạy một lần | 831 closed-set; 2.318 open-set | Mức khớp nhãn bạc sau một năm | Độ đúng ngữ nghĩa do chuyên gia |
 
 Ma trận trên là ranh giới tối thiểu khi trình bày kết quả. Mẫu gốc dùng cho bối cảnh chi tiết; tập mở rộng nhắm lớp chỉ được đưa vào train, không vào xu hướng hay RQ2–RQ4. Các số đếm thiếu dữ liệu là một phần của định nghĩa mẫu số. Ví dụ, hợp tác quốc tế dùng 7.970 bài có trạng thái xác lập; nếu thay bằng 12.000, tỷ lệ sẽ mô tả một đại lượng khác. Tương tự, 681 bài validation trong danh mục không được thay bằng 1.843 bài 2024 đủ điều kiện tổng thể khi báo cáo macro-F1 closed-set. Việc ghi rõ đơn vị phân tích giúp tránh sai số do phép nối nhiều-nhiều giữa `works` với `authorships` hoặc `topics` [8]–[12].
 
@@ -313,7 +333,7 @@ Giai đoạn xây nhãn bắt đầu từ một danh mục 14 ID chủ đề Ope
 
 Đánh giá 2024 gồm hai mục đích khác nhau. Closed-set giữ 681 bài trong danh mục, báo cáo macro-F1, accuracy, F1 theo lớp và ma trận nhầm lẫn. Open-set dùng 1.843 bài đủ điều kiện 2024, tách theo nhóm thành 738 calibration và 1.105 evaluation; 697/1.105 bài evaluation nằm ngoài danh mục. Ngưỡng biên được chọn trên calibration để hướng tới nhận nhầm ngoài danh mục không quá 20%. Sau khi đóng băng ngưỡng, tỷ lệ 21,66% trên evaluation là một lỗi so với mục tiêu, không phải một phép “pass” vì AUROC cao. Có thể lập biểu đồ trade-off theo ngưỡng nhưng không được tinh chỉnh ngưỡng trên evaluation rồi báo chính tập đó như kiểm chứng độc lập.
 
-Bootstrap ghép cặp giữ nguyên từng bài validation qua hai mô hình để ước lượng sự dao động của chênh macro-F1 trên tập 2024 đã quan sát. Khoảng [0,0084; 0,0527] không bao hàm bất định của việc chọn danh mục 14 chủ đề, dữ liệu OpenAlex thay đổi, nhãn sai, hoặc một lứa bài 2025 khác. Con số này giúp đánh giá liệu thêm dữ liệu lịch sử có cải thiện trên cùng validation hay không, chứ không phải xác suất rằng mở rộng luôn hữu ích trong tương lai. Trước khi mở 2025, nhóm phải hoàn thành chấm người thật, quyết định phạm vi và phê duyệt giao thức; hiện mọi phép đo trên 2025 vẫn bị cấm.
+Bootstrap ghép cặp giữ nguyên từng bài validation qua hai mô hình để ước lượng sự dao động của chênh macro-F1 trên tập 2024 đã quan sát. Khoảng [0,0084; 0,0527] không bao hàm bất định của việc chọn danh mục 14 chủ đề, dữ liệu OpenAlex thay đổi, nhãn sai, hoặc một lứa bài 2025 khác. Con số này giúp đánh giá liệu thêm dữ liệu lịch sử có cải thiện trên cùng validation hay không, chứ không phải xác suất rằng mở rộng luôn hữu ích trong tương lai. Tập 2025 sau đó được đánh giá đúng một lần theo văn bản sửa đổi giao thức (mục 7.4) và không được dùng để chọn lại mô hình.
 
 ## Phụ lục E — Tiêu chuẩn nghiệm thu giao diện và tái lập
 
@@ -321,7 +341,7 @@ Một bản clone có mã nguồn nhưng không có các artifact Git-ignored kh
 
 Đường đi kiểm thử quan trọng gồm: truy cập Home; kiểm tra RQ1–RQ6; duyệt Topic Explorer khi model không nạp; tìm và lọc Paper Explorer; nhập bản thảo hợp lệ; quan sát top ba; chọn thủ công; xác nhận; đổi title hoặc abstract; xác nhận cũ phải biến mất; thử trường hợp không có kết quả; mở trang Methodology và tải báo cáo. Browser E2E kiểm tra chức năng bằng Chrome, còn AppTest kiểm tra hợp đồng widget/state ở mức Streamlit. Hai tầng này bổ sung nhau: AppTest không nhìn thấy bọc chữ, tràn màn hình hoặc liên kết tải thực; browser không thay thế kiểm toán giá trị nguồn và manifest. Ảnh chụp điện thoại phải đọc được chữ và nút, không chỉ có ảnh “đã chụp”.
 
-Các cổng khoa học độc lập với UI gồm: xác minh checksum trang raw Phase 2, tám bảng Parquet Phase 3, 64 artifact Phase 4, gói RQ6, gói web-data, bundle model, và tình trạng sealed của 2025. Một giao diện chạy được không chứng minh các chuỗi này đúng; ngược lại checksum hợp lệ không chứng minh điều khiển web dễ dùng. `pytest` trên CI công khai chạy các kiểm thử không cần artifact riêng; các bài tích hợp thật và browser có điều kiện phải chạy trên máy có gói đã được cấp. Quy trình này tránh đưa raw abstract, model binary hoặc file đánh giá con người lên repository chỉ để làm CI xanh.
+Các cổng khoa học độc lập với UI gồm: xác minh checksum trang raw Phase 2, tám bảng Parquet Phase 3, 64 artifact Phase 4, gói RQ6, gói web-data, bundle model, và biên nhận chạy một lần của kiểm thử 2025. Một giao diện chạy được không chứng minh các chuỗi này đúng; ngược lại checksum hợp lệ không chứng minh điều khiển web dễ dùng. `pytest` trên CI công khai chạy các kiểm thử không cần artifact riêng; các bài tích hợp thật và browser có điều kiện phải chạy trên máy có gói đã được cấp. Quy trình này tránh đưa raw abstract, model binary hoặc file đánh giá con người lên repository chỉ để làm CI xanh.
 
 ## Tài liệu tham khảo (IEEE)
 

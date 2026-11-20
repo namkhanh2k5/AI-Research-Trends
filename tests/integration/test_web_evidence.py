@@ -11,11 +11,25 @@ from ai_research_trends.web.evidence import ROOT, load_published_evidence, verif
 
 def test_published_evidence_schema_and_source_hashes():
     evidence = load_published_evidence()
-    assert evidence["open_set"]["final_2025_test"] == "SEALED"
+    assert evidence["open_set"]["final_2025_test"] == "EVALUATED_ONCE"
+    assert evidence["final_test_2025"]["authorization"] == "config/final_test_2025_amendment.yaml"
     assert evidence["model_comparison"]["validation_in_catalogue"] == 681
     assert evidence["reference_context"]["minimum_historical_citers"] == 2
     checks = verify_available_sources(evidence)
     assert checks["rq6"]  # this aggregate source is intentionally tracked
+    assert checks["final_test_2025"]
+
+
+def test_published_2025_values_match_single_run_result():
+    evidence = load_published_evidence()["final_test_2025"]
+    result = json.loads((ROOT / evidence["source"]).read_text())
+    assert result["status"] == "complete" and result["test_rows"] == evidence["open_set_total"]
+    assert evidence["closed_macro_f1"] == result["closed_set"]["macro_f1"]
+    assert evidence["closed_set_in_catalogue"] == result["closed_set"]["n"]
+    assert evidence["outside_false_acceptance"] == result["open_set"]["out_false_acceptance_rate"]
+    assert evidence["auroc"] == result["open_set"]["auroc_in_vs_out"]
+    registry = json.loads((ROOT / "data/analysis/finalization_p3_final_test_registry.json").read_text())
+    assert registry["status"] == "complete" and registry["result_sha256"] == evidence["source_sha256"]
 
 
 def test_published_model_values_match_local_originals_when_available():

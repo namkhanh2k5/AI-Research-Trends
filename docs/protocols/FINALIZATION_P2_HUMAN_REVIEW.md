@@ -1,5 +1,7 @@
 # Independent topic-label review: handoff protocol
 
+> **Withdrawn 2026-11-20.** Independent human review was removed from project scope and was never performed; see `config/final_test_2025_amendment.yaml`. This protocol is kept as a historical record only.
+
 The frozen Catalogue B has 14 OpenAlex topics. OpenAlex labels are machine-generated; model agreement with them is *not* independent evidence of semantic validity. Two real human raters are needed before topic-label validity can be called established.
 
 `openalex-prepare-human-review prepare --output-dir data/analysis/finalization_p2_human_review_20261101_v1` creates two separate packages. Each contains the same 40 calibration and 100 evaluation papers with shuffled topic-option order and a 14-topic scope form. The restricted OpenAlex answer keys remain in the original ignored Phase 6B directory and are **not** copied. The package manifest records checksums, not ratings. Do not publish the package or restricted keys on GitHub.

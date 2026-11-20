@@ -252,6 +252,8 @@ def sync(*, root: Path, original_works: Path, web_dir: Path, original_index: Pat
             if manifest.get("status") == "complete":
                 raise ValueError("Completed sync runs are immutable")
             start, end = date.fromisoformat(manifest["window_start"]), date.fromisoformat(manifest["window_end"])
+            if state is not None and date.fromisoformat(state["window_end"]) >= end:
+                raise ValueError("Incomplete run was superseded by a completed sync; preserve its raw evidence")
             if manifest["filter"] != publication_filter(start, end) or manifest["per_page"] != per_page:
                 raise ValueError("Resume parameters disagree with checkpoint")
             for checkpoint in manifest.get("pages", []):
@@ -364,9 +366,12 @@ def sync(*, root: Path, original_works: Path, web_dir: Path, original_index: Pat
                              "storage_bytes": sum(path.stat().st_size for path in run_dir.rglob("*") if path.is_file())})
             _atomic_json(manifest_path, manifest)
             # This single small pointer is the application transaction commit.
+            # Re-observing a past day can refresh the index but must not move the
+            # highest consecutively covered publication date backwards.
+            covered_end = max(end, date.fromisoformat(state["window_end"])) if state else end
             _atomic_json(state_path, {"status": "complete", "run_id": manifest["run_id"],
                                       "last_success_at_utc": manifest["completed_at_utc"],
-                                      "window_end": end.isoformat(),
+                                      "window_end": covered_end.isoformat(),
                                       "application_works": str(app_path.resolve()),
                                       "application_sha256": app_hash, "index": str(index.resolve()),
                                       "application_rows": len(frame)})

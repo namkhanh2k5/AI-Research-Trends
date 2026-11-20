@@ -17,7 +17,7 @@ the historical pre-analysis protocol.
 | RQ3 — Open Access | Descriptive and adjusted **associations** in the original sample, not causal effects. |
 | RQ4 — collaboration | Distinct institution and affiliation-country bridges from the original sample; missing affiliations do not mean no collaboration. |
 | RQ5 — reference network | Historical candidate-pool feasibility and citation-edge diagnostics; the citation recommender was not adopted as the main ML task. |
-| RQ6 — topic labels | Scope, ambiguity, silver-label classification and open-set limitations; independent human semantic validity remains pending. |
+| RQ6 — topic labels | Scope, ambiguity, silver-label classification and open-set limitations; no independent human semantic review was performed. |
 
 The original population snapshot is 937,493 non-retracted works (942,825 with
 retractions included). The proportionally year-stratified detailed sample has
@@ -33,7 +33,8 @@ the [Phase 5 decision](../reports/research/phase5/PHASE5_FINAL_DECISION.md) cove
 the [unified Phase 6 report](../reports/phase6/PHASE6_REPORT.md) covers RQ6.
 The project supplies a local Streamlit explorer and a frozen title/abstract
 TF-IDF + Linear SVM topic **suggestion** model. Model agreement with OpenAlex
-labels is not human-validated topic truth. The historical 2025 labels and
-answer keys were later published, so this public snapshot cannot claim an
-independently sealed final test. Public hosting and redistribution rights
+labels is not human-validated topic truth. The frozen model was evaluated
+once on the 2025 temporal hold-out (macro-F1 0.870; outside false acceptance
+20.98%); see the [result](../reports/machine_learning/FINALIZATION_P3_FINAL_TEST_STATUS.md).
+Public hosting and redistribution rights
 remain separate decisions.

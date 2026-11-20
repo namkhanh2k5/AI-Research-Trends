@@ -1,0 +1,12 @@
+{
+  "status": "complete",
+  "started_at_utc": "2026-11-20T07:35:04.686712+00:00",
+  "amendment_sha256": "b8ea04dfebea20a48b3357de9bdc88acebd2053388ce93561b0a64ff5116870c",
+  "frozen_protocol_sha256": "b1277437a9f1428787978adc1139428a1210b1bd28750b5c0342dcee81cedd09",
+  "model_manifest_sha256": "fb78307f219c933e35151a905ca327e00a058ec4cca3c99f294d41b0ab93907d",
+  "test_sha256": "3f4d4a70f496ddf8674447cc93d95aae3bd1ddbeced49d1f5a8a027f14593f16",
+  "test_rows": 2318,
+  "output_dir": "data/analysis/finalization_p3_final_test_2025_v1",
+  "completed_at_utc": "2026-11-20T07:35:12.968062+00:00",
+  "result_sha256": "fb580585d833fb6865053a1eae063966cfc38212372fc2d507b483ea5da4f7c1"
+}

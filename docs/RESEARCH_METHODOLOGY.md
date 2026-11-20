@@ -47,9 +47,10 @@ RQ6 uses OpenAlex automated primary-topic silver labels and a provisional
 14-topic catalogue. The [Phase 6 report](../reports/phase6/PHASE6_REPORT.md)
 separates the five-class pilot, fourteen-class feasibility evaluation and
 final integrated ML development. Different catalogues and denominators must
-not share one performance claim. Two genuine independent human reviews are
-still needed for semantic validation; the historical 2025 holdout is no longer
-independently sealed after publication.
+not share one performance claim. Independent human semantic review was
+withdrawn from scope and not performed. The frozen model was evaluated once on
+the 2025 temporal hold-out under a recorded protocol amendment; that result
+measures agreement with silver labels and cannot arbitrate later model changes.
 
 Further limitations: OpenAlex metadata and taxonomy can change; missing
 abstracts reduce lexical coverage; missing institutions/countries make network

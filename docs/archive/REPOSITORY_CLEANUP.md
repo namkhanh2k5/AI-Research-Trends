@@ -58,6 +58,12 @@ detailed historical evidence; readers should enter through the new index.
 - Superseded Phase 5 candidate snapshots, repeated literature/retrieval runs.
 - Earlier Phase 6 pilots and topic-validation versions.
 - Superseded Phase 2 integrated datasets, Phase 3 model rerun, and model v1.
+  Exception: `data/processed/ml_topic_classification/finalization_p2_20261101_v3_rerun/split_manifest.json`
+  was restored from `811e98f` on 2026-11-20. The Phase 2 master manifest
+  (`data/analysis/finalization_p2_master_20261101_v1.json`) binds its hash, and
+  the deterministic-rerun check compares against it. The eight rerun outputs
+  are byte-identical to the canonical `finalization_p2_20261101_v3` outputs,
+  so only this manifest is kept; the Parquet duplicates stay pruned.
 - Intermediate `data/interim/` LFS copies, smoke-test snapshots and old pilot
   collection outputs.
 - Disposable browser screenshots/probe outputs from the old web audits;

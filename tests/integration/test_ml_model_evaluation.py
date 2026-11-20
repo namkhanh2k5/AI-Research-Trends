@@ -14,7 +14,7 @@ from ai_research_trends.ml.final_experiments import (
 from ai_research_trends.ml.final_diagnostics import summarize_groups
 from ai_research_trends.ml.final_inference import TopicPlacementService, select_champion
 from ai_research_trends.ml.final_open_set import bootstrap_open_set, score_predictions
-from ai_research_trends.ml.final_test_gate import evaluate_once, verify_human_gate
+from ai_research_trends.ml.final_test_gate import evaluate_once, verify_authorization
 from ai_research_trends.ml.verify_final_ml import verify_experiment
 from ai_research_trends.preprocessing.validate_tables import file_sha256
 from ai_research_trends.ml.topic_final_validation import (
@@ -104,19 +104,18 @@ def test_champion_uses_predeclared_macro_f1_and_tie_break():
     assert select_champion(closed, opened) == ("linear_svm", "svm_margin")
 
 
-def test_final_test_cannot_read_sealed_table(tmp_path: Path):
+def test_final_test_cannot_read_test_table_without_amendment(tmp_path: Path):
     frozen = tmp_path / "frozen.yaml"
-    frozen.write_text("allow_final_test_execution: false\nhuman_review: pending\n")
+    frozen.write_text("allow_final_test_execution: false\n")
     nonexistent_test = tmp_path / "missing_2025.parquet"
-    with pytest.raises(PermissionError, match="does not authorize"):
-        evaluate_once(tmp_path / "gate.json", tmp_path / "model", tmp_path / "web",
-                      nonexistent_test, tmp_path / "catalogue.yaml", tmp_path / "reviews",
-                      frozen, tmp_path / "output")
+    with pytest.raises(PermissionError, match="No approved amendment"):
+        evaluate_once(tmp_path / "amendment.yaml", tmp_path / "model", tmp_path / "web",
+                      nonexistent_test, frozen, tmp_path / "output", tmp_path / "registry.json")
     assert not nonexistent_test.exists()
-    assert not (tmp_path / "output").exists()
+    assert not (tmp_path / "output").exists() and not (tmp_path / "registry.json").exists()
+    (tmp_path / "amendment.yaml").write_text("status: approved\nallow_final_test_execution: false\n")
     with pytest.raises(PermissionError):
-        verify_human_gate(tmp_path / "gate.json", tmp_path / "model",
-                          tmp_path / "catalogue.yaml", tmp_path / "reviews", frozen)
+        verify_authorization(tmp_path / "amendment.yaml", frozen, tmp_path / "model")
 
 
 def test_model_loader_rejects_corrupt_bundle_before_deserialization(tmp_path: Path):

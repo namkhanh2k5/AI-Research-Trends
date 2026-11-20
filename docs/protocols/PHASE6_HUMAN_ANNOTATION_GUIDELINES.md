@@ -1,5 +1,7 @@
 # Phase 6A blind topic-label calibration protocol
 
+> **Withdrawn 2026-11-20.** Independent human review was removed from project scope and was never performed; see `config/final_test_2025_amendment.yaml`. This protocol is kept as a historical record only.
+
 Status: **prepared; no human ratings collected**. The local, Git-ignored run directory contains `blind_annotation_template.csv` and a separate `restricted_answer_key.csv`. The former contains 36 reproducibly sampled 2024 validation-period papers (fixed seed 20261028), anonymous IDs, titles, abstracts, the five provisional topic choices and their verified OpenAlex descriptions. It does **not** contain OpenAlex primary labels or model predictions. The answer key must not be shown to raters before they finish. Both files contain research-paper text or label-sensitive records and are not committed.
 
 ## Instructions for two independent reviewers

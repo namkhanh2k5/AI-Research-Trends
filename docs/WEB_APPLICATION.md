@@ -11,8 +11,7 @@ TF-IDF/Linear SVM bundle on demand. Manual Topic Explorer needs neither the
 model nor a live OpenAlex request. “Find similar papers” loads a separately
 built, checksum-verified TF-IDF/cosine index (original sample, with optional
 validated recent application papers). Neither normal
-browsing nor inference calls OpenAlex. A separate local-only reviewer UI lives
-at `dashboard/reviewer.py` and must never be exposed to public users.
+browsing nor inference calls OpenAlex.
 
 ## User workflow
 
@@ -42,12 +41,9 @@ vocabulary/IDF JSON and display metadata, with SHA-256 and sizes in an immutable
 manifest. It is Git-ignored and rebuildable; no full-text paper collection,
 live API call or automatic app-start rebuild is performed. Non-English content
 is retained but English-centric vocabulary can underperform. Search ranking
-is not a relevance, novelty or plagiarism judgement. No independent human
-Precision@K, Recall@K, MRR or nDCG has been established; see the
+is not a relevance, novelty or plagiarism judgement. No human relevance
+evaluation (Precision@K, Recall@K, MRR or nDCG) is part of this project; see the
 [technical evaluation](../reports/application/PAPER_DISCOVERY_TECHNICAL_EVALUATION.md).
-The optional [human-evaluation workflow](PAPER_DISCOVERY_HUMAN_EVALUATION.md)
-prepares blank judgments for 20 illustrative research ideas; measured relevance
-remains pending until real annotators complete the sheet.
 
 ## Build and inspect
 
@@ -62,9 +58,7 @@ streamlit run dashboard/app.py --server.address 127.0.0.1
 ```
 
 `AI_TRENDS_WEB_DATA`, `AI_TRENDS_MODEL` and `AI_TRENDS_DISCOVERY_INDEX`
-override the checked defaults in `config/application.yaml`. The reviewer UI requires a separate localhost process,
-for example `AI_TRENDS_REVIEWER=reviewer_a streamlit run dashboard/reviewer.py
---server.address 127.0.0.1`; give each real reviewer only their own package.
+override the checked defaults in `config/application.yaml`.
 The app needs no `.env` key. For deployment and rights cautions see the
 [deployment guide](DEPLOYMENT_GUIDE.md).
 
@@ -134,7 +128,11 @@ completed run. A lock prevents concurrent local sync jobs.
 For an API failure, inspect the incomplete run manifest and resume that run
 with the **same** page size and cap, or retry the failed day as a fresh run if
 its checkpoint no longer matches the live API. Do not combine mismatched
-pages. An oversized *multi-day* backlog is automatically split into daily
+pages. If a newer successful run already covers the same or a later day, the
+older incomplete run is **superseded** and cannot be resumed; its raw evidence
+is preserved. A lookback re-scan may publish refreshed application metadata
+and a new index, but never moves the latest covered publication date backward.
+An oversized *multi-day* backlog is automatically split into daily
 windows; an oversized **single day** cannot be split by this policy. Stop,
 inspect its `expected_count`/`last_error`, and increase `--max-records` only
 if the complete day fits the supported 10,000-record cap and available API
@@ -167,8 +165,8 @@ run manifest, and monitor quota/disk. Cron needs a continuously available host
 and secure local `.env`; GitHub Actions runners do not persist this ignored
 store between executions. Current web-data and model artifacts also require
 rights review before any public deployment. Rebuilding the TF-IDF index updates
-corpus-wide IDF but does not retrain the 14-topic SVM; evaluate vocabulary and
-human-reviewed performance drift before any separately approved model update.
+corpus-wide IDF but does not retrain the 14-topic SVM. Any separately approved
+model update needs a new evaluation year, because 2025 has already been used.
 The cron line is an example only and has **not** been activated. A reliable
 deployment also requires persistent storage, monitoring/alerting for failed
 jobs and disk/quota exhaustion, a single writer, backup/restore testing and
