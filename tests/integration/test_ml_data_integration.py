@@ -172,3 +172,18 @@ def test_published_rq6_report_figure_links_resolve():
         image=report.parent/target
         assert image.is_file() and image.stat().st_size>1000
         assert image.read_bytes()[:8]==b"\x89PNG\r\n\x1a\n"
+
+
+def test_finalization_p2_master_manifest_still_verifies():
+    """Repository cleanups must not prune a child manifest the Phase 2 master binds."""
+    from ai_research_trends.analysis.finalization_manifest import verify as verify_master
+    from ai_research_trends.ml.validate_integrated_data import verify_run
+
+    root = Path(__file__).resolve().parents[2]
+    result = verify_master(root / "data/analysis/finalization_p2_master_20261101_v1.json")
+    assert result["valid"] and result["child_manifests"] == 7
+    integrated = root / "data/processed/ml_topic_classification/finalization_p2_20261101_v3"
+    if (integrated / "train.parquet").read_bytes()[:4] != b"PAR1":
+        pytest.skip("Integrated Parquet outputs not restored from Git LFS")
+    compared = verify_run(integrated, integrated.with_name(integrated.name + "_rerun"))
+    assert all(compared["deterministic_compare"].values())
