@@ -160,6 +160,52 @@ absolute checkout path and Python environment to match your installation):
 15 3 * * * cd /absolute/path/to/AI-Research-Trends && /absolute/path/to/AI-Research-Trends/.venv/bin/openalex-sync-application --lookback-days 3 --max-records 3000 --execute >> /absolute/path/to/sync.log 2>&1
 ```
 
+Cron skips a run silently when the machine is off or asleep at the scheduled
+time. On a laptop, use a systemd user timer instead: `Persistent=true` runs a
+missed job at the next login or wake. Put both files in `~/.config/systemd/user/`:
+
+```ini
+# ai-research-trends-sync.service
+[Unit]
+Description=AI-Research-Trends OpenAlex application sync
+
+[Service]
+Type=oneshot
+WorkingDirectory=/absolute/path/to/AI-Research-Trends
+# Wait up to 5 minutes for DNS after resume before calling OpenAlex.
+ExecStartPre=/usr/bin/timeout 300 /bin/sh -c 'until getent hosts api.openalex.org >/dev/null; do sleep 10; done'
+ExecStart=/absolute/path/to/AI-Research-Trends/.venv/bin/openalex-sync-application --lookback-days 3 --max-records 3000 --max-days 31 --execute
+StandardOutput=append:/absolute/path/to/sync.log
+StandardError=append:/absolute/path/to/sync.log
+Nice=10
+```
+
+```ini
+# ai-research-trends-sync.timer
+[Unit]
+Description=Daily AI-Research-Trends OpenAlex application sync
+
+[Timer]
+OnCalendar=*-*-* 03:15:00
+Persistent=true
+RandomizedDelaySec=10min
+
+[Install]
+WantedBy=timers.target
+```
+
+```bash
+systemctl --user daemon-reload
+systemctl --user enable --now ai-research-trends-sync.timer
+systemctl --user list-timers ai-research-trends-sync.timer
+journalctl --user -u ai-research-trends-sync.service   # start/exit status
+```
+
+A user timer runs only while the user's systemd instance is running, that is,
+while the user is logged in, unless `loginctl enable-linger` is set. A failed
+run leaves an incomplete manifest; the next scheduled run starts a fresh run
+from the last successful checkpoint, so one missed or failed day self-heals.
+
 Run manually first, check `data/application/openalex_sync/state.json` and the
 run manifest, and monitor quota/disk. Cron needs a continuously available host
 and secure local `.env`; GitHub Actions runners do not persist this ignored
@@ -167,7 +213,7 @@ store between executions. Current web-data and model artifacts also require
 rights review before any public deployment. Rebuilding the TF-IDF index updates
 corpus-wide IDF but does not retrain the 14-topic SVM. Any separately approved
 model update needs a new evaluation year, because 2025 has already been used.
-The cron line is an example only and has **not** been activated. A reliable
+Both schedules are examples; the repository does not install either. A reliable
 deployment also requires persistent storage, monitoring/alerting for failed
 jobs and disk/quota exhaustion, a single writer, backup/restore testing and
 manual resolution of API snapshot changes. A successful daily job does not
