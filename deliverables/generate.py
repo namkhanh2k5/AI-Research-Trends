@@ -146,7 +146,7 @@ def presentation() -> None:
         ("Open-set & giới hạn", ["Chấp nhận nhầm ngoài danh mục: 21,66% (2024), 20,98% (2025)", "Ngưỡng margin, không phải xác suất", "Top 3 + từ chối + xác nhận thủ công"], "reports/figures/finalization_p3/open_set_roc.png"),
         ("Giao diện thật · Home", ["Sáu trang nghiên cứu và khám phá", "Số liệu tổng thể tách khỏi mẫu", "Chrome cục bộ; không phải mockup"], "deliverables/presentation/figures/home_chrome.png"),
         ("Giao diện thật · Xác nhận", ["Đổi bản thảo xóa gợi ý cũ", "Người dùng chọn/ghi đè thủ công", "Topic Brief có nguồn gốc và giới hạn"], "deliverables/presentation/figures/classify_confirmed_chrome.png"),
-        ("Tái lập & giới hạn", ["Raw, manifest, checksum và kiểm tra số mẫu", "Dữ liệu/mô hình không có trên public GitHub", "Chỉ số = mức khớp nhãn bạc; không suy luận nhân quả OA"], None),
+        ("Tái lập & giới hạn", ["Raw, manifest, checksum và kiểm tra số mẫu", "Dữ liệu/mô hình công khai qua Git LFS; chưa thẩm định quyền tái phân phối", "Chỉ số = mức khớp nhãn bạc; không suy luận nhân quả OA"], None),
         ("Kết luận", ["Nghiên cứu dữ liệu và giao diện khám phá có thể kiểm chứng", "Nguyên mẫu hỗ trợ, không gán nhãn tự động", "Bước tiếp: cải thiện từ chối ngoài danh mục, đánh giá trên năm mới"], None),
     ]
     for number, (title, bullets, figure) in enumerate(spec, 1):
