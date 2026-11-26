@@ -2,7 +2,7 @@
 
 Eight slide-ready sections, based on the verified Phase 4 run
 `phase4_stratified_20261019T155909Z_v3`. Figures are available in the
-repository; numerical source tables remain in the local, Git-ignored run.
+repository; numerical source tables are in the tracked run directory.
 Population and sampled-work results must stay separate.
 
 ## Slide 1 — What did we study?

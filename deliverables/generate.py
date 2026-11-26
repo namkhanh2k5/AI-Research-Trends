@@ -79,6 +79,15 @@ def report_docx() -> None:
             continue
         if not line:
             continue
+        if in_code:
+            # Raw monospace lines, kept together so a command block never splits across pages.
+            code = doc.add_paragraph()
+            code.paragraph_format.space_after = Pt(0)
+            code.paragraph_format.keep_with_next = True
+            code_run = code.add_run(lines[i - 1].rstrip())
+            code_run.font.name = "Courier New"
+            code_run.font.size = Pt(9)
+            continue
         if line.startswith("!["):
             match = re.match(r"!\[([^]]*)\]\(([^)]+)\)", line)
             if match:

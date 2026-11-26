@@ -68,6 +68,11 @@ detailed historical evidence; readers should enter through the new index.
   collection outputs.
 - Disposable browser screenshots/probe outputs from the old web audits;
   scientific figures and the two report/presentation Chrome assets remain.
+- 2026-11-26 tidy-up of unreferenced files:
+  - `requirements.txt`, superseded by the `pyproject.toml` extras and missing the web and deliverables dependencies;
+  - the one-time `scripts/migrate_research_docs.py`, already applied;
+  - two draft copies of the Phase 4 report, `data/analysis/phase4_published_report_v1.md` and `_v2.md`; the canonical report is `reports/research/phase4/PHASE4_ANALYSIS_REPORT.md`;
+  - the incomplete `finalization_p2_topic_population_20261101_v1` run manifest, superseded by `_v2`.
 
 This is a **retention policy**, not a claim that prior experiments never
 happened. Their findings and research decisions remain documented in reports.
@@ -91,11 +96,13 @@ original checksum requirements.
 git lfs install
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/namkhanh2k5/AI-Research-Trends.git
 cd AI-Research-Trends
-git lfs pull --include="models/finalization_p3/topic_placement_v2/model.joblib,data/analysis/finalization_p2_web_data_20261101_v3/paper_index.parquet"
+# Use the canonical paths: LFS include patterns do not follow the old-path symlinks.
+git lfs pull --include="models/topic_placement_v2/model.joblib,data/artifacts/web/topic_explorer/paper_index.parquet,data/processed/openalex_stratified/stratified_20261019T155909Z/works.parquet"
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e ".[dev,web,deliverables]"
-openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
+openalex-build-web-data verify data/artifacts/web/topic_explorer
+openalex-paper-discovery build
 streamlit run dashboard/app.py --server.address 127.0.0.1
 ```
 

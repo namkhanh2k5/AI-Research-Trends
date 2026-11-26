@@ -20,3 +20,9 @@ renumbered original research phases. Their historical snapshots may call the
 2025 test sealed or human review pending. Both are superseded: human review was
 withdrawn and 2025 was evaluated once on 2026-11-20. See
 [current limitations](../docs/RESEARCH_METHODOLOGY.md).
+
+Reports and protocols written before 2026-11-04 may also describe runs, data or
+the model binary as Git-ignored or local-only. Since commit `811e98f`
+(2026-11-04) the retained artifacts and the frozen model are tracked with Git
+LFS. Only the rebuildable Paper Discovery index and the mutable application sync
+store remain Git-ignored.
