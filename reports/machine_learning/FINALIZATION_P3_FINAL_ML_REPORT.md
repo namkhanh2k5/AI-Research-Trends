@@ -64,7 +64,7 @@ This section originally read **SEALED / not evaluated**. A recorded [amendment](
 
 ## 14. Inference architecture
 
-The trusted local bundle `models/finalization_p3/topic_placement_v2/` contains the selected pipeline, topic catalogue, frozen threshold/configuration, and SHA-256 manifest. A loader checks artifact hashes and source compatibility before deserialization. Every suggestion requires user confirmation; no automatic placement is enabled. A blank/very short abstract is rejected explicitly. The model binary is intentionally Git-ignored; reviewers must rebuild it from verified local data. See [inference integration](FINALIZATION_P3_INFERENCE_INTEGRATION.md).
+The trusted local bundle `models/finalization_p3/topic_placement_v2/` contains the selected pipeline, topic catalogue, frozen threshold/configuration, and SHA-256 manifest. A loader checks artifact hashes and source compatibility before deserialization. Every suggestion requires user confirmation; no automatic placement is enabled. A blank/very short abstract is rejected explicitly. The model binary is tracked in Git LFS; its SHA-256 is bound by the bundle manifest and checked by the loader. See [inference integration](FINALIZATION_P3_INFERENCE_INTEGRATION.md).
 
 ## 15. Topic Brief integration
 

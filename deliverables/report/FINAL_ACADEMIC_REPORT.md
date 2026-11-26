@@ -270,7 +270,7 @@ Các bài kiểm thử ngoại tuyến kiểm tra API, chuẩn hóa, tính toàn
 
 ### 9.1 Phạm vi kiểm thử và chứng cứ hồi quy
 
-Các bài kiểm thử đơn vị kiểm tra chuẩn hóa ID, bộ lọc, nhóm phiên bản, chỉ số và các hợp đồng UI. Kiểm thử tích hợp dùng artifact cục bộ có checksum để phát hiện sai khác giữa đường đi phân tích và đường đi giao diện. Browser E2E dùng Chrome/Playwright truy cập Streamlit thật, kiểm tra dự đoán → top ba → chọn thủ công → xác nhận → Topic Brief, thay đổi input, các trang nghiên cứu, tải báo cáo và trạng thái không kết quả. Ảnh chụp ở desktop/laptop/tablet/mobile là bằng chứng bố cục, không thay thế đánh giá khả dụng của người thật. Các bộ dữ liệu/mô hình local Git-ignored không có trên CI của bản clone sạch, nên kết quả CI ngoại tuyến không phải chứng nhận chạy end-to-end đầy đủ.
+Các bài kiểm thử đơn vị kiểm tra chuẩn hóa ID, bộ lọc, nhóm phiên bản, chỉ số và các hợp đồng UI. Kiểm thử tích hợp dùng artifact cục bộ có checksum để phát hiện sai khác giữa đường đi phân tích và đường đi giao diện. Browser E2E dùng Chrome/Playwright truy cập Streamlit thật, kiểm tra dự đoán → top ba → chọn thủ công → xác nhận → Topic Brief, thay đổi input, các trang nghiên cứu, tải báo cáo và trạng thái không kết quả. Ảnh chụp ở desktop/laptop/tablet/mobile là bằng chứng bố cục, không thay thế đánh giá khả dụng của người thật. CI tải các artifact Git LFS và chạy kiểm thử ngoại tuyến, nhưng không chạy browser E2E và không gọi OpenAlex, nên kết quả CI không phải chứng nhận chạy end-to-end đầy đủ.
 
 Kiểm toán độc lập đã phát hiện lỗi xác nhận chủ đề vì UI đọc khóa tên không có trong hợp đồng topic, gợi ý cũ vẫn có thể xuất hiện sau khi đổi input, liên kết báo cáo tương đối sai, và phần Methodology quá ngắn. Bản sửa thay bằng trường `official_name`, fingerprint nội dung, nút tải DOCX/PDF và nội dung RQ1–RQ6 có provenance. Mỗi lỗi có kiểm thử hồi quy tương ứng; bảng trạng thái và kết quả chạy thực tế nằm trong báo cáo khắc phục Phase 4.1. Chưa có khảo sát người dùng hoặc đánh giá hai người chấm, nên bài kiểm thử kỹ thuật không được gọi là thẩm định khoa học.
 
@@ -295,16 +295,18 @@ Dự án hoàn tất một chuỗi nghiên cứu Khoa học dữ liệu có phâ
 ## Phụ lục A — Lệnh tái tạo cục bộ
 
 ```bash
+git lfs pull
 python -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev,web,deliverables]"
 openalex-build-web-data verify data/analysis/finalization_p2_web_data_20261101_v3
 openalex-verify-final-ml data/analysis/finalization_p3_models_20261101_v1
+openalex-paper-discovery build
 streamlit run dashboard/app.py --server.address 127.0.0.1
 pytest -q -ra
 ```
 
-Không tải dữ liệu/mô hình từ GitHub vì các artifact này được loại khỏi Git; xem manifest và hướng dẫn tái tạo riêng. `openalex-final-test` đã chạy một lần; registry chặn mọi lần chạy lại, nên chỉ cần kiểm tra kết quả đã lưu.
+Dữ liệu đã giữ lại, gói web và mô hình đóng băng có trên GitHub qua Git LFS; quyền tái phân phối metadata/abstract chưa được thẩm định. Chỉ mục Paper Discovery không đưa lên Git và được dựng lại bằng `openalex-paper-discovery build`. `openalex-final-test` đã chạy một lần; registry chặn mọi lần chạy lại, nên chỉ cần kiểm tra kết quả đã lưu.
 
 ## Phụ lục B — Từ điển dữ liệu rút gọn
 
@@ -337,7 +339,7 @@ Bootstrap ghép cặp giữ nguyên từng bài validation qua hai mô hình đ�
 
 ## Phụ lục E — Tiêu chuẩn nghiệm thu giao diện và tái lập
 
-Một bản clone có mã nguồn nhưng không có các artifact Git-ignored không thể tự động chạy toàn bộ ứng dụng. Để dựng demo cục bộ, cần bundle SVM, gói web-data, các manifest và checksum tương ứng từ nguồn được phép; sau khi đặt vào đường dẫn đã tài liệu hóa phải chạy verifier. Artifact `joblib` chỉ nên được tải từ nguồn nhóm kiểm soát vì quá trình giải tuần tự hóa có thể thực thi mã. Gói dữ liệu web chứa chỉ mục 12.000 bài gốc và Topic Brief của 14 chủ đề; nó không là bản sao toàn bộ raw OpenAlex và không chứa huấn luyện mở rộng để trình bày prevalence. Bộ ảnh công khai trong báo cáo được lấy từ Chrome thực với bản thảo trình diễn không nhạy cảm; ảnh chụp đầy đủ ở bốn viewport lưu cục bộ, không đưa riêng tư lên Git.
+Bản clone công khai chứa mã nguồn cùng bundle SVM, gói web-data và bảng `works.parquet` gốc qua Git LFS; chỉ có chỉ mục Paper Discovery phải được dựng cục bộ. Để dựng demo, chạy `git lfs pull`, dựng chỉ mục rồi chạy các verifier đã tài liệu hóa trước khi mở ứng dụng. Artifact `joblib` chỉ nên được tải từ repository này hoặc nguồn nhóm kiểm soát vì quá trình giải tuần tự hóa có thể thực thi mã. Gói dữ liệu web chứa chỉ mục 12.000 bài gốc và Topic Brief của 14 chủ đề; nó không là bản sao toàn bộ raw OpenAlex và không chứa huấn luyện mở rộng để trình bày prevalence. Bộ ảnh công khai trong báo cáo được lấy từ Chrome thực với bản thảo trình diễn không nhạy cảm; ảnh chụp đầy đủ ở bốn viewport lưu cục bộ, không đưa riêng tư lên Git.
 
 Đường đi kiểm thử quan trọng gồm: truy cập Home; kiểm tra RQ1–RQ6; duyệt Topic Explorer khi model không nạp; tìm và lọc Paper Explorer; nhập bản thảo hợp lệ; quan sát top ba; chọn thủ công; xác nhận; đổi title hoặc abstract; xác nhận cũ phải biến mất; thử trường hợp không có kết quả; mở trang Methodology và tải báo cáo. Browser E2E kiểm tra chức năng bằng Chrome, còn AppTest kiểm tra hợp đồng widget/state ở mức Streamlit. Hai tầng này bổ sung nhau: AppTest không nhìn thấy bọc chữ, tràn màn hình hoặc liên kết tải thực; browser không thay thế kiểm toán giá trị nguồn và manifest. Ảnh chụp điện thoại phải đọc được chữ và nút, không chỉ có ảnh “đã chụp”.
 

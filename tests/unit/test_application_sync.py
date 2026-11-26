@@ -1,6 +1,5 @@
 """Offline cursor-sync contract; no live OpenAlex access or research-file edits."""
 
-import hashlib
 import json
 from datetime import date
 from pathlib import Path
