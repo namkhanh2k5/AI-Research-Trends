@@ -3,7 +3,6 @@
 import hashlib
 import json
 import math
-from copy import deepcopy
 from datetime import date
 from pathlib import Path
 

@@ -5,7 +5,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import math
 import time
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
@@ -29,7 +28,7 @@ from sklearn.svm import LinearSVC
 
 from ai_research_trends.analysis.load_data import load_verified_tables
 from ai_research_trends.ml.topic_pilot import (
-    CONFIG, PLAN, POPULATION, PROCESSED, SEED, clean_text, prepare_rows, title_key,
+    CONFIG, PLAN, POPULATION, PROCESSED, SEED, prepare_rows, title_key,
 )
 from ai_research_trends.preprocessing.validate_tables import file_sha256
 

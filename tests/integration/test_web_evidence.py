@@ -1,7 +1,6 @@
 """Published UI aggregate values stay tied to the immutable local source manifests."""
 
 import json
-from pathlib import Path
 
 import pandas as pd
 import pytest
