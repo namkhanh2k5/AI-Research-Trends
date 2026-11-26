@@ -162,7 +162,11 @@ absolute checkout path and Python environment to match your installation):
 
 Cron skips a run silently when the machine is off or asleep at the scheduled
 time. On a laptop, use a systemd user timer instead: `Persistent=true` runs a
-missed job at the next login or wake. Put both files in `~/.config/systemd/user/`:
+missed job at the next login or wake. The example below runs weekly, on Monday.
+Each run still processes every day since the last successful checkpoint, so no
+date is skipped. It writes fewer run snapshots than a daily schedule, because
+the 3-day lookback is re-scanned once a week instead of every day. Put both
+files in `~/.config/systemd/user/`:
 
 ```ini
 # ai-research-trends-sync.service
@@ -183,10 +187,11 @@ Nice=10
 ```ini
 # ai-research-trends-sync.timer
 [Unit]
-Description=Daily AI-Research-Trends OpenAlex application sync
+Description=Weekly AI-Research-Trends OpenAlex application sync
 
 [Timer]
-OnCalendar=*-*-* 03:15:00
+# Daily instead: OnCalendar=*-*-* 03:15:00
+OnCalendar=Mon *-*-* 03:15:00
 Persistent=true
 RandomizedDelaySec=10min
 
@@ -204,7 +209,15 @@ journalctl --user -u ai-research-trends-sync.service   # start/exit status
 A user timer runs only while the user's systemd instance is running, that is,
 while the user is logged in, unless `loginctl enable-linger` is set. A failed
 run leaves an incomplete manifest; the next scheduled run starts a fresh run
-from the last successful checkpoint, so one missed or failed day self-heals.
+from the last successful checkpoint, so one missed or failed run self-heals.
+After about four weeks without a successful run, the range exceeds
+`--max-days 31` and the job stops; process the backlog with explicit
+`--from-date`/`--to-date` chunks as described above.
+
+With a weekly schedule, set `AI_TRENDS_SYNC_STALE_HOURS=192` (8 days) in the
+environment that starts Streamlit, for example
+`AI_TRENDS_SYNC_STALE_HOURS=192 streamlit run dashboard/app.py`. Otherwise the
+default 48-hour stale warning shows for most of the week.
 
 Run manually first, check `data/application/openalex_sync/state.json` and the
 run manifest, and monitor quota/disk. Cron needs a continuously available host
@@ -216,5 +229,5 @@ model update needs a new evaluation year, because 2025 has already been used.
 Both schedules are examples; the repository does not install either. A reliable
 deployment also requires persistent storage, monitoring/alerting for failed
 jobs and disk/quota exhaustion, a single writer, backup/restore testing and
-manual resolution of API snapshot changes. A successful daily job does not
+manual resolution of API snapshot changes. A successful scheduled job does not
 prove complete OpenAlex change capture.
